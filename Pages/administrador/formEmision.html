@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Start Bootstrap - SB Admin Version 2.0 Demo</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="../../sb-admin-v2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../sb-admin-v2/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    
+    <!-- Page-Level Plugin CSS - Forms -->
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="../../sb-admin-v2/css/sb-admin.css" rel="stylesheet">
+    
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="homeAdmin.html">Menu Aministrador</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right">
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil de Usuario</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuración</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="../../index.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+           <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="gestionarCuentas.html"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Gestionar Cuentas</a>
+                        </li>
+                        <hr>
+                        <li>
+                            <a href="mantenedorUsuario.html"><i class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Mantenedor Usuarios</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Emitir Certificado<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="formEmision.html">Cargas Generales</a>
+                                </li>
+                                <li>
+                                    <a href="formEmision.html">Cargas Especiales</a>
+                                </li>
+                                <li>
+                                    <a href="formEmision.html">Cargas Contenedores</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
+                            <a href="denunciarSinietro.html"><i class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Denunciar Siniestro</a>
+                        </li>
+                        <li>
+                            <a href="historialCertificados.html"><i class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Historial Certificados</a>
+                        </li>
+                        <li>
+                            <a href="historialPagos.html"><i class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;historial Pagos</a>
+                        </li>
+                        <li>
+                            <a href="informeCierre.html"><i class="glyphicon glyphicon-book"></i>&nbsp;&nbsp;Informe Cierre</a>
+                        </li>
+                        <li>
+                            <a href="primaMensual.html"><i class="glyphicon glyphicon-list-alt"></i>&nbsp;&nbsp;Prima Mensual</a>
+                        </li>
+                    </ul>
+                    <!-- /#side-menu -->
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+         </nav>
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Emisión Certificado</h1>
+                </div>
+
+                <div class="col-lg-12">
+                    <!-- Button trigger modal -->
+                        <button class="btn btn-success btn" onclick="activar()" >
+                            Nueva Poliza 
+                        </button>
+                        &nbsp;&nbsp;
+                    <!-- Button trigger modal -->
+                        <button class="btn btn-warning btn" data-toggle="modal" data-target="#myModal">
+                            Obtener Datos
+                        </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header" style="margin-bottom: 20px;">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title" id="myModalLabel">Obtener Certificado Previo</h4>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>Cliente</label>
+                                                <select class="form-control" id="clientObtDatos">
+                                                    <option>Seleccione</option>
+                                                    <option>Cliente 1</option>
+                                                    <option>Cliente 2</option>
+                                                    <option>Cliente 3</option>
+                                                    <option>Cliente 4</option>
+                                                    <option>Cliente 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>Numero Póliza</label>
+                                                <select class="form-control" id="polizaObtDatos">
+                                                    <option>Seleccione</option>
+                                                    <option>123456</option>
+                                                    <option>654321</option>
+                                                    <option>987654</option>
+                                                    <option>456789</option>
+                                                    <option>555555</option>
+                                                </select>
+                                            </div>
+                                        </div>  
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>Certificado</label>
+                                                <select class="form-control">
+                                                    <option>Seleccione</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div> 
+                                    </div> 
+                                </div>     
+                                    
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
+                                    <button type="button" class="btn btn-primary" onclick="llenar()" data-dismiss="modal">Obtener Datos</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div> 
+            </div>   
+            <!-- /.row -->
+            <div class="row" style="margin-top: 20px;">
+                <form role="form" >
+                    <div class="col-lg-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="color:#fff;background-color: #428bca;">
+                            Información principal
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="col-lg-3">    
+                                            <div class="form-group">
+                                                <label>Cliente</label>
+                                                <select class="form-control" id= "cliente" disabled = "true">
+                                                    <option>Seleccione</option>
+                                                    <option>Cliente 1</option>
+                                                    <option>Cliente 2</option>
+                                                    <option>Cliente 3</option>
+                                                    <option>Cliente 4</option>
+                                                    <option>Cliente 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>Numero Póliza</label>
+                                                <select class="form-control" id="numPoliza" disabled = "true">
+                                                    <option>Seleccione</option>
+                                                    <option>123456</option>
+                                                    <option>654321</option>
+                                                    <option>987654</option>
+                                                    <option>456789</option>
+                                                    <option>555555</option>
+                                                </select>
+                                            </div>
+                                        </div>    
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>País</label>
+                                                <select class="form-control" id="pais" disabled = "true">
+                                                    <option>Seleccione</option>
+                                                    <option>Chile</option>
+                                                    <option>Peru</option>
+                                                </select>
+                                            </div>
+                                        </div>    
+                                    </div> 
+                                    <div class="col-lg-12">     
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>A favor</label>
+                                                <select class="form-control" id="aFavor" disabled = "true">
+                                                    <option>Seleccione</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Dirección</label>
+                                                <input class="form-control" placeholder="ej: las margaritas 2145, santiago, chile." id="direccion" disabled = "true">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Referencia Interna</label>
+                                                <input class="form-control" placeholder="Referencia Interna" id="refInterna" disabled = "true">
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>     
+                            </div> 
+                        </div>  
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="color:#fff;background-color: #428bca;" >
+                            Costos
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">     
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Moneda</label>
+                                                <select class="form-control" id="moneda" disabled = "true">
+                                                        <option>USD</option>
+                                                        <option>CLP</option>
+                                                        <option>EUR</option>
+                                                    </select>
+                                            </div>
+
+
+
+
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Deducible</label>
+                                                 <textarea class="form-control" rows="3"  placeholder="ej:1% del monto asegurado con un minimo de usd 50" id="primaMinima" disabled ="true"></textarea>
+                                            
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Monto Asegurado</label>
+                                                <input class="form-control" placeholder="ej: 250.000" id="montoAsegurado" disabled = "true">
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="col-lg-12">     
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Tasa</label>
+                                                <input class="form-control" placeholder="ej: 0.5" id="tasa" disabled = "true">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>Clausula</label>
+                                                <select class="form-control" id="clausula" disabled = "true">
+                                                    <option>Seleccione</option>
+                                                    <option>A</option>
+                                                    <option>C</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Prima</label>
+                                                <input class="form-control" placeholder="ej: 250.000" id="prima" disabled = "true">
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>     
+                            </div> 
+                        </div>   
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="color:#fff;background-color: #428bca;">
+                            Viaje
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">     
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Fecha Embarque</label>
+                                                <div class='input-group date'>
+                                                    <input type='text' class="form-control" id="fechaEmbarque" disabled="true"/>
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                         <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Fecha de Arribo</label>
+                                                <div class='input-group date'>
+                                                    <input type='text' class="form-control" id="fechaDestino" disabled="true"/>
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Guía o BL</label>
+                                                <input class="form-control" placeholder="ej: 445454548" id="guiaBl" disabled = "true">
+                                            </div>
+                                        </div>
+                                    </div>  
+
+                                    <div class="col-lg-12">     
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Nombre Linea Aerea/Compañia naviera</label>
+                                                <input class="form-control" placeholder="ej: Latam" id="nomLineaNave" disabled = "true">
+                                            </div>
+                                        </div>
+
+                                          <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Nombre Nave/Motonave</label>
+                                                <input class="form-control" placeholder="ej: Santa Barbara" id="nomNave" disabled = "true">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-4">    
+                                            <div class="form-group">
+                                                <label>Numero Vuelo/Nave</label>
+                                                <input class="form-control" placeholder="ej: 123456" id="numVueloNave" disabled = "true">
+                                            </div>
+                                        </div>
+                                      
+                                    </div>  
+
+                                     <div class="col-lg-12"> 
+
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label>Tipo de Embalaje</label>
+                                                <select class="form-control" id="tipoEmbalaje" disabled = "true"> 
+                                                    <option>Seleccione</option>
+                                                    <option>caja</option>
+                                                    <option>container</option>
+                                                    <option>bolsa</option>
+                                                    <option>Multi Embalaje</option>
+                                                    <option>Otro</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                         <div class="col-lg-6">    
+                                            <div class="form-group">
+                                                <label>Otro</label>
+                                                <input class="form-control" placeholder="ej: Full Consolidado" id="otro" disabled = "true">
+                                            </div>
+                                        </div>
+                                    </div>  
+
+                                   
+
+
+
+
+
+
+
+
+                               
+                                    
+                                        <div class="col-lg-12"> 
+                                            <div class="col-lg-4">    
+                                                <div class="form-group">
+                                                    <label>Transporte</label>
+                                                    <select class="form-control" id="transporte" disabled = "true">
+                                                        <option>Mar</option>
+                                                        <option>Aire</option>
+                                                        <option>Tierra</option>
+                                                        <option>Multimodal</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            <div class="col-lg-2">
+                                                <div class="form-group">
+                                                    <label>Tipo Embarque</label>
+                                                    <div class="radio" >
+                                                        <label>
+                                                            <input type="radio" name="optionsRadios" value="option1" id="importacion" disabled = "true" checked>Importación
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input type="radio" name="optionsRadios" value="option2" id="exportacion" disabled = "true">Exportación
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label>
+                                                            <input class = "activar" type="radio" name="optionsRadios" id="embNacional" value="option3" disabled = "true">Embarque Nacional
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-6">    
+                                                <div class="form-group">
+                                                    <label>Descripción de la Mercadería</label>
+                                                    <textarea class="form-control" rows="3" id="descMercaderia" disabled ="true"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                    </div>  
+                                </div>     
+                            </div> 
+                        
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="color:#fff;background-color: #428bca;">
+                            Origen
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">     
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Pais</label>
+                                                <select class="form-control" id="paisOrigen" disabled ="true">
+                                                    <option>Seleccione</option>
+                                                    <option>Chile</option>
+                                                    <option>Peru</option>
+                                                    <option>China</option>
+                                                    <option>Italia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Ciudad</label>
+                                                <select class="form-control" id="ciudadOrigen" disabled ="true">
+                                                    <option>Seleccione</option>
+                                                    <option>Santiago</option>
+                                                    <option>Lima</option>
+                                                    <option>Hong Kong</option>
+                                                    <option>Milan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Puerto</label>
+                                                <input class="form-control" placeholder="ej: Puerto de san antonio" id="puertoOrigen" disabled ="true">
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>     
+                            </div> 
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading" style="color:#fff;background-color: #428bca;">
+                            Destino
+                            </div>
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-lg-12">     
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Pais</label>
+                                                <select class="form-control" id="paisDestino" disabled ="true">
+                                                    <option>Seleccione</option>
+                                                    <option>Chile</option>
+                                                    <option>Peru</option>
+                                                    <option>China</option>
+                                                    <option>Italia</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Ciudad</label>
+                                                <select class="form-control" id="ciudadDestino" disabled ="true">
+                                                    <option>Seleccione</option>
+                                                    <option>Santiago</option>
+                                                    <option>Lima</option>
+                                                    <option>Hong Kong</option>
+                                                    <option>Milan</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="form-group">
+                                                <label>Puerto</label>
+                                                <input class="form-control" placeholder="ej: Puerto de san antonio" id="puertoDestino" disabled ="true"> 
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>     
+                            </div> 
+                        </div>
+                        <div class="col-lg-12 " style="margin-bottom: 40px;">     
+                           
+                                <button type="submit" class="btn btn btn-default"><a href="homeAdmin.html"> Volver</a></button>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                <button type="submit" class="btn btn btn-primary">Generar Certificado</button>
+                        </div>          
+                                <!-- /.col-lg-6 (nested) --> 
+                                </div>                        
+                                <!-- /.row (nested) -->
+                            </div>
+                            <!-- /.panel-body -->
+                        </div>
+                        <!-- /.panel -->
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+            </form>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+   
+    <!-- Core Scripts - Include with every page -->
+    <!-- <script src="../sb-admin-v2/js/jquery-1.10.2.js"></script> -->
+    <script src="../../js/jquery-3.4.1.min.js"></script>
+    <script src="../../sb-admin-v2/js/bootstrap.min.js"></script>
+    <script src="../../sb-admin-v2/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="../../js/datepicker.js"></script>
+    <script src="../../js/jquery.ui.datapicker-es.js"></script>
+    <script src="../../js/iframe.js"></script>
+    <script src="../../js/Utilitarios.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Forms -->
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="../../sb-admin-v2/js/sb-admin.js"></script>
+
+    <!-- Page-Level Demo Scripts - Forms - Use for reference -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(function () {
+                $('#fechaEmbarque').datepicker();
+            });
+
+            $(function () {
+                $('#fechaDestino').datepicker();
+            });         
+        });
+    </script>
+</body>
+
+</html>
