@@ -1,0 +1,730 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="C:\xampp\htdocs\EmisionPolizas\EmisionPolizas.clpprj">
+ <settings>
+  <PM_URL><![CDATA[http://localhost/]]></PM_URL>
+  <PM_HOME_URL><![CDATA[http://localhost/]]></PM_HOME_URL>
+  <PM_LIBS><![CDATA[]]></PM_LIBS>
+  <PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION>
+  <PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR>
+  <PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE>
+ </settings>
+ <removed value=";"/>
+ <added value=""/>
+ <lastopfiles>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\cuentaUsuario.php"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\cuentaUsuario.php"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\models\certificado.php"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\models\NewFile0.php"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\models\usuario.php"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\datosBD.js"/>
+  <lastactivefile name=""/>
+ </lastopfiles>
+ <errors version="1.3">
+  <errfile name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\css\citheme.css">
+   <error val="294;16;318;16;2502;1;"/>
+   <error val="45;16;67;16;2502;1;"/>
+   <error val="69;16;92;16;2502;1;"/>
+   <error val="95;16;114;16;2502;1;"/>
+   <error val="456;16;550;16;2502;1;"/>
+   <error val="319;16;439;16;2502;1;"/>
+   <error val="633;16;634;16;2502;1;"/>
+   <error val="115;16;292;16;2502;1;"/>
+   <error val="33;16;39;16;2502;1;"/>
+   <error val="441;16;455;16;2502;1;"/>
+   <error val="42;16;43;16;2502;1;"/>
+   <error val="638;16;646;16;2502;1;"/>
+   <error val="647;16;653;16;2502;1;"/>
+   <error val="663;16;674;16;2502;1;"/>
+   <error val="551;16;630;16;2502;1;"/>
+   <error val="1;48;21;48;2502;1;"/>
+   <error val="90;54;197;54;2502;1;"/>
+   <error val="45;54;89;54;2502;1;"/>
+   <error val="38;54;44;54;2502;1;"/>
+   <error val="199;54;209;54;2502;1;"/>
+  </errfile>
+  <errfile name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\css\bootstrap.min.css">
+   <error val="342;5;352;5;2502;1;"/>
+   <error val="352;5;361;5;2502;1;"/>
+   <error val="2582;5;2608;5;2502;1;"/>
+   <error val="46859;5;46875;5;2502;1;"/>
+   <error val="72914;5;72930;5;2502;1;"/>
+   <error val="75104;5;75120;5;2502;1;"/>
+  </errfile>
+  <errfile name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\css\font-awesome.css">
+   <error val="2;8;55;8;2502;1;"/>
+   <error val="2;9;305;9;2502;1;"/>
+  </errfile>
+  <errfile name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\bootstrap.min.css">
+   <error val="2432;6;2442;6;2502;1;"/>
+   <error val="2442;6;2451;6;2502;1;"/>
+   <error val="36856;6;36907;6;2502;1;"/>
+   <error val="36907;6;37211;6;2502;1;"/>
+   <error val="76533;6;76540;6;2502;1;"/>
+  </errfile>
+  <errfile name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\Linearicons-Free-v1.0.0\icon-font.min.css">
+   <error val="40;6;109;6;2502;1;"/>
+   <error val="109;6;557;6;2502;1;"/>
+   <error val="625;6;636;6;2502;1;"/>
+  </errfile>
+  <errfile name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\css\font-awesome.min.css">
+   <error val="40;3;92;3;2502;1;"/>
+   <error val="92;3;457;3;2502;1;"/>
+   <error val="582;3;602;3;2502;1;"/>
+  </errfile>
+  <errfile name="C:\xampp\htdocs\EmisionPolizas\recursos\css\main.css">
+   <error val="2;11;51;11;2502;1;"/>
+   <error val="2;16;50;16;2502;1;"/>
+   <error val="2;21;48;21;2502;1;"/>
+   <error val="2;26;52;26;2502;1;"/>
+   <error val="4;92;21;92;2502;1;"/>
+  </errfile>
+ </errors>
+ <cakedata/>
+ <dplmenupath/>
+ <laravael/>
+ <smartyassings/>
+ <twigtemplate/>
+ <yiidata/>
+ <todoblock>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\dataTables\jquery.dataTables.js">
+   <todo pos="36;1964" name="todo depreciated"/>
+   <todo pos="35;1964" name="@todo depreciated"/>
+   <todo pos="5;2003" name="todo Move options into their own plugins?"/>
+   <todo pos="4;2003" name="@todo Move options into their own plugins?"/>
+   <todo pos="4;2601" name="todo As per sort - can this be moved into an event handler?"/>
+   <todo pos="3;2601" name="@todo As per sort - can this be moved into an event handler?"/>
+   <todo pos="4;4202" name="todo Can this be moved into a 'data-ready' handler which is called when"/>
+   <todo pos="3;4202" name="@todo Can this be moved into a 'data-ready' handler which is called when"/>
+   <todo pos="5;5978" name="todo Remove in 1.11"/>
+   <todo pos="4;5978" name="@todo Remove in 1.11"/>
+   <todo pos="3;6796" name="todo - Is there need for an augment function?"/>
+   <todo pos="2;6796" name="@todo - Is there need for an augment function?"/>
+   <todo pos="70;7403" name="todo - use pluck_order"/>
+   <todo pos="69;7403" name="@todo - use pluck_order"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\flot\jquery.flot.pie.js">
+   <todo pos="5;507" name="TODO: add extra shadow inside hole (with a mask) if the pie is tilted."/>
+   <todo pos="7;566" name="TODO: perhaps do some mathmatical trickery here with the Y-coordinate to compensate for pie tilt?"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\js\bootstrap.js">
+   <todo pos="5;2216" name="todo (fat): these should probably be refactored out of modal.js"/>
+   <todo pos="13;2517" name="todo (fat): remove sketch reliance on jQuery position/offset"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\daterangepicker\moment.js">
+   <todo pos="9;393" name="TODO: Find a better way to register and load all the locales in Node"/>
+   <todo pos="9;904" name="TODO: add sorting"/>
+   <todo pos="17;944" name="TODO: Another silent failure?"/>
+   <todo pos="13;1422" name="TODO: We need to take the current isoWeekYear, but that depends on"/>
+   <todo pos="9;1472" name="TODO: Move this to another part of the creation flow to prevent circular deps"/>
+   <todo pos="5;1759" name="TODO: Use [].sort instead?"/>
+   <todo pos="5;2139" name="TODO: remove 'name' arg after deprecation is removed"/>
+   <todo pos="5;3785" name="TODO: Use this.as('ms')?"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\system\database\DB_query_builder.php">
+   <todo pos="5;2003" name="todo error"/>
+   <todo pos="4;2003" name="@todo error"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\system\helpers\string_helper.php">
+   <todo pos="19;229" name="todo: remove in 3.1+"/>
+   <todo pos="20;232" name="todo: remove in 3.1+"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Xmlrpc.php">
+   <todo pos="7;1574" name="todo - this needs to be made more general purpose"/>
+   <todo pos="6;1574" name="@todo - this needs to be made more general purpose"/>
+  </todofile>
+  <todofile name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\jquery-3.1.0.js">
+   <todo pos="8;797" name="TODO: identify versions"/>
+   <todo pos="7;811" name="TODO: identify versions"/>
+   <todo pos="48;4120" name="TODO: Drop _data, _removeData)"/>
+   <todo pos="2;4170" name="TODO: Now that all calls to _data and _removeData have been replaced"/>
+  </todofile>
+ </todoblock>
+ <dbgurls/>
+ <filescache>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\tutorial\static_pages.html" crc="1588206243400"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\tutorial\news_section.html" crc="1588206243368"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\tutorial\index.html" crc="1588206243353"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\tutorial\create_news_items.html" crc="1588206243337"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\tutorial\conclusion.html" crc="1588206243315"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\overview\mvc.html" crc="1588206243237"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\overview\index.html" crc="1588206243215"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\overview\goals.html" crc="1588206243199"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\overview\getting_started.html" crc="1588206243168"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\overview\features.html" crc="1588206243152"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\overview\at_a_glance.html" crc="1588206243130"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\overview\appflow.html" crc="1588206243099"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\zip.html" crc="1588206243068"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\xmlrpc.html" crc="1588206243036"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\user_agent.html" crc="1588206243017"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\uri.html" crc="1588206243001"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\unit_testing.html" crc="1588206242967"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\typography.html" crc="1588206242952"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\trackback.html" crc="1588206242930"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\table.html" crc="1588206242914"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\sessions.html" crc="1588206242883"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\security.html" crc="1588206242867"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\parser.html" crc="1588206242851"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\pagination.html" crc="1588206242833"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\output.html" crc="1588206242802"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\migration.html" crc="1588206242783"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\loader.html" crc="1588206242767"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\language.html" crc="1588206242736"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\javascript.html" crc="1588206242714"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\input.html" crc="1588206242698"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\index.html" crc="1588206242682"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\image_lib.html" crc="1588206242651"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\ftp.html" crc="1588206242636"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\form_validation.html" crc="1588206242613"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\file_uploading.html" crc="1588206242598"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\encryption.html" crc="1588206242582"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\encrypt.html" crc="1588206242551"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\email.html" crc="1588206242535"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\config.html" crc="1588206242513"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\cart.html" crc="1588206242498"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\calendar.html" crc="1588206242466"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\caching.html" crc="1588206242451"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\libraries\benchmark.html" crc="1588206242429"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrading.html" crc="1588206242397"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_b11.html" crc="1588206242382"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_319.html" crc="1588206242366"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_318.html" crc="1588206242350"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_317.html" crc="1588206242328"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_316.html" crc="1588206242313"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_315.html" crc="1588206242281"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_314.html" crc="1588206242266"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_313.html" crc="1588206242250"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_312.html" crc="1588206242228"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_3111.html" crc="1588206242212"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_3110.html" crc="1588206242181"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_311.html" crc="1588206242166"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_310.html" crc="1588206242150"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_306.html" crc="1588206242134"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_305.html" crc="1588206242112"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_304.html" crc="1588206242081"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_303.html" crc="1588206242065"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_302.html" crc="1588206242050"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_301.html" crc="1588206242034"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_300.html" crc="1588206241999"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_223.html" crc="1588206241973"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_222.html" crc="1588206241958"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_221.html" crc="1588206241940"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_220.html" crc="1588206241918"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_214.html" crc="1588206241893"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_213.html" crc="1588206241869"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_212.html" crc="1588206241850"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_211.html" crc="1588206241830"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_210.html" crc="1588206241810"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_203.html" crc="1588206241780"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_202.html" crc="1588206241765"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_201.html" crc="1588206241749"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_200.html" crc="1588206241727"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_172.html" crc="1588206241696"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_171.html" crc="1588206241680"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_170.html" crc="1588206241664"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_163.html" crc="1588206241633"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_162.html" crc="1588206241611"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_161.html" crc="1588206241595"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_160.html" crc="1588206241580"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_154.html" crc="1588206241564"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_153.html" crc="1588206241533"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_152.html" crc="1588206241526"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_150.html" crc="1588206241495"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_141.html" crc="1588206241479"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_140.html" crc="1588206241464"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_133.html" crc="1588206241448"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_132.html" crc="1588206241426"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_131.html" crc="1588206241410"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_130.html" crc="1588206241379"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\upgrade_120.html" crc="1588206241364"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\troubleshooting.html" crc="1588206241348"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\index.html" crc="1588206241326"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\installation\downloads.html" crc="1588206241295"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\xml_helper.html" crc="1588206241263"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\url_helper.html" crc="1588206241232"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\typography_helper.html" crc="1588206241226"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\text_helper.html" crc="1588206241194"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\string_helper.html" crc="1588206241179"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\smiley_helper.html" crc="1588206241147"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\security_helper.html" crc="1588206241132"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\path_helper.html" crc="1588206241112"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\number_helper.html" crc="1588206241096"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\language_helper.html" crc="1588206241080"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\inflector_helper.html" crc="1588206241047"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\index.html" crc="1588206241032"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\html_helper.html" crc="1588206241000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\form_helper.html" crc="1588206240973"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\file_helper.html" crc="1588206240957"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\email_helper.html" crc="1588206240934"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\download_helper.html" crc="1588206240914"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\directory_helper.html" crc="1588206240894"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\date_helper.html" crc="1588206240874"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\cookie_helper.html" crc="1588206240853"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\captcha_helper.html" crc="1588206240827"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\helpers\array_helper.html" crc="1588206240794"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\welcome.html" crc="1588206240762"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\views.html" crc="1588206240731"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\urls.html" crc="1588206240709"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\styleguide.html" crc="1588206240693"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\security.html" crc="1588206240678"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\routing.html" crc="1588206240647"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\reserved_names.html" crc="1588206240631"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\requirements.html" crc="1588206240609"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\profiling.html" crc="1588206240593"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\models.html" crc="1588206240578"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\managing_apps.html" crc="1588206240546"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\libraries.html" crc="1588206240531"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\index.html" crc="1588206240509"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\hooks.html" crc="1588206240493"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\helpers.html" crc="1588206240477"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\errors.html" crc="1588206240446"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\environments.html" crc="1588206240430"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\drivers.html" crc="1588206240408"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\credits.html" crc="1588206240393"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\creating_libraries.html" crc="1588206240377"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\creating_drivers.html" crc="1588206240346"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\core_classes.html" crc="1588206240330"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\controllers.html" crc="1588206240308"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\compatibility_functions.html" crc="1588206240292"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\common_functions.html" crc="1588206240277"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\cli.html" crc="1588206240246"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\caching.html" crc="1588206240230"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\autoloader.html" crc="1588206240208"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\ancillary_classes.html" crc="1588206240192"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\general\alternative_php.html" crc="1588206240177"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\documentation\index.html" crc="1588206240145"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\utilities.html" crc="1588206240130"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\transactions.html" crc="1588206240108"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\results.html" crc="1588206240092"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\query_builder.html" crc="1588206240061"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\queries.html" crc="1588206240045"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\metadata.html" crc="1588206240029"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\index.html" crc="1588206240001"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\helpers.html" crc="1588206239973"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\forge.html" crc="1588206239957"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\examples.html" crc="1588206239941"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\db_driver_reference.html" crc="1588206239920"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\connecting.html" crc="1588206239899"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\configuration.html" crc="1588206239876"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\call_function.html" crc="1588206239851"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\database\caching.html" crc="1588206239829"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\contributing\index.html" crc="1588206239791"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\js\theme.js" crc="1588206239644"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\js\oldtheme.js" crc="1588206239644"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\css\theme.css" crc="1588206239444"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\css\citheme.css" crc="1588206239444"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\css\badge_only.css" crc="1588206239444"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\websupport.js" crc="1588206239744"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\underscore.js" crc="1588206239707"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\underscore-1.3.1.js" crc="1588206239691"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\searchtools.js" crc="1588206239660"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\pygments.css" crc="1588206239660"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\jquery.js" crc="1588206239591"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\jquery-3.1.0.js" crc="1588206239528"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\doctools.js" crc="1588206239459"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\_static\basic.css" crc="1588206239422"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\searchindex.js" crc="1588206243268"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\search.html" crc="1588206243252"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\license.html" crc="1588206243083"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\index.html" crc="1588206241279"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\genindex.html" crc="1588206240778"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\DCO.html" crc="1588206239390"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\user_guide\changelog.html" crc="1588206239760"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\drivers\Session_redis_driver.php" crc="1588206239190"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\drivers\Session_memcached_driver.php" crc="1588206239174"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\drivers\Session_files_driver.php" crc="1588206239143"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\drivers\Session_database_driver.php" crc="1588206239127"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\drivers\index.html" crc="1588206239205"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\SessionHandlerInterface.php" crc="1588206239121"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\Session_driver.php" crc="1588206239121"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\Session.php" crc="1588206239090"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Session\index.html" crc="1588206239205"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Javascript\Jquery.php" crc="1588206239027"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Javascript\index.html" crc="1588206239043"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\drivers\index.html" crc="1588206238859"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\drivers\Cache_wincache.php" crc="1588206238839"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\drivers\Cache_redis.php" crc="1588206238837"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\drivers\Cache_memcached.php" crc="1588206238834"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\drivers\Cache_file.php" crc="1588206238832"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\drivers\Cache_dummy.php" crc="1588206238829"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\drivers\Cache_apc.php" crc="1588206238811"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\index.html" crc="1588206238861"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cache\Cache.php" crc="1588206238808"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Zip.php" crc="1588206239375"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Xmlrpcs.php" crc="1588206239344"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Xmlrpc.php" crc="1588206239328"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\User_agent.php" crc="1588206239306"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Upload.php" crc="1588206239274"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Unit_test.php" crc="1588206239259"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Typography.php" crc="1588206239243"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Trackback.php" crc="1588206239228"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Table.php" crc="1588206239205"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Profiler.php" crc="1588206239074"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Parser.php" crc="1588206239074"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Pagination.php" crc="1588206239059"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Migration.php" crc="1588206239043"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Javascript.php" crc="1588206239003"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\index.html" crc="1588206239390"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Image_lib.php" crc="1588206239003"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Ftp.php" crc="1588206238987"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Form_validation.php" crc="1588206238971"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Encryption.php" crc="1588206238940"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Encrypt.php" crc="1588206238923"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Email.php" crc="1588206238903"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Driver.php" crc="1588206238890"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Cart.php" crc="1588206238876"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\libraries\Calendar.php" crc="1588206238863"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\upload_lang.php" crc="1588206238789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\unit_test_lang.php" crc="1588206238789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\profiler_lang.php" crc="1588206238789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\pagination_lang.php" crc="1588206238789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\number_lang.php" crc="1588206238789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\migration_lang.php" crc="1588206238789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\index.html" crc="1588206238773"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\imglib_lang.php" crc="1588206238773"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\ftp_lang.php" crc="1588206238758"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\form_validation_lang.php" crc="1588206238758"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\email_lang.php" crc="1588206238742"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\db_lang.php" crc="1588206238727"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\date_lang.php" crc="1588206238727"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\english\calendar_lang.php" crc="1588206238727"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\language\index.html" crc="1588206238789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\xml_helper.php" crc="1588206238689"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\url_helper.php" crc="1588206238673"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\typography_helper.php" crc="1588206238673"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\text_helper.php" crc="1588206238658"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\string_helper.php" crc="1588206238642"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\smiley_helper.php" crc="1588206238626"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\security_helper.php" crc="1588206238626"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\path_helper.php" crc="1588206238626"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\number_helper.php" crc="1588206238626"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\language_helper.php" crc="1588206238604"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\inflector_helper.php" crc="1588206238604"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\index.html" crc="1588206238604"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\html_helper.php" crc="1588206238589"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\form_helper.php" crc="1588206238573"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\file_helper.php" crc="1588206238557"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\email_helper.php" crc="1588206238542"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\download_helper.php" crc="1588206238542"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\directory_helper.php" crc="1588206238526"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\date_helper.php" crc="1588206238504"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\cookie_helper.php" crc="1588206238504"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\captcha_helper.php" crc="1588206238488"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\helpers\array_helper.php" crc="1588206238473"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\fonts\index.html" crc="1588206238473"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlsrv\sqlsrv_utility.php" crc="1588206238457"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlsrv\sqlsrv_result.php" crc="1588206238442"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlsrv\sqlsrv_forge.php" crc="1588206238426"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlsrv\sqlsrv_driver.php" crc="1588206238404"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlsrv\index.html" crc="1588206238404"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite3\sqlite3_utility.php" crc="1588206238404"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite3\sqlite3_result.php" crc="1588206238404"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite3\sqlite3_forge.php" crc="1588206238388"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite3\sqlite3_driver.php" crc="1588206238373"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite3\index.html" crc="1588206238373"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite\sqlite_utility.php" crc="1588206238373"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite\sqlite_result.php" crc="1588206238357"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite\sqlite_forge.php" crc="1588206238357"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite\sqlite_driver.php" crc="1588206238341"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\sqlite\index.html" crc="1588206238341"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\postgre\postgre_utility.php" crc="1588206238326"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\postgre\postgre_result.php" crc="1588206238319"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\postgre\postgre_forge.php" crc="1588206238288"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\postgre\postgre_driver.php" crc="1588206238272"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\postgre\index.html" crc="1588206238272"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_sqlsrv_forge.php" crc="1588206238272"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_sqlsrv_driver.php" crc="1588206238257"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_sqlite_forge.php" crc="1588206238241"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_sqlite_driver.php" crc="1588206238241"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_pgsql_forge.php" crc="1588206238225"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_pgsql_driver.php" crc="1588206238203"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_odbc_forge.php" crc="1588206238203"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_odbc_driver.php" crc="1588206238203"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_oci_forge.php" crc="1588206238203"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_oci_driver.php" crc="1588206238188"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_mysql_forge.php" crc="1588206238172"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_mysql_driver.php" crc="1588206238156"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_informix_forge.php" crc="1588206238156"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_informix_driver.php" crc="1588206238141"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_ibm_forge.php" crc="1588206238141"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_ibm_driver.php" crc="1588206238125"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_firebird_forge.php" crc="1588206238119"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_firebird_driver.php" crc="1588206238119"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_dblib_forge.php" crc="1588206238103"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_dblib_driver.php" crc="1588206238087"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_cubrid_forge.php" crc="1588206238087"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_cubrid_driver.php" crc="1588206238072"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_4d_forge.php" crc="1588206238072"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\pdo_4d_driver.php" crc="1588206238056"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\subdrivers\index.html" crc="1588206238056"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\pdo_utility.php" crc="1588206238056"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\pdo_result.php" crc="1588206238040"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\pdo_forge.php" crc="1588206238040"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\pdo_driver.php" crc="1588206238017"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\pdo\index.html" crc="1588206238017"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\odbc\odbc_utility.php" crc="1588206238002"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\odbc\odbc_result.php" crc="1588206238002"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\odbc\odbc_forge.php" crc="1588206238002"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\odbc\odbc_driver.php" crc="1588206237986"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\odbc\index.html" crc="1588206237986"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\oci8\oci8_utility.php" crc="1588206237986"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\oci8\oci8_result.php" crc="1588206237970"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\oci8\oci8_forge.php" crc="1588206237970"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\oci8\oci8_driver.php" crc="1588206237955"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\oci8\index.html" crc="1588206237955"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysqli\mysqli_utility.php" crc="1588206237955"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysqli\mysqli_result.php" crc="1588206237955"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysqli\mysqli_forge.php" crc="1588206237955"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysqli\mysqli_driver.php" crc="1588206237936"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysqli\index.html" crc="1588206237933"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysql\mysql_utility.php" crc="1588206237930"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysql\mysql_result.php" crc="1588206237927"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysql\mysql_forge.php" crc="1588206237924"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysql\mysql_driver.php" crc="1588206237904"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mysql\index.html" crc="1588206237902"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mssql\mssql_utility.php" crc="1588206237899"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mssql\mssql_result.php" crc="1588206237896"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mssql\mssql_forge.php" crc="1588206237893"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mssql\mssql_driver.php" crc="1588206237874"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\mssql\index.html" crc="1588206237872"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\ibase\index.html" crc="1588206237866"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\ibase\ibase_utility.php" crc="1588206237864"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\ibase\ibase_result.php" crc="1588206237861"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\ibase\ibase_forge.php" crc="1588206237858"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\ibase\ibase_driver.php" crc="1588206237839"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\cubrid\index.html" crc="1588206237835"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\cubrid\cubrid_utility.php" crc="1588206237833"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\cubrid\cubrid_result.php" crc="1588206237830"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\cubrid\cubrid_forge.php" crc="1588206237827"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\cubrid\cubrid_driver.php" crc="1588206237808"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\drivers\index.html" crc="1588206237869"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\index.html" crc="1588206238457"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\DB_utility.php" crc="1588206237789"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\DB_result.php" crc="1588206237773"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\DB_query_builder.php" crc="1588206237758"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\DB_forge.php" crc="1588206237741"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\DB_driver.php" crc="1588206237724"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\DB_cache.php" crc="1588206237724"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\database\DB.php" crc="1588206237717"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\compat\standard.php" crc="1588206237717"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\compat\password.php" crc="1588206237686"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\compat\mbstring.php" crc="1588206237686"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\compat\index.html" crc="1588206237686"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\compat\hash.php" crc="1588206237686"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Utf8.php" crc="1588206237686"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\URI.php" crc="1588206237655"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Security.php" crc="1588206237639"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Router.php" crc="1588206237601"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Output.php" crc="1588206237586"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Model.php" crc="1588206237586"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Log.php" crc="1588206237570"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Loader.php" crc="1588206237554"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Lang.php" crc="1588206237554"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Input.php" crc="1588206237539"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\index.html" crc="1588206237717"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Hooks.php" crc="1588206237539"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Exceptions.php" crc="1588206237539"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Controller.php" crc="1588206237523"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Config.php" crc="1588206237501"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Common.php" crc="1588206237485"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\CodeIgniter.php" crc="1588206237454"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\core\Benchmark.php" crc="1588206237438"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\index.html" crc="1588206238720"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\system\.htaccess" crc="1588206237438"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\select2\select2.min.js" crc="1503535972000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\select2\select2.min.css" crc="1503535958000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\select2\select2.js" crc="1503535206000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\select2\select2.css" crc="1503533064000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\perfect-scrollbar\perfect-scrollbar.min.js" crc="1509268440000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\perfect-scrollbar\perfect-scrollbar.css" crc="1509268440000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\jquery\jquery-3.2.1.min.js" crc="1501259056000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\daterangepicker\moment.min.js" crc="1502244574000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\daterangepicker\moment.js" crc="1502244574000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\daterangepicker\daterangepicker.js" crc="1503595814000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\daterangepicker\daterangepicker.css" crc="1502244574000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\css-hamburgers\hamburgers.min.css" crc="1502934352000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\css-hamburgers\hamburgers.css" crc="1502934352000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\countdowntime\countdowntime.js" crc="1510252452000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\js\tooltip.js" crc="1506549540000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\js\popper.min.js" crc="1503342780000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\js\popper.js" crc="1506549556000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\js\bootstrap.min.js" crc="1502416282000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\js\bootstrap.js" crc="1502416282000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\css\bootstrap.min.css" crc="1502416332000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\css\bootstrap.css" crc="1502416330000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\css\bootstrap-reboot.min.css" crc="1502416334000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\css\bootstrap-reboot.css" crc="1502416330000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\css\bootstrap-grid.min.css" crc="1502416332000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\bootstrap\css\bootstrap-grid.css" crc="1502416330000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\animsition\js\animsition.min.js" crc="1502546170000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\animsition\js\animsition.js" crc="1502546170000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\animsition\css\animsition.min.css" crc="1502546170000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\animsition\css\animsition.css" crc="1502546170000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\vendor\animate\animate.css" crc="1504195346000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\morris\raphael-2.1.0.min.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\morris\morris.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\metisMenu\jquery.metisMenu.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\flot\jquery.flot.tooltip.min.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\flot\jquery.flot.resize.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\flot\jquery.flot.pie.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\flot\jquery.flot.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\flot\excanvas.min.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\dataTables\jquery.dataTables.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\plugins\dataTables\dataTables.bootstrap.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\demo\morris-demo.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\demo\flot-demo.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\demo\dashboard-demo.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\sb-admin.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\jquery-1.10.2.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\bootstrap.min.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\js\bootstrap.js" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\font-awesome.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_variables.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_stacked.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_spinning.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_rotated-flipped.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_path.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_mixins.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_list.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_larger.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_icons.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_fixed-width.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_core.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\scss\_bordered-pulled.scss" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\variables.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\stacked.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\spinning.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\rotated-flipped.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\path.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\mixins.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\list.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\larger.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\icons.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\font-awesome.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\fixed-width.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\core.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\less\bordered-pulled.less" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\css\font-awesome.min.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\font-awesome\css\font-awesome.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\plugins\timeline\timeline.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\plugins\social-buttons\social-buttons.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\plugins\morris\morris-0.4.3.min.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\plugins\dataTables\dataTables.bootstrap.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\sb-admin.css" crc="1399142332000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\bootstrap.min.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\bootstrap.css" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\typography.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\tables.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\panels-wells.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\notifications.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\morris.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\login.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\index.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\grid.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\forms.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\flot.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\buttons.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\blank.html" crc="1397498152000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\Utilitarios.js" crc="1588800444650"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\map-custom.js" crc="1513302082000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\main.js" crc="1513363316000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\jquery-3.4.1.min.js" crc="1584125113867"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\iframe.js" crc="1588970569631"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\datosBD.js" crc="1589203692490"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\datepicker.js" crc="1584124166494"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\Linearicons-Free-v1.0.0\icon-font.min.css" crc="1511815410000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\font-awesome.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_variables.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_stacked.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_screen-reader.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_rotated-flipped.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_path.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_mixins.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_list.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_larger.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_icons.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_fixed-width.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_core.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_bordered-pulled.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\scss\_animated.scss" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\variables.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\stacked.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\screen-reader.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\rotated-flipped.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\path.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\mixins.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\list.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\larger.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\icons.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\font-awesome.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\fixed-width.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\core.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\bordered-pulled.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\less\animated.less" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\css\font-awesome.min.css" crc="1495575834000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\css\font-awesome.css" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\fonts\font-awesome-4.7.0\HELP-US-OUT.txt" crc="1495575832000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\css\util.css" crc="1513190640000"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\recursos\css\main.css" crc="1584043715600"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\html\index.html" crc="1588206237401"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\html\error_php.php" crc="1588206237401"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\html\error_general.php" crc="1588206237401"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\html\error_exception.php" crc="1588206237385"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\html\error_db.php" crc="1588206237385"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\html\error_404.php" crc="1588206237369"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\cli\index.html" crc="1588206237369"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\cli\error_php.php" crc="1588206237369"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\cli\error_general.php" crc="1588206237354"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\cli\error_exception.php" crc="1588206237354"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\cli\error_db.php" crc="1588206237354"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\cli\error_404.php" crc="1588206237338"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\index.html" crc="1588206237401"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\welcome_message.php" crc="1588206237401"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\menu.php" crc="1588991048042"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\login.php" crc="1589001519721"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\index.html" crc="1588206237401"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\home.php" crc="1588272571710"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\header.php" crc="1588801260282"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\formularioEmision.php" crc="1588990604944"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\footer.php" crc="1588990604993"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\views\cuentaUsuario.php" crc="1589203234827"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\third_party\index.html" crc="1588206237338"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\models\usuario.php" crc="1589002642221"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\models\NewFile0.php" crc="1588993965701"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\models\index.html" crc="1588206237338"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\models\certificado.php" crc="1588993927458"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\logs\index.html" crc="1588206237338"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\libraries\index.html" crc="1588206237338"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\language\english\index.html" crc="1588206237322"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\language\index.html" crc="1588206237322"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\hooks\index.html" crc="1588206237322"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\helpers\index.html" crc="1588206237322"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\core\index.html" crc="1588206237322"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\Welcome.php" crc="1588206237318"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\login.php" crc="1588800400596"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\inicio.php" crc="1588263003991"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\index.html" crc="1588206237318"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\formularioEmision.php" crc="1588983814722"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\cuentaUsuario.php" crc="1589002681374"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\user_agents.php" crc="1588206237301"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\smileys.php" crc="1588206237301"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\routes.php" crc="1588685135722"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\profiler.php" crc="1588206237301"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\mimes.php" crc="1588206237285"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\migration.php" crc="1588206237285"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\memcached.php" crc="1588206237285"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\index.html" crc="1588206237285"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\hooks.php" crc="1588206237269"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\foreign_chars.php" crc="1588206237269"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\doctypes.php" crc="1588206237269"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\database.php" crc="1588206243437"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\constants.php" crc="1588897239129"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\config.php" crc="1588685039880"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\config\autoload.php" crc="1588887468603"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\cache\index.html" crc="1588206237238"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\index.html" crc="1588206237322"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\application\.htaccess" crc="1588206237222"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\license.txt" crc="1588206237438"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\index.php" crc="1588206237416"/>
+  <file name="C:\xampp\htdocs\EmisionPolizas\composer.json" crc="1588206237401"/>
+ </filescache>
+</project>
