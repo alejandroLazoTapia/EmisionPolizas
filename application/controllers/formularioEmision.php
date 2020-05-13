@@ -203,13 +203,13 @@ class formularioEmision extends CI_Controller
 					if ($this->certificado->ingresarCertificadoPoliza($dataPolCli) > 0) {
 						echo $ultimoIdCert;
 					} else {
-						echo 0;
+						echo -1;
 					}
 				} else {
-					echo 0;
+					echo -2;
 				}
 		}else{
-				echo "no entro a al if del ajax";
+				echo -3;
 			}
 	}
 	
@@ -293,13 +293,13 @@ class formularioEmision extends CI_Controller
 				if ($this->certificado->actualizarPolizaCliente($id_certificado,$dataPolCli)) {
 					echo 0;
 				} else {
-					echo 1;
+					echo -1;
 				}
 			} else {
-				echo 2;
+				echo -2;
 			}
 		} else {
-			echo 3;
+			echo -3;
 		}
 	}	
 	

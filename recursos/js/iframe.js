@@ -12,7 +12,8 @@ $('#myModalUpdate').click(function () {
 	  }
   })
 
-  
+
+
 $('#myModalDelete').on('shown.bs.modal', function () {
 	  $('#myInput').trigger('focus')
   })  

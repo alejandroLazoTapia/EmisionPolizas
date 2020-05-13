@@ -56,6 +56,57 @@ class Usuario extends CI_Model
 			return null;
 		}
 	}
+	
+	public function deleteUser($idUsuario, $data)
+	{
+		$this->db->where("id",$idUsuario);
+		$this->db->update("USUARIO",$data);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public function existUser($nombre_usuario)
+	{
+		$sql = "select id
+				  FROM USUARIO
+				  WHERE upper(nombre_usuario) = upper('".$nombre_usuario."') 
+                  	AND	estado_reg = 1";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+	
+	public function insertUser($data)
+	{
+		$this->db->insert("USUARIO",$data);
+
+		if ($this->db->affected_rows() > 0) {
+			return TRUE;
+		} else {
+			return FALSE;
+		}
+	}
+	
+	public function updateUser($idUsuario, $data)
+	{
+		$this->db->where("id",$idUsuario);
+		$this->db->update("USUARIO",$data);
+
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 }
 
 ?>

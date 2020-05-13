@@ -40,6 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<th>Usuario</th>
 												<th>Tipo Perfil</th>
 											<th style="text-align: center;">Editar</th>
+											<th style="text-align: center;">Eliminar</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -52,7 +53,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													echo '<td>'.$key["nombre_usuario"].'</td>';
 													echo '<td>'.$key["tipo_perfil"].'</td>';
 													?>
-														  <td style="text-align: center;"><a class="idFila"><span class="glyphicon glyphicon-pencil"></span></a></td>
+													<td style="text-align: center;"><a class="idFilaActualizar"><span class="glyphicon glyphicon-pencil"></span></a></td>
+										<td style="text-align: center;">
+											<a class="idFilaDel" data-toggle="modal" data-target="#myModalDelUser">
+												<span class="glyphicon glyphicon-remove" ></span></a></td>
 											<?php 
 											echo '<td style="display:none">'.$key["id_usuario"].'</td>';
 											echo '<td style="display:none">'.$key["nombre"].'</td>';
@@ -75,10 +79,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 
+		<div class="modal fade" id="myModalDelUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header" style="margin-bottom: 20px;">
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+						<h4 class="modal-title" id="myModalLabel">Eliminar Usuario</h4>
+					</div>
+
+					<div class="row" style="text-align:center;">
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label>Estas intentando eliminar al usuario:</label>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<input id="idUserDel" name="idUserDel" style="display: none">
+								<input id="idNameUser" name="idNameUser"  type="text" style="background-color:transparent;border-color: transparent;width: 100px;text-align: center;">
+							</div>
+						</div>
+
+						<div class="col-lg-12">
+							<div class="form-group">
+								<label>¿Deseas Eliminar?</label>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+								&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="button" class="btn btn-danger" id="idFilaBorrar" name="idFilaBorrar" data-dismiss="modal">Si</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
 			
 			<div class="col-lg-7">
 				<div class="row" style="margin-top: 20px;">
-				<form role="form" action="<?=base_url() ?>index.php/formularioEmision/crearUsuario" method="post" accept-charset='UTF-8' id="form-create-user">
+				<form role="form" method="POST" accept-charset='UTF-8' id="form-create-user">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
 							<div class="panel-heading" style="color:#fff;background-color: #428bca;">
@@ -90,7 +132,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<div class="col-lg-6">
 											<div class="form-group">
 												<label>Usuario</label>
-												<input id="idNombreUsuario" name="idUsuario" class="form-control" placeholder="ej: sergio.valenzuela" required>
+												<input id="idNombreUsuario" name="idNombreUsuario" class="form-control" placeholder="ej: sergio.valenzuela" required>
 											</div>
 										</div>
 										<div class="col-lg-6">
@@ -140,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											<div class="col-lg-8">
 												<div class="form-group">
 													<label>Cliente</label>
-													<select class="form-control" id="idAFavor" name="idAFavor" required>
+												<select class="form-control" id="idCliente" name="idCliente" required>
 														<option value="">Seleccione</option>
 														<?php
 														foreach ($arrClientes as $index => $key) {
@@ -155,9 +197,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<div class="col-lg-12">
 											<div class="col-lg-12">
 												<div class="form-group">
-												<div id="btnGrilla"></div>
-<!--													<button id="btnGrilla" type="submit" class="btn btn btn-primary" style="margin-top: 10px">Registrar</button>-->
-												</div>
+												<button type="submit" formaction="<?=base_url() ?>index.php/cuentaUsuario/guardarUsuario" id="btnRegistrarUsuario" class="btn btn btn-success" style="display: none;margin-top: 10px;">Registrar</button>
+												<button type="submit" formaction="<?=base_url() ?>index.php/cuentaUsuario/actualizarUsuario" id="btnActualizarUsuario" class="btn btn btn-success" style="display: none;margin-top: 10px;">Actualizar</button>
 											</div>
 										</div>
 									</div>

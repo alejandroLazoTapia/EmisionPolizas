@@ -19,12 +19,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<link rel="stylesheet" type="text/css" href="<?=base_url() ?>recursos/css/main.css">
 
 	</head>
-	<body <!--style="background-image: url(<?=base_url() ?>recursos/images/fondo.png);background-position: center;background-repeat: no-repeat;background-attachment: fixed;background-size: cover;"-->	>
-	<?php
-/*		$this->session->sess_destroy();*/
-	 ?>	
+	<body>
 		<div class="limiter">
-			<div class="container-login100" <!--style="background: transparent-->">
+			<div class="container-login100">
 				<div class="wrap-login100">
 					<div class="login100-form-title" style="background-image: url(<?=base_url() ?>recursos/images/bg-03.jpg);">
 						<span class="login100-form-title-1">

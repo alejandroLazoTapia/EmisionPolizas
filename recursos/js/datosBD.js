@@ -123,24 +123,32 @@ $('#btnObtieneDatos').click(function(){
 });
 
 
-$("form").submit(function (event) {
-	event.preventDefault();
+$("#form-create-certificate").submit(function (e) {
+	e.preventDefault();
+	var frm = $(this).closest('form');
+	var data = frm.serialize();
+	console.log($(document.activeElement).attr('formaction'));
+	if ($(document.activeElement).attr('formaction') != "no"){
 	$.ajax({
-		url:$("form").attr("action"),
-		type:$("form").attr("method"),
-		data:$("form").serialize(),
-		success:function(respuesta) {	
-			alert("Su certificado número "+ respuesta +" fue generado exitosamente");
-			$("#form-create-certificate")[0].reset();
-			$('#btnModalUpd').attr("disabled", true);
-			$('#btnModalEli').attr("disabled", true);
+		url:$(document.activeElement).attr('formaction'),
+		type:frm.prop('method'),
+		data:data,
+		success:function(respuesta) {
+			if (respuesta > 0) {
+				alert("Su certificado número "+ respuesta +" fue emitido exitosamente");
+				$("#form-create-certificate")[0].reset();
+				$('#btnModalUpd').attr("disabled", true);
+				$('#btnModalEli').attr("disabled", true);
+			} else {
+				alert("No fue posible emitir el certificado");
+			}
 		},
 		error:function(jqXHR, textStatus, errorThrow) {
-			alert('Error! = ' + errorThrow);
+			alert('Error certificado! = ' + errorThrow);
 		}
 	});
+	}
 });
-
 
 
 $('#btnActualizarCertificado').click(function() {		
@@ -170,7 +178,6 @@ $('#btnActualizarCertificado').click(function() {
 	});
 });
 
-
 $('#btnEliminarCertificado').click(function() {
 	setTimeout(function() {
 		$.ajax({
@@ -198,32 +205,28 @@ $('#btnEliminarCertificado').click(function() {
 	});
 });
 
+function validateForm()
+{
+	var isValid = true;
+	$('.valform').each(function() {
+		console.log($(this).val());
+		if ( $(this).val() === '' )
+			isValid = false;
+	});
+	return isValid;
+}
 
-
-$('.idFila').click(function() {
-	console.log("entra");
-	//valores obtendra el dato del td por posciones [0]
-	var nombre_usuario = $(this).parents("tr").find("td")[1].innerHTML;
-	var id_usuario = $(this).parents("tr").find("td")[4].innerHTML;
-	var nombre = $(this).parents("tr").find("td")[5].innerHTML;
-	var id_perfil = $(this).parents("tr").find("td")[6].innerHTML;
-	var id_pais = $(this).parents("tr").find("td")[7].innerHTML;
-	var id_cliente = $(this).parents("tr").find("td")[8].innerHTML;
-	var btn = '<button id="btnGrilla" type="submit" class="btn btn btn-primary" style="margin-top: 10px">Registrar</button>'
-
-	$("#idGrilla").html(btn);
-	$('#idUsuario').val(id_usuario);
-	$('#idNombreUsuario').val(nombre_usuario);
-	$('#idNombre').val(nombre);
-	$('#idPaisEmision').val(id_pais);
-	$('#idAFavor').val(id_cliente);
-	$('#idPerfil').val(id_perfil);	
-	
-
-	console.log("sale");
-
-	$('#form-create-user').show(500);
+$('#btnModalUpd').click(function() {
+	setTimeout(function() {
+		console.log('entro');
+		console.log(validateForm());
+		if (validateForm() == true) {
+			$("#myModalUpdate").modal("show");
+		}
+	});
 });
+
+
 
 
 

@@ -49,141 +49,125 @@ $(function () {
         return fecha;
     }
 });
-/*
+
+$("#form-create-certificate").hide();
+	function showForm()
+	{
+		setTimeout(function() {
+			$('#form-create-certificate').show("slow");
+			$("#form-create-certificate")[0].reset();
+		}, 0);
+	}
+	
+$("#idCertificados").change(function() {
+		$("#idCertificados option:selected").each(function() {
+			if (document.getElementById('idCertificados').value > 0) {
+				document.getElementById('btnObtieneDatos').disabled = false;
+			} else {
+				document.getElementById('btnObtieneDatos').disabled = true;
+			}
+		});
+	});
+
+$("#idClientes").change(function() {
+		$("#idClientes option:selected").each(function() {
+			var idCliente = $('#idClientes').val();
+			
+			$.ajax({
+
+				url:"formularioEmision/obtieneTipoPolizaModal",
+				type:"POST",
+				data:{'idCliente' : idCliente}
+			}).done(function(data) {
+				$("#idPolizas").html(data);
+
+			});  
+					
+/*			$.post("<?php echo base_url(); ?>formularioEmision/obtieneTipoPolizaModal", {*/
+
+		});
+	});
+
 $("#idCliente").change(function() {
 		$("#idCliente option:selected").each(function() {
 			var idCliente = $('#idCliente').val();
-			$.post("<?php echo base_url(); ?>index.php/formularioEmision/obtieneTipoPoliza", {
-				idCliente : idCliente
-			}, function(data) {
+			$.ajax({
+
+				url:"formularioEmision/obtieneTipoPoliza",
+				type:"POST",
+				data:{'idCliente' : idCliente}
+			}).done(function(data) {
 				$("#idPoliza").html(data);
-			});
+
+			});  
+		/*	$.post("<?php echo base_url(); ?>formularioEmision/obtieneTipoPoliza", {*/
 		});
 	});
-*/
-/*
-function activar(){
-    document.getElementById("idcliente").disabled = false;
-    document.getElementById("idPoliza").disabled = false;
-    document.getElementById("pais").disabled = false;
-    document.getElementById("aFavor").disabled = false;
-    document.getElementById("direccion").disabled = false;
-    document.getElementById("refInterna").disabled = false;
-    document.getElementById("primaMinima").disabled = false;
-    document.getElementById("montoAsegurado").disabled = false;
-    document.getElementById("tasa").disabled = false;
-    document.getElementById("clausula").disabled = false;
-    document.getElementById("prima").disabled = false;
-    document.getElementById("fechaEmbarque").disabled = false;
-    document.getElementById("fechaDestino").disabled = false;
-    document.getElementById("tipoEmbalaje").disabled = false;
-    document.getElementById("nomLineaNave").disabled = false;
-    document.getElementById("numVueloNave").disabled = false;
-    document.getElementById("guiaBl").disabled = false;
-    document.getElementById("transporte").disabled = false;
-    document.getElementById("importacion").disabled = false;
-    document.getElementById("exportacion").disabled = false;
-    document.getElementById("embNacional").disabled = false;
-    document.getElementById("descMercaderia").disabled = false;
-    document.getElementById("paisOrigen").disabled = false;
-    document.getElementById("ciudadOrigen").disabled = false;
-    document.getElementById("puertoOrigen").disabled = false;
-    document.getElementById("paisDestino").disabled = false;
-    document.getElementById("ciudadDestino").disabled = false;
-    document.getElementById("puertoDestino").disabled = false;
-    document.getElementById("cliente").value = "Seleccione";
-    document.getElementById("numPoliza").value = "Seleccione";
-    document.getElementById("pais").value = "Seleccione";
-    document.getElementById("aFavor").value = "Seleccione";
-    document.getElementById("direccion").value = "";
-    document.getElementById("refInterna").value = "";
-    document.getElementById("primaMinima").value = "";
-    document.getElementById("montoAsegurado").value = "";
-    document.getElementById("tasa").value = "";
-    document.getElementById("clausula").value = "Seleccione";
-    document.getElementById("prima").value = "";
-    document.getElementById("fechaEmbarque").value = "";
-    document.getElementById("fechaDestino").value = "";
-    document.getElementById("tipoEmbalaje").value = "Seleccione";
-    document.getElementById("nomLineaNave").value = "";
-    document.getElementById("numVueloNave").value = "";
-    document.getElementById("guiaBl").value = "";
-    document.getElementById("transporte").value = "Seleccione";
-    document.getElementById("descMercaderia").value = "";
-    document.getElementById("paisOrigen").value = "Seleccione";
-    document.getElementById("ciudadOrigen").value = "Seleccione";
-    document.getElementById("puertoOrigen").value = "";
-    document.getElementById("paisDestino").value = "Seleccione";
-    document.getElementById("ciudadDestino").value = "Seleccione";
-    document.getElementById("puertoDestino").value = "";
-  }*/
+	
+$("#idPolizas").change(function() {
+		$("#idPolizas option:selected").each(function() {
+			var idCliente = $('#idClientes').val();
+			var idPoliza = $('#idPolizas').val();
+			
+			$.ajax({
+
+				url:"formularioEmision/obtieneCertificadoPoliza",
+				type:"POST",
+				data:{
+						'idCliente' : idCliente, 
+					 	'idPoliza' : idPoliza
+					 }
+			}).done(function(data) {
+				$("#idCertificados").html(data);
+
+			});  
+			
+		/*	$.post("<?php echo base_url(); ?>formularioEmision/obtieneCertificadoPoliza", {*/
+
+		});
+	});
+
+ $("#idPaisOrigen").change(function() {
+			 $("#idPaisOrigen option:selected").each(function() {
+				 var idPais = $('#idPaisOrigen').val();
+				 $.ajax({
+
+					 url:"formularioEmision/obtieneCiudadesPais",
+					 type:"POST",
+					 data:{'idPais' : idPais}
+					 
+				 }).done(function(data) {
+					 $("#idCiudadOrigen").html(data);
+				 });  	 
+			 });
+		 });		
+
+$("#idPaisDestino").change(function() {
+			 $("#idPaisDestino option:selected").each(function() {
+				 var idPais = $('#idPaisDestino').val();
+				 
+				 $.ajax({
+
+					 url:"formularioEmision/obtieneCiudadesPais",
+					 type:"POST",
+					 data:{'idPais' : idPais}
+
+				 }).done(function(data) {
+					 $("#idCiudadDestino").html(data);
+				 });  	 
+			 });
+		 });
 
 
-
-  function llenar(){
-  //  document.getElementById("cliente").disabled = false;
- //   document.getElementById("numPoliza").disabled = false;
-    document.getElementById("pais").disabled = false;
-    document.getElementById("aFavor").disabled = false;
-    document.getElementById("direccion").disabled = false;
-    document.getElementById("refInterna").disabled = false;
-   // document.getElementById("moneda").disabled = false;
-    document.getElementById("primaMinima").disabled = false;
-    document.getElementById("montoAsegurado").disabled = false;
-    document.getElementById("tasa").disabled = false;
-    document.getElementById("clausula").disabled = false;
-    document.getElementById("prima").disabled = false;
-    document.getElementById("fechaEmbarque").disabled = false;
-    document.getElementById("fechaDestino").disabled = false;
-    document.getElementById("tipoEmbalaje").disabled = false;
-    document.getElementById("nomLineaNave").disabled = false;
-    document.getElementById("numVueloNave").disabled = false;
-    document.getElementById("guiaBl").disabled = false;
-    document.getElementById("transporte").disabled = false;
-    document.getElementById("importacion").disabled = false;
-    document.getElementById("exportacion").disabled = false;
-    document.getElementById("embNacional").disabled = false;
-    document.getElementById("descMercaderia").disabled = false;
-    document.getElementById("paisOrigen").disabled = false;
-    document.getElementById("ciudadOrigen").disabled = false;
-    document.getElementById("puertoOrigen").disabled = false;
-    document.getElementById("paisDestino").disabled = false;
-    document.getElementById("ciudadDestino").disabled = false;
-    document.getElementById("puertoDestino").disabled = false;
-
-//llena campos
-    document.getElementById("cliente").value = document.getElementById("clientObtDatos").value;
-    document.getElementById("numPoliza").value = document.getElementById("polizaObtDatos").value;
-    document.getElementById("pais").value = "Chile";
-    document.getElementById("aFavor").value = "1";
-    document.getElementById("direccion").value = "av. providencia 1017, providencia";
-    document.getElementById("refInterna").value = "xxx Ref Interna xxx";
-    document.getElementById("primaMinima").value = "xxx prima Mínima xxx";
-    document.getElementById("montoAsegurado").value = "5555555";
-    document.getElementById("tasa").value = "0.25";
-    document.getElementById("clausula").value = "A";
-    document.getElementById("prima").value = "500";
-    document.getElementById("fechaEmbarque").value = "17-03-2020";
-    document.getElementById("fechaDestino").value = "25-03-2020";
-    document.getElementById("tipoEmbalaje").value = "CONTAINER";
-    document.getElementById("nomLineaNave").value = "25647812";
-    document.getElementById("numVueloNave").value = "LAN-223";
-    document.getElementById("guiaBl").value = "35FJ842G5TR";
-    document.getElementById("transporte").value = "Aire";
-    document.getElementById("descMercaderia").value = "chocolates, pasteles, tortas"
-    document.getElementById("paisOrigen").value = "Chile"
-    document.getElementById("ciudadOrigen").value = "Santiago"
-    document.getElementById("puertoOrigen").value = "PUERTO DE SAN ANTONIO"
-    document.getElementById("paisDestino").value = "China"
-    document.getElementById("ciudadDestino").value = "Hong Kong"
-    document.getElementById("puertoDestino").value = "PUERTO DE HONG KONG"
-  }
-
-
-
-
-function HabilitarGrilla(){
-    $("#grillaCert").show();
- //   document.getElementById("grillaCertificados").style.display = "block";
-}
-
+$("#idTipoEmbalaje").change(function() {
+	$("#idTipoEmbalaje option:selected").each(function() {
+		if (document.getElementById('idTipoEmbalaje').value == 5) {
+			document.getElementById('idOtroTipEmb').disabled = false;
+			document.getElementById('idOtroTipEmb').required = true;
+		} else {
+			document.getElementById('idOtroTipEmb').value = '';
+			document.getElementById('idOtroTipEmb').disabled = true;
+			document.getElementById('idOtroTipEmb').required = false;
+		}
+	});
+});
