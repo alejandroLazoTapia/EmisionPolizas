@@ -15,6 +15,7 @@ $('.idFilaActualizarCliente').click(function() {
 	$('#idNombreCliente').val(nombre_cliente);
 	$('#idCliente').val(id_cliente);
 	$('#idClientePol').val(id_cliente);
+	$('#idClienteAFavor').val(id_cliente);
 	$('#idDireccionCliente').val(direccion_cliente);
 	$('#idCondiciones').val(condiciones);
 	$('#idGrupo').val(id_grupo);
@@ -24,6 +25,7 @@ $('.idFilaActualizarCliente').click(function() {
 	$('#idTelefono').val(telefono);
 	$("#idGrupo option[value='0']").remove();
 	
+	//llenar grilla polizas segun cliente seleccionado
 	$.ajax({
 		url:'clienteMantenedor/obtienePolizasCLiente',
 		type:'POST',
@@ -37,30 +39,60 @@ $('.idFilaActualizarCliente').click(function() {
 		}
 	});
 	
+	//llenar grilla afavor segun cliente seleccionado
+	$.ajax({
+		url:'clienteMantenedor/obtieneAFavorCLiente',
+		type:'POST',
+		data:{'idCliente' : id_cliente},
+		success:function(respuesta) {
+			console.log(respuesta);
+			$("#idTBodyAFavor").html(respuesta);
+		},
+		error:function(jqXHR, textStatus, errorThrow) {
+			alert('Error! = ' + errorThrow);
+		}
+	});
+	
 
 	$("#btnRegistrarCliente").hide();
 	$("#btnActualizarCliente").show();
 	$("#btnRegistrarPoliza").show();
-	$("#div-create-policy").show('slow')
-	$('#form-create-client').show(500);
+	$("#btnRegistrarAFavor").show();
+	$('#form-create-client').show('slow');
+	$("#div-create-policy").show('slow');
+	$("#div-create-afavor").show('slow');
 });
 
 //agrega el bonton al formulario de crecion de usuario
 $("#form-create-client").hide();
 $("#btnRegistrarCliente").hide();
 $("#div-create-policy").hide();
+$('#div-create-afavor').hide();
 
 function showFormClient()
 {
 	setTimeout(function() {
 		$("#btnActualizarCliente").hide();
+		$("#btnRegistrarPoliza").hide();
+		$("#div-create-policy").hide();
+		$('#div-create-afavor').hide();
 		$('#form-create-client').show("slow");
 		$('#form-create-client')[0].reset();
 		$("#btnRegistrarCliente").show();
+		
+		
+		if ($("#idGrupo option[value='0'").length == 0 ){
+			let $option = $('<option />', {
+				text: 'Nuevo',
+				style: 'background-color: #ff9b94',
+				value: 0,
+			});
+			$('#idGrupo').prepend($option);
+		}
 
 	}, 0);
 }
-
+//crea y actualiza cliente
 $("#form-create-client").submit(function(e) {
 	e.preventDefault();
 	var frm = $(this).closest('form');
@@ -132,25 +164,38 @@ $('.idFilaDelCliente').click(function() {
 });
 
 
+//eliminar poliza
 $('#idFilaBorrarPoliza').click(function() {
 
 	//valores obtendra el dato del td por posciones [0]
-	var nombre_cliente =$('#idNameClient').val();
-	var id_cliente = $('#idClientDel').val();
-
-	console.log(id_cliente +' ' +nombre_cliente);
+	var idPoliza = $('#idPol').val();
+	var idCliente = $('#idClientePol').val();
+	
+	console.log(idPoliza);
 	$.ajax({
-		url:'clienteMantenedor/eliminaCliente',
+		url:'clienteMantenedor/eliminaPoliza',
 		type:'POST',
-		data:{'idCliente' : id_cliente},
+		data:{'idPoliza' : idPoliza},
 		success:function(respuesta) {
 			console.log(respuesta);
 			if (respuesta == 0) {
-				alert("El cliente '"+ nombre_cliente +"' fue eliminado exitosamente");
-				location.reload();
+				alert("La poliza fue eliminada exitosamente");
+						//refresco polizas
+					   	$.ajax({
+						url:'clienteMantenedor/obtienePolizasCLiente',
+						type:'POST',
+						data:{'idCliente' : idCliente},
+						success:function(resp) {
+							console.log(resp);
+							$("#idTBodyPolizas").html(resp);
+						},
+						error:function(jqXHR, textStatus, errorThrow) {
+							alert('Error! = ' + errorThrow);
+						}
+					});
 			} else {
 				console.log(respuesta);
-				alert("El cliente '"+ nombre_cliente +"' no pudo ser eliminado");
+				alert("la poliza no pudo ser eliminado");
 			}
 		},
 		error:function(jqXHR, textStatus, errorThrow) {
@@ -172,3 +217,143 @@ $(document).on('click','#btnDelPolicy',function(event) {
 		$('#idPol').val(id_poliza);
 });
 
+//Registrar Poliza
+$("#form-create-policy").submit(function(e) {
+	e.preventDefault();
+	var idCliente = $('#idClientePol').val();
+	var frm = $(this).closest('form');
+	var data = frm.serialize();
+	console.log(data);
+	console.log($(document.activeElement).attr('formaction'));
+	console.log(frm.prop('method'));
+	$.ajax({
+		url:$(document.activeElement).attr('formaction'),
+		type:frm.prop('method'),
+		data:data,
+		success:function(respuesta) {
+			console.log(respuesta);
+			if (respuesta == 0) {
+				alert("Poliza Registrada exitosamente");
+				//refresco polizas
+				$.ajax({
+					url:'clienteMantenedor/obtienePolizasCLiente',
+					type:'POST',
+					data:{'idCliente' : idCliente},
+					success:function(resp) {
+						console.log(resp);
+						$("#idTBodyPolizas").html(resp);
+					},
+					error:function(jqXHR, textStatus, errorThrow) {
+						alert('Error! = ' + errorThrow);
+					}
+				});
+				
+			} else if (respuesta == 2) {
+				alert("Poliza ya se encuentra registrada");
+			} else {
+				alert("No fue posible registrar la póliza");
+			}
+		},
+		error:function(jqXHR, textStatus, errorThrow) {
+			alert('Error guardar poliza! = ' + errorThrow);
+		}
+	});
+});
+
+
+
+//Registrar A Favor
+$("#form-create-afavor").submit(function(e) {
+	e.preventDefault();
+	var idCliente = $('#idClienteAFavor').val();
+	var frm = $(this).closest('form');
+	var data = frm.serialize();
+	console.log(data);
+	console.log($(document.activeElement).attr('formaction'));
+	console.log(frm.prop('method'));
+	$.ajax({
+		url:$(document.activeElement).attr('formaction'),
+		type:frm.prop('method'),
+		data:data,
+		success:function(respuesta) {
+			console.log(respuesta);
+			if (respuesta == 0) {
+				alert("Empresa a favor registrada exitosamente");
+				//refresco polizas
+				//llenar grilla afavor segun cliente seleccionado
+				$.ajax({
+					url:'clienteMantenedor/obtieneAFavorCLiente',
+					type:'POST',
+					data:{'idCliente' : idCliente},
+					success:function(resp) {
+						console.log(resp);
+						$("#idTBodyAFavor").html(resp);
+					},
+					error:function(jqXHR, textStatus, errorThrow) {
+						alert('Error! = ' + errorThrow);
+					}
+				});
+
+			} else if (respuesta == 2) {
+				alert("El rut de la empresa a favor ya se encuentra registrada");
+			} else {
+				alert("No fue posible registrar la póliza");
+			}
+		},
+		error:function(jqXHR, textStatus, errorThrow) {
+			alert('Error guardar poliza! = ' + errorThrow);
+		}
+	});
+});
+
+
+//llenar modal desde imput dibujado con echo de codeigniter
+$(document).on('click','#btnDelAFavor',function(event) {
+	console.log("entro");
+	console.log("entro");
+	var nombre = $(this).parents("tr").find("td")[1].innerHTML;
+	var id_a_favor = $(this).parents("tr").find("td")[3].innerHTML;
+	$('#idNombreDel').val(nombre);
+	$('#idAfavorDel').val(id_a_favor);
+});
+
+
+//eliminar poliza
+$('#idFilaBorraAfavor').click(function() {
+
+	//valores obtendra el dato del td por posciones [0]
+	var idAFavor = $('#idAfavorDel').val();
+	var idCliente = $('#idClienteAFavor').val();
+
+	$.ajax({
+		url:'clienteMantenedor/eliminaAFavor',
+		type:'POST',
+		data:{'idAFavor' : idAFavor},
+		success:function(respuesta) {
+			console.log(respuesta);
+			if (respuesta == 0) {
+				alert("La poliza fue eliminada exitosamente");
+				//refresco polizas
+				$.ajax({
+					url:'clienteMantenedor/obtieneAFavorCLiente',
+					type:'POST',
+					data:{'idCliente' : idCliente},
+					success:function(resp) {
+						console.log(resp);
+						$("#idTBodyAFavor").html(resp);
+					},
+					error:function(jqXHR, textStatus, errorThrow) {
+						alert('Error! = ' + errorThrow);
+					}
+				});
+			} else {
+				console.log(respuesta);
+				alert("la poliza no pudo ser eliminado");
+			}
+		},
+		error:function(jqXHR, textStatus, errorThrow) {
+			alert('Error! = ' + errorThrow);
+		}
+	});
+
+});

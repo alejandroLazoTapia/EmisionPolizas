@@ -12,9 +12,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?=base_url() ?>recursos/js/Utilitarios.js"> </script>
 	<script src="<?=base_url() ?>recursos/sb-admin-v2/js/sb-admin.js"> </script>
 	<script src="<?=base_url() ?>recursos/js/datosBD.js"> </script>
-	 <script src="<?=base_url() ?>recursos/js/usuario.js"> </script>
-	 <script src="<?=base_url() ?>recursos/js/cliente.js"> </script>
-	
+	<script src="<?=base_url() ?>recursos/js/usuario.js"> </script>
+	<script src="<?=base_url() ?>recursos/js/cliente.js"> </script>
+ 	<script src="<?=base_url() ?>recursos/js/siniestro.js"> </script>
+ 	
 </body>
 
 </html>

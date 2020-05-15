@@ -309,7 +309,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="form-group">
 										<label>Otro</label>
 										<input class="form-control" placeholder="ej: Full Consolidado" id="idOtroTipEmb" name="idOtroTipEmb" disabled="true" >
-										</div>
+									</div>
 								</div>
 							</div>
 
@@ -538,7 +538,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 		</div>
-	</div>
 </div>
 
 

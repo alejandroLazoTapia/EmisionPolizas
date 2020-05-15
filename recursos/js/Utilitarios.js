@@ -69,6 +69,7 @@ $("#idCertificados").change(function() {
 		});
 	});
 
+
 $("#idClientes").change(function() {
 		$("#idClientes option:selected").each(function() {
 			var idCliente = $('#idClientes').val();
@@ -82,8 +83,7 @@ $("#idClientes").change(function() {
 				$("#idPolizas").html(data);
 
 			});  
-					
-/*			$.post("<?php echo base_url(); ?>formularioEmision/obtieneTipoPolizaModal", {*/
+
 
 		});
 	});
@@ -104,6 +104,38 @@ $("#idCliente").change(function() {
 		});
 	});
 	
+
+$("#idClienteSiniestro").change(function() {
+		$("#idClienteSiniestro option:selected").each(function() {
+			var idCliente = $('#idClienteSiniestro').val();
+			$.ajax({
+
+				url:"formularioEmision/obtieneTipoPoliza",
+				type:"POST",
+				data:{'idCliente' : idCliente}
+			}).done(function(data) {
+				$("#idPolizaSiniestro").html(data);
+				$("#idPolizaSiniestro").removeAttr('disabled');
+				$("#idCertificadoSiniestro").val("");
+				$("#idCertificadoSiniestro").attr("disabled","true");
+				$.ajax({
+					url:'denunciaSiniestro/obtieneSiniestrosCLiente',
+					type:'POST',
+					data:{'idClienteSiniestro' : idCliente},
+					success:function(respuesta) {
+						console.log(respuesta);
+						$("#idTBodySiniestros").html(respuesta);
+					},
+					error:function(jqXHR, textStatus, errorThrow) {
+						alert('Error! = ' + errorThrow);
+					}
+				});
+				
+			});
+		});
+	});
+
+
 $("#idPolizas").change(function() {
 		$("#idPolizas option:selected").each(function() {
 			var idCliente = $('#idClientes').val();
@@ -121,9 +153,26 @@ $("#idPolizas").change(function() {
 				$("#idCertificados").html(data);
 
 			});  
-			
-		/*	$.post("<?php echo base_url(); ?>formularioEmision/obtieneCertificadoPoliza", {*/
+		});
+	});
+	
+$("#idPolizaSiniestro").change(function() {
+		$("#idPolizaSiniestro option:selected").each(function() {
+			var idCliente = $('#idClienteSiniestro').val();
+			var idPoliza = $('#idPolizaSiniestro').val();
 
+			$.ajax({
+
+				url:"formularioEmision/obtieneCertificadoPoliza",
+				type:"POST",
+				data:{
+					'idCliente' : idCliente,
+					'idPoliza' : idPoliza
+				}
+			}).done(function(data) {
+				$("#idCertificadoSiniestro").html(data);
+				$("#idCertificadoSiniestro").removeAttr('disabled');
+			});
 		});
 	});
 
@@ -134,8 +183,7 @@ $("#idPolizas").change(function() {
 
 					 url:"formularioEmision/obtieneCiudadesPais",
 					 type:"POST",
-					 data:{'idPais' : idPais}
-					 
+					 data:{'idPais' : idPais}		 
 				 }).done(function(data) {
 					 $("#idCiudadOrigen").html(data);
 				 });  	 
@@ -144,14 +192,11 @@ $("#idPolizas").change(function() {
 
 $("#idPaisDestino").change(function() {
 			 $("#idPaisDestino option:selected").each(function() {
-				 var idPais = $('#idPaisDestino').val();
-				 
+				 var idPais = $('#idPaisDestino').val();	 
 				 $.ajax({
-
 					 url:"formularioEmision/obtieneCiudadesPais",
 					 type:"POST",
 					 data:{'idPais' : idPais}
-
 				 }).done(function(data) {
 					 $("#idCiudadDestino").html(data);
 				 });  	 

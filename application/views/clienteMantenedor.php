@@ -169,8 +169,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="form-group">
 										<label>Grupo</label>
 											<select class="form-control" id="idGrupo" name="idGrupo" required>
-											<option value="">Seleccione</option>
 											<option value="0" style="background-color: #ff9b94">Nuevo</option>
+											<option value="" selected>Seleccione</option>
 											<?php
 												foreach ($arrClientes as $index => $key) {
 												echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -238,7 +238,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<input id="idPolDel" name="idPolDel" value="" type="text" style="background-color:transparent;border-color: transparent;width: 70px;text-align: center;" disabled="true">
 											</div>
 										</div>
-
+										<input id="idPol" name="idPol" style="display: none">
 										<div class="col-lg-12">
 											<div class="form-group">
 												<label>¿Deseas Eliminar?</label>
@@ -269,7 +269,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label>Tipo de póliza</label>
+												<label>Tipo de pólliza</label>
 												<select class="form-control" id="idDescripcion" name="idDescripcion" required>
 													<option value="">Seleccione</option>
 													<option value="Generales">Generales</option>
@@ -285,7 +285,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<button type="submit" formaction="<?=base_url() ?>index.php/clienteMantenedor/guardarPoliza" id="btnRegistrarPoliza" class="btn btn btn-success" style="display: none;margin-top: 10px;">Registrar</button>
 											</div>
 										</div>
-										<input id="idPol" name="idClientePol" style="display: none">
 										<input id="idClientePol" name="idClientePol" style="display: none">
 									</form>
 								</div>
@@ -293,6 +292,101 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div>
 			</div>
+			
+<!--	EMPRESAS a Favor-->
+			<div class="row" style="margin-top: 20px;" id="div-create-afavor">
+				<div class="col-lg-12">
+					<div class="panel panel-default" >
+						<div class="panel-heading" style="color:#fff;background-color: #428bca;">
+							Empresas a Favor
+						</div>
+						<div class="col-lg-7" style="margin-top: 15px;">
+							<div class="table-responsive">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th>Nº</th>
+											<th>Nombre</th>
+											<th style="text-align: center;">Eliminar</th>
+										</tr>
+									</thead>
+									<tbody id="idTBodyAFavor">
+									</tbody>
+								</table>
+							</div>
+							<!-- /.table-responsive -->
+						</div>
+
+
+						<div class="modal fade" id="myModalDelAFavor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header" style="margin-bottom: 20px;">
+										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+										<h4 class="modal-title" id="myModalLabel">Eliminar Empresa a Favor</h4>
+									</div>
+
+									<div class="row" style="text-align:center;">
+										<div class="col-lg-12">
+											<div class="form-group">
+												<label>Estas intentando eliminar Empresa a Favor:</label>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+												<input id="idNombreDel" name="idNombreDel" value="" type="text" style="background-color:transparent;border-color: transparent;width: 150px;text-align: center;" disabled="true">
+											</div>
+										</div>
+										<input id="idAfavorDel" name="idAfavorDel" style="display: none">
+										<div class="col-lg-12">
+											<div class="form-group">
+												<label>¿Deseas Eliminar?</label>
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+												<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+												&nbsp;&nbsp;&nbsp;&nbsp;
+												<button type="button" class="btn btn-danger" id="idFilaBorraAfavor" name="idFilaBorraAfavor" data-dismiss="modal">Si</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-lg-5" style="margin-top: 23px;">
+							<div class="row">
+								<form role="form" method="POST" accept-charset='UTF-8' id="form-create-afavor">
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label>Nombre Empresa a Favor</label>
+											<input id="idNombreAfavor" name="idNombreAfavor" class="form-control" placeholder="ej: sergio.valenzuela" required>
+										</div>
+									</div>
+
+									<div class="col-lg-12">
+										<label>Rut</label>
+										<div class="form-inline">
+											<input type="text" name="idRutAFavor" id="idRutAFavor" class="form-control" style="width: 60%;display: inline-block;" required>
+											&nbsp;-&nbsp;
+											<input type="text" name="idDvAFavor" id="idDvAFavor" class="form-control" style="width: 25%;display: inline-block;text-align: center;" required>
+										</div>
+									</div>	
+
+									<div class="col-lg-12">
+										<div class="form-group">
+											<button type="submit" formaction="<?=base_url() ?>index.php/clienteMantenedor/guardarAFavor" id="btnRegistrarAFavor" class="btn btn btn-success" style="display: none;margin-top: 10px;">Registrar</button>
+										</div>
+									</div>
+									<input id="idClienteAFavor" name="idClienteAFavor" style="display: none">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
 		</div>
 	</div>
 </div>

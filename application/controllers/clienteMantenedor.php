@@ -134,17 +134,151 @@ class clienteMantenedor extends CI_Controller
 		if ($idCliente) {
 
 			$tipoPolizas = $this->cliente->getPolicyClient($idCliente);
-			foreach ($tipoPolizas as $tipoPoliza => $key) {
-				print"<tr>";
-				print '<td>'.$key["codigo_poliza"].'</td>';
-				print '<td>'.$key["desc_poliza"].'</td>';
-				print '<td style="text-align: center;"><a id="btnDelPolicy" data-toggle="modal" data-target="#myModalDelPolicy"><span class="glyphicon glyphicon-remove" ></span></a></td>';
-				print '<td style="display:none">'.$key["id_poliza"].'</td>';
-				print"<tr>";			
+			if ($tipoPolizas != null) {
+				foreach ($tipoPolizas as $tipoPoliza => $key) {
+					print"<tr>";
+					print '<td>'.$key["codigo_poliza"].'</td>';
+					print '<td>'.$key["desc_poliza"].'</td>';
+					print '<td style="text-align: center;"><a id="btnDelPolicy" data-toggle="modal" data-target="#myModalDelPolicy"><span class="glyphicon glyphicon-remove" ></span></a></td>';
+					print '<td style="display:none">'.$key["id_poliza"].'</td>';
+					print"<tr>";
+				}
+			} else {
+				print "<tr>";
+				print '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Pólizas ingresadas</div></td>';
+				print "</tr>";
 			}
 		} 
 	}
 	
+	public function obtieneAFavorCLiente()
+	{
+		$idCliente = $this->input->post('idCliente');
+
+		if ($idCliente) {
+
+			$aFavors = $this->cliente->getAFavorClient($idCliente);
+			if ($aFavors != null) {
+				$nro = 1;
+				foreach ($aFavors as $aFavor => $key) {
+					print"<tr>";
+					print '<td>'.$nro.'</td>';
+					print '<td>'.$key["nombre_a_favor"].'</td>';
+					print '<td style="text-align: center;"><a id="btnDelAFavor" data-toggle="modal" data-target="#myModalDelAFavor"><span class="glyphicon glyphicon-remove" ></span></a></td>';
+					print '<td style="display:none">'.$key["id_a_favor"].'</td>';
+					print"</tr>";
+					$nro = $nro +1;
+				}
+			} else {
+				print "<tr>";
+				print '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Empesas a Favor ingresadas</div></td>';
+				print "</tr>";
+			}
+		}
+	}
 	
+	public function guardarPoliza()
+	{
+		//El metodo is_ajax_request() de la libreria input permite verificar
+		//si se esta accediendo mediante el metodo AJAX
+		if ($this->input->is_ajax_request()) {
+
+			$id_cliente = $this->input->post('idClientePol');
+			$desc_poliza = $this->input->post('idDescripcion');
+			$codigo_poliza = $this->input->post('idCodigoPoliza');
+			if ($this->cliente->existPolicy($codigo_poliza)==FALSE) {
+				$data = [
+					"id_cliente" => $id_cliente,
+					"desc_poliza" => $desc_poliza,
+					"codigo_poliza" => $codigo_poliza,
+					"estado_reg" => 1
+				];
+
+				if ($this->cliente->insertPolicy($data)) {
+					echo 0;
+				} else {
+					echo 1; // no inserto
+				}
+			} else {
+				echo 2; //ya existe el cliente
+			}
+		} else {
+			echo 5;  // no entro al ajax
+		}
+	}	
+	
+	public function eliminaPoliza()
+	{
+		//El metodo is_ajax_request() de la libreria input permite verificar
+		//si se esta accediendo mediante el metodo AJAX
+		if ($this->input->is_ajax_request()) {
+			$idPoliza = $this->input->post('idPoliza');
+			$data = [
+				"estado_reg" => 0
+			];
+			
+			if ($this->cliente->deletePolicy($idPoliza,$data)) {
+				echo 0;
+			} else {
+				echo 1; // NO ELIMINO
+			}
+		} else {
+			echo 4;
+		}
+	}	
+	
+	public function guardarAFavor()
+	{
+		//El metodo is_ajax_request() de la libreria input permite verificar
+		//si se esta accediendo mediante el metodo AJAX
+		if ($this->input->is_ajax_request()) {
+
+			$id_cliente = $this->input->post('idClienteAFavor');
+			$rut = $this->input->post('idRutAFavor');
+			$dv = $this->input->post('idDvAFavor');
+			$nombre = $this->input->post('idNombreAfavor');
+
+			if ($this->cliente->existAFavor($rut)==FALSE) {
+				$data = [
+					"id_cliente" => $id_cliente,
+					"rut" => $rut,
+					"dv" => $dv,
+					"nombre" => $nombre,
+					"estado_reg" => 1
+				];
+
+				if ($this->cliente->insertAFavor($data)) {
+					echo 0;
+				} else {
+					echo 1; // no inserto
+				}
+			} else {
+				echo 2; //ya existe el cliente
+			}
+		} else {
+			echo 5;  // no entro al ajax
+		}
+	}	
+	
+	public function eliminaAFavor()
+	{
+		//El metodo is_ajax_request() de la libreria input permite verificar
+		//si se esta accediendo mediante el metodo AJAX
+		if ($this->input->is_ajax_request()) {
+			$idAFavor = $this->input->post('idAFavor');
+			$data = [
+				"estado_reg" => 0
+			];
+
+			if ($this->cliente->deleteAFavor($idAFavor,$data)) {
+				echo 0;
+			} else {
+				echo 1; // NO ELIMINO
+			}
+		} else {
+			echo 4;
+		}
+	}
+
 }
 ?>

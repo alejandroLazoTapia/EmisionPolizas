@@ -78,12 +78,12 @@ class formularioEmision extends CI_Controller
 		if ($idCliente) {
 			$this->load->model('certificado');
 			$Certificados = $this->certificado->obtenerCertificadosCliente($idCliente, $idPoliza);
-			echo '<option value="0">Seleccione</option>';
+			echo '<option value="">Seleccione</option>';
 			foreach ($Certificados as $Certificado => $key) {
 				echo '<option value="'.$key["id"].'">'.$key["id"].'</option>';
 			}
 		} else {
-			echo '<option value="0">Seleccione</option>';
+			echo '<option value="">Seleccione</option>';
 		}
 	}
 	
@@ -192,21 +192,9 @@ class formularioEmision extends CI_Controller
 				$ultimoIdCert = $this->certificado->ingresarCertificado($data);
 				
 				if ($ultimoIdCert > 0) {
-
-					$dataPolCli = [
-						"id_cliente" => $id_cliente,
-						"id_poliza" => $id_poliza,
-						"id_certificado" => $ultimoIdCert,
-						"estado_reg" => 1
-					];
-					
-					if ($this->certificado->ingresarCertificadoPoliza($dataPolCli) > 0) {
 						echo $ultimoIdCert;
-					} else {
-						echo -1;
-					}
 				} else {
-					echo -2;
+					echo -1;
 				}
 		}else{
 				echo -3;
@@ -284,17 +272,7 @@ class formularioEmision extends CI_Controller
 			$this->db->set('fecha_mod', 'NOW()', FALSE);
 
 			if ($this->certificado->actualizarCertificado($id_certificado,$data)) {
-
-				$dataPolCli = [
-					"id_cliente" => $id_cliente,
-					"id_poliza" => $id_poliza
-				];
-
-				if ($this->certificado->actualizarPolizaCliente($id_certificado,$dataPolCli)) {
 					echo 0;
-				} else {
-					echo -1;
-				}
 			} else {
 				echo -2;
 			}
@@ -318,16 +296,7 @@ class formularioEmision extends CI_Controller
 			$this->db->set('fecha_mod', 'NOW()', FALSE);
 
 			if ($this->certificado->eliminarCertificado($id_certificado,$data)) {
-
-				$dataPolCli = [
-					"estado_reg" => 0
-				];
-
-				if ($this->certificado->eliminarPolizaCliente($id_certificado,$dataPolCli)) {
 					echo 0;
-				} else {
-					echo 1;
-				}
 			} else {
 				echo 2;
 			}
@@ -335,6 +304,5 @@ class formularioEmision extends CI_Controller
 			echo 3;
 		}
 	}	
-	
 }
 ?>

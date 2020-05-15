@@ -5,27 +5,14 @@ class Certificado extends CI_Model
 	public function obtenerClientes($nombreUsuario = '')
 	{
 	
-		$sql = "select distinct cer.id_cliente,
+		$sql = "select distinct cli.id as id_cliente,
 		cli.nombre as nombre_cliente
-		FROM CERTIFICADO cer
-		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
-		INNER JOIN USUARIO usu on usu.id_grupo = cli.id and usu.estado_reg = 1
-		INNER JOIN EMPRESA_A_FAVOR afa on afa.id = cer.id_a_favor and afa.estado_reg = 1
-		INNER JOIN POLIZA_CLIENTE polcli on polcli.id_poliza = cer.id_poliza and polcli.id_cliente = cer.id_cliente and cer.id = polcli.id_certificado and polcli.estado_reg = 1
-		INNER JOIN POLIZA pol on pol.id = polcli.id_poliza and pol.estado_reg = 1
-		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
-		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
-		INNER JOIN TRANSPORTE tra on tra.id = cer.id_transporte and tra.estado_reg = 1
-		INNER JOIN MONEDA mon on mon.id = cer.id_moneda and mon.estado_reg = 1
-		INNER JOIN PAIS paiori on paiori.id = cer.id_pais_origen and paiori.estado_reg = 1
-		INNER JOIN PAIS paides on paides.id = cer.id_pais_destino and paides.estado_reg = 1
-		INNER JOIN PAIS paisem on paisem.id = cer.id_pais_emision and paisem.estado_reg = 1
-		INNER JOIN TIPO_EMBALAJE tipemb on tipemb.id = cer.id_tipo_embalaje and tipemb.estado_reg = 1
-		INNER JOIN ESTADO_REGION estrego on estrego.id = cer.id_est_reg_origen and estrego.estado_reg = 1
-		INNER JOIN ESTADO_REGION estregd on estregd.id = cer.id_est_reg_origen and estregd.estado_reg = 1
-		WHERE   usu.nombre_usuario = case when usu.id_perfil = 1 then usu.nombre_usuario
-		else '".$nombreUsuario."'
-		end
+		FROM  CLIENTE cli
+		INNER JOIN USUARIO usu on cli.id = case when usu.id_perfil = 2 then usu.id_grupo
+		else
+			cli.id end and usu.estado_reg = 1
+		WHERE   usu.nombre_usuario = '".$nombreUsuario."'
+		and cli.estado_reg = 1
 		order by cli.nombre asc";
 
 		$result = $this->db->query($sql);
@@ -58,23 +45,12 @@ class Certificado extends CI_Model
 
 	public function obtenerPolizasCliente($idCliente = '')
 	{
-		$sql = "select distinct
-		cer.id_poliza,
+		$sql = "select pol.id as id_poliza,
 		CONCAT(pol.desc_poliza,'-',pol.codigo_poliza) as nombre_poliza
-		FROM CERTIFICADO cer
-		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
-		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.estado_reg = 1
-		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
-		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
-		INNER JOIN TRANSPORTE tra on tra.id = cer.id_transporte and tra.estado_reg = 1
-		INNER JOIN MONEDA mon on mon.id = cer.id_moneda and mon.estado_reg = 1
-		INNER JOIN PAIS paiori on paiori.id = cer.id_pais_origen and paiori.estado_reg = 1
-		INNER JOIN PAIS paides on paides.id = cer.id_pais_destino and paides.estado_reg = 1
-		INNER JOIN PAIS paisem on paisem.id = cer.id_pais_emision and paisem.estado_reg = 1
-		INNER JOIN TIPO_EMBALAJE tipemb on tipemb.id = cer.id_tipo_embalaje and tipemb.estado_reg = 1
-		INNER JOIN ESTADO_REGION estrego on estrego.id = cer.id_est_reg_origen and estrego.estado_reg = 1
-		INNER JOIN ESTADO_REGION estregd on estregd.id = cer.id_est_reg_origen and estregd.estado_reg = 1
+		FROM CLIENTE cli
+		INNER JOIN POLIZA pol on pol.id_cliente = cli.id and pol.estado_reg = 1 
 		WHERE   cli.id = '".$idCliente."'
+		AND 	cli.estado_reg = 1 
 		order by pol.desc_poliza asc";
 
 		$result = $this->db->query($sql);
@@ -162,12 +138,11 @@ class Certificado extends CI_Model
 		cer.puerto_destino,
 		cer.id_clausula,
 		cla.desc_clausula as nombre_clausula
-		
+
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
 		INNER JOIN EMPRESA_A_FAVOR afa on afa.id = cer.id_a_favor and afa.estado_reg = 1
-		INNER JOIN POLIZA_CLIENTE polcli on polcli.id_poliza = cer.id_poliza and polcli.id_cliente = cer.id_cliente and cer.id = polcli.id_certificado and polcli.estado_reg = 1
-		INNER JOIN POLIZA pol on pol.id = polcli.id_poliza and pol.estado_reg = 1
+		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
 		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
 		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
 		INNER JOIN TRANSPORTE tra on tra.id = cer.id_transporte and tra.estado_reg = 1

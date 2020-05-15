@@ -17,8 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Gestionar Usuarios</a>
 							</li>
 							<li>
-				<a href="<?= base_url() ?>index.php/clienteMantenedor">
-							<i class="fa fa-users"></i>&nbsp;&nbsp;Gestionar Clientes</a>
+								<a href="<?= base_url() ?>index.php/clienteMantenedor">
+								<i class="fa fa-users"></i>&nbsp;&nbsp;Gestionar Clientes</a>
 							</li>
 							<hr style="margin-top: 10px; margin-bottom: 0px">
 							<li>
@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Emitir Certificado </a>
 							</li>
 							<li>
-								<a href="denunciarSinietro.html">
+								<a href="<?= base_url() ?>index.php/denunciaSiniestro">
 								<i class="glyphicon glyphicon-certificate"></i>&nbsp;&nbsp;Denunciar Siniestro</a>
 							</li>
 							<li>
