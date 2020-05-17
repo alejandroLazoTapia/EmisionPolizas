@@ -6,6 +6,7 @@ class formularioEmision extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("certificado");
+		require_once  'vendor/autoload.php';
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
@@ -21,7 +22,7 @@ class formularioEmision extends CI_Controller
 		$this->load->model('certificado');
 		// obtenemos el array de clientes 
 		$datos['arrClientes'] = $this->certificado->obtenerClientes($nombreUsuario);
-		$datos['arrAfavor'] = $this->certificado->obtenerEmpresasAFavor($idUsuario);
+		$datos['arrAfavor'] = $this->obtieneAFavorCliente();
 		$datos['arrPaisesEmision'] = $this->certificado->obtenerPaisesEmision();
 		$datos['arrPaises'] = $this->certificado->obtenerPaises();
 		$datos['arrMoneda'] = $this->certificado->obtenerMonedas();
@@ -45,11 +46,15 @@ class formularioEmision extends CI_Controller
 		if ($idCliente) {
 			$this->load->model('certificado');
 			$tipoPolizas = $this->certificado->obtenerPolizasCliente($idCliente);
-			echo '<option value="">Seleccione</option>';
+			if ($tipoPolizas == null) {
+				echo '<option value="">Seleccione</option>';
+			} else {
+				echo '<option value="">Seleccione</option>';
 				foreach ($tipoPolizas as $tipoPoliza => $key) {
 					echo '<option value="'.$key["id_poliza"].'">'.$key["nombre_poliza"].'</option>';
 				}
-			} else {
+			}
+		} else {
 			echo '<option value="">Seleccione</option>';
 		}
 	}
@@ -61,9 +66,13 @@ class formularioEmision extends CI_Controller
 		if ($idCliente) {
 			$this->load->model('certificado');
 			$tipoPolizas = $this->certificado->obtenerPolizasCliente($idCliente);
+			if ($tipoPolizas == null) {
 			echo '<option value="0">Seleccione</option>';
+			}else{
+				echo '<option value="0">Seleccione</option>';
 			foreach ($tipoPolizas as $tipoPoliza => $key) {
 				echo '<option value="'.$key["id_poliza"].'">'.$key["nombre_poliza"].'</option>';
+				}
 			}
 		} else {
 			echo '<option value="0">Seleccione</option>';
@@ -78,9 +87,33 @@ class formularioEmision extends CI_Controller
 		if ($idCliente) {
 			$this->load->model('certificado');
 			$Certificados = $this->certificado->obtenerCertificadosCliente($idCliente, $idPoliza);
-			echo '<option value="">Seleccione</option>';
-			foreach ($Certificados as $Certificado => $key) {
-				echo '<option value="'.$key["id"].'">'.$key["id"].'</option>';
+			if ($Certificados == null) {
+				echo '<option value="0">Seleccione</option>';
+			} else {
+				echo '<option value="0">Seleccione</option>';
+				foreach ($Certificados as $Certificado => $key) {
+					echo '<option value="'.$key["id"].'">'.$key["id"].'</option>';
+				}
+			}
+		} else {
+			echo '<option value="0">Seleccione</option>';
+		}
+	}
+	
+	public function obtieneAFavorCliente()
+	{
+		$idCliente = $this->input->post('idCliente');
+
+		if ($idCliente) {
+			$this->load->model('cliente');
+			$AFavors = $this->cliente->getAFavorClient($idCliente);
+			if ($AFavors == null) {
+				echo '<option value="0">Seleccione</option>';
+			} else {
+				echo '<option value="">Seleccione</option>';
+				foreach ($AFavors as $AFavor => $key) {
+					echo '<option value="'.$key["id_a_favor"].'">'.$key["nombre_a_favor"].'</option>';
+				}
 			}
 		} else {
 			echo '<option value="">Seleccione</option>';
@@ -189,10 +222,10 @@ class formularioEmision extends CI_Controller
 				];
 				$this->db->set('fecha_reg', 'NOW()', FALSE);
 				$this->db->set('fecha_mod', 'NOW()', FALSE);
-				$ultimoIdCert = $this->certificado->ingresarCertificado($data);
+				$IdCert = $this->certificado->ingresarCertificado($data);
 				
-				if ($ultimoIdCert > 0) {
-						echo $ultimoIdCert;
+				if ($IdCert > 0) {
+					echo $IdCert;
 				} else {
 					echo -1;
 				}
@@ -296,6 +329,7 @@ class formularioEmision extends CI_Controller
 			$this->db->set('fecha_mod', 'NOW()', FALSE);
 
 			if ($this->certificado->eliminarCertificado($id_certificado,$data)) {
+				
 					echo 0;
 			} else {
 				echo 2;
@@ -304,5 +338,31 @@ class formularioEmision extends CI_Controller
 			echo 3;
 		}
 	}	
+	
+	
+	public function descargarPdf()
+	{
+		$idCliente = $this->input->post('idClientePdf');
+		$idPolizas = $this->input->post('idPolizaPdf');
+		$idCertificado = $this->input->post('idCertificadoPdf');
+		$idPaisEmisio = $this->input->post('idPaisEmisionPdf');
+		
+		if ($idPaisEmisio == 81){
+			$data['certificado'] = $this->certificado->obtenerCertificadoChile($idCliente, $idPolizas, $idCertificado);
+			$mpdf = new \Mpdf\Mpdf();
+			$html = $this->load->view('certificado_chile', $data ,true);
+		}else{
+			$data['certificado'] = $this->certificado->obtenerCertificadoPeru($idCliente, $idPolizas, $idCertificado);
+			$mpdf = new \Mpdf\Mpdf();
+			$html = $this->load->view('certificado_peru', $data ,true);
+		}
+		
+		$mpdf->WriteHTML($html);
+		$mpdf->Output(); // opens in browser
+	}
+	
+	
+	
+	
 }
 ?>

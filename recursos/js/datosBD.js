@@ -23,17 +23,18 @@ $('#btnObtieneDatos').click(function(){
 
 				url:"formularioEmision/obtieneTipoPoliza/",
 				type:"POST",
-				data:{'idCliente':idCliente,}
+				data:{'idCliente':idCliente}
 
 			}).done(function(dataPol) {
 				
 					$("#idPoliza").html(dataPol);
-					$('#idPoliza').val(data[0].id_poliza);	  
+					$('#idPoliza').val(data[0].id_poliza);	 
+					$('#idAFavor').val(data[0].id_a_favor);							 
 					$.ajax({
 
 						url:"formularioEmision/obtieneCiudadesPais/",
 						type:"POST",
-						data:{'idPais':idPaisOrigen,}
+						data:{'idPais':idPaisOrigen}
 					}).done(function(dataCiuOri) {
 						$("#idCiudadOrigen").html(dataCiuOri);
 						$('#idCiudadOrigen').val(data[0].id_est_reg_origen);
@@ -42,11 +43,19 @@ $('#btnObtieneDatos').click(function(){
 
 							url:"formularioEmision/obtieneCiudadesPais/",
 							type:"POST",
-							data:{'idPais':idPaisDestino,}
+							data:{'idPais':idPaisDestino}
 						}).done(function(dataCiuDes) {
 							$("#idCiudadDestino").html(dataCiuDes);
 						    $('#idCiudadDestino').val(data[0].id_est_reg_destino);							
+							$.ajax({
 
+								url:"formularioEmision/obtieneAFavorCliente/",
+								type:"POST",
+								data:{'idCliente':idCliente}
+							}).done(function(dataAfa) {
+								$("#idAFavor").html(dataAfa);
+								$('#idAFavor').val(data[0].id_a_favor);
+							});  
 						});  
 					});  
 				});  
@@ -54,7 +63,7 @@ $('#btnObtieneDatos').click(function(){
 			$('#idCertActivo').val(data[0].id_certificado);	
 			$('#idCertAct').val(data[0].id_certificado);	
 			$('#idCertEli').val(data[0].id_certificado);													
-			$('#idAFavor').val(data[0].id_a_favor);							
+
 			$('#idPaisEmision').val(data[0].id_pais_emision);										
 			$('#idDireccion').val(data[0].direccion_cliente);
 			$('#idRefInterna').val(data[0].referencia_interna);
@@ -97,19 +106,18 @@ $('#btnObtieneDatos').click(function(){
 			$('#idPuertoOrigen').val(data[0].puerto_origen);	
 			$('#idPaisDestino').val(data[0].id_pais_destino);			
 			$('#idPuertoDestino').val(data[0].puerto_destino);
-			$('#idClientes').val("0");
-			$('#idPolizas').val("0");
-			$('#idCertificados').val("0");
-
+			$('#idClientes').val(0);
 			var idPolBody = '<option value="0" selected="selected">Seleccione</option>';
 			var idCerBody = '<option value="0" selected="selected">Seleccione</option>';
 			$('#idCertificados').html(idCerBody);
 			$('#idCertificados').val(0);
+			$('#idCertificados').prop("disabled", true);
 			$("#idPolizas").html(idPolBody);
 			$('#idPolizas').val(0);
-			$('#btnObtieneDatos').attr("disabled", true);
-			$('#btnModalUpd').attr("disabled", false);
-			$('#btnModalEli').attr("disabled", false);
+			$('#idPolizas').prop("disabled", true);		
+			$('#btnObtieneDatos').prop("disabled", true);
+			$('#btnModalUpd').prop("disabled", false);
+			$('#btnModalEli').prop("disabled", false);
 			
 			$('#form-create-certificate').show(500);
 
@@ -127,18 +135,31 @@ $("#form-create-certificate").submit(function (e) {
 	e.preventDefault();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
-	console.log($(document.activeElement).attr('formaction'));
+	var idCliente = $('#idCliente').val();
+	var idPoliza = $('#idPoliza').val();
+	var idPaisEmision = $("#idPaisEmision").val();
+	
+	$('#idClientePdf').val(idCliente);
+	$('#idPolizaPdf').val(idPoliza);	
+	$('#idPaisEmisionPdf').val(idPaisEmision);	
+	
 	if ($(document.activeElement).attr('formaction') != "no"){
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
 		type:frm.prop('method'),
 		data:data,
 		success:function(respuesta) {
+
 			if (respuesta > 0) {
+				$('#idCertificadoPdf').val(respuesta);
 				alert("Su certificado número "+ respuesta +" fue emitido exitosamente");
+				$('#formPDF').submit();
 				$("#form-create-certificate")[0].reset();
 				$('#btnModalUpd').attr("disabled", true);
 				$('#btnModalEli').attr("disabled", true);
+				
+				
+				
 			} else {
 				alert("No fue posible emitir el certificado");
 			}
@@ -228,6 +249,31 @@ $('#btnModalUpd').click(function() {
 
 
 
+$('#btnDescargar').click(function() {
+	setTimeout(function() {
+		$.ajax({
+			type: 'POST',
+			url:"formularioEmision/descargar/",
+			data:$("form").serialize(),
+			success:function(respuesta) {
+				console.log(respuesta);
+				if (respuesta == 0) {
+					alert("Su certificado fue descargado exitosamente");
+					$("#form-create-certificate")[0].reset();
+					$('#btnModalUpd').attr("disabled", true);
+					$('#btnModalEli').attr("disabled", true);
+				} else {
+					console.log(respuesta);
+					alert("No fue posible descargar su certificado");
+				}
 
+			},
+			error:function(jqXHR, textStatus, errorThrow) {
+				alert('Error! = ' + errorThrow);
+				console.log($("form").serialize());
+			}
+		});
+	});
+});
 
 

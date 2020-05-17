@@ -73,24 +73,39 @@ $("#idCertificados").change(function() {
 $("#idClientes").change(function() {
 		$("#idClientes option:selected").each(function() {
 			var idCliente = $('#idClientes').val();
-			
-			$.ajax({
+			if (idCliente > 0) {
+				$.ajax({
 
-				url:"formularioEmision/obtieneTipoPolizaModal",
-				type:"POST",
-				data:{'idCliente' : idCliente}
-			}).done(function(data) {
-				$("#idPolizas").html(data);
-
-			});  
-
-
+					url:"formularioEmision/obtieneTipoPolizaModal",
+					type:"POST",
+					data:{'idCliente' : idCliente}
+				}).done(function(data) {
+					console.log(data);
+					if (data == '<option value="0">Seleccione</option>') {
+						$("#idPolizas").val(0);
+						$("#idPolizas").prop("disabled",true);
+						$("#btnObtieneDatos").prop("disabled",true);
+						alert("El cliente no posee polizas registradas");
+					}else{
+						$("#idPolizas").prop("disabled",false);
+						$("#idPolizas").html(data);
+						$("#idCertificados").val(0);
+						$("#idCertificados").prop("disabled",true);
+						$("#btnObtieneDatos").prop("disabled",true);
+					}
+				});  
+			}else{
+				$("#idPolizas").val(0);
+				$("#idPolizas").prop("disabled",true);
+				$("#btnObtieneDatos").prop("disabled",true);
+			}
 		});
 	});
 
 $("#idCliente").change(function() {
 		$("#idCliente option:selected").each(function() {
 			var idCliente = $('#idCliente').val();
+			var resetAfavor = '<option value="">Seleccione</option>';
 			$.ajax({
 
 				url:"formularioEmision/obtieneTipoPoliza",
@@ -98,9 +113,9 @@ $("#idCliente").change(function() {
 				data:{'idCliente' : idCliente}
 			}).done(function(data) {
 				$("#idPoliza").html(data);
+				$("#idAFavor").html(resetAfavor);
 
 			});  
-		/*	$.post("<?php echo base_url(); ?>formularioEmision/obtieneTipoPoliza", {*/
 		});
 	});
 	
@@ -109,7 +124,6 @@ $("#idClienteSiniestro").change(function() {
 		$("#idClienteSiniestro option:selected").each(function() {
 			var idCliente = $('#idClienteSiniestro').val();
 			$.ajax({
-
 				url:"formularioEmision/obtieneTipoPoliza",
 				type:"POST",
 				data:{'idCliente' : idCliente}
@@ -117,7 +131,7 @@ $("#idClienteSiniestro").change(function() {
 				$("#idPolizaSiniestro").html(data);
 				$("#idPolizaSiniestro").removeAttr('disabled');
 				$("#idCertificadoSiniestro").val("");
-				$("#idCertificadoSiniestro").attr("disabled","true");
+				$("#idCertificadoSiniestro").attr("disabled",true);
 				$.ajax({
 					url:'denunciaSiniestro/obtieneSiniestrosCLiente',
 					type:'POST',
@@ -135,24 +149,55 @@ $("#idClienteSiniestro").change(function() {
 		});
 	});
 
+$("#idPoliza").change(function() {
+		$("#idPoliza option:selected").each(function() {
+			var idCliente = $('#idCliente').val();
+			var idPoliza = $('#idPoliza').val();
+
+			$.ajax({
+
+				url:"formularioEmision/obtieneAFavorCliente",
+				type:"POST",
+				data:{
+					'idCliente' : idCliente
+				}
+			}).done(function(data) {
+				$("#idAFavor").html(data);
+
+			});
+		});
+	});
 
 $("#idPolizas").change(function() {
 		$("#idPolizas option:selected").each(function() {
 			var idCliente = $('#idClientes').val();
 			var idPoliza = $('#idPolizas').val();
-			
-			$.ajax({
+			if(idPoliza > 0){
+				$.ajax({
 
-				url:"formularioEmision/obtieneCertificadoPoliza",
-				type:"POST",
-				data:{
-						'idCliente' : idCliente, 
-					 	'idPoliza' : idPoliza
-					 }
-			}).done(function(data) {
-				$("#idCertificados").html(data);
-
-			});  
+					url:"formularioEmision/obtieneCertificadoPoliza",
+					type:"POST",
+					data:{
+							'idCliente' : idCliente, 
+						 	'idPoliza' : idPoliza
+						 }
+				}).done(function(data) {
+					if (data == '<option value="0">Seleccione</option>') {
+						$("#idCertificados").val(0);
+						$("#idCertificados").prop("disabled",true);
+						$("#btnObtieneDatos").prop("disabled",true);
+						alert("El cliente no posee certificados emitidos");
+					} else {
+					$("#idCertificados").prop("disabled",false);
+					$("#idCertificados").html(data);
+					$("#btnObtieneDatos").prop("disabled",true);
+					}
+				});  
+			}else{
+				$("#idCertificados").val(0);
+				$("#idCertificados").prop("disabled",true);
+				$("#btnObtieneDatos").prop("disabled",true);
+			}
 		});
 	});
 	

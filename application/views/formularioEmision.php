@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<div class="col-lg-12">
 											<div class="form-group">
 												<label>Póliza</label>
-												<select class="form-control" id="idPolizas" name="idPolizas">
+												<select class="form-control" id="idPolizas" name="idPolizas" disabled="true">
 													<option value="0">Seleccione</option>
 												</select>
 											</div>
@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<div class="col-lg-12">
 											<div class="form-group">
 												<label>Certificado</label>
-												<select class="form-control" id="idCertificados" name="idCertificados">
+										<select class="form-control" id="idCertificados" name="idCertificados" disabled="true">
 													<option value="0">Seleccione</option>
 												</select>
 											</div>
@@ -131,7 +131,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="col-lg-12">
 									<div class="col-lg-4">
 										<div class="form-group">
-											<label>País</label>
+											<label>País Emisión</label>
 										<select class="form-control valform" id="idPaisEmision" name="idPaisEmision" required>
 												<option value="">Seleccione</option>
 												<?php
@@ -455,12 +455,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" id="btnModalEli" name="btnModalEli" type="button" class="btn btn btn-danger" data-toggle="modal" data-target="#myModalDelete" disabled="true">Eliminar</button>
 							</div>
 					</div>
+		
 				</div>
 			</div>
-
 			</form>		
-			
-				
+
+<!--GENERA EL PDF-->
+		<form role="form" id="formPDF" action="<?=base_url() ?>index.php/formularioEmision/descargarPdf/"  method="post" accept-charset='UTF-8' target="_blank" style="display: none">	
+			<input id="idCertificadoPdf" name="idCertificadoPdf" form="formPDF">
+			<input id="idPolizaPdf" name="idPolizaPdf" form="formPDF">
+			<input id="idClientePdf" name="idClientePdf" form="formPDF">	
+			<input id="idPaisEmisionPdf" name="idPaisEmisionPdf" form="formPDF">
+		</form>		
 			
 			<div class="modal fade" id="myModalUpdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">

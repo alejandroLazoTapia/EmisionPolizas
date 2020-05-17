@@ -25,6 +25,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $config['base_url'] = "http://localhost/emisionPolizas/";
 
+$config['composer_autoload'] = 'vendor/autoload.php';
+
 /*
 |--------------------------------------------------------------------------
 | Index File

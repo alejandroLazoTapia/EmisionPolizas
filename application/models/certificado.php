@@ -375,6 +375,122 @@ class Certificado extends CI_Model
 		}
 	}
 	
+	public function obtenerCertificadoChile($idCliente, $idPolizas, $idCertificado)
+	{
+		$sql = "select pol.codigo_poliza as poliza_nro,
+		cer.id as correlativo,
+		CONCAT(mon.nombre_moneda ,' (',mon.signo,')') as moneda,
+		'7036M' AS aviso_nro,
+		'DEFINITIVO' AS tipo_certificado,
+		CONCAT(cli.nombre,' Rut: ',
+		case when length(cli.rut) = 8 THEN insert(insert(cli.rut,3,0,'.'),7,0,'.')
+		else insert(insert(cli.rut,2,0,'.'),6,0,'.')
+		end,'-',cli.dv) as asegurado,
+		/*CONCAT(afa.nombre,' Rut: ',
+		case when length(afa.rut) = 8 THEN insert(insert(afa.rut,3,0,'.'),7,0,'.')
+		else insert(insert(afa.rut,2,0,'.'),6,0,'.')
+		end,'-',afa.dv) as asegurado,*/
+		cer.desc_mercaderia as materia,
+		tipemb.desc_embalaje as embalaje,
+		cer.fecha_arribo as fecha_salida,
+		paiori.desc_pais as origen,
+		estrego.desc_estado_region as via,
+		'0' as nro_bultos,
+		cer.nombre_linea as nombre_linea,
+		CONCAT(estregd.desc_estado_region ,',', paides.desc_pais) as destino,
+		cer.guia_bl as b_l,
+		cer.nombre_nave as nave,
+		CONCAT('TRANSPORTE ',tra.nombre_transporte,' PARA CARGA ',cla.desc_clausula) as cobertura,
+		CONCAT(mon.signo,cer.monto_asegurado) as monto_asegurado,
+		CONCAT(mon.signo,cer.prima) as prima,
+		DATE_FORMAT(cer.fecha_mod, '%d-%m-%Y') as fecha_emision,
+		mon.signo
+		FROM CERTIFICADO cer
+		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+		INNER JOIN EMPRESA_A_FAVOR afa on afa.id = cer.id_a_favor and afa.estado_reg = 1
+		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
+		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
+		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
+		INNER JOIN TRANSPORTE tra on tra.id = cer.id_transporte and tra.estado_reg = 1
+		INNER JOIN MONEDA mon on mon.id = cer.id_moneda and mon.estado_reg = 1
+		INNER JOIN PAIS paiori on paiori.id = cer.id_pais_origen and paiori.estado_reg = 1
+		INNER JOIN PAIS paides on paides.id = cer.id_pais_destino and paides.estado_reg = 1
+		INNER JOIN PAIS paisem on paisem.id = cer.id_pais_emision and paisem.estado_reg = 1
+		INNER JOIN TIPO_EMBALAJE tipemb on tipemb.id = cer.id_tipo_embalaje and tipemb.estado_reg = 1
+		INNER JOIN ESTADO_REGION estrego on estrego.id = cer.id_est_reg_origen and estrego.estado_reg = 1
+		INNER JOIN ESTADO_REGION estregd on estregd.id = cer.id_est_reg_destino and estregd.estado_reg = 1
+		WHERE   cer.id_cliente = ".$idCliente."
+		AND cer.id_poliza = ".$idPolizas."
+		AND cer.id = ".$idCertificado."
+		AND cer.estado_reg = 1";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->row();
+		} else {
+			return null;
+		}
+	}
+	
+	public function obtenerCertificadoPeru($idCliente, $idPolizas, $idCertificado)
+	{
+		$sql = "select pol.codigo_poliza as policy_no,
+		cer.id as certificate_no,
+		CONCAT(mon.nombre_moneda ,' (',mon.signo,')') as moneda,
+		'7036M' AS aviso_nro,
+		'DEFINITIVO' AS tipo_certificado,
+		CONCAT(cli.nombre,' Rut: ',
+		case when length(cli.rut) = 8 THEN insert(insert(cli.rut,3,0,'.'),7,0,'.')
+		else insert(insert(cli.rut,2,0,'.'),6,0,'.')
+		end,'-',cli.dv) as asegurado,
+		/*CONCAT(afa.nombre,' Rut: ',
+		case when length(afa.rut) = 8 THEN insert(insert(afa.rut,3,0,'.'),7,0,'.')
+		else insert(insert(afa.rut,2,0,'.'),6,0,'.')
+		end,'-',afa.dv) as asegurado,*/
+		cer.desc_mercaderia as matter_insured,
+		tipemb.desc_embalaje as embalaje,
+		cer.fecha_arribo as fecha_salida,
+		paiori.desc_pais as origen,
+		estrego.desc_estado_region as via,
+		'0' as nro_bultos,
+		cer.nombre_linea as nombre_linea,
+		CONCAT(estregd.desc_estado_region ,',', paides.desc_pais) as destino,
+		cer.guia_bl as b_l,
+		cer.nombre_nave as nave,
+		tra.nombre_transporte as convetance,
+		CONCAT('TRANSPORTE ',tra.nombre_transporte,' PARA CARGA ',cla.desc_clausula) as cobertura,
+		CONCAT(mon.signo,cer.monto_asegurado) as monto_asegurado,
+		CONCAT(mon.signo,cer.prima) as prima,
+		DATE_FORMAT(cer.fecha_mod, '%d-%m-%Y') as fecha_emision,
+		mon.signo
+		FROM CERTIFICADO cer
+		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+		INNER JOIN EMPRESA_A_FAVOR afa on afa.id = cer.id_a_favor and afa.estado_reg = 1
+		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
+		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
+		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
+		INNER JOIN TRANSPORTE tra on tra.id = cer.id_transporte and tra.estado_reg = 1
+		INNER JOIN MONEDA mon on mon.id = cer.id_moneda and mon.estado_reg = 1
+		INNER JOIN PAIS paiori on paiori.id = cer.id_pais_origen and paiori.estado_reg = 1
+		INNER JOIN PAIS paides on paides.id = cer.id_pais_destino and paides.estado_reg = 1
+		INNER JOIN PAIS paisem on paisem.id = cer.id_pais_emision and paisem.estado_reg = 1
+		INNER JOIN TIPO_EMBALAJE tipemb on tipemb.id = cer.id_tipo_embalaje and tipemb.estado_reg = 1
+		INNER JOIN ESTADO_REGION estrego on estrego.id = cer.id_est_reg_origen and estrego.estado_reg = 1
+		INNER JOIN ESTADO_REGION estregd on estregd.id = cer.id_est_reg_destino and estregd.estado_reg = 1
+		WHERE   cer.id_cliente = ".$idCliente."
+		AND cer.id_poliza = ".$idPolizas."
+		AND cer.id = ".$idCertificado."
+		AND cer.estado_reg = 1";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->row();
+		} else {
+			return null;
+		}
+	}
+	
+	
 }
 
 ?>
