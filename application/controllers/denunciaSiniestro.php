@@ -43,7 +43,7 @@ class denunciaSiniestro extends CI_Controller
 					print '<td>'.$key["id_certificado"].'</td>';
 					print '<td>'.$key["fecha_ingreso"].'</td>';
 					print '<td>'.$key["estado"].'</td>';
-					print '<td style="text-align: center;"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalVerSiniestro"><span class="glyphicon glyphicon-remove" ></span></a></td>';
+					print '<td style="text-align: center;"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalVerSiniestro"><span class="glyphicon glyphicon-eye-open" ></span></a></td>';
 					print"</tr>";
 				}
 			} else {

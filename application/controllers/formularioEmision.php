@@ -110,13 +110,13 @@ class formularioEmision extends CI_Controller
 			if ($AFavors == null) {
 				echo '<option value="0">Seleccione</option>';
 			} else {
-				echo '<option value="">Seleccione</option>';
+				echo '<option value="0">Seleccione</option>';
 				foreach ($AFavors as $AFavor => $key) {
 					echo '<option value="'.$key["id_a_favor"].'">'.$key["nombre_a_favor"].'</option>';
 				}
 			}
 		} else {
-			echo '<option value="">Seleccione</option>';
+			echo '';
 		}
 	}
 	

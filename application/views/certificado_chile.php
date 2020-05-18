@@ -17,7 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			}
 			textarea {
 				resize: none;
-				border: none;
+				border: 1px solid white;
+				border-color: white;
 			}
 			.titulo1 {
 				margin-left: auto;
@@ -67,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<tr>
 				<td  class="titulo1">
 					CERTIFICADO DE TRANSPORTE
-					<hr color="#5DADE2">
+					<hr style="color:#5DADE2">
 				</td>
 			</tr>
 			<tr>
@@ -122,7 +123,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<tr >
 				<td class="parrafoColor" VALIGN=TOP>Materia:</td>
 				<td class="parrafo1" >
-					<textarea rows="4" cols="60" style="border: none;" ><?php echo $certificado->materia ?></textarea>
+					<p style = "font-family:courier,arial,helvética;"><?php echo $certificado->materia ?></p>
+					<br>
+					<br>
+					<br>
+										
 				</td>
 			</tr>
 		</table>
@@ -197,14 +202,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td class="parrafoColor">
 					<b>Notas</b></td>
 			</tr>
-			<tr>
-				<td>
-					<textarea rows="8" cols="115" class="parrafo2">
+			<tr style="border-color: white;">
+				<td style="border-color: white;">
+					<p class="parrafo2" style="font-size: 8px">
 1. Queda expresamente convenido que el presente certificado definitivo está sujeto a los términos y condiciones de la Póliza Flotante  Nro. <?php echo $certificado->poliza_nro ?>
-
+<br>
 2.
+<br>
 3. Rige Cláusula de Clasificación del Instituto de Aseguradores de Londres(CL. 354 del 13.04.92) la que será aplicada respecto a primas  adicionales una vez conocida la edad de la Nave
-					</textarea>
+					</p>
 				</td>
 			</tr>
 		</table>
@@ -213,7 +219,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<tr>
 				<td class="parrafo1">
 					<b>Fecha de Emisión: <?php echo $certificado->fecha_emision ?></b></td>
-				<td style="text-align: center;"><img src="<?=base_url() ?>recursos/images/Firma.jpg"></td>
+			
+				<td style="text-align: right;"><img src="<?=base_url() ?>recursos/images/Firma.jpg"></td>
 
 			</tr>
 			<tr>

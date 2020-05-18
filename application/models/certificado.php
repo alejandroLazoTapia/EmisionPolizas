@@ -392,7 +392,7 @@ class Certificado extends CI_Model
 		end,'-',afa.dv) as asegurado,*/
 		cer.desc_mercaderia as materia,
 		tipemb.desc_embalaje as embalaje,
-		cer.fecha_arribo as fecha_salida,
+		DATE_FORMAT(cer.fecha_arribo, '%d-%m-%Y') as fecha_salida,
 		paiori.desc_pais as origen,
 		estrego.desc_estado_region as via,
 		'0' as nro_bultos,
