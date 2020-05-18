@@ -37,6 +37,51 @@ class formularioEmision extends CI_Controller
 			
 	}
 	
+	public function obtieneClientesModal()
+	{
+		$nombreUsuario = $this->session->userdata('usuario');
+
+		if ($nombreUsuario) {
+			$clientes = $this->certificado->obtenerClientes($nombreUsuario);
+			if (count($clientes) == 1) {
+				foreach ($clientes as $cliente => $key) {
+					echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+				}
+			} else if (count($clientes) > 1) {
+				echo '<option selected value="0">Seleccione</option>';
+				foreach ($clientes as $cliente => $key) {
+					echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+				}
+			} else{
+				echo '<option selected value="0">Seleccione</option>';
+			}
+		} else {
+			echo '<option selected value="0">Seleccione</option>';
+		}
+	}
+	
+	public function obtieneClientes()
+	{
+		$nombreUsuario = $this->session->userdata('usuario');
+
+		if ($nombreUsuario) {
+			$clientes = $this->certificado->obtenerClientes($nombreUsuario);
+			if (count($clientes) == 1) {
+				foreach ($clientes as $cliente => $key) {
+					echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+				}
+			} else if (count($clientes) > 1) {
+				echo '<option selected value="">Seleccione</option>';
+				foreach ($clientes as $cliente => $key) {
+					echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+				}
+			} else {
+				echo '<option selected value="">Seleccione</option>';
+			}
+		} else {
+			echo '<option selected value="">Seleccione</option>';
+		}
+	}
 	
 
 	public function obtieneTipoPoliza()

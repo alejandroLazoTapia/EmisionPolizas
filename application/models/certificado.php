@@ -24,6 +24,7 @@ class Certificado extends CI_Model
 		}  
 	}
 	
+	
 	public function obtenerAllClient()
 	{
 

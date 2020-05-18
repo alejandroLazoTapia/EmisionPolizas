@@ -17,19 +17,17 @@ class denunciaSiniestro extends CI_Controller
 			//datos logeado
 			$nombreUsuario = $this->session->userdata('usuario');
 			$idUsuario = $this->session->userdata('id');
-			$idCliente = '1';
-			$idPoliza = '1';
 
-			// obtenemos el array de clientes 
+			$datos['arrPolizas'] = $this->siniestro->getPolicyClientId($idUsuario);
+			$datos['arrSiniestros'] = $this->siniestro->getSinesterClientId($idUsuario);
 			$datos['arrClientes'] = $this->certificado->obtenerClientes($nombreUsuario);
-			$datos['$arrSiniestros'] = $this->obtieneSiniestrosCLiente(); 
+/*			echo var_dump($datos);*/
 			$this->load->view('header');
 			$this->load->view('menu');
 			$this->load->view('denunciaSiniestro',$datos);
 			$this->load->view('footer');
 
 	}
-	
 	
 	public function obtieneSiniestrosCLiente(){
 		$idCliente = $this->input->post('idClienteSiniestro');
@@ -61,7 +59,7 @@ class denunciaSiniestro extends CI_Controller
 	{
 		//El metodo is_ajax_request() de la libreria input permite verificar
 		//si se esta accediendo mediante el metodo AJAX
-	if ($this->input->is_ajax_request()) {
+		if ($this->input->is_ajax_request()) {
 		
 			$id_cliente = $this->input->post('idClienteSiniestro');
 			$id_poliza = $this->input->post('idPolizaSiniestro');
@@ -70,6 +68,15 @@ class denunciaSiniestro extends CI_Controller
 			$monto = $this->input->post('idMonto');
 			$fecha_siniestro = $this->input->post('idFecha');
 			$adjunto = $this->input->post('Base64Img');
+			
+	/*		echo var_dump($id_cliente);
+			echo var_dump($id_poliza);
+			echo var_dump($id_certificado);
+			echo var_dump($detalle);
+			echo var_dump($monto);			
+			echo var_dump($fecha_siniestro);			
+			echo var_dump($adjunto);	*/		
+						
 			
 	
 			if ($this->siniestro->existSinister($id_certificado)==FALSE) {

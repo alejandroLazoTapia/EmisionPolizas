@@ -17,7 +17,7 @@ class Siniestro extends CI_Model
 		}
 	}
  
-	function insertSinister($data)
+	public function insertSinister($data)
 	{
 		$this->db->insert("SINIESTRO",$data);
 
@@ -29,7 +29,7 @@ class Siniestro extends CI_Model
 		}
 	}
 
-	function getSinesterClient($idCliente)
+	public function getSinesterClient($idCliente)
 	{
 		$sql = "SELECT DISTINCT sin.id as id_siniestro,
 								sin.id_certificado,
@@ -40,6 +40,49 @@ class Siniestro extends CI_Model
 						  WHERE sin.id_cliente = '".$idCliente."'
 				            AND sin.estado_reg = 1
 					   ORDER BY sin.id asc";
+
+		$result = $this->db->query($sql);
+
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+	
+	public function getSinesterClientId($idUsuario)
+	{
+		$sql = "SELECT DISTINCT sin.id as id_siniestro,
+								sin.id_certificado,
+								sin.fecha_reg as fecha_ingreso,
+								est.desc_estado as estado_siniestro
+						   FROM SINIESTRO sin
+					 INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado and est.estado_reg = 1
+					 INNER JOIN USUARIO usu on usu.id_grupo = sin.id_cliente and usu.estado_reg = 1
+					 	WHERE usu.id = '".$idUsuario."'
+				            AND sin.estado_reg = 1
+					   ORDER BY sin.id asc";
+
+		$result = $this->db->query($sql);
+
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+	
+	
+	public function getPolicyClientId($idUsuario)
+	{
+		$sql = "SELECT DISTINCT pol.id as id_poliza,
+								pol.codigo_poliza as nombre_poliza
+					FROM POLIZA pol
+					INNER JOIN CLIENTE cli on pol.id_cliente = cli.id and cli.estado_reg = 1
+					INNER JOIN USUARIO usu on usu.id_grupo = cli.id_grupo and usu.estado_reg = 1
+						WHERE usu.id = '".$idUsuario."'
+				            AND pol.estado_reg = 1
+					   ORDER BY pol.id asc";
 
 		$result = $this->db->query($sql);
 

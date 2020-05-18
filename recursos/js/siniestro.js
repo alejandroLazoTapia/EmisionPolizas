@@ -1,14 +1,8 @@
 
-$('#form-create-sinister').hide();
 
 function showFormSinister()
 {
-	// Check for the File API support.
-	if (window.File && window.FileReader && window.FileList && window.Blob) {
-		document.getElementById('idArchivo').addEventListener('change', handleFileSelect, false);
-	} else {
-		alert('El archivo no es válido');
-	}
+	
 
 	
 	setTimeout(function() {
@@ -22,6 +16,9 @@ function showFormSinister()
 
 $("#form-create-sinister").submit(function(e) {
 	e.preventDefault();
+	
+	
+	
 	var idCliente = $('#idClienteSiniestro').val();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();

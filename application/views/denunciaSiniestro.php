@@ -3,18 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
+	<?php
+/*echo "
+<pre>";
+print_r(is_null($arrPolizas));
+echo "</pre>";*/
+	?>
+
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">Denunciar Siniestro</h1>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-lg-12">
-			<button  class="btn btn-success btn" onclick="showFormSinister()" >
-				Nuevo Siniestro
-			</button>
 		</div>
 	</div>
 	<div class="row">
@@ -33,14 +32,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<div class="col-lg-12">
 													<div class="form-group">
 														<label>Cliente</label>
-													<select class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
-															<option value="">Seleccione</option>
+													<?php if (count($arrClientes) == 1) { ?>
+														  <select class="form-control" readonly id="idClienteSiniestro" name="idClienteSiniestro" required>
 															<?php
-											foreach ($arrClientes as $index => $key) {
-												echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
-											}
-											?>
-														</select>
+																foreach ($arrClientes as $index => $key) {
+																	echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+																}
+															?>
+															</select>
+															<?php
+														} else {
+															?>
+															<select class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
+																<option selected value="0">Seleccione</option>
+																<?php
+															foreach ($arrClientes as $index => $key) {
+																echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+															}
+															?>
+															</select
+															<?php } ?>
 													</div>
 											</div>
 											<div class="col-lg-12">	
@@ -78,12 +89,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												$i = $i +1;
 											}
 										} else {
+											if ($this->session->userdata('perfil')==1){
+											
 												?>
 															<tr>
 																<td colspan="4">
 																	<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
 															</tr>
-															<?php } ?>
+														<?php 	} else {
+
+
+														?>
+														<tr>
+															<td colspan="4">
+																<div class="alert alert-warning" role="alert"> Cliente no posee sinietros ingresados</div></td>
+														</tr>
+														<?php
+													}
+												}
+														?>
 														</tbody>
 													</table>
 												</div>
@@ -97,22 +121,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 																<h4 class="modal-title" id="myModalLabel">Detalle Siniestro</h4></h4>
 															</div>
-
-											
-															
 														</div>
 													</div>
 												</div>
-												
+										
 											</div>
 										</div>
 										<div class="col-lg-6">
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Póliza</label>
+													
+													<?php 
+													if ($this->session->userdata('perfil') == 1) {
+													?>
 													<select class="form-control" id="idPolizaSiniestro" name="idPolizaSiniestro" required disabled="true">
 														<option value="">Seleccione</option>
 													</select>
+													<?php
+												} else {
+													?>
+													<select class="form-control" id="idPolizaSiniestro" name="idPolizaSiniestro" required>
+													<option value="">Seleccione</option>
+													<?php
+								
+														foreach ($arrPolizas as $arrPoliza => $key) {
+															echo '<option value="'.$key["id_poliza"].'">'.$key["nombre_poliza"].'</option>';
+													}
+												}
+														?>
+													</select>
+													
 												</div>
 											</div>
 											<div class="col-lg-12">
@@ -145,7 +184,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Subir Archivo</label>
-													<input type="file"  name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".xls,.xlsx,.pdf,.PDF,.JPG,.jpg, .PNG, .png" required="" form="form-create-sinister"/>
+													<input type="file"  name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".xls,.xlsx,.pdf,.PDF,.JPG,.jpg, .PNG, .png" required form="form-create-sinister"/>
 												</div>
 											</div>
 											<div class="col-lg-12">
@@ -158,7 +197,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</div>
 							</div>
 						</div>
-						<textarea style="display: none" class="form-control valform" rows="13" id="Base64Img" name="Base64Img" required></textarea>
+						<textarea style="display: none" class="form-control valform" rows="13" id="Base64Img" name="Base64Img"></textarea>
 					</div>
 				</form>
 			</div>

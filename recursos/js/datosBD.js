@@ -114,6 +114,7 @@ $('#btnObtieneDatos').click(function(){
 			$('#idCertificados').prop("disabled", true);
 			$("#idPolizas").html(idPolBody);
 			$('#idPolizas').val(0);
+			$('#idCliente').prop("readonly");
 			$('#idPolizas').prop("disabled", true);		
 			$('#btnObtieneDatos').prop("disabled", true);
 			$('#btnModalUpd').prop("disabled", false);

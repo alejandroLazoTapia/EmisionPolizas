@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						Nueva Poliza
 					</button>
 				&nbsp;&nbsp;
-			<button class="btn btn-warning btn" data-toggle="modal" data-target="#myModal" style="font-size: 15px;text-align: center;width: 150px;height: 40px;;margin-top: 10px;">
+			<button class="btn btn-warning btn" data-toggle="modal" data-target="#myModal" style="font-size: 15px;text-align: center;width: 150px;height: 40px;margin-top: 10px;" onclick="showModalGetCertificate()">
 						Obtener Datos
 					</button>
 			</div>			
@@ -46,8 +46,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<select class="form-control" id="idClientes" name="idClientes" required>
 													<option value="0">Seleccione</option>
 													<?php
-													foreach ($arrClientes as $index => $key) {
-														echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+													if (count($arrClientes)==1) {
+														foreach ($arrClientes as $index => $key) {
+															echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+														}
+													} else {
+														foreach ($arrClientes as $index => $key) {
+															echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+														}
 													}
 													?>
 												</select>
@@ -96,14 +102,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Cliente</label>
-										<select class="form-control valform" id="idCliente" name="idCliente" required>
-												<option value="">Seleccione</option>
-												<?php 
-												foreach ($arrClientes as $index => $key) {
-													echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+										
+												<?php if (count($arrClientes)==1) { ?>
+													<select readonly class="form-control valform"  id="idCliente" name="idCliente" required>
+													<?php
+													foreach ($arrClientes as $index => $key) {
+														echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
 													}
+													?>
+													</select>
+													<?php
+												} else {
+													?>
+													<select class="form-control valform" id="idCliente" name="idCliente" required>
+														<option value="">Seleccione</option>
+														<?php
+														echo '<option selected value="">Seleccione</option>';
+														foreach ($arrClientes as $index => $key) {
+															echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+														}
+														?>
+													</select>
+													<?php
+												}
 												?>
-											</select>
+											
 									</div>
 								</div>
 								<div class="col-lg-4">
