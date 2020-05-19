@@ -78,7 +78,6 @@ class DenunciaSiniestro extends CI_Controller
 			echo var_dump($adjunto);	*/		
 						
 			
-	
 			if ($this->Siniestro->existSinister($id_certificado)==FALSE) {
 				$data = [
 					"id_cliente" => $id_cliente,
@@ -93,12 +92,14 @@ class DenunciaSiniestro extends CI_Controller
 				];
 				$this->db->set('fecha_reg', 'NOW()', FALSE);
 				$this->db->set('fecha_mod', 'NOW()', FALSE);
+				
 				$nroSinester = $this->Siniestro->insertSinister($data);
 				if ($nroSinester > 0) {
 					echo $nroSinester;
 				} else {
 					echo -1; // no inserto
 				}
+				
 			} else {
 				echo -2; //ya existe el cliente
 			}

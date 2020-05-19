@@ -195,7 +195,7 @@ echo "</pre>";*/
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Subir Archivo</label>
-													<input type="file"  name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".xls,.xlsx,.pdf,.PDF,.JPG,.jpg, .PNG, .png" required form="form-create-sinister"/>
+													<input type="file" onchange="encodeImageFileAsURL(this)" name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".xls,.xlsx,.pdf,.PDF,.JPG,.jpg, .PNG, .png" required form="form-create-sinister"/>
 												</div>
 											</div>
 											<div class="col-lg-12">

@@ -391,10 +391,12 @@ class FormularioEmision extends CI_Controller
 		
 		if ($idPaisEmisio == 81) {
 			$data['certificado'] = $this->Certificado->obtenerCertificadoChile($idCliente, $idPolizas, $idCertificado);
+			$mpdf->showImageErrors = true;
 			$mpdf = new \Mpdf\Mpdf();
 			$html = $this->load->view('certificado_chile', $data ,true);
 		}else{
 			$data['certificado'] = $this->Certificado->obtenerCertificadoPeru($idCliente, $idPolizas, $idCertificado);
+			$mpdf->showImageErrors = true;
 			$mpdf = new \Mpdf\Mpdf();
 			$html = $this->load->view('certificado_peru', $data ,true);
 		}

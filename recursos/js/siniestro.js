@@ -16,7 +16,7 @@ $("#form-create-sinister").submit(function(e) {
 	var idCliente = $('#idClienteSiniestro').val();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
-	
+	console.log(data);
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
 		type:frm.prop('method'),
@@ -53,22 +53,28 @@ $("#form-create-sinister").submit(function(e) {
 });
 
 
-function handleFileSelect(evt)
+function encodeImageFileAsURL(element)
 {
-	var f = evt.target.files[0]; // FileList object
-	var reader = new FileReader();
-	// Closure to capture the file information.
-	reader.onload = (function(theFile) {
-		return function(e) {
-			var binaryData = e.target.result;
-			//Converting Binary Data to base 64
-			var base64String = window.btoa(binaryData);
-			//showing file converted to base64
-			$('#Base64Img').val(base64String);
+	var file = element.files[0];
+	getBase64(file).then(
+	data => $('#Base64Img').val(data)
+	);
+}
+
+function getBase64(file)
+{
+	return new Promise((resolve, reject) => {
+		const reader = new FileReader();
+		reader.readAsDataURL(file);
+		reader.onload = () => {
+			let encoded = reader.result.replace(/^data:(.*;base64,)?/, '');
+			if ((encoded.length % 4) > 0) {
+				encoded += '='.repeat(4 - (encoded.length % 4));
+			}
+			resolve(encoded);
 		};
-	})(f);
-	// Read in the image file as a data URL.
-	reader.readAsBinaryString(f);
+		reader.onerror = error => reject(error);
+	});
 }
 
 $('.idVerSiniestro').click(function() {
