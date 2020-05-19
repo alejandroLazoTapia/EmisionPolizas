@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class clienteMantenedor extends CI_Controller
+class ClienteMantenedor extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("cliente");
+		$this->load->model("Cliente");
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
@@ -19,7 +19,7 @@ class clienteMantenedor extends CI_Controller
 		$idUsuario = $this->session->userdata('id');
 
 		// obtenemos el array de clientes
-		$datos['arrClientes'] = $this->cliente->getAllClient();
+		$datos['arrClientes'] = $this->Cliente->getAllClient();
 
 		$this->load->view('header');
 		$this->load->view('menu');
@@ -41,8 +41,8 @@ class clienteMantenedor extends CI_Controller
 			$condiciones = $this->input->post('idCondiciones');
 			$telefono = $this->input->post('idTelefono');
 			$id_grupo = 0;
-			$fila = $this->cliente->newId();
-			if ($this->cliente->existClient($rut)==FALSE)
+			$fila = $this->Cliente->newId();
+			if ($this->Cliente->existClient($rut)==FALSE)
 			{
 				if ($id_grup == 0) {
 					$id_grupo = $fila->idNew;
@@ -61,7 +61,7 @@ class clienteMantenedor extends CI_Controller
 				"estado_reg" => 1
 				];
 			
-				if ($this->cliente->insertClient($data)) {
+				if ($this->Cliente->insertClient($data)) {
 					echo 0;
 				} else {
 					echo 4; // no inserto
@@ -83,7 +83,7 @@ class clienteMantenedor extends CI_Controller
 			$data = [
 				"estado_reg" => 0
 			];
-			if ($this->cliente->deleteClient($idCliente,$data)) {
+			if ($this->Cliente->deleteClient($idCliente,$data)) {
 				echo 0;
 			} else {
 				echo 1;
@@ -117,7 +117,7 @@ class clienteMantenedor extends CI_Controller
 				"telefono" => $telefono,
 			];
 			
-			if ($this->cliente->updateClient($idCliente,$data)) {
+			if ($this->Cliente->updateClient($idCliente,$data)) {
 				echo 2;
 			} else {
 				echo 3;
@@ -131,24 +131,30 @@ class clienteMantenedor extends CI_Controller
 	{
 		$idCliente = $this->input->post('idCliente');
 
-		if ($idCliente) {
+		if ($idCliente > 0) {
 
-			$tipoPolizas = $this->cliente->getPolicyClient($idCliente);
-			if ($tipoPolizas != null) {
+			$tipoPolizas = $this->Cliente->getPolicyClient($idCliente);
+			
+			
+			if ($tipoPolizas) {
 				foreach ($tipoPolizas as $tipoPoliza => $key) {
-					print"<tr>";
-					print '<td>'.$key["codigo_poliza"].'</td>';
-					print '<td>'.$key["desc_poliza"].'</td>';
-					print '<td style="text-align: center;"><a id="btnDelPolicy" data-toggle="modal" data-target="#myModalDelPolicy"><span class="glyphicon glyphicon-remove" ></span></a></td>';
-					print '<td style="display:none">'.$key["id_poliza"].'</td>';
-					print"<tr>";
+					echo'<tr>';
+					echo '<td>'.$key["codigo_poliza"].'</td>';
+					echo '<td>'.$key["desc_poliza"].'</td>';
+					echo '<td style="text-align: center;"><a id="btnDelPolicy" data-toggle="modal" data-target="#myModalDelPolicy"><span class="glyphicon glyphicon-remove" ></span></a></td>';
+					echo '<td style="display:none">'.$key["id_poliza"].'</td>';
+					echo'<tr>';
 				}
 			} else {
-				print "<tr>";
-				print '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Pólizas ingresadas</div></td>';
-				print "</tr>";
+				echo '<tr>';
+				echo '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Pólizas ingresadas</div></td>';
+				echo '</tr>';
 			}
-		} 
+		} else{
+			echo '<tr>';
+			echo '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Pólizas ingresadas</div></td>';
+			echo '</tr>';
+		}
 	}
 	
 	public function obtieneAFavorCLiente()
@@ -157,23 +163,27 @@ class clienteMantenedor extends CI_Controller
 
 		if ($idCliente) {
 
-			$aFavors = $this->cliente->getAFavorClient($idCliente);
-			if ($aFavors != null) {
+			$aFavors = $this->Cliente->getAFavorClient($idCliente);
+			if ($aFavors) {
 				$nro = 1;
 				foreach ($aFavors as $aFavor => $key) {
-					print"<tr>";
-					print '<td>'.$nro.'</td>';
-					print '<td>'.$key["nombre_a_favor"].'</td>';
-					print '<td style="text-align: center;"><a id="btnDelAFavor" data-toggle="modal" data-target="#myModalDelAFavor"><span class="glyphicon glyphicon-remove" ></span></a></td>';
-					print '<td style="display:none">'.$key["id_a_favor"].'</td>';
-					print"</tr>";
+					echo "<tr>";
+					echo '<td>'.$nro.'</td>';
+					echo '<td>'.$key["nombre_a_favor"].'</td>';
+					echo '<td style="text-align: center;"><a id="btnDelAFavor" data-toggle="modal" data-target="#myModalDelAFavor"><span class="glyphicon glyphicon-remove" ></span></a></td>';
+					echo '<td style="display:none">'.$key["id_a_favor"].'</td>';
+					echo"</tr>";
 					$nro = $nro +1;
 				}
 			} else {
-				print "<tr>";
-				print '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Empesas a Favor ingresadas</div></td>';
-				print "</tr>";
+				echo "<tr>";
+				echo '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Empesas a Favor ingresadas</div></td>';
+				echo "</tr>";
 			}
+		} else {
+			echo "<tr>";
+			echo '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Empesas a Favor ingresadas</div></td>';
+			echo "</tr>";
 		}
 	}
 	
@@ -186,7 +196,7 @@ class clienteMantenedor extends CI_Controller
 			$id_cliente = $this->input->post('idClientePol');
 			$desc_poliza = $this->input->post('idDescripcion');
 			$codigo_poliza = $this->input->post('idCodigoPoliza');
-			if ($this->cliente->existPolicy($codigo_poliza)==FALSE) {
+			if ($this->Cliente->existPolicy($codigo_poliza)==FALSE) {
 				$data = [
 					"id_cliente" => $id_cliente,
 					"desc_poliza" => $desc_poliza,
@@ -194,7 +204,7 @@ class clienteMantenedor extends CI_Controller
 					"estado_reg" => 1
 				];
 
-				if ($this->cliente->insertPolicy($data)) {
+				if ($this->Cliente->insertPolicy($data)) {
 					echo 0;
 				} else {
 					echo 1; // no inserto
@@ -217,7 +227,7 @@ class clienteMantenedor extends CI_Controller
 				"estado_reg" => 0
 			];
 			
-			if ($this->cliente->deletePolicy($idPoliza,$data)) {
+			if ($this->Cliente->deletePolicy($idPoliza,$data)) {
 				echo 0;
 			} else {
 				echo 1; // NO ELIMINO
@@ -238,7 +248,7 @@ class clienteMantenedor extends CI_Controller
 			$dv = $this->input->post('idDvAFavor');
 			$nombre = $this->input->post('idNombreAfavor');
 
-			if ($this->cliente->existAFavor($rut)==FALSE) {
+			if ($this->Cliente->existAFavor($rut)==FALSE) {
 				$data = [
 					"id_cliente" => $id_cliente,
 					"rut" => $rut,
@@ -247,7 +257,7 @@ class clienteMantenedor extends CI_Controller
 					"estado_reg" => 1
 				];
 
-				if ($this->cliente->insertAFavor($data)) {
+				if ($this->Cliente->insertAFavor($data)) {
 					echo 0;
 				} else {
 					echo 1; // no inserto
@@ -270,7 +280,7 @@ class clienteMantenedor extends CI_Controller
 				"estado_reg" => 0
 			];
 
-			if ($this->cliente->deleteAFavor($idAFavor,$data)) {
+			if ($this->Cliente->deleteAFavor($idAFavor,$data)) {
 				echo 0;
 			} else {
 				echo 1; // NO ELIMINO

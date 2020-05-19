@@ -5,7 +5,7 @@ class Siniestro extends CI_Model
 	
 	public function existSinister($id_certificado)
 	{
-		$sql = "SELECT id FROM siniestro
+		$sql = "SELECT id FROM SINIESTRO
 				WHERE id_certificado = '".$id_certificado."' 
 				and estado_reg = 1";
 

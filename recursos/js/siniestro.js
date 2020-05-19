@@ -2,9 +2,6 @@
 
 function showFormSinister()
 {
-	
-
-	
 	setTimeout(function() {
 		$('#form-create-sinister').show("slow");
 		$('#form-create-sinister')[0].reset();
@@ -16,9 +13,6 @@ function showFormSinister()
 
 $("#form-create-sinister").submit(function(e) {
 	e.preventDefault();
-	
-	
-	
 	var idCliente = $('#idClienteSiniestro').val();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
@@ -76,3 +70,28 @@ function handleFileSelect(evt)
 	// Read in the image file as a data URL.
 	reader.readAsBinaryString(f);
 }
+
+$('.idVerSiniestro').click(function() {
+	setTimeout(function() {
+		var idSiniestro = $(this).parents("tr").find("td")[0].innerHTML;
+		var idCertificado = $(this).parents("tr").find("td")[1].innerHTML;
+		console.log(idSiniestro,idCertificado);
+		$.ajax({
+			type: 'POST',
+			url:"denunciaSiniestro/obtieneDetalleSiniestro/",
+			data:{idSiniestro, idCertificado},
+			success:function(respuesta) {
+				console.log(respuesta);
+				if (respuesta) {
+					$('#myModalSinester').show();
+				} else {
+					$('#myModalSinester').show();
+				}
+
+			},
+			error:function(jqXHR, textStatus, errorThrow) {
+				alert('Error! = ' + errorThrow);
+			}
+		});
+	});
+});

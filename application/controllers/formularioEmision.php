@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class formularioEmision extends CI_Controller
+class FormularioEmision extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("certificado");
+		$this->load->model("Certificado");
+		$this->load->model("Cliente");
 		require_once  'vendor/autoload.php';
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
@@ -18,17 +19,15 @@ class formularioEmision extends CI_Controller
 		$nombreUsuario = $this->session->userdata('usuario');
 		$idUsuario = $this->session->userdata('id');
 
-		//CARGAMOS LOS MODELS
-		$this->load->model('certificado');
 		// obtenemos el array de clientes 
-		$datos['arrClientes'] = $this->certificado->obtenerClientes($nombreUsuario);
+		$datos['arrClientes'] = $this->Certificado->obtenerClientes($nombreUsuario);
 		$datos['arrAfavor'] = $this->obtieneAFavorCliente();
-		$datos['arrPaisesEmision'] = $this->certificado->obtenerPaisesEmision();
-		$datos['arrPaises'] = $this->certificado->obtenerPaises();
-		$datos['arrMoneda'] = $this->certificado->obtenerMonedas();
-		$datos['arrClausula'] = $this->certificado->obtenerClausulas();
-		$datos['arrTipoEmbalaje'] = $this->certificado->obtenerTipoEmbalaje();
-		$datos['arrTransporte'] = $this->certificado->obtenerTipoTransporte();
+		$datos['arrPaisesEmision'] = $this->Certificado->obtenerPaisesEmision();
+		$datos['arrPaises'] = $this->Certificado->obtenerPaises();
+		$datos['arrMoneda'] = $this->Certificado->obtenerMonedas();
+		$datos['arrClausula'] = $this->Certificado->obtenerClausulas();
+		$datos['arrTipoEmbalaje'] = $this->Certificado->obtenerTipoEmbalaje();
+		$datos['arrTransporte'] = $this->Certificado->obtenerTipoTransporte();
 		
 		$this->load->view('header');
 		$this->load->view('menu');
@@ -42,7 +41,7 @@ class formularioEmision extends CI_Controller
 		$nombreUsuario = $this->session->userdata('usuario');
 
 		if ($nombreUsuario) {
-			$clientes = $this->certificado->obtenerClientes($nombreUsuario);
+			$clientes = $this->Certificado->obtenerClientes($nombreUsuario);
 			if (count($clientes) == 1) {
 				foreach ($clientes as $cliente => $key) {
 					echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -65,7 +64,7 @@ class formularioEmision extends CI_Controller
 		$nombreUsuario = $this->session->userdata('usuario');
 
 		if ($nombreUsuario) {
-			$clientes = $this->certificado->obtenerClientes($nombreUsuario);
+			$clientes = $this->Certificado->obtenerClientes($nombreUsuario);
 			if (count($clientes) == 1) {
 				foreach ($clientes as $cliente => $key) {
 					echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -89,8 +88,8 @@ class formularioEmision extends CI_Controller
 		$idCliente = $this->input->post('idCliente');
 
 		if ($idCliente) {
-			$this->load->model('certificado');
-			$tipoPolizas = $this->certificado->obtenerPolizasCliente($idCliente);
+
+			$tipoPolizas = $this->Certificado->obtenerPolizasCliente($idCliente);
 			if ($tipoPolizas == null) {
 				echo '<option value="">Seleccione</option>';
 			} else {
@@ -109,8 +108,7 @@ class formularioEmision extends CI_Controller
 		$idCliente = $this->input->post('idCliente');
 
 		if ($idCliente) {
-			$this->load->model('certificado');
-			$tipoPolizas = $this->certificado->obtenerPolizasCliente($idCliente);
+			$tipoPolizas = $this->Certificado->obtenerPolizasCliente($idCliente);
 			if ($tipoPolizas == null) {
 			echo '<option value="0">Seleccione</option>';
 			}else{
@@ -130,8 +128,8 @@ class formularioEmision extends CI_Controller
 		$idPoliza = $this->input->post('idPoliza');
 
 		if ($idCliente) {
-			$this->load->model('certificado');
-			$Certificados = $this->certificado->obtenerCertificadosCliente($idCliente, $idPoliza);
+
+			$Certificados = $this->Certificado->obtenerCertificadosCliente($idCliente, $idPoliza);
 			if ($Certificados == null) {
 				echo '<option value="0">Seleccione</option>';
 			} else {
@@ -150,8 +148,7 @@ class formularioEmision extends CI_Controller
 		$idCliente = $this->input->post('idCliente');
 
 		if ($idCliente) {
-			$this->load->model('cliente');
-			$AFavors = $this->cliente->getAFavorClient($idCliente);
+			$AFavors = $this->Cliente->getAFavorClient($idCliente);
 			if ($AFavors == null) {
 				echo '<option value="0">Seleccione</option>';
 			} else {
@@ -172,7 +169,7 @@ class formularioEmision extends CI_Controller
 		$idPolizas = $this->input->post('idPoliza');
 		$idCertificado = $this->input->post('idCertificado');
 		$this->load->model('certificado');
-		$certificadoPrevio = $this->certificado->obtenerCertificadoPrevio($idCliente, $idPolizas, $idCertificado);
+		$certificadoPrevio = $this->Certificado->obtenerCertificadoPrevio($idCliente, $idPolizas, $idCertificado);
 		echo(json_encode($certificadoPrevio));
 		//print_r($certificadoPrevio);
 	}
@@ -267,7 +264,7 @@ class formularioEmision extends CI_Controller
 				];
 				$this->db->set('fecha_reg', 'NOW()', FALSE);
 				$this->db->set('fecha_mod', 'NOW()', FALSE);
-				$IdCert = $this->certificado->ingresarCertificado($data);
+				$IdCert = $this->Certificado->ingresarCertificado($data);
 				
 				if ($IdCert > 0) {
 					echo $IdCert;
@@ -349,7 +346,7 @@ class formularioEmision extends CI_Controller
 			];
 			$this->db->set('fecha_mod', 'NOW()', FALSE);
 
-			if ($this->certificado->actualizarCertificado($id_certificado,$data)) {
+			if ($this->Certificado->actualizarCertificado($id_certificado,$data)) {
 					echo 0;
 			} else {
 				echo -2;
@@ -373,7 +370,7 @@ class formularioEmision extends CI_Controller
 			];
 			$this->db->set('fecha_mod', 'NOW()', FALSE);
 
-			if ($this->certificado->eliminarCertificado($id_certificado,$data)) {
+			if ($this->Certificado->eliminarCertificado($id_certificado,$data)) {
 				
 					echo 0;
 			} else {
@@ -392,12 +389,12 @@ class formularioEmision extends CI_Controller
 		$idCertificado = $this->input->post('idCertificadoPdf');
 		$idPaisEmisio = $this->input->post('idPaisEmisionPdf');
 		
-		if ($idPaisEmisio == 81){
-			$data['certificado'] = $this->certificado->obtenerCertificadoChile($idCliente, $idPolizas, $idCertificado);
+		if ($idPaisEmisio == 81) {
+			$data['certificado'] = $this->Certificado->obtenerCertificadoChile($idCliente, $idPolizas, $idCertificado);
 			$mpdf = new \Mpdf\Mpdf();
 			$html = $this->load->view('certificado_chile', $data ,true);
 		}else{
-			$data['certificado'] = $this->certificado->obtenerCertificadoPeru($idCliente, $idPolizas, $idCertificado);
+			$data['certificado'] = $this->Certificado->obtenerCertificadoPeru($idCliente, $idPolizas, $idCertificado);
 			$mpdf = new \Mpdf\Mpdf();
 			$html = $this->load->view('certificado_peru', $data ,true);
 		}

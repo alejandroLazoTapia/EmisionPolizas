@@ -96,8 +96,8 @@ class Cliente extends CI_Model
 		$sql = "SELECT id as id_poliza, 
 					   codigo_poliza, 
 					   desc_poliza 
-				  FROM poliza 
-				 WHERE id_cliente  = '".$idCliente."' 
+				  FROM POLIZA 
+				 WHERE id_cliente = '".$idCliente."' 
 				   AND estado_reg = 1";
 		$result = $this->db->query($sql);
 		

@@ -1,6 +1,6 @@
 <?php
 
-class login extends CI_Controller
+class Login extends CI_Controller
 {
 
 	public function index()
@@ -8,8 +8,8 @@ class login extends CI_Controller
 		$usuario = $this->input->post('username');
 		$password = $this->input->post('pass');
 		
-		$this->load->model('usuario');
-		$fila = $this->usuario->getUser($usuario);
+		$this->load->model('Usuario');
+		$fila = $this->Usuario->getUser($usuario);
 		
 		
 		if($fila != null)

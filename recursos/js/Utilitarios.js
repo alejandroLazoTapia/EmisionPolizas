@@ -193,29 +193,33 @@ $("#idCliente").change(function() {
 $("#idClienteSiniestro").change(function() {
 		$("#idClienteSiniestro option:selected").each(function() {
 			var idCliente = $('#idClienteSiniestro').val();
-			$.ajax({
-				url:"formularioEmision/obtieneTipoPoliza",
-				type:"POST",
-				data:{'idCliente' : idCliente}
-			}).done(function(data) {
-				$("#idPolizaSiniestro").html(data);
-				$("#idPolizaSiniestro").removeAttr('disabled');
-				$("#idCertificadoSiniestro").val("");
-				$("#idCertificadoSiniestro").attr("disabled",true);
+			var resetTbody = '<tr><td colspan="4"><div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td></tr>';
+			if(idCliente > 0){
 				$.ajax({
-					url:'denunciaSiniestro/obtieneSiniestrosCLiente',
-					type:'POST',
-					data:{'idClienteSiniestro' : idCliente},
-					success:function(respuesta) {
-						console.log(respuesta);
-						$("#idTBodySiniestros").html(respuesta);
-					},
-					error:function(jqXHR, textStatus, errorThrow) {
-						alert('Error! = ' + errorThrow);
-					}
+					url:"formularioEmision/obtieneTipoPoliza",
+					type:"POST",
+					data:{'idCliente' : idCliente}
+				}).done(function(data) {
+					$("#idPolizaSiniestro").html(data);
+					$("#idPolizaSiniestro").removeAttr('disabled');
+					$("#idCertificadoSiniestro").val("");
+					$("#idCertificadoSiniestro").attr("disabled",true);
+					$.ajax({
+						url:'denunciaSiniestro/obtieneSiniestrosCLiente',
+						type:'POST',
+						data:{'idClienteSiniestro' : idCliente},
+						success:function(respuesta) {
+							console.log(respuesta);
+							$("#idTBodySiniestros").html(respuesta);
+						},
+						error:function(jqXHR, textStatus, errorThrow) {
+							alert('Error! = ' + errorThrow);
+						}
+					});
 				});
-				
-			});
+			}else{
+				$("#idTBodySiniestros").html(resetTbody);
+			}
 		});
 	});
 

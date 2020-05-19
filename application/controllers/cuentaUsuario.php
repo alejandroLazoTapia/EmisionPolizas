@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class cuentaUsuario extends CI_Controller
+class CuentaUsuario extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("certificado");
-		$this->load->model("usuario");
+		$this->load->model("Certificado");
+		$this->load->model("Usuario");
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
@@ -19,10 +19,10 @@ class cuentaUsuario extends CI_Controller
 		$idUsuario = $this->session->userdata('id');
 
 		// obtenemos el array de clientes
-		$datos['arrUsuarios'] = $this->usuario->getUsers();
-		$datos['arrPerfiles'] = $this->usuario->getProfiles();
-		$datos['arrClientes'] = $this->certificado->obtenerAllClient();
-		$datos['arrPaisesEmision'] = $this->certificado->obtenerPaisesEmision();
+		$datos['arrUsuarios'] = $this->Usuario->getUsers();
+		$datos['arrPerfiles'] = $this->Usuario->getProfiles();
+		$datos['arrClientes'] = $this->Certificado->obtenerAllClient();
+		$datos['arrPaisesEmision'] = $this->Certificado->obtenerPaisesEmision();
 
 		$this->load->view('header');
 		$this->load->view('menu');
@@ -53,8 +53,8 @@ class cuentaUsuario extends CI_Controller
 			"estado_reg" => 1
 			];
 			
-			if ($this->usuario->existUser($nombre_usuario)==FALSE){
-				if ($this->usuario->insertUser($data)) {
+			if ($this->Usuario->existUser($nombre_usuario)==FALSE) {
+				if ($this->Usuario->insertUser($data)) {
 						echo 0;
 				}else{
 					echo 4;
@@ -76,7 +76,7 @@ class cuentaUsuario extends CI_Controller
 			$data = [
 				"estado_reg" => 0
 			];
-			if ($this->usuario->deleteUser($idUsuario,$data)) {
+			if ($this->Usuario->deleteUser($idUsuario,$data)) {
 					echo 0;
 				} else {
 					echo 1;
@@ -107,7 +107,7 @@ class cuentaUsuario extends CI_Controller
 				"id_perfil" => $id_perfil,
 				"nombre" => $nombre
 			];
-			if ($this->usuario->updateUser($idUsuario,$data)) {
+			if ($this->Usuario->updateUser($idUsuario,$data)) {
 				echo 2;
 			} else {
 				echo 3;

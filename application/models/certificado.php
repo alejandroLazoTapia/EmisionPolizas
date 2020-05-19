@@ -170,7 +170,7 @@ class Certificado extends CI_Model
 	{
 		$sql = "SELECT DISTINCT id as id_a_favor,
 								nombre as nombre_a_favor
-						  FROM  emision_polizas.EMPRESA_A_FAVOR
+						  FROM  EMPRESA_A_FAVOR
 						  WHERE  id_cliente = '".$idCliente."'
 						   AND	estado_reg = 1
 						   ORDER BY  nombre asc";
@@ -189,7 +189,7 @@ class Certificado extends CI_Model
 
 		$sql = "SELECT id as id_pais,
 					   desc_pais as nombre_pais  
-		          FROM emision_polizas.PAIS
+		          FROM PAIS
 		         WHERE id in (81,89)
 				   AND estado_reg = 1
 			  ORDER BY desc_pais asc";
@@ -208,7 +208,7 @@ class Certificado extends CI_Model
 	{
 		$sql = "SELECT DISTINCT id as id_pais, 
 								desc_pais as nombre_pais 
-						   FROM emision_polizas.PAIS
+						   FROM PAIS
 						  WHERE estado_reg = 1
 					   ORDER BY desc_pais asc";
 
@@ -225,7 +225,7 @@ class Certificado extends CI_Model
 	{
 		$sql = "SELECT DISTINCT id as id_moneda,
 								desc_moneda as nombre_moneda
-						  FROM  emision_polizas.MONEDA
+						  FROM  MONEDA
 						 WHERE  estado_reg = 1
 					  ORDER BY  desc_moneda desc";
 
@@ -242,7 +242,7 @@ class Certificado extends CI_Model
 	{
 		$sql = "SELECT DISTINCT id as id_clausula,
 								desc_clausula as nombre_clausula
-						  FROM  emision_polizas.CLAUSULA
+						  FROM  CLAUSULA
 						 WHERE  estado_reg = 1
 					  ORDER BY  desc_clausula asc";
 		
@@ -259,7 +259,7 @@ class Certificado extends CI_Model
 	{
 		$sql = "SELECT DISTINCT id as id_embalaje,
 								desc_embalaje as tipo_embalaje
-						  FROM  emision_polizas.TIPO_EMBALAJE
+						  FROM  TIPO_EMBALAJE
 						 WHERE  estado_reg = 1
 					  ORDER BY  desc_embalaje asc";
 
@@ -276,7 +276,7 @@ class Certificado extends CI_Model
 	{
 		$sql = "SELECT DISTINCT id as id_transporte,
 								desc_transporte as tipo_transporte
-						   FROM emision_polizas.TRANSPORTE
+						   FROM TRANSPORTE
 						  WHERE estado_reg = 1
 					   ORDER BY id asc";
 
@@ -293,7 +293,7 @@ class Certificado extends CI_Model
 	{
 		$sql = "SELECT DISTINCT id as id_region_estado,
 								desc_estado_region as nombre_region_estado
-						   FROM emision_polizas.ESTADO_REGION
+						   FROM ESTADO_REGION
 						  WHERE id_pais = '".$idPais."'
 				            AND estado_reg = 1
 					   ORDER BY CASE id WHEN 1513 THEN 0

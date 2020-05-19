@@ -462,24 +462,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 				</div>
 					<input id="idCertActivo" name="idCertActivo" style="display: none">
+				<?php
+				if ($this->session->userdata('perfil') == 1) {
+				?>
 				<div class="col-lg-12 " style="margin-bottom: 40px;">
 					<div class="col-lg-4">
-							<div class="form-group">
+						<div class="form-group">
 							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" type="submit" formaction="<?=base_url() ?>index.php/formularioEmision/guardarCertificado" class="btn btn btn-success">Emitir</button>
-							</div>
+						</div>
 					</div>
 					<div class="col-lg-4">
-							<div class="form-group">
+						<div class="form-group">
 							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" type="submit" formaction="no" id="btnModalUpd" name="btnModalUpd" class="btn btn btn-primary"  disabled="true">Actualizar</button>
-							</div>
-					</div>	
-					<div class="col-lg-4">
-							<div class="form-group">
-							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" id="btnModalEli" name="btnModalEli" type="button" class="btn btn btn-danger" data-toggle="modal" data-target="#myModalDelete" disabled="true">Eliminar</button>
-							</div>
+						</div>
 					</div>
-		
+					<div class="col-lg-4">
+						<div class="form-group">
+							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" id="btnModalEli" name="btnModalEli" type="button" class="btn btn btn-danger" data-toggle="modal" data-target="#myModalDelete" disabled="true">Eliminar</button>
+						</div>
+					</div>
 				</div>
+				<?php }else{
+				?>
+				<div class="col-lg-12 " style="margin-bottom: 40px;">
+					<div class="col-lg-4">
+						<div class="form-group">
+							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" type="submit" formaction="<?=base_url() ?>index.php/formularioEmision/guardarCertificado" class="btn btn btn-success">Emitir</button>
+						</div>
+					</div>
+				</div>
+				<?php	
+				} 
+				?>
 			</div>
 			</form>		
 

@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class denunciaSiniestro extends CI_Controller
+class DenunciaSiniestro extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model("siniestro");
-		$this->load->model("certificado");
+		$this->load->model("Siniestro");
+		$this->load->model("Certificado");
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
@@ -18,9 +18,9 @@ class denunciaSiniestro extends CI_Controller
 			$nombreUsuario = $this->session->userdata('usuario');
 			$idUsuario = $this->session->userdata('id');
 
-			$datos['arrPolizas'] = $this->siniestro->getPolicyClientId($idUsuario);
-			$datos['arrSiniestros'] = $this->siniestro->getSinesterClientId($idUsuario);
-			$datos['arrClientes'] = $this->certificado->obtenerClientes($nombreUsuario);
+			$datos['arrPolizas'] = $this->Siniestro->getPolicyClientId($idUsuario);
+			$datos['arrSiniestros'] = $this->Siniestro->getSinesterClientId($idUsuario);
+			$datos['arrClientes'] = $this->Certificado->obtenerClientes($nombreUsuario);
 /*			echo var_dump($datos);*/
 			$this->load->view('header');
 			$this->load->view('menu');
@@ -32,7 +32,7 @@ class denunciaSiniestro extends CI_Controller
 	public function obtieneSiniestrosCLiente(){
 		$idCliente = $this->input->post('idClienteSiniestro');
 		if ($idCliente) {
-			$siniestros = $this->siniestro->getSinesterClient($idCliente);
+			$siniestros = $this->Siniestro->getSinesterClient($idCliente);
 
 			if ($siniestros != null) {
 				foreach ($siniestros as $siniestro => $key) {
@@ -79,7 +79,7 @@ class denunciaSiniestro extends CI_Controller
 						
 			
 	
-			if ($this->siniestro->existSinister($id_certificado)==FALSE) {
+			if ($this->Siniestro->existSinister($id_certificado)==FALSE) {
 				$data = [
 					"id_cliente" => $id_cliente,
 					"id_poliza" => $id_poliza,
@@ -93,7 +93,7 @@ class denunciaSiniestro extends CI_Controller
 				];
 				$this->db->set('fecha_reg', 'NOW()', FALSE);
 				$this->db->set('fecha_mod', 'NOW()', FALSE);
-				$nroSinester = $this->siniestro->insertSinister($data);
+				$nroSinester = $this->Siniestro->insertSinister($data);
 				if ($nroSinester > 0) {
 					echo $nroSinester;
 				} else {

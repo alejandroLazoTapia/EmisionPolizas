@@ -47,30 +47,38 @@ echo "</pre>";*/
 																<option selected value="0">Seleccione</option>
 																<?php
 															foreach ($arrClientes as $index => $key) {
-																echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+																echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
 															}
 															?>
-															</select
+															</select>
 															<?php } ?>
 													</div>
-											</div>
-											<div class="col-lg-12">	
-												
-												<div class="table-responsive">
-													<table class="table table-hover">
-														<thead>
-															<tr>
-																<th>Nro Siniestro</th>
-																<th>Nro Certificado</th>
-																<th>Ingreso</th>
-																<th>Estado</th>
-																<th style="text-align: center;">ver</th>
-															</tr>
-														</thead>
+												</div>
+
+												<div class="col-lg-12">	
+													<div class="table-responsive">
+														<table class="table table-hover">
+															<thead>
+																<tr>
+																	<th>Nro Siniestro</th>
+																	<th>Nro Certificado</th>
+																	<th>Ingreso</th>
+																	<th>Estado</th>
+																	<th style="text-align: center;">Ver</th>
+																</tr>
+															</thead>
 														<tbody id="idTBodySiniestros">
 
 															<?php
 													if (!empty($arrSiniestros)) {
+														if ($this->session->userdata('perfil')==1) {
+														?>
+														<tr>
+															<td colspan="4">
+																<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
+														</tr>
+														<?php 
+														}else{
 													$i = 1;
 													foreach ($arrSiniestros as $index => $key) {
 														echo"<tr>";
@@ -85,48 +93,51 @@ echo "</pre>";*/
 																</a>
 															</td>
 															<?php
-												echo'</tr>';
-												$i = $i +1;
-											}
-										} else {
-											if ($this->session->userdata('perfil')==1){
-											
-												?>
-															<tr>
-																<td colspan="4">
-																	<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
-															</tr>
-														<?php 	} else {
+															echo'</tr>';
+																		$i = $i +1;
+																	}
+																}
+														} else {
+															if ($this->session->userdata('perfil')==1){
+															
+																?>
+																			<tr>
+																				<td colspan="4">
+																					<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
+																			</tr>
+																		<?php 	} else {
 
 
-														?>
-														<tr>
-															<td colspan="4">
-																<div class="alert alert-warning" role="alert"> Cliente no posee sinietros ingresados</div></td>
-														</tr>
-														<?php
-													}
-												}
-														?>
-														</tbody>
-													</table>
+																		?>
+																		<tr>
+																			<td colspan="4">
+																				<div class="alert alert-warning" role="alert"> Cliente no posee sinietros ingresados</div></td>
+																		</tr>
+																		<?php
+																	}
+																}
+																		?>
+															</tbody>
+														</table>
+													</div><!-- /.table-responsive -->
 												</div>
-												<!-- /.table-responsive -->
+
 												
 												<!--//modal de ver siniestro-->
-												<div class="modal fade" id="myModalDelUser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+												<div class="modal fade" id="myModalSinester" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 													<div class="modal-dialog">
 														<div class="modal-content">
 															<div class="modal-header" style="margin-bottom: 20px;">
 																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																<h4 class="modal-title" id="myModalLabel">Detalle Siniestro</h4></h4>
+																<h4 class="modal-title" id="myModalLabel">Detalle Siniestro</h4>
+																<div class="col-lg-12">
+																	
+																</div>
 															</div>
 														</div>
 													</div>
 												</div>
-										
 											</div>
-										</div>
 										<div class="col-lg-6">
 											<div class="col-lg-12">
 												<div class="form-group">
