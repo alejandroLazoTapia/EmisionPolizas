@@ -2,8 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
-
-
 	<div id="page-wrapper">
 		<div class="row">
 			<div class="col-lg-12">

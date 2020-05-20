@@ -65,14 +65,18 @@ class FormularioEmision extends CI_Controller
 
 		if ($nombreUsuario) {
 			$clientes = $this->Certificado->obtenerClientes($nombreUsuario);
-			if (count($clientes) == 1) {
-				foreach ($clientes as $cliente => $key) {
-					echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
-				}
-			} else if (count($clientes) > 1) {
-				echo '<option selected value="">Seleccione</option>';
-				foreach ($clientes as $cliente => $key) {
-					echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+			if($cliente != null){
+				if (count($clientes) == 1) {
+					foreach ($clientes as $cliente => $key) {
+						echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+					}
+				} else if (count($clientes) > 1) {
+					echo '<option selected value="">Seleccione</option>';
+					foreach ($clientes as $cliente => $key) {
+						echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+					}
+				} else {
+					echo '<option selected value="">Seleccione</option>';
 				}
 			} else {
 				echo '<option selected value="">Seleccione</option>';

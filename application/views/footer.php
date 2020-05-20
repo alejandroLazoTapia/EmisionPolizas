@@ -15,6 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<script src="<?=base_url() ?>recursos/js/usuario.js"> </script>
 	<script src="<?=base_url() ?>recursos/js/cliente.js"> </script>
  	<script src="<?=base_url() ?>recursos/js/siniestro.js"> </script>
+ 	<script src="<?=base_url() ?>recursos/js/certificado.js"> </script>
  	
 </body>
 

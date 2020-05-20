@@ -30,21 +30,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<i class="glyphicon glyphicon-certificate"></i>&nbsp;&nbsp;Denunciar Siniestro</a>
 							</li>
 							<li>
-								<a href="historialCertificados.html">
+								<a href="<?= base_url() ?>index.php/historialCertificado">
 									<i class="fa fa-list-alt"></i>&nbsp;&nbsp;Historial Certificados</a>
 							</li>
 							<li>
-								<a href="historialPagos.html">
+								<a href="<?= base_url() ?>index.php/primaMensual">
+								<i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Prima Mensual</a>
+							</li>
+							<li>
+								<a href="<?= base_url() ?>index.php/historialPago">
 								<i class="fa fa-calendar"></i>&nbsp;&nbsp;historial Pagos</a>
 							</li>
 							<li>
-								<a href="informeCierre.html">
+								<a href="<?= base_url() ?>index.php/informeCierre">
 								<i class="fa fa-book"></i>&nbsp;&nbsp;Informe Cierre</a>
 							</li>
-							<li>
-								<a href="primaMensual.html">
-								<i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Prima Mensual</a>
-							</li>
+							
 				<?php
 			}elseif ($this->session->userdata('perfil') == 2 ) {
 				?>
@@ -62,12 +63,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<i class="glyphicon glyphicon-certificate"></i>&nbsp;&nbsp;Denunciar Siniestro</a>
 							</li>
 							<li>
-								<a href="informeCierre.html">
-								<i class="fa fa-book"></i>&nbsp;&nbsp;Informe Cierre</a>
+								<a href="<?= base_url() ?>index.php/historialCertificado">
+									<i class="fa fa-list-alt"></i>&nbsp;&nbsp;Historial Certificados</a>
 							</li>
 							<li>
-								<a href="primaMensual.html">
+								<a href="<?= base_url() ?>index.php/primaMensual">
 								<i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Prima Mensual</a>
+							</li>
+							<li>
+								<a href="<?= base_url() ?>index.php/historialPago">
+								<i class="fa fa-calendar"></i>&nbsp;&nbsp;historial Pagos</a>
 							</li>
 						
 						<?php

@@ -491,6 +491,131 @@ class Certificado extends CI_Model
 		}
 	}
 	
+	public function obtenerHistorialCertTotal()
+	{
+		$sql = "select
+		pol.id as id_poliza,
+        pol.codigo_poliza as codigo_poliza,
+		cer.id as id_certificado,
+        cer.fecha_reg as fecha_emision,
+        usu.nombre_usuario as usuario,
+		cli.id as id_cliente,
+		cli.nombre as nombre_cliente,
+		cer.id_pais_emision
+		FROM CERTIFICADO cer
+		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
+        INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+		WHERE cer.estado_reg = 1
+        order by cer.id desc
+		limit 30";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+
+	
+	public function obtenerHistorialCertClientes($idCliente, $ano, $mes)
+	{
+		$sql = "select
+		pol.id as id_poliza,
+		pol.codigo_poliza as codigo_poliza,
+		cer.id as id_certificado,
+		cer.fecha_reg as fecha_emision,
+		usu.nombre_usuario as usuario,
+		cli.id as id_cliente,
+		cli.nombre as nombre_cliente,
+		cer.id_pais_emision
+		FROM CERTIFICADO cer
+		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
+		INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+		WHERE   cer.id_cliente = case when '".$idCliente."' = 0 then cer.id_cliente
+								else '".$idCliente."'
+                                end
+		AND cer.estado_reg = 1
+        AND DATE_FORMAT(cer.fecha_reg, '%Y') = case when '".$ano."' = 0 then DATE_FORMAT(cer.fecha_reg, '%Y')
+											   else '".$ano."'
+                                               end
+        AND DATE_FORMAT(cer.fecha_reg, '%c') = case when '".$mes."' = 0 then DATE_FORMAT(cer.fecha_reg, '%c')
+											   else '".$mes."'
+                                               end
+        order by cer.id desc";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+	
+	public function obtenerAnoUsuario($nombreUsuario)
+	{
+		$sql = "select  distinct
+			date_format(cer.fecha_reg, '%Y') as ano
+			FROM CERTIFICADO cer
+			INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+			INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
+			INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+			WHERE usu.nombre_usuario = '".$nombreUsuario."'
+			and cer.estado_reg = 1
+			order by ano desc";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+	
+	
+	public function obtenerAnoCliente($idCliente)
+	{
+		$sql = "select  distinct
+				date_format(fecha_reg, '%Y') as ano
+				FROM CERTIFICADO cer
+				INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+				INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
+				INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+				WHERE cer.id_cliente = ".$idCliente."
+				and cer.estado_reg = 1
+		        order by ano desc";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+	
+	public function obtieneMesVigente($ano, $idCliente)
+	{
+		$sql = "
+   		 select DISTINCT
+		date_format(cer.fecha_reg, '%c') as id_mes,
+        CONCAT(UPPER(LEFT(monthname(cer.fecha_reg), 1)), LOWER(SUBSTRING(monthname(cer.fecha_reg), 2))) as desc_mes
+		FROM CERTIFICADO cer
+		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+		WHERE   cer.id_cliente = '".$idCliente."'
+		AND cer.estado_reg = 1
+		AND DATE_FORMAT(cer.fecha_reg, '%Y') = '".$ano."'
+		order by id_mes asc";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+	
 	
 }
 
