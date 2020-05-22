@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="homeUsuario.html">SGG Logistics</a>
+			<a class="navbar-brand">SGG Logistics</a>
 		</div>
 
 

@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<a href="<?= base_url() ?>index.php/clienteMantenedor">
 								<i class="fa fa-users"></i>&nbsp;&nbsp;Gestionar Clientes</a>
 							</li>
-							<hr style="margin-top: 10px; margin-bottom: 0px">
+							<hr style="margin-top: 10px; margin-bottom: 0px"></hr>
 							<li>
 								<a href="<?= base_url() ?>index.php/formularioEmision"</a>
 								<i class="glyphicon glyphicon-edit"></i>&nbsp;&nbsp;Emitir Certificado </a>

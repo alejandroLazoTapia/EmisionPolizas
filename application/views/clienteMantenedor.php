@@ -9,11 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<h1 class="page-header">Registrar Cliente</h1>
 		</div>
 	</div>
-	<?php
+<!--	<?php
 /*	echo "<pre>";
 	print_r($arrClientes);
 	echo "</pre>";*/
-	?>
+	?>-->
 	<div class="row">
 		<div class="col-lg-12">
 			<button  class="btn btn-success btn" onclick="showFormClient()" >
@@ -140,9 +140,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="col-lg-4">	
 										<label>Rut</label>
 										<div class="form-inline">
-												<input type="text" name="idRut" id="idRut" class="form-control" style="width: 60%;display: inline-block;" required>
+											<input type="number" name="idRut" maxlength="7" maxlength="8" id="idRut" class="form-control" style="width: 60%;display: inline-block;" required>
 												&nbsp;-&nbsp;
-												<input type="text" name="idDv" id="idDv" class="form-control" style="width: 25%;display: inline-block;text-align: center;" required>
+												<input type="text" name="idDv" id="idDv" maxlength="1" class="form-control" style="width: 25%;display: inline-block;text-align: center;" required>
 										</div>
 									</div>	
 									<div class="col-lg-8">
@@ -369,9 +369,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<div class="col-lg-12">
 										<label>Rut</label>
 										<div class="form-inline">
-											<input type="text" name="idRutAFavor" id="idRutAFavor" class="form-control" style="width: 60%;display: inline-block;" required>
+											<input type="number" maxlength="7" maxlength="8" name="idRutAFavor" id="idRutAFavor" class="form-control" style="width: 60%;display: inline-block;" required>
 											&nbsp;-&nbsp;
-											<input type="text" name="idDvAFavor" id="idDvAFavor" class="form-control" style="width: 25%;display: inline-block;text-align: center;" required>
+											<input type="text" maxlength="1" name="idDvAFavor" id="idDvAFavor" class="form-control" style="width: 25%;display: inline-block;text-align: center;"  required>
 										</div>
 									</div>	
 

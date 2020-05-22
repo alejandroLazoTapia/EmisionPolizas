@@ -72,12 +72,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</style>
 	</head>
 	<body>
-		<?php
+		<!--<?php
 		/*echo "
 		<pre>";
 		print_r($certificado);
 		echo "</pre>";*/
-		?>
+		?>-->
 
 		<table style="border:0px solid">
 			<tr>

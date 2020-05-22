@@ -124,7 +124,7 @@ $('#btnObtieneDatos').click(function(){
 
 			
 		},error:function(jqXHR, textStatus, errorThrow){
-			console.log('error' + errorThrow);
+			alert('Error al obtener datos! = ' + errorThrow);
 		}
 		
 	});
@@ -180,21 +180,18 @@ $('#btnActualizarCertificado').click(function() {
 			url:"formularioEmision/actualizaCertificado/",
 			data:$("form").serialize(),
 			success:function(respuesta) {
-				console.log(respuesta);
 				if (respuesta == 0) {
 					alert("Su certificado fue actualizado exitosamente");
 					$("#form-create-certificate")[0].reset();
 					$('#btnModalUpd').attr("disabled", true);
 					$('#btnModalEli').attr("disabled", true);
 				}else{
-					console.log(respuesta);
 					alert("No fue posible actualizar su certificado");
 				}
 				
 			},
 			error:function(jqXHR, textStatus, errorThrow) {
 				alert('Error! = ' + errorThrow);
-				console.log($("form").serialize());
 			}
 		});
 	});
@@ -207,21 +204,18 @@ $('#btnEliminarCertificado').click(function() {
 			url:"formularioEmision/eliminaCertificado/",
 			data:$("form").serialize(),
 			success:function(respuesta) {
-				console.log(respuesta);
 				if (respuesta == 0) {
 					alert("Su certificado fue eliminado exitosamente");
 					$("#form-create-certificate")[0].reset();
 					$('#btnModalUpd').attr("disabled", true);
 					$('#btnModalEli').attr("disabled", true);
 				} else {
-					console.log(respuesta);
 					alert("No fue posible eliminar el certificado");
 				}
 
 			},
 			error:function(jqXHR, textStatus, errorThrow) {
 				alert('Error! = ' + errorThrow);
-				console.log($("form").serialize());
 			}
 		});
 	});
@@ -231,7 +225,6 @@ function validateForm()
 {
 	var isValid = true;
 	$('.valform').each(function() {
-		console.log($(this).val());
 		if ( $(this).val() === '' )
 			isValid = false;
 	});
@@ -240,8 +233,6 @@ function validateForm()
 
 $('#btnModalUpd').click(function() {
 	setTimeout(function() {
-		console.log('entro');
-		console.log(validateForm());
 		if (validateForm() == true) {
 			$("#myModalUpdate").modal("show");
 		}
@@ -257,21 +248,18 @@ $('#btnDescargar').click(function() {
 			url:"formularioEmision/descargar/",
 			data:$("form").serialize(),
 			success:function(respuesta) {
-				console.log(respuesta);
 				if (respuesta == 0) {
 					alert("Su certificado fue descargado exitosamente");
 					$("#form-create-certificate")[0].reset();
 					$('#btnModalUpd').attr("disabled", true);
 					$('#btnModalEli').attr("disabled", true);
 				} else {
-					console.log(respuesta);
 					alert("No fue posible descargar su certificado");
 				}
 
 			},
 			error:function(jqXHR, textStatus, errorThrow) {
 				alert('Error! = ' + errorThrow);
-				console.log($("form").serialize());
 			}
 		});
 	});

@@ -16,13 +16,11 @@ $("#form-create-sinister").submit(function(e) {
 	var idCliente = $('#idClienteSiniestro').val();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
-	console.log(data);
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
 		type:frm.prop('method'),
 		data: data,
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta > 0) {
 				alert("Siniestro Nro: "+respuesta+" ingresado exitosamente");
 				$.ajax({
@@ -30,7 +28,6 @@ $("#form-create-sinister").submit(function(e) {
 					type:'POST',
 					data:{'idClienteSiniestro' : idCliente},
 					success:function(resp) {
-						console.log(resp);
 						$("#idTBodySiniestros").html(resp);
 						$('#form-create-sinister')[0].reset();
 					},
@@ -81,13 +78,11 @@ $('.idVerSiniestro').click(function() {
 	setTimeout(function() {
 		var idSiniestro = $(this).parents("tr").find("td")[0].innerHTML;
 		var idCertificado = $(this).parents("tr").find("td")[1].innerHTML;
-		console.log(idSiniestro,idCertificado);
 		$.ajax({
 			type: 'POST',
 			url:"denunciaSiniestro/obtieneDetalleSiniestro/",
 			data:{idSiniestro, idCertificado},
 			success:function(respuesta) {
-				console.log(respuesta);
 				if (respuesta) {
 					$('#myModalSinester').show();
 				} else {
@@ -101,3 +96,47 @@ $('.idVerSiniestro').click(function() {
 		});
 	});
 });
+
+$("#idClienteSiniestro").change(function() {
+	$("#idClienteSiniestro option:selected").each(function() {
+		var idCliente = $('#idClienteSiniestro').val();
+		var resetTbody = '<tr><td colspan="4"><div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td></tr>';
+		var resetPoliza = '<option value="">Seleccione</option>';
+		var resetCert = '<option value="">Seleccione</option>';
+		if (idCliente != "") {
+			$.ajax({
+				url:"formularioEmision/obtieneTipoPoliza",
+				type:"POST",
+				data:{'idCliente' : idCliente}
+			}).done(function(data) {
+				if (data == '<option value="">Seleccione</option>') {
+					$("#idPolizaSiniestro").html(data);
+				alert("El cliente no posee polizas registradas");
+				}else{
+					$("#idPolizaSiniestro").html(data);
+					$("#idPolizaSiniestro").removeAttr('disabled');
+					$("#idCertificadoSiniestro").html(resetCert);
+					$("#idCertificadoSiniestro").attr("disabled",true);
+					$.ajax({
+						url:'denunciaSiniestro/obtieneSiniestrosCLiente',
+						type:'POST',
+						data:{'idClienteSiniestro' : idCliente},
+						success:function(respuesta) {
+							$("#idTBodySiniestros").html(respuesta);
+						},
+						error:function(jqXHR, textStatus, errorThrow) {
+							alert('Error! = ' + errorThrow);
+						}
+					});
+				}
+			});
+		} else {
+			$("#idPolizaSiniestro").html(resetPoliza);
+			$("#idCertificadoSiniestro").html(resetCert);
+			$("#idPolizaSiniestro").attr("disabled",true);
+			$("#idCertificadoSiniestro").attr("disabled",true);								
+			$("#idTBodySiniestros").html(resetTbody);
+		}
+	});
+});
+

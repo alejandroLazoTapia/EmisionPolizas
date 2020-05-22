@@ -7,20 +7,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-lg-12">
 				<h1 class="page-header">Emisión Certificado</h1>
 				<?php
-				/*echo "
+			<!--	/*echo "
 					<pre>";
 					print_r($arrAfavor);
 					print_r($arrMonedas);
 					print_r($arrTipoEmbalaje);
 					print_r($arrTransporte);
 					echo "</pre>";*/
-				?>
+				?>-->
 				
 			</div>
 
 			<div class="col-lg-12">
 			<button  class="btn btn-success btn" onclick="showForm()" style="font-size: 15px;text-align: center;width: 150px;height: 40px;margin-top: 10px;">
-						Nueva Poliza
+						Nuevo
 					</button>
 				&nbsp;&nbsp;
 			<button class="btn btn-warning btn" data-toggle="modal" data-target="#myModal" style="font-size: 15px;text-align: center;width: 150px;height: 40px;margin-top: 10px;" onclick="showModalGetCertificate()">
@@ -172,7 +172,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Referencia Interna</label>
-										<input class="form-control valform" placeholder="Referencia Interna" id="idRefInterna"  name="idRefInterna" required>
+										<input class="form-control valform" placeholder="" id="idRefInterna"  name="idRefInterna" required>
 									</div>
 								</div>
 							</div>
@@ -203,7 +203,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Deducible</label>
-										<input type="number" step="0.01" class="form-control valform" placeholder="ej:1% del monto asegurado con un minimo de usd 50" 
+										<input min="1" type="number" class="form-control valform" placeholder="" 
 												id="idPrimaMinima" name="idPrimaMinima" required></input>
 
 									</div>
@@ -211,7 +211,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Monto Asegurado</label>
-										<input class="form-control valform" placeholder="ej: 250.000" id="idMontoAsegurado" name="idMontoAsegurado" required>
+										<input min="1" type="number" class="form-control valform" placeholder="" id="idMontoAsegurado" name="idMontoAsegurado" required>
 									</div>
 								</div>
 							</div>
@@ -219,7 +219,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Tasa</label>
-										<input class="form-control valform" step="0.01" placeholder="ej: 0.5" id="idTasa" name="idTasa" required>
+										<input min="0" max="100" type="number" class="form-control valform" step="0.01" placeholder="ej: 0.11." id="idTasa" name="idTasa" required>
 									</div>
 								</div>
 								<div class="col-lg-4">
@@ -238,7 +238,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Prima</label>
-										<input class="form-control valform" placeholder="ej: 250.000" id="idPrima" name="idPrima" required>
+										<input type="number" class="form-control valform"  id="idPrima" name="idPrima" required>
 									</div>
 								</div>
 							</div>
@@ -281,7 +281,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Guía o BL</label>
-										<input class="form-control valform" placeholder="ej: 445454548" id="idGuiaBl" name="idGuiaBl" required>
+										<input class="form-control valform" placeholder="Ej: LFLSHA91210504" id="idGuiaBl" name="idGuiaBl" required>
 									</div>
 								</div>
 							</div>
@@ -290,21 +290,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Nombre Linea Aerea/Compañia naviera</label>
-										<input class="form-control valform" placeholder="ej: Latam" id="idNomLineaNave" name="idNomLineaNave" required>
+										<input class="form-control valform" placeholder="Ej: Latam" id="idNomLineaNave" name="idNomLineaNave" required>
 									</div>
 								</div>
 
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Nombre Nave/Motonave</label>
-										<input class="form-control valform" placeholder="ej: Santa Barbara" id="idNomNave" name="idNomNave" required>
+										<input class="form-control valform" placeholder="Ej: Edbac" id="idNomNave" name="idNomNave" required>
 									</div>
 								</div>
 
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Numero Vuelo/Nave</label>
-										<input class="form-control valform" placeholder="ej: 123456" id="idNumVueloNave" name="idNumVueloNave" required>
+										<input class="form-control valform" placeholder="Ej: L-123" id="idNumVueloNave" name="idNumVueloNave" required>
 									</div>
 								</div>
 
@@ -413,7 +413,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Puerto</label>
-										<input class="form-control valform" placeholder="ej: Puerto de san antonio" id="idPuertoOrigen" name="idPuertoOrigen" required>
+										<input class="form-control valform" placeholder="Ej: Puerto de Shanghái" id="idPuertoOrigen" name="idPuertoOrigen" required>
 									</div>
 								</div>
 							</div>
@@ -452,7 +452,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Puerto</label>
-										<input class="form-control valform" placeholder="ej: Puerto de san antonio" id="idPuertoDestino" name="idPuertoDestino" required>
+										<input class="form-control valform" placeholder="Ej: Puerto de san antonio" id="idPuertoDestino" name="idPuertoDestino" required>
 									</div>
 								</div>
 							</div>

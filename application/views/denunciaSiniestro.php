@@ -3,12 +3,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-	<?php
+<!--	<?php
 /*echo "
 <pre>";
 print_r(is_null($arrPolizas));
 echo "</pre>";*/
-	?>
+	?>-->
 
 <div id="page-wrapper">
 	<div class="row">
@@ -43,8 +43,8 @@ echo "</pre>";*/
 															<?php
 														} else {
 															?>
-															<select class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
-																<option selected value="0">Seleccione</option>
+													<select class="form-control" form="form-create-sinister" id="idClienteSiniestro" name="idClienteSiniestro" required>
+																<option selected value="">Seleccione</option>
 																<?php
 															foreach ($arrClientes as $index => $key) {
 																echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -146,7 +146,7 @@ echo "</pre>";*/
 													<?php 
 													if ($this->session->userdata('perfil') == 1) {
 													?>
-													<select class="form-control" id="idPolizaSiniestro" name="idPolizaSiniestro" required disabled="true">
+													<select class="form-control" id="idPolizaSiniestro" name="idPolizaSiniestro" disabled="true" required>
 														<option value="">Seleccione</option>
 													</select>
 													<?php
@@ -168,7 +168,7 @@ echo "</pre>";*/
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Certificado</label>
-													<select class="form-control" id="idCertificadoSiniestro" name="idCertificadoSiniestro" required disabled="true">
+													<select class="form-control" id="idCertificadoSiniestro" name="idCertificadoSiniestro"  disabled="true" required>
 														<option value="">Seleccione</option>
 													</select>
 												</div>
@@ -182,7 +182,7 @@ echo "</pre>";*/
 												<div class="col-lg-6">
 													<div class="form-group">
 														<label>Monto</label>
-														<input class="form-control" placeholder="ej: 400.000" id="idMonto" name="idMonto" required>
+														<input type="number" class="form-control" min="1" placeholder="" id="idMonto" name="idMonto" required>
 													</div>
 												</div>	
 												<div class="col-lg-6">	

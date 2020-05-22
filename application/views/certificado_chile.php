@@ -56,12 +56,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</style>
 	</head>
 	<body>
-		<?php
+	<!--	<?php
 		/*echo "
 		<pre>";
 		print_r($certificado);
 		echo "</pre>";*/
-		?>
+		?>-->
 	
 		<table>
 			<caption><img src="<?=base_url() ?>recursos/images/BciSeguros.jpg"></caption>

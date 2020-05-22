@@ -9,11 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<h1 class="page-header">Registrar Usuario</h1>
 		</div>
 	</div>
-	<!--<?php
-	echo "<pre>";
-	print_r($arrUsuarios);
-	echo "</pre>";
-	?>-->
+
 	<div class="row">
 		<div class="col-lg-12">
 			<button  class="btn btn-success btn" onclick="showFormUser()" >
@@ -21,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</button>
 		</div>
 	</div>
-<!--	<form role="form" action="<?=base_url() ?>index.php/formularioEmision/crearUsuario" method="post" accept-charset='UTF-8' >-->
+
 		<div class="row">
 			<div class="col-lg-5">
 				<div class="row" style="margin-top: 20px;">

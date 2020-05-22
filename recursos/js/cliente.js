@@ -9,6 +9,7 @@ $('.idFilaActualizarCliente').click(function() {
 	var nombre_grupo = $(this).parents("tr").find("td")[8].innerHTML;
 	var rut = $(this).parents("tr").find("td")[9].innerHTML;
 	var dv = $(this).parents("tr").find("td")[10].innerHTML;
+	var dv = $(this).parents("tr").find("td")[10].innerHTML;
 	var telefono = $(this).parents("tr").find("td")[11].innerHTML;
 	
 
@@ -31,7 +32,6 @@ $('.idFilaActualizarCliente').click(function() {
 		type:'POST',
 		data:{'idCliente' : id_cliente},
 		success:function(respuesta) {
-			console.log(respuesta);
 			$("#idTBodyPolizas").html(respuesta);
 		},
 		error:function(jqXHR, textStatus, errorThrow) {
@@ -45,7 +45,6 @@ $('.idFilaActualizarCliente').click(function() {
 		type:'POST',
 		data:{'idCliente' : id_cliente},
 		success:function(respuesta) {
-			console.log(respuesta);
 			$("#idTBodyAFavor").html(respuesta);
 		},
 		error:function(jqXHR, textStatus, errorThrow) {
@@ -97,15 +96,11 @@ $("#form-create-client").submit(function(e) {
 	e.preventDefault();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
-	console.log(data);
-		console.log($(document.activeElement).attr('formaction'));
-		console.log(frm.prop('method'));
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
 		type:frm.prop('method'),
 		data:data,
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta == 0) {
 				alert("Cliente registrado exitosamente");
 				location.reload();
@@ -132,18 +127,15 @@ $('#idFilaBorrarCliente').click(function() {
 	var nombre_cliente =$('#idNameClient').val();
 	var id_cliente = $('#idClientDel').val();
 
-	console.log(id_cliente +' ' +nombre_cliente);
 	$.ajax({
 		url:'clienteMantenedor/eliminaCliente',
 		type:'POST',
 		data:{'idCliente' : id_cliente},
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta == 0) {
 				alert("El cliente '"+ nombre_cliente +"' fue eliminado exitosamente");
 				location.reload();
 			} else {
-				console.log(respuesta);
 				alert("El cliente '"+ nombre_cliente +"' no pudo ser eliminado");
 			}
 		},
@@ -171,13 +163,11 @@ $('#idFilaBorrarPoliza').click(function() {
 	var idPoliza = $('#idPol').val();
 	var idCliente = $('#idClientePol').val();
 	
-	console.log(idPoliza);
 	$.ajax({
 		url:'clienteMantenedor/eliminaPoliza',
 		type:'POST',
 		data:{'idPoliza' : idPoliza},
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta == 0) {
 				alert("La poliza fue eliminada exitosamente");
 						//refresco polizas
@@ -186,7 +176,6 @@ $('#idFilaBorrarPoliza').click(function() {
 						type:'POST',
 						data:{'idCliente' : idCliente},
 						success:function(resp) {
-							console.log(resp);
 							$("#idTBodyPolizas").html(resp);
 						},
 						error:function(jqXHR, textStatus, errorThrow) {
@@ -194,7 +183,6 @@ $('#idFilaBorrarPoliza').click(function() {
 						}
 					});
 			} else {
-				console.log(respuesta);
 				alert("la poliza no pudo ser eliminado");
 			}
 		},
@@ -207,12 +195,8 @@ $('#idFilaBorrarPoliza').click(function() {
 
 //llenar modal desde imput dibujado con echo de codeigniter
 $(document).on('click','#btnDelPolicy',function(event) {
-		console.log("entro");
-		console.log("entro");
 		var numero_poliza = $(this).parents("tr").find("td")[0].innerHTML;
 		var id_poliza = $(this).parents("tr").find("td")[3].innerHTML;
-		console.log(numero_poliza);
-		console.log(id_poliza);
 		$('#idPolDel').val(numero_poliza);
 		$('#idPol').val(id_poliza);
 });
@@ -223,15 +207,11 @@ $("#form-create-policy").submit(function(e) {
 	var idCliente = $('#idClientePol').val();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
-	console.log(data);
-	console.log($(document.activeElement).attr('formaction'));
-	console.log(frm.prop('method'));
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
 		type:frm.prop('method'),
 		data:data,
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta == 0) {
 				alert("Poliza Registrada exitosamente");
 				//refresco polizas
@@ -240,7 +220,6 @@ $("#form-create-policy").submit(function(e) {
 					type:'POST',
 					data:{'idCliente' : idCliente},
 					success:function(resp) {
-						console.log(resp);
 						$("#idTBodyPolizas").html(resp);
 					},
 					error:function(jqXHR, textStatus, errorThrow) {
@@ -268,15 +247,11 @@ $("#form-create-afavor").submit(function(e) {
 	var idCliente = $('#idClienteAFavor').val();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
-	console.log(data);
-	console.log($(document.activeElement).attr('formaction'));
-	console.log(frm.prop('method'));
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
 		type:frm.prop('method'),
 		data:data,
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta == 0) {
 				alert("Empresa a favor registrada exitosamente");
 				//refresco polizas
@@ -286,7 +261,6 @@ $("#form-create-afavor").submit(function(e) {
 					type:'POST',
 					data:{'idCliente' : idCliente},
 					success:function(resp) {
-						console.log(resp);
 						$("#idTBodyAFavor").html(resp);
 					},
 					error:function(jqXHR, textStatus, errorThrow) {
@@ -309,8 +283,6 @@ $("#form-create-afavor").submit(function(e) {
 
 //llenar modal desde imput dibujado con echo de codeigniter
 $(document).on('click','#btnDelAFavor',function(event) {
-	console.log("entro");
-	console.log("entro");
 	var nombre = $(this).parents("tr").find("td")[1].innerHTML;
 	var id_a_favor = $(this).parents("tr").find("td")[3].innerHTML;
 	$('#idNombreDel').val(nombre);
@@ -330,7 +302,6 @@ $('#idFilaBorraAfavor').click(function() {
 		type:'POST',
 		data:{'idAFavor' : idAFavor},
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta == 0) {
 				alert("La poliza fue eliminada exitosamente");
 				//refresco polizas
@@ -339,7 +310,6 @@ $('#idFilaBorraAfavor').click(function() {
 					type:'POST',
 					data:{'idCliente' : idCliente},
 					success:function(resp) {
-						console.log(resp);
 						$("#idTBodyAFavor").html(resp);
 					},
 					error:function(jqXHR, textStatus, errorThrow) {
@@ -347,7 +317,6 @@ $('#idFilaBorraAfavor').click(function() {
 					}
 				});
 			} else {
-				console.log(respuesta);
 				alert("la poliza no pudo ser eliminado");
 			}
 		},

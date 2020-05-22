@@ -1,7 +1,6 @@
 $("#idClienteCert").change(function() {
 	$("#idClienteCert option:selected").each(function() {
 		var idCliente = $('#idClienteCert').val();
-		console.log(idCliente);
 		var resetAno = '<option selected value="0">Seleccione</option>';
 		var resetMes = '<option selected value="">Seleccione</option>';
 		
@@ -12,7 +11,6 @@ $("#idClienteCert").change(function() {
 				type:"POST",
 				data:{'idCliente' : idCliente}
 			}).done(function(data) {
-				console.log(data);
 				if (data == '<option selected value="0">Seleccione</option>') {
 					$("#idAnoCert").html(data);
 					$("#idMesCert").html(resetMes);
@@ -42,7 +40,6 @@ $("#idAnoCert").change(function() {
 	$("#idAnoCert option:selected").each(function() {
 		var idCliente = $('#idClienteCert').val();
 		var idAnoCert = $('#idAnoCert').val();
-		console.log(idAnoCert);
 		var resetAno = '<option selected value="0">Seleccione</option>';
 		var resetMes = '<option selected value="">Seleccione</option>';
 		
@@ -54,7 +51,6 @@ $("#idAnoCert").change(function() {
 				data:{'idCliente' : idCliente, 
 					  'idAnoCert' : idAnoCert }
 			}).done(function(data) {
-				console.log(data);
 				if (data == '<option selected value="0">Seleccione</option>') {
 					$("#idAnoCert").html(resetAno);
 					$("#idMesCert").html(resetMes);
@@ -93,9 +89,6 @@ $('#btnObtieneCertificado').click(function() {
 	var idCliente = $('#idClienteCert').val();
 	var idAnoCert = $('#idAnoCert').val();
 	var idMesCert = $('#idMesCert').val();
-	console.log(idCliente);
-		console.log(idAnoCert);
-			console.log(idMesCert);
 
 		$.ajax({
 			type: 'POST',
@@ -106,7 +99,6 @@ $('#btnObtieneCertificado').click(function() {
 				'idMesCert':idMesCert
 			},
 			success:function(data) {
-				console.log(data);
 				$('#idCertificadosEmi').html(data);
 			},
 			error:function(jqXHR, textStatus, errorThrow) {
@@ -116,6 +108,7 @@ $('#btnObtieneCertificado').click(function() {
 	});
 });
 
+//descargar desde grilla
 $(document).on('click','.idDescargarCertificado',function(event) {
 var idCertificado = $(this).parents("tr").find("td")[3].innerHTML;
 	var idPaisEmision = $(this).parents("tr").find("td")[9].innerHTML;
@@ -129,17 +122,4 @@ var idCertificado = $(this).parents("tr").find("td")[3].innerHTML;
 	$('#formPDF').submit();
 
 });
-/*
-$('.idDescargarCertificado').click(function() {
-	//valores obtendra el dato del td por posciones [0]
-	var idCertificado = $(this).parents("tr").find("td")[3].innerHTML;
-	var idPaisEmision = $(this).parents("tr").find("td")[9].innerHTML;
-	var idCliente = $(this).parents("tr").find("td")[7].innerHTML;
-	var idPoliza = $(this).parents("tr").find("td")[8].innerHTML;
 
-	$('#idClientePdf').val(idCliente);
-	$('#idPolizaPdf').val(idPoliza);
-	$('#idCertificadoPdf').val(idCertificado);
-	$('#idPaisEmisionPdf').val(idPaisEmision);	
-	$('#formPDF').submit();
-});*/

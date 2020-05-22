@@ -76,18 +76,15 @@ $('#idFilaBorrar').click(function() {
 	var nombre_usuario =$('#idNameUser').val();
 	var id_usuario = $('#idUserDel').val();
 
-	console.log(id_usuario +' ' +nombre_usuario);
 	$.ajax({
 		url:'cuentaUsuario/eliminaUsuario',
 		type:'POST',
 		data:{'idUsuario' : id_usuario},
 		success:function(respuesta) {
-			console.log(respuesta);
 			if (respuesta == 0) {
 				alert("el usuario "+ nombre_usuario +" fue eliminado exitosamente");
 				location.reload();
 			} else {
-				console.log(respuesta);
 				alert("el usuario "+ nombre_usuario +" no pudo ser eliminado");
 			}
 		},

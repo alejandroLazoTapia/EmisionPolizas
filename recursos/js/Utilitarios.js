@@ -61,10 +61,8 @@ function showModalGetCertificate()
 		url:"formularioEmision/obtieneClientesModal",
 		type:"POST",
 		}).done(function(dataClientes) {
-			console.log(dataClientes);
 		$("#idClientes").html(dataClientes);
 		var idCliente = $('#idClientes').val();
-		console.log("valor cliente" + idCliente);
 		if (idCliente > 0) {
 			$.ajax({
 
@@ -99,10 +97,8 @@ function showForm()
 		url:"formularioEmision/obtieneClientes",
 		type:"POST",
 	}).done(function(dataClientes) {
-		console.log(dataClientes);
 		$("#idClientes").html(dataClientes);
 		var idCliente = $('#idClientes').val();
-		console.log("valor cliente" + idCliente);
 
 	if (idCliente != ""){
 		$.ajax({
@@ -150,7 +146,6 @@ $("#idClientes").change(function() {
 					type:"POST",
 					data:{'idCliente' : idCliente}
 				}).done(function(data) {
-					console.log(data);
 					if (data == '<option value="0">Seleccione</option>') {
 						$("#idPolizas").val(0);
 						$("#idPolizas").prop("disabled",true);
@@ -190,38 +185,6 @@ $("#idCliente").change(function() {
 	});
 	
 
-$("#idClienteSiniestro").change(function() {
-		$("#idClienteSiniestro option:selected").each(function() {
-			var idCliente = $('#idClienteSiniestro').val();
-			var resetTbody = '<tr><td colspan="4"><div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td></tr>';
-			if(idCliente > 0){
-				$.ajax({
-					url:"formularioEmision/obtieneTipoPoliza",
-					type:"POST",
-					data:{'idCliente' : idCliente}
-				}).done(function(data) {
-					$("#idPolizaSiniestro").html(data);
-					$("#idPolizaSiniestro").removeAttr('disabled');
-					$("#idCertificadoSiniestro").val("");
-					$("#idCertificadoSiniestro").attr("disabled",true);
-					$.ajax({
-						url:'denunciaSiniestro/obtieneSiniestrosCLiente',
-						type:'POST',
-						data:{'idClienteSiniestro' : idCliente},
-						success:function(respuesta) {
-							console.log(respuesta);
-							$("#idTBodySiniestros").html(respuesta);
-						},
-						error:function(jqXHR, textStatus, errorThrow) {
-							alert('Error! = ' + errorThrow);
-						}
-					});
-				});
-			}else{
-				$("#idTBodySiniestros").html(resetTbody);
-			}
-		});
-	});
 
 $("#idPoliza").change(function() {
 		$("#idPoliza option:selected").each(function() {
@@ -348,5 +311,25 @@ $("#idTipoEmbalaje").change(function() {
 		}
 	});
 });
+
+$('#myModal').on('shown.bs.modal', function () {
+	$('#myInput').trigger('focus')
+})
+
+$('#myModalUpdate').click(function () {
+	var idCertificado = $('#idCertAct').val();
+	if (idCertificado == "") {
+		alert("Debes seleccionar un Certificado");
+	} else {
+		$('#myInput').trigger('focus')
+	}
+})
+
+
+
+$('#myModalDelete').on('shown.bs.modal', function () {
+	$('#myInput').trigger('focus')
+})
+
 
 

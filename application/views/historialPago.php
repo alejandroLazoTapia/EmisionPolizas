@@ -8,12 +8,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<h1 class="page-header">Historial Pagos</h1>
 	</div>
 </div>
-<?php
+<!--<?php
 /*	echo "<pre>";
 print_r($arrClientes);
 print_r($arrCertificados);
 echo "</pre>";*/
-?>
+?>-->
 <div class="row">
 <div class="col-lg-12">
 	<div class="panel panel-default">
