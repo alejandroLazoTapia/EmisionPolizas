@@ -21,7 +21,7 @@ class HistorialPago extends CI_Controller
 		$perfil = $this->session->userdata('perfil');
 
 		// obtenemos el array de clientes
-		$datos['arrClientes'] = $this->Certificado->obtenerClientes($nombreUsuario);
+		$datos['arrClientes'] = $this->Certificado->obtenerClientes($idUsuario, $perfil);
 
 		if ($perfil == 1) {
 			$datos['arrAno'] = null;

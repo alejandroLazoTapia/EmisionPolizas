@@ -18,7 +18,7 @@ class Login extends CI_Controller
 			{
 				$data = array(
 				'usuario' 	=> $usuario,
-				'id' 	=> $fila->id_grupo,
+				'id' 	=> $fila->id,
 				'nombre' 	  	=> $fila->nombre,
 				'perfil' 	  	=> $fila->id_perfil,
 				'login' 	=> TRUE

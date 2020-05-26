@@ -37,7 +37,6 @@ class CuentaUsuario extends CI_Controller
 		if ($this->input->is_ajax_request()) {
 
 			$pass = $this->input->post('idContrasena');
-			$id_grupo = $this->input->post('idCliente');
 			$id_pais = $this->input->post('idPaisEmision');
 			$id_perfil = $this->input->post('idPerfil');
 			$nombre_usuario = $this->input->post('idNombreUsuario');
@@ -46,7 +45,6 @@ class CuentaUsuario extends CI_Controller
 			$data = [
 			"nombre_usuario" => $nombre_usuario,
 			"pass" => $pass,
-			"id_grupo" => $id_grupo,			
 			"id_pais" => $id_pais,
 			"id_perfil" => $id_perfil,
 			"nombre" => $nombre,
@@ -93,7 +91,6 @@ class CuentaUsuario extends CI_Controller
 		if ($this->input->is_ajax_request()) {
 			$idUsuario = $this->input->post('idUsuario');
 			$pass = $this->input->post('idContrasena');
-			$id_grupo = $this->input->post('idCliente');
 			$id_pais = $this->input->post('idPaisEmision');
 			$id_perfil = $this->input->post('idPerfil');
 			$nombre_usuario = $this->input->post('idNombreUsuario');
@@ -102,7 +99,6 @@ class CuentaUsuario extends CI_Controller
 			$data = [
 				"nombre_usuario" => $nombre_usuario,
 				"pass" => $pass,
-				"id_grupo" => $id_grupo,
 				"id_pais" => $id_pais,
 				"id_perfil" => $id_perfil,
 				"nombre" => $nombre

@@ -64,59 +64,16 @@ echo "</pre>";*/
 																	<th>Nro Certificado</th>
 																	<th>Ingreso</th>
 																	<th>Estado</th>
-																	<th style="text-align: center;">Ver</th>
+																	<th style="text-align: center;display: none">Ver</th>
 																</tr>
 															</thead>
 														<tbody id="idTBodySiniestros">
 
-															<?php
-													if (!empty($arrSiniestros)) {
-														if ($this->session->userdata('perfil')==1) {
-														?>
 														<tr>
 															<td colspan="4">
 																<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
 														</tr>
-														<?php 
-														}else{
-													$i = 1;
-													foreach ($arrSiniestros as $index => $key) {
-														echo"<tr>";
-														echo '<td>'.$key["id_siniestro"].'</td>';
-														echo '<td>'.$key["id_certificado"].'</td>';
-														echo '<td>'.$key["fecha_ingreso"].'</td>';
-														echo '<td>'.$key["estado_siniestro"].'</td>';
-												?>
-															<td style="text-align: center;">
-																<a class="idVerSiniestro">
-																	<span class="glyphicon glyphicon-eye-open"></span>
-																</a>
-															</td>
-															<?php
-															echo'</tr>';
-																		$i = $i +1;
-																	}
-																}
-														} else {
-															if ($this->session->userdata('perfil')==1){
-															
-																?>
-																			<tr>
-																				<td colspan="4">
-																					<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
-																			</tr>
-																		<?php 	} else {
-
-
-																		?>
-																		<tr>
-																			<td colspan="4">
-																				<div class="alert alert-warning" role="alert"> Cliente no posee sinietros ingresados</div></td>
-																		</tr>
-																		<?php
-																	}
-																}
-																		?>
+						
 															</tbody>
 														</table>
 													</div><!-- /.table-responsive -->

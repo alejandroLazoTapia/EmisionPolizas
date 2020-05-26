@@ -112,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<?php if ($this->session->userdata('perfil') == 2) { ?>
 										<tr>
 											<td colspan="7" style="text-align: center">
-												<div class="alert alert-warning" role="alert"> Seleccione Periodo</div></td>
+												<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>
 										</tr>
 										<?php
 									} else {

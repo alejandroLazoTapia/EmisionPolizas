@@ -58,7 +58,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											echo '<td style="display:none">'.$key["nombre"].'</td>';
 											echo '<td style="display:none">'.$key["id_perfil"].'</td>';
 											echo '<td style="display:none">'.$key["id_pais"].'</td>';
-											echo '<td style="display:none">'.$key["id_cliente"].'</td>';
 												echo'</tr>';
 												$i = $i +1;
 											}
@@ -177,27 +176,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											</div>
 											<div class="col-lg-8">
 												<div class="form-group">
-													<label>Cliente</label>
-												<select class="form-control" id="idCliente" name="idCliente" required>
-														<option value="">Seleccione</option>
-														<?php
-														foreach ($arrClientes as $index => $key) {
-															echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
-													}
-													?>
-													</select>
+													<button type="submit" formaction="<?=base_url() ?>index.php/cuentaUsuario/guardarUsuario" id="btnRegistrarUsuario" class="btn btn btn-success" style="display: none;margin-top: 25px;">Registrar</button>
+													<button type="submit" formaction="<?=base_url() ?>index.php/cuentaUsuario/actualizarUsuario" id="btnActualizarUsuario" class="btn btn btn-success" style="display: none;margin-top: 25px;">Actualizar</button>
 												</div>
 											</div>
 										</div>
 										
-										<div class="col-lg-12">
+										<!--<div class="col-lg-12">
 											<div class="col-lg-12">
 												<div class="form-group">
 												<button type="submit" formaction="<?=base_url() ?>index.php/cuentaUsuario/guardarUsuario" id="btnRegistrarUsuario" class="btn btn btn-success" style="display: none;margin-top: 10px;">Registrar</button>
 												<button type="submit" formaction="<?=base_url() ?>index.php/cuentaUsuario/actualizarUsuario" id="btnActualizarUsuario" class="btn btn btn-success" style="display: none;margin-top: 10px;">Actualizar</button>
+												</div>
 											</div>
-										</div>
-									</div>
+										</div>-->
 								</div>
 							</div>
 						</div>

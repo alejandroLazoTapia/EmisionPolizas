@@ -8,14 +8,12 @@ $('.idFilaActualizar').click(function() {
 	var nombre = $(this).parents("tr").find("td")[6].innerHTML;
 	var id_perfil = $(this).parents("tr").find("td")[7].innerHTML;
 	var id_pais = $(this).parents("tr").find("td")[8].innerHTML;
-	var id_cliente = $(this).parents("tr").find("td")[9].innerHTML;
 
 
 	$('#idUsuario').val(id_usuario);
 	$('#idNombreUsuario').val(nombre_usuario);
 	$('#idNombre').val(nombre);
 	$('#idPaisEmision').val(id_pais);
-	$('#idCliente').val(id_cliente);
 	$('#idPerfil').val(id_perfil);
 	$("#btnRegistrarUsuario").hide();
 	$("#btnActualizarUsuario").show();

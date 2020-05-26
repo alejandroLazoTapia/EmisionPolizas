@@ -3,6 +3,8 @@ $("#idClienteCert").change(function() {
 		var idCliente = $('#idClienteCert').val();
 		var resetAno = '<option selected value="0">Seleccione</option>';
 		var resetMes = '<option selected value="">Seleccione</option>';
+		var resetTbody = '<tr><td colspan="7" style="text-align: center"><div class="alert alert-warning" role="alert">Seleccione cliente y periodo</div></td></tr>';
+		var resetTbodySP = '<tr><td colspan="7" style="text-align: center"><div class="alert alert-warning" role="alert">Cliente no posee pólizas registradas</div></td></tr>';
 		
 		if (idCliente > 0) {
 		
@@ -17,6 +19,7 @@ $("#idClienteCert").change(function() {
 					$("#idAnoCert").prop("disabled",true);
 					$("#idMesCert").prop("disabled",true);
 					$("#btnObtieneCertificado").prop("disabled",true);
+					$("#idCertificadosEmi").html(resetTbodySP);
 					alert("El cliente no posee certificados emitidos");
 				} else {
 					$("#idAnoCert").html(data);
@@ -31,6 +34,7 @@ $("#idClienteCert").change(function() {
 			$("#idMesCert").html(resetMes);
 			$("#idMesCert").prop("disabled",true);
 			$("#btnObtieneCertificado").prop("disabled",true);
+			$("#idCertificadosEmi").html(resetTbody);
 		}
 	});
 });

@@ -6,16 +6,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Emisión Certificado</h1>
-				<?php
-			<!--	/*echo "
-					<pre>";
-					print_r($arrAfavor);
-					print_r($arrMonedas);
-					print_r($arrTipoEmbalaje);
-					print_r($arrTransporte);
-					echo "</pre>";*/
-				?>-->
-				
 			</div>
 
 			<div class="col-lg-12">
@@ -113,7 +103,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												} else {
 													?>
 													<select class="form-control valform" id="idCliente" name="idCliente" required>
-														<option value="">Seleccione</option>
 														<?php
 														echo '<option selected value="">Seleccione</option>';
 														foreach ($arrClientes as $index => $key) {
@@ -130,12 +119,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Póliza</label>
-										<select class="form-control valform" id="idPoliza" name="idPoliza" required>
+										<select class="form-control valform" id="idPoliza" name="idPoliza" disabled="true" required>
 												<option value="">Seleccione</option>
 											</select>
 									</div>
 								</div>
-									<div class="col-lg-4">
+							<!--		<div class="col-lg-4">
 										<div class="form-group">
 											<label>A favor</label>
 										<select class="form-control valform" id="idAFavor" name="idAFavor" required>
@@ -147,29 +136,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												?>
 											</select>
 										</div>
+									</div>-->
+								<div class="col-lg-4">
+									<div class="form-group">
+										<label>País Emisión</label>
+										<select class="form-control valform" id="idPaisEmision" name="idPaisEmision" required>
+											<option value="">Seleccione</option>
+											<?php
+								foreach ($arrPaisesEmision as $index => $key) {
+									echo '<option value="'.$key["id_pais"].'">'.$key["nombre_pais"].'</option>';
+								}
+								?>
+										</select>
 									</div>
+								</div>
 							</div>
 							<div class="col-lg-12">
-									<div class="col-lg-4">
-										<div class="form-group">
-											<label>País Emisión</label>
-										<select class="form-control valform" id="idPaisEmision" name="idPaisEmision" required>
-												<option value="">Seleccione</option>
-												<?php
-												foreach ($arrPaisesEmision as $index => $key) {
-													echo '<option value="'.$key["id_pais"].'">'.$key["nombre_pais"].'</option>';
-												}
-												?>
-											</select>
-										</div>
-									</div>
-								<div class="col-lg-4">
+									
+								<div class="col-lg-6">
 									<div class="form-group">
 										<label>Dirección</label>
 										<input class="form-control valform" placeholder="ej: las margaritas 2145, santiago, chile." id="idDireccion" name="idDireccion"  required>
 									</div>
 								</div>
-								<div class="col-lg-4">
+								<div class="col-lg-6">
 									<div class="form-group">
 										<label>Referencia Interna</label>
 										<input class="form-control valform" placeholder="" id="idRefInterna"  name="idRefInterna" required>
@@ -203,8 +193,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Deducible</label>
-										<input min="1" type="number" class="form-control valform" placeholder="" 
-												id="idPrimaMinima" name="idPrimaMinima" required></input>
+										<input class="form-control valform" placeholder="" id="idDeducible" name="idDeducible" required></input>
 
 									</div>
 								</div>
@@ -476,7 +465,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class="col-lg-4">
 						<div class="form-group">
-							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" id="btnModalEli" name="btnModalEli" type="button" class="btn btn btn-danger" data-toggle="modal" data-target="#myModalDelete" disabled="true">Eliminar</button>
+							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" id="btnModalEli" name="btnModalEli" type="button" class="btn btn btn-danger" data-toggle="modal" data-target="#myModalDelete" disabled="true">Anular</button>
 						</div>
 					</div>
 				</div>

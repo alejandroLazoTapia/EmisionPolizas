@@ -7,6 +7,7 @@ class ClienteMantenedor extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model("Cliente");
+		$this->load->model("Usuario");
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}
@@ -17,10 +18,10 @@ class ClienteMantenedor extends CI_Controller
 		//datos logeado
 		$nombreUsuario = $this->session->userdata('usuario');
 		$idUsuario = $this->session->userdata('id');
-
+		$idPerfil = $this->session->userdata('perfil');
 		// obtenemos el array de clientes
-		$datos['arrClientes'] = $this->Cliente->getAllClient();
-
+		$datos['arrClientes'] = $this->Cliente->getAllClient($idUsuario, $idPerfil);
+		$datos['arrUsuarios'] = $this->Usuario->getUsersCliente($idUsuario, $idPerfil);
 		$this->load->view('header');
 		$this->load->view('menu');
 		$this->load->view('clienteMantenedor',$datos);
@@ -34,27 +35,19 @@ class ClienteMantenedor extends CI_Controller
 		if ($this->input->is_ajax_request()) {
 
 			$nombre = $this->input->post('idNombreCliente');
-			$rut = $this->input->post('idRut');
-			$dv = $this->input->post('idDv');
-			$id_grup = $this->input->post('idGrupo');
+			$rut_dni = $this->input->post('idRutDni');
+			$id_usuario = $this->input->post('idUsuario');
 			$direccion = $this->input->post('idDireccionCliente');
 			$condiciones = $this->input->post('idCondiciones');
 			$telefono = $this->input->post('idTelefono');
-			$id_grupo = 0;
-			$fila = $this->Cliente->newId();
-			if ($this->Cliente->existClient($rut)==FALSE)
+			
+			if ($this->Cliente->existClient($rut_dni)==FALSE)
 			{
-				if ($id_grup == 0) {
-					$id_grupo = $fila->idNew;
-				}else{
-					$id_grupo = $id_grup;
-				}
 
 				$data = [
+				"id_usuario" => $id_usuario,
+				"rut_dni" => $rut_dni,
 				"nombre" => $nombre,
-				"rut" => $rut,
-				"dv" => $dv,
-				"id_grupo" => $id_grupo,
 				"direccion" => $direccion,
 				"condiciones" => $condiciones,
 				"telefono" => $telefono,
@@ -98,20 +91,19 @@ class ClienteMantenedor extends CI_Controller
 		//El metodo is_ajax_request() de la libreria input permite verificar
 		//si se esta accediendo mediante el metodo AJAX
 		if ($this->input->is_ajax_request()) {
-			$idCliente = $this->input->post('idCliente');
+			$idCliente = $this->input->post('idCliente');	
 			$nombre = $this->input->post('idNombreCliente');
-			$rut = $this->input->post('idRut');
-			$dv = $this->input->post('idDv');
-			$id_grupo = $this->input->post('idGrupo');
+			$rut_dni = $this->input->post('idRutDni');
+			$id_usuario = $this->input->post('idUsuario');
 			$direccion = $this->input->post('idDireccionCliente');
 			$condiciones = $this->input->post('idCondiciones');
 			$telefono = $this->input->post('idTelefono');
+			
 
 			$data = [
 				"nombre" => $nombre,
-				"rut" => $rut,
-				"dv" => $dv,
-				"id_grupo" => $id_grupo,
+				"rut_dni" => $rut_dni,
+				"id_usuario" => $id_usuario,
 				"direccion" => $direccion,
 				"condiciones" => $condiciones,
 				"telefono" => $telefono,
@@ -157,6 +149,8 @@ class ClienteMantenedor extends CI_Controller
 		}
 	}
 	
+	
+/*	
 	public function obtieneAFavorCLiente()
 	{
 		$idCliente = $this->input->post('idCliente');
@@ -185,7 +179,9 @@ class ClienteMantenedor extends CI_Controller
 			echo '<td colspan="3"><div class="alert alert-warning" role="alert"> No existen Empesas a Favor ingresadas</div></td>';
 			echo "</tr>";
 		}
-	}
+	}*/
+	
+	
 	
 	public function guardarPoliza()
 	{
@@ -236,7 +232,8 @@ class ClienteMantenedor extends CI_Controller
 			echo 4;
 		}
 	}	
-	
+
+/*	
 	public function guardarAFavor()
 	{
 		//El metodo is_ajax_request() de la libreria input permite verificar
@@ -289,6 +286,7 @@ class ClienteMantenedor extends CI_Controller
 			echo 4;
 		}
 	}
+*/
 
 }
 ?>

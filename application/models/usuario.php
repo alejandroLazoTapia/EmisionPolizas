@@ -17,6 +17,28 @@ class Usuario extends CI_Model
 		
 	}
 	
+	public function getUsersCliente($idUsuario, $idPerfil)
+	{
+		$sql = "select usu.id as id_usuario,
+				usu.nombre_usuario
+			  FROM USUARIO usu
+			  inner join PERFIL per on per.id = usu.id_perfil
+			  WHERE usu.estado_reg = 1
+			  and per.estado_reg = 1
+			  and usu.id = case when '".$idPerfil."' = 1 then  usu.id
+						   else '".$idUsuario."'
+						   end
+			  and usu.id_perfil = 2
+			  order by usu.nombre_usuario asc";
+
+		$result = $this->db->query($sql);
+		if ($result->num_rows() > 0) {
+			return $result->result_array();
+		} else {
+			return null;
+		}
+	}
+	
 	public function getUsers()
 	{
 		$sql = "select usu.id as id_usuario,
@@ -24,8 +46,7 @@ class Usuario extends CI_Model
                        usu.nombre as nombre,
                        per.id as id_perfil,
 					   per.desc_perfil as tipo_perfil,
-                       usu.id_pais as id_pais,
-					   usu.id_grupo as id_cliente
+                       usu.id_pais as id_pais
 				  FROM USUARIO usu
 			      inner join PERFIL per on per.id = usu.id_perfil
 				  WHERE usu.estado_reg = 1

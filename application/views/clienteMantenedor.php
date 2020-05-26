@@ -3,20 +3,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
+
+
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">Registrar Cliente</h1>
 		</div>
 	</div>
-<!--	<?php
-/*	echo "<pre>";
-	print_r($arrClientes);
-	echo "</pre>";*/
-	?>-->
 	<div class="row">
 		<div class="col-lg-12">
-			<button  class="btn btn-success btn" onclick="showFormClient()" >
+			<button  class="btn btn-success btn" onclick="showFormClient()" id="btnNuevoCliente">
 				Nuevo Cliente
 			</button>
 		</div>
@@ -60,10 +57,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										echo '<td style="display:none">'.$key["id_cliente"].'</td>';
 										echo '<td style="display:none">'.$key["direccion_cliente"].'</td>';
 										echo '<td style="display:none">'.$key["condiciones"].'</td>';
-										echo '<td style="display:none">'.$key["id_grupo"].'</td>';
-										echo '<td style="display:none">'.$key["nombre_grupo"].'</td>';
-										echo '<td style="display:none">'.$key["rut"].'</td>';
-										echo '<td style="display:none">'.$key["dv"].'</td>';
+										echo '<td style="display:none">'.$key["id_usuario"].'</td>';
+										echo '<td style="display:none">'.$key["nombre_usuario"].'</td>';
+										echo '<td style="display:none">'.$key["rut_dni"].'</td>';
 										echo '<td style="display:none">'.$key["telefono"].'</td>';
 										echo'</tr>';
 										$i = $i +1;
@@ -138,12 +134,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										</div>
 									</div>
 									<div class="col-lg-4">	
-										<label>Rut</label>
-										<div class="form-inline">
-											<input type="number" name="idRut" maxlength="7" maxlength="8" id="idRut" class="form-control" style="width: 60%;display: inline-block;" required>
-												&nbsp;-&nbsp;
-												<input type="text" name="idDv" id="idDv" maxlength="1" class="form-control" style="width: 25%;display: inline-block;text-align: center;" required>
-										</div>
+										<div class="form-group">
+										<label>RUT/DNI</label>
+											<input type="text" name="idRutDni" id="idRutDni" maxlength="20" class="form-control" required>
+											</div>
 									</div>	
 									<div class="col-lg-8">
 										<div class="form-group">
@@ -165,20 +159,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										</div>
 									</div>
 
-								<div class="col-lg-12">
-									<div class="form-group">
-										<label>Grupo</label>
-											<select class="form-control" id="idGrupo" name="idGrupo" required>
-											<option value="0" style="background-color: #ff9b94">Nuevo</option>
-											<option value="" selected>Seleccione</option>
-											<?php
-												foreach ($arrClientes as $index => $key) {
-												echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
-											}
-											?>
-										</select>
+									<?php
+									if ($this->session->userdata('perfil')==1) {
+									?>
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label>Usuario</label>
+											<select class="form-control" id="idUsuario" name="idUsuario" required>
+												<option value="" selected>Seleccione</option>
+												<?php
+									foreach ($arrUsuarios as $index => $key) {
+										echo '<option value="'.$key["id_usuario"].'">'.$key["nombre_usuario"].'</option>';
+									}
+									?>
+											</select>
+										</div>
 									</div>
-								</div>
+									<?php } else { ?>
+									<div class="col-lg-12">
+										<div class="form-group">
+											<label>Usuario</label>
+											<select class="form-control" id="idUsuario" name="idUsuario" required>
+												<?php
+									foreach ($arrUsuarios as $index => $key) {
+										echo '<option selected readonly value="'.$key["id_usuario"].'">'.$key["nombre_usuario"].'</option>';
+									}
+									?>
+											</select>
+										</div>
+									</div>
+									<?php } ?>
+								
 
 								<div class="col-lg-12">
 										<div class="form-group">
@@ -294,7 +305,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</div>
 			
 <!--	EMPRESAS a Favor-->
-			<div class="row" style="margin-top: 20px;" id="div-create-afavor">
+<!--			<div class="row" style="margin-top: 20px;" id="div-create-afavor">
 				<div class="col-lg-12">
 					<div class="panel panel-default" >
 						<div class="panel-heading" style="color:#fff;background-color: #428bca;">
@@ -314,7 +325,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</tbody>
 								</table>
 							</div>
-							<!-- /.table-responsive -->
 						</div>
 
 
@@ -386,7 +396,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 				</div>
-			</div>		
+			</div>-->		
 		</div>
 	</div>
 </div>

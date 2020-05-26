@@ -17,11 +17,12 @@ class DenunciaSiniestro extends CI_Controller
 			//datos logeado
 			$nombreUsuario = $this->session->userdata('usuario');
 			$idUsuario = $this->session->userdata('id');
+			$idPerfil = $this->session->userdata('perfil');
 
 			$datos['arrPolizas'] = $this->Siniestro->getPolicyClientId($idUsuario);
 			$datos['arrSiniestros'] = $this->Siniestro->getSinesterClientId($idUsuario);
-			$datos['arrClientes'] = $this->Certificado->obtenerClientes($nombreUsuario);
-/*			echo var_dump($datos);*/
+			$datos['arrClientes'] = $this->Certificado->obtenerClientes($idUsuario, $idPerfil);
+
 			$this->load->view('header');
 			$this->load->view('menu');
 			$this->load->view('denunciaSiniestro',$datos);
@@ -41,7 +42,7 @@ class DenunciaSiniestro extends CI_Controller
 					print '<td>'.$key["id_certificado"].'</td>';
 					print '<td>'.$key["fecha_ingreso"].'</td>';
 					print '<td>'.$key["estado"].'</td>';
-					print '<td style="text-align: center;"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalVerSiniestro"><span class="glyphicon glyphicon-eye-open" ></span></a></td>';
+					print '<td style="text-align: center;display: none"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalVerSiniestro"><span class="glyphicon glyphicon-eye-open" ></span></a></td>';
 					print"</tr>";
 				}
 			} else {

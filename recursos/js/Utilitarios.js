@@ -1,3 +1,4 @@
+
 $(function () {
     var dateFormat = 'dd-mm-yy',
       from = $("#fechaEmbarque")
@@ -109,13 +110,10 @@ function showForm()
 		}).done(function(data) {
 			$("#idCliente").prop("readonly");
 			$("#idPoliza").html(data);
-			$("#idAFavor").html(resetAfavor);
-
 		});  
 	}else{
-		$("#idCliente").prop("disabled",false);
+		$("#idPoliza").prop("disabled",true);
 		$("#idPoliza").html(resetPoliza);
-		$("#idAFavor").html(resetAfavor);
 	}
 		setTimeout(function() {
 			$('#form-create-certificate').show("slow");
@@ -170,23 +168,33 @@ $("#idClientes").change(function() {
 $("#idCliente").change(function() {
 		$("#idCliente option:selected").each(function() {
 			var idCliente = $('#idCliente').val();
-			var resetAfavor = '<option value="">Seleccione</option>';
-			$.ajax({
+			var resetPoliza = '<option value="">Seleccione</option>';
+			if (idCliente != "") {
+				$.ajax({
 
-				url:"formularioEmision/obtieneTipoPoliza",
-				type:"POST",
-				data:{'idCliente' : idCliente}
-			}).done(function(data) {
-				$("#idPoliza").html(data);
-				$("#idAFavor").html(resetAfavor);
-
-			});  
+					url:"formularioEmision/obtieneTipoPoliza",
+					type:"POST",
+					data:{'idCliente' : idCliente}
+				}).done(function(data) {
+					if (data == '<option value="">Seleccione</option>') {
+						$("#idPoliza").html(data);
+						$("#idPoliza").prop("disabled", true);
+						alert("el cliente no posee polizas registradas");
+					}else{
+							$("#idPoliza").prop("disabled", false);
+							$("#idPoliza").html(data);
+						}
+				});  
+			}else{
+				$("#idPoliza").html(resetPoliza);
+				$("#idPoliza").prop("disabled", true);
+			}
 		});
 	});
 	
 
 
-$("#idPoliza").change(function() {
+/*$("#idPoliza").change(function() {
 		$("#idPoliza option:selected").each(function() {
 			var idCliente = $('#idCliente').val();
 			var idPoliza = $('#idPoliza').val();
@@ -203,7 +211,7 @@ $("#idPoliza").change(function() {
 
 			});
 		});
-	});
+	});*/
 
 $("#idPolizas").change(function() {
 		$("#idPolizas option:selected").each(function() {
@@ -311,6 +319,7 @@ $("#idTipoEmbalaje").change(function() {
 		}
 	});
 });
+
 
 $('#myModal').on('shown.bs.modal', function () {
 	$('#myInput').trigger('focus')

@@ -1,11 +1,10 @@
-var idCertGlobal;
 
 $('#btnObtieneDatos').click(function(){
 	
 	var idCliente = $('#idClientes').val();
 	var idPoliza = $('#idPolizas').val();
 	var idCertificado = $('#idCertificados').val();
-
+    console.log(idCliente+idPoliza+idCertificado)
 	setTimeout(function() {
 	$.ajax({
 		type: 'POST',
@@ -24,12 +23,10 @@ $('#btnObtieneDatos').click(function(){
 				url:"formularioEmision/obtieneTipoPoliza/",
 				type:"POST",
 				data:{'idCliente':idCliente}
-
 			}).done(function(dataPol) {
-				
 					$("#idPoliza").html(dataPol);
 					$('#idPoliza').val(data[0].id_poliza);	 
-					$('#idAFavor').val(data[0].id_a_favor);							 
+					$('#idPoliza').prop("disabled", false);	 
 					$.ajax({
 
 						url:"formularioEmision/obtieneCiudadesPais/",
@@ -47,7 +44,7 @@ $('#btnObtieneDatos').click(function(){
 						}).done(function(dataCiuDes) {
 							$("#idCiudadDestino").html(dataCiuDes);
 						    $('#idCiudadDestino').val(data[0].id_est_reg_destino);							
-							$.ajax({
+							/*$.ajax({
 
 								url:"formularioEmision/obtieneAFavorCliente/",
 								type:"POST",
@@ -55,7 +52,7 @@ $('#btnObtieneDatos').click(function(){
 							}).done(function(dataAfa) {
 								$("#idAFavor").html(dataAfa);
 								$('#idAFavor').val(data[0].id_a_favor);
-							});  
+							});  */
 						});  
 					});  
 				});  
@@ -68,7 +65,7 @@ $('#btnObtieneDatos').click(function(){
 			$('#idDireccion').val(data[0].direccion_cliente);
 			$('#idRefInterna').val(data[0].referencia_interna);
 			$('#idMoneda').val(data[0].id_moneda);										
-			$('#idPrimaMinima').val(data[0].deducible);
+			$('#idDeducible').val(data[0].deducible);
 			$('#idMontoAsegurado').val(data[0].monto_asegurado);
 			$('#idTasa').val(data[0].tasa);
 			$('#idClausula').val(data[0].id_clausula);										
@@ -143,7 +140,7 @@ $("#form-create-certificate").submit(function (e) {
 	$('#idClientePdf').val(idCliente);
 	$('#idPolizaPdf').val(idPoliza);	
 	$('#idPaisEmisionPdf').val(idPaisEmision);	
-	
+	console.log(data);
 	if ($(document.activeElement).attr('formaction') != "no"){
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),

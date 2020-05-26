@@ -74,7 +74,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								Entrar
 							</button>
 						</div>
-
 					<!--	<div class="text-center p-t-46 p-b-20">
 							<span class="txt2">
 								or sign up using

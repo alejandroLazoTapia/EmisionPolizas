@@ -103,6 +103,7 @@ $("#idClienteSiniestro").change(function() {
 		var resetTbody = '<tr><td colspan="4"><div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td></tr>';
 		var resetPoliza = '<option value="">Seleccione</option>';
 		var resetCert = '<option value="">Seleccione</option>';
+		var resetTbodySP = '<tr><td colspan="4"><div class="alert alert-warning" role="alert"> Cliente no posee polizas registradas</div></td></tr>'
 		if (idCliente != "") {
 			$.ajax({
 				url:"formularioEmision/obtieneTipoPoliza",
@@ -110,13 +111,19 @@ $("#idClienteSiniestro").change(function() {
 				data:{'idCliente' : idCliente}
 			}).done(function(data) {
 				if (data == '<option value="">Seleccione</option>') {
+					$("#idPolizaSiniestro").prop("disabled",false);
+					$("#idCertificadoSiniestro").prop("disabled",false);			
 					$("#idPolizaSiniestro").html(data);
-				alert("El cliente no posee polizas registradas");
+					$("#idCertificadoSiniestro").html(resetCert);
+					$("#idPolizaSiniestro").prop("disabled",true);
+					$("#idCertificadoSiniestro").prop("disabled",true);			
+					$("#idTBodySiniestros").html(resetTbodySP);
+				alert("El cliente no posee polizas registradas");		
 				}else{
 					$("#idPolizaSiniestro").html(data);
 					$("#idPolizaSiniestro").removeAttr('disabled');
 					$("#idCertificadoSiniestro").html(resetCert);
-					$("#idCertificadoSiniestro").attr("disabled",true);
+					$("#idCertificadoSiniestro").prop("disabled",true);
 					$.ajax({
 						url:'denunciaSiniestro/obtieneSiniestrosCLiente',
 						type:'POST',
@@ -133,8 +140,8 @@ $("#idClienteSiniestro").change(function() {
 		} else {
 			$("#idPolizaSiniestro").html(resetPoliza);
 			$("#idCertificadoSiniestro").html(resetCert);
-			$("#idPolizaSiniestro").attr("disabled",true);
-			$("#idCertificadoSiniestro").attr("disabled",true);								
+			$("#idPolizaSiniestro").prop("disabled",true);
+			$("#idCertificadoSiniestro").prop("disabled",true);								
 			$("#idTBodySiniestros").html(resetTbody);
 		}
 	});

@@ -2,17 +2,18 @@
 
 class Certificado extends CI_Model
 {
-	public function obtenerClientes($nombreUsuario = '')
+	public function obtenerClientes($idUsuario, $idPerfil)
 	{
 	
 		$sql = "select distinct cli.id as id_cliente,
 		cli.nombre as nombre_cliente
 		FROM  CLIENTE cli
-		INNER JOIN USUARIO usu on cli.id = case when usu.id_perfil = 2 then usu.id_grupo
-		else
-			cli.id end and usu.estado_reg = 1
-		WHERE   usu.nombre_usuario = '".$nombreUsuario."'
+		LEFT JOIN USUARIO usu on usu.id = cli.id_usuario
+		WHERE   usu.id = case when '".$idPerfil."' = 1 then usu.id
+						else '".$idUsuario."'
+                        end
 		and cli.estado_reg = 1
+        and usu.estado_Reg = 1
 		order by cli.nombre asc";
 
 		$result = $this->db->query($sql);
@@ -94,22 +95,20 @@ class Certificado extends CI_Model
 	}
 	
 	
-	public function obtenerCertificadoPrevio($idCliente = '', $idPoliza = '', $idCertificado = '' )
+	public function obtenerCertificadoPrevio($idCliente, $idPoliza, $idCertificado)
 	{
 		$sql = "select cer.id as id_certificado,
 		cer.id_cliente,
 		cli.nombre,
 		cer.id_poliza,
 		CONCAT(pol.desc_poliza,'-',pol.codigo_poliza) as nombre_poliza,
-		cer.id_a_favor,
-		afa.nombre as nombre_a_favor,
 		cli.direccion as direccion_cliente,
 		cer.id_pais_emision,
 		paisem.desc_pais as pais_emision,
 		cer.referencia_interna,
 		cer.id_moneda,
 		mon.desc_moneda as moneda,
-		cer.prima_minima as deducible,
+		cer.deducible,
 		cer.monto_asegurado as monto_asegurado,
 		cer.tasa,
 		cer.prima,
@@ -142,7 +141,6 @@ class Certificado extends CI_Model
 
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
-		INNER JOIN EMPRESA_A_FAVOR afa on afa.id = cer.id_a_favor and afa.estado_reg = 1
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
 		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
 		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
@@ -380,35 +378,26 @@ class Certificado extends CI_Model
 	{
 		$sql = "select pol.codigo_poliza as poliza_nro,
 		cer.id as correlativo,
+		CONCAT(tra.codigo ,' Transporte ',tra.nombre_transporte) as riesgo,
 		CONCAT(mon.nombre_moneda ,' (',mon.signo,')') as moneda,
 		'7036M' AS aviso_nro,
 		'DEFINITIVO' AS tipo_certificado,
-		CONCAT(cli.nombre,' Rut: ',
-		case when length(cli.rut) = 8 THEN insert(insert(cli.rut,3,0,'.'),7,0,'.')
-		else insert(insert(cli.rut,2,0,'.'),6,0,'.')
-		end,'-',cli.dv) as asegurado,
-		/*CONCAT(afa.nombre,' Rut: ',
-		case when length(afa.rut) = 8 THEN insert(insert(afa.rut,3,0,'.'),7,0,'.')
-		else insert(insert(afa.rut,2,0,'.'),6,0,'.')
-		end,'-',afa.dv) as asegurado,*/
+		CONCAT(cli.nombre,' Rut: ', cli.rut_dni) as asegurado,
 		cer.desc_mercaderia as materia,
 		tipemb.desc_embalaje as embalaje,
 		DATE_FORMAT(cer.fecha_arribo, '%d-%m-%Y') as fecha_salida,
-		paiori.desc_pais as origen,
-		estrego.desc_estado_region as via,
+		CONCAT(paiori.desc_pais,', ',estrego.desc_estado_region) as origen,
+		tra.nombre_transporte as via,
 		'0' as nro_bultos,
 		cer.nombre_linea as nombre_linea,
 		CONCAT(estregd.desc_estado_region ,',', paides.desc_pais) as destino,
-		cer.guia_bl as b_l,
-		cer.nombre_nave as nave,
+		cer.guia_bl as b_l, cer.nombre_nave as nave,
 		CONCAT('TRANSPORTE ',tra.nombre_transporte,' PARA CARGA ',cla.desc_clausula) as cobertura,
 		CONCAT(mon.signo,cer.monto_asegurado) as monto_asegurado,
 		CONCAT(mon.signo,cer.prima) as prima,
 		DATE_FORMAT(cer.fecha_mod, '%d-%m-%Y') as fecha_emision,
 		mon.signo
-		FROM CERTIFICADO cer
-		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
-		INNER JOIN EMPRESA_A_FAVOR afa on afa.id = cer.id_a_favor and afa.estado_reg = 1
+		FROM CERTIFICADO cer INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
 		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
 		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
@@ -419,7 +408,7 @@ class Certificado extends CI_Model
 		INNER JOIN PAIS paisem on paisem.id = cer.id_pais_emision and paisem.estado_reg = 1
 		INNER JOIN TIPO_EMBALAJE tipemb on tipemb.id = cer.id_tipo_embalaje and tipemb.estado_reg = 1
 		INNER JOIN ESTADO_REGION estrego on estrego.id = cer.id_est_reg_origen and estrego.estado_reg = 1
-		INNER JOIN ESTADO_REGION estregd on estregd.id = cer.id_est_reg_destino and estregd.estado_reg = 1
+		INNER JOIN ESTADO_REGION estregd on estregd.id = cer.id_est_reg_destino and estregd.estado_reg = 1 
 		WHERE   cer.id_cliente = ".$idCliente."
 		AND cer.id_poliza = ".$idPolizas."
 		AND cer.id = ".$idCertificado."
@@ -440,14 +429,7 @@ class Certificado extends CI_Model
 		CONCAT(mon.nombre_moneda ,' (',mon.signo,')') as moneda,
 		'7036M' AS aviso_nro,
 		'DEFINITIVO' AS tipo_certificado,
-		CONCAT(cli.nombre,' Rut: ',
-		case when length(cli.rut) = 8 THEN insert(insert(cli.rut,3,0,'.'),7,0,'.')
-		else insert(insert(cli.rut,2,0,'.'),6,0,'.')
-		end,'-',cli.dv) as asegurado,
-		/*CONCAT(afa.nombre,' Rut: ',
-		case when length(afa.rut) = 8 THEN insert(insert(afa.rut,3,0,'.'),7,0,'.')
-		else insert(insert(afa.rut,2,0,'.'),6,0,'.')
-		end,'-',afa.dv) as asegurado,*/
+		CONCAT(cli.nombre,' Rut: ', cli.rut_dni) as asegurado,
 		cer.desc_mercaderia as matter_insured,
 		tipemb.desc_embalaje as embalaje,
 		cer.fecha_arribo as fecha_salida,
@@ -466,7 +448,6 @@ class Certificado extends CI_Model
 		mon.signo
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
-		INNER JOIN EMPRESA_A_FAVOR afa on afa.id = cer.id_a_favor and afa.estado_reg = 1
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
 		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula and cla.estado_reg = 1
 		INNER JOIN EMBARQUE emb on emb.id = cer.id_tipo_embarque and emb.estado_reg = 1
@@ -505,7 +486,7 @@ class Certificado extends CI_Model
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
-        INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+        INNER JOIN USUARIO usu on usu.id = cli.id_usuario
 		WHERE cer.estado_reg = 1
         order by cer.id desc
 		limit 30";
@@ -533,7 +514,7 @@ class Certificado extends CI_Model
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
-		INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+		INNER JOIN USUARIO usu on usu.id = cli.id_usuario
 		WHERE   cer.id_cliente = case when '".$idCliente."' = 0 then cer.id_cliente
 								else '".$idCliente."'
                                 end
@@ -561,7 +542,7 @@ class Certificado extends CI_Model
 			FROM CERTIFICADO cer
 			INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
 			INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
-			INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+			INNER JOIN USUARIO usu on usu.id = cli.id_usuario
 			WHERE usu.nombre_usuario = '".$nombreUsuario."'
 			and cer.estado_reg = 1
 			order by ano desc";
@@ -578,11 +559,11 @@ class Certificado extends CI_Model
 	public function obtenerAnoCliente($idCliente)
 	{
 		$sql = "select  distinct
-				date_format(fecha_reg, '%Y') as ano
-				FROM CERTIFICADO cer
-				INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
-				INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
-				INNER JOIN USUARIO usu on usu.id_grupo = cli.id
+					date_format(fecha_reg, '%Y') as ano
+					FROM CERTIFICADO cer
+					INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 and cli.estado_reg = 1
+					INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id and pol.estado_reg = 1
+					INNER JOIN USUARIO usu on usu.id = cli.id_usuario
 				WHERE cer.id_cliente = ".$idCliente."
 				and cer.estado_reg = 1
 		        order by ano desc";

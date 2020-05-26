@@ -5,13 +5,12 @@ $('.idFilaActualizarCliente').click(function() {
 	var id_cliente = $(this).parents("tr").find("td")[4].innerHTML;
 	var direccion_cliente = $(this).parents("tr").find("td")[5].innerHTML;
 	var condiciones = $(this).parents("tr").find("td")[6].innerHTML;
-	var id_grupo = $(this).parents("tr").find("td")[7].innerHTML;
-	var nombre_grupo = $(this).parents("tr").find("td")[8].innerHTML;
-	var rut = $(this).parents("tr").find("td")[9].innerHTML;
-	var dv = $(this).parents("tr").find("td")[10].innerHTML;
-	var dv = $(this).parents("tr").find("td")[10].innerHTML;
-	var telefono = $(this).parents("tr").find("td")[11].innerHTML;
+	var id_usuario = $(this).parents("tr").find("td")[7].innerHTML;
+	var nombre_usuario = $(this).parents("tr").find("td")[8].innerHTML;
+	var rut_dni = $(this).parents("tr").find("td")[9].innerHTML;
+	var telefono = $(this).parents("tr").find("td")[10].innerHTML;
 	
+	console.log(nombre_cliente+'|'+id_cliente+'|'+direccion_cliente+'|'+condiciones+'|'+id_usuario+'|'+nombre_usuario+'|'+rut_dni+'|'+telefono);
 
 	$('#idNombreCliente').val(nombre_cliente);
 	$('#idCliente').val(id_cliente);
@@ -19,12 +18,9 @@ $('.idFilaActualizarCliente').click(function() {
 	$('#idClienteAFavor').val(id_cliente);
 	$('#idDireccionCliente').val(direccion_cliente);
 	$('#idCondiciones').val(condiciones);
-	$('#idGrupo').val(id_grupo);
-	$('#idNombreGrupo').val(nombre_grupo);
-	$('#idRut').val(rut);
-	$('#idDv').val(dv);
+	$('#idRutDni').val(rut_dni);
 	$('#idTelefono').val(telefono);
-	$("#idGrupo option[value='0']").remove();
+	$('#idUsuario').val(id_usuario);
 	
 	//llenar grilla polizas segun cliente seleccionado
 	$.ajax({
@@ -39,7 +35,7 @@ $('.idFilaActualizarCliente').click(function() {
 		}
 	});
 	
-	//llenar grilla afavor segun cliente seleccionado
+/*	//llenar grilla afavor segun cliente seleccionado
 	$.ajax({
 		url:'clienteMantenedor/obtieneAFavorCLiente',
 		type:'POST',
@@ -50,7 +46,7 @@ $('.idFilaActualizarCliente').click(function() {
 		error:function(jqXHR, textStatus, errorThrow) {
 			alert('Error! = ' + errorThrow);
 		}
-	});
+	});*/
 	
 
 	$("#btnRegistrarCliente").hide();
@@ -96,6 +92,7 @@ $("#form-create-client").submit(function(e) {
 	e.preventDefault();
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
+	console.log(data);
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
 		type:frm.prop('method'),

@@ -82,7 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<table border="0">
 			<tr>
 				<td class="parrafoColor"> Riesgo: </td>
-				<td class="parrafo1"> TM Transporte Marítimo </td>
+				<td class="parrafo1"><?php echo $certificado->riesgo ?></td>
 				<td class="parrafoColor"> Sucursal: </td>
 				<td class="parrafo1"> SANTIAGO CENTRO </td>
 			</tr>
@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</tr>
 			<tr>
 				<td class="parrafoColor">Aviso Nro:</td>
-				<td class="parrafo1">7036R</td>
+				<td class="parrafo1"><?php echo $certificado->correlativo ?></td>
 				<td class="parrafoColor"> Correlativo: </td>
 				<td class="parrafo1"> <?php echo $certificado->correlativo ?></td>
 			</tr>
@@ -143,7 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<tr>
 				<td class="parrafoColor">Fecha Salida:</td>
 				<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
-				<td class="parrafoColor">Nave:</td>
+				<td class="parrafoColor">Nombre Línea:</td>
 				<td class="parrafo1"><?php echo $certificado->nombre_linea ?></td>
 			</tr>
 			<tr>

@@ -2,25 +2,27 @@
 
 class Cliente extends CI_Model
 {
-	public function getAllClient()
+	public function getAllClient($idUsuario, $idPerfil)
 	{
 
 		$sql = "select distinct
-					cli.id as id_cliente,
-					cli.nombre as nombre_cliente,
-                    cli.direccion as direccion_cliente,
-                    cli.condiciones,
-                    gru.id as id_grupo,
-                    gru.nombre as nombre_grupo,
-                    cli.rut,
-                    cli.dv,
-                    cli.telefono
+						cli.id as id_cliente,
+						cli.nombre as nombre_cliente,
+						cli.direccion as direccion_cliente,
+						cli.condiciones,
+						usu.id as id_usuario,
+						usu.nombre_usuario as nombre_usuario,
+						cli.rut_dni,
+						cli.telefono
 
-				FROM CLIENTE cli
-                	 INNER JOIN CLIENTE gru on cli.id_grupo = gru.id
-				WHERE  cli.estado_reg = 1
-                	   and gru.estado_reg = 1
-				order by cli.nombre asc";
+					FROM CLIENTE cli
+						 INNER JOIN USUARIO usu on usu.id = cli.id_usuario
+					WHERE cli.estado_reg = 1
+					  and usu.estado_reg = 1
+				      and usu.id = case when '".$idPerfil."' = 1 then  usu.id
+									else '".$idUsuario."'
+				                    end
+					order by cli.nombre asc";
 
 		$result = $this->db->query($sql);
 
@@ -68,11 +70,11 @@ class Cliente extends CI_Model
 	
 	
 	
-	public function existClient($rut)
+	public function existClient($rut_dni)
 	{
 		$sql = "select id
 				  FROM CLIENTE
-				  WHERE rut = '".$rut."'
+				  WHERE rut_dni = '".$rut_dni."'
                   	AND	estado_reg = 1";
 
 		$result = $this->db->query($sql);

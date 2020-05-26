@@ -21,7 +21,7 @@ class HistorialCertificado extends CI_Controller
 		$perfil = $this->session->userdata('perfil');
 		
 		// obtenemos el array de clientes
-		$datos['arrClientes'] = $this->Certificado->obtenerClientes($nombreUsuario);
+		$datos['arrClientes'] = $this->Certificado->obtenerClientes($idUsuario, $perfil);
 		
 		if ($perfil == 1){
 			$datos['arrCertificados'] = $this->Certificado->obtenerHistorialCertTotal();
@@ -126,7 +126,7 @@ class HistorialCertificado extends CI_Controller
 							echo '<td style="display:none">'.$key["id_poliza"].'</td>';
 							echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
 							echo'</tr>';
-							$i = 1;
+							$i = $i+1;
 						}
 					}else{
 						echo "<tr>";

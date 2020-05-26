@@ -58,7 +58,8 @@ class Siniestro extends CI_Model
 								est.desc_estado as estado_siniestro
 						   FROM SINIESTRO sin
 					 INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado and est.estado_reg = 1
-					 INNER JOIN USUARIO usu on usu.id_grupo = sin.id_cliente and usu.estado_reg = 1
+					 INNER JOIN CLIENTE cli on cli.id = sin.id_cliente and cli.estado_reg = 1
+					 INNER JOIN USUARIO usu on usu.id = cli.id_usuario and usu.estado_reg = 1
 					 	WHERE usu.id = '".$idUsuario."'
 				            AND sin.estado_reg = 1
 					   ORDER BY sin.id asc";
@@ -77,9 +78,9 @@ class Siniestro extends CI_Model
 	{
 		$sql = "SELECT DISTINCT pol.id as id_poliza,
 								pol.codigo_poliza as nombre_poliza
-					FROM POLIZA pol
-					INNER JOIN CLIENTE cli on pol.id_cliente = cli.id and cli.estado_reg = 1
-					INNER JOIN USUARIO usu on usu.id_grupo = cli.id_grupo and usu.estado_reg = 1
+								FROM POLIZA pol
+								INNER JOIN CLIENTE cli on pol.id_cliente = cli.id and cli.estado_reg = 1
+								INNER JOIN USUARIO usu on usu.id = cli.id_usuario and usu.estado_reg = 1
 						WHERE usu.id = '".$idUsuario."'
 				            AND pol.estado_reg = 1
 					   ORDER BY pol.id asc";
