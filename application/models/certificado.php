@@ -392,7 +392,7 @@ class Certificado extends CI_Model
 		cer.nombre_linea as nombre_linea,
 		CONCAT(estregd.desc_estado_region ,',', paides.desc_pais) as destino,
 		cer.guia_bl as b_l, cer.nombre_nave as nave,
-		CONCAT('TRANSPORTE ',tra.nombre_transporte,' PARA CARGA ',cla.desc_clausula) as cobertura,
+		CONCAT('TRANSPORTE ',UPPER(tra.nombre_transporte),' PARA CARGA ',cla.desc_clausula) as cobertura,
 		CONCAT(mon.signo,cer.monto_asegurado) as monto_asegurado,
 		CONCAT(mon.signo,cer.prima) as prima,
 		DATE_FORMAT(cer.fecha_mod, '%d-%m-%Y') as fecha_emision,

@@ -89,18 +89,33 @@ function showModalGetCertificate()
 	
 }
 
+$(document).ready(function() {
+
+	var max_chars = 500;
+
+	$('#max').html(max_chars);
+
+	$('#idDescMercaderia').keyup(function() {
+		var chars = $(this).val().length;
+		var diff = max_chars - chars;
+		$('#contador').html(diff);
+	});
+});
+
 function showForm()
 {
 	var resetAfavor = '<option value="0">Seleccione</option>';
 	var resetPoliza = '<option value="0">Seleccione</option>';
-
+	var resetContadorMerc = '500 caracteres max.';
+	$("#contador").html(resetContadorMerc);
 	$.ajax({
 		url:"formularioEmision/obtieneClientes",
 		type:"POST",
 	}).done(function(dataClientes) {
+		console.log(dataClientes);
 		$("#idClientes").html(dataClientes);
 		var idCliente = $('#idClientes').val();
-
+	console.log(idCliente);
 	if (idCliente != ""){
 		$.ajax({
 
@@ -108,8 +123,15 @@ function showForm()
 			type:"POST",
 			data:{'idCliente' : idCliente}
 		}).done(function(data) {
-			$("#idCliente").prop("readonly");
-			$("#idPoliza").html(data);
+			console.log(data);
+			if (data == '<option value="">Seleccione</option>') {
+				$("#form-create-certificate").hide();
+				alert('el cliente no posee polizas registradas');
+			}else{
+				$("#idCliente").prop("readonly");
+				$("#idPoliza").prop("disabled",false);
+				$("#idPoliza").html(data);
+			}
 		});  
 	}else{
 		$("#idPoliza").prop("disabled",true);

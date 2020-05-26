@@ -124,19 +124,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											</select>
 									</div>
 								</div>
-							<!--		<div class="col-lg-4">
-										<div class="form-group">
-											<label>A favor</label>
-										<select class="form-control valform" id="idAFavor" name="idAFavor" required>
-												<option value="">Seleccione</option>
-												<?php
-												foreach ($arrAfavor as $index => $key) {
-													echo '<option value="'.$key["id_a_favor"].'">'.$key["nombre_a_favor"].'</option>';
-												}
-												?>
-											</select>
-										</div>
-									</div>-->
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>País Emisión</label>
@@ -362,7 +349,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-6">
 									<div class="form-group">
 										<label>Descripción de la Mercadería</label>
-										<textarea class="form-control valform" rows="3" id="idDescMercaderia" name="idDescMercaderia" required></textarea>
+										<textarea style="resize: none;" class="form-control valform" rows="7" maxlength="500" id="idDescMercaderia" name="idDescMercaderia" required></textarea>
+										<div id="contador" style="text-align: right;font-style: italic;">500 caracteres max.</div>
 									</div>
 								</div>
 							</div>

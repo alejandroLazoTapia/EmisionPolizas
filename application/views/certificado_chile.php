@@ -36,6 +36,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				text-align: left;
 				resize: none;
 			}
+			.parrafo3 {
+				margin-left: auto;
+				margin-right: auto;
+				font-family: Arial;
+				font-size: 10px;
+				text-align: left;
+				resize: none;
+			}
 			.parrafo2 {
 				margin-left: auto;
 				margin-right: auto;
@@ -122,7 +130,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<table border="0">
 			<tr >
 				<td class="parrafoColor" VALIGN=TOP>Materia:</td>
-				<td class="parrafo1" >
+				<td class="parrafo3" >
 					<p style = "font-family:courier,arial,helvética;"><?php echo $certificado->materia ?></p>
 					<br>
 					<br>
@@ -227,7 +235,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td colspan="2">&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="2"><img src="<?=base_url() ?>recursos/images/Pie.jpg" width="700" ></td>
+				<td colspan="2"><img src="<?=base_url() ?>recursos/images/Pie.jpg" width="900"></td>
 			</tr>
 		</table>
 	</body>

@@ -115,7 +115,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>
 										</tr>
 										<?php
-									} else {
+									} else if (!empty($arrCertificados)) {
 										$i = 1;
 										foreach ($arrCertificados as $index => $key) {
 											echo"<tr>";
@@ -138,7 +138,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										echo'</tr>';
 										$i = $i +1;
 									}
-								}
+									}else{
+										?>
+										<tr>
+											<td colspan="7" style="text-align: center">
+												<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>
+										</tr>
+										<?php
+									}
 								?>
 								</tbody>
 							</table>
