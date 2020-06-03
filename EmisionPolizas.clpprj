@@ -2771,14 +2771,14 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\cuentaUsuario.php" crc="1590445981"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\clienteMantenedor.php" crc="1590445348"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_peru.php" crc="1590172467"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php" crc="1590468211"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php" crc="1591171535"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\third_party\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Usuario.php" crc="1590445742"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Siniestro.php" crc="1591048633"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Prima.php" crc="1591156751"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Cliente.php" crc="1590444447"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php" crc="1591155256"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php" crc="1591171817"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\logs\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\libraries\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\language\english\index.html" crc="1588206237"/>
@@ -2794,7 +2794,7 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\HistorialPago.php" crc="1590459708"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\HistorialCertificado.php" crc="1591158106"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\FormularioEmision.php" crc="1591154772"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\FormularioEmision.php" crc="1591171199"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\DenunciaSiniestro.php" crc="1591049846"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\CuentaUsuario.php" crc="1590446166"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\ClienteMantenedor.php" crc="1590686258"/>

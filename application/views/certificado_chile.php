@@ -81,8 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</tr>
 			<tr>
 				<td class="parrafo1">
-					Esta entidad aseguradora, en los términos detallados en la propuesta e individualizados en la presente póliza,
-					y con arreglo a las Condiciones Generales y/o Particulares aceptadas por ambas partes asegura lo siguiente.
+					Esta entidad aseguradora <b>BCI SEGUROS (Munich Re)</b>, en los términos detallados en la propuesta e individualizados en la presente póliza, y con arreglo a las Condiciones Generales y/o Particulares aceptadas por ambas partes asegura lo siguiente.
 				</td>
 			</tr>
 		</table>
@@ -102,7 +101,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</tr>
 			<tr>
 				<td class="parrafoColor">Aviso Nro:</td>
-				<td class="parrafo1"><?php echo $certificado->correlativo ?></td>
+				<td class="parrafo1"><?php echo $certificado->correlativo-90 ?></td>
 				<td class="parrafoColor"> Correlativo: </td>
 				<td class="parrafo1"> <?php echo $certificado->correlativo ?></td>
 			</tr>
@@ -118,63 +117,72 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<table border="0">
 			<tr >
 				<td class="parrafoColor"> Contratante: </td>
-				<td class="parrafo1"> SGG LOGISTICS SPA   Rut: 77.047.964-9 </td>
+				<td class="parrafo1"> SGG LOGISTICS SPA</td>
+			</tr>
+			<tr >	
+				<td class="parrafoColor"></td>
+				<td class="parrafo1">Rut: 77.047.964-9 </td>
 			</tr>
 			<tr>
 				<td class="parrafoColor"> Asegurado: </td>
-				<td class="parrafo1"> <?php echo $certificado->asegurado ?> </td>
+				<td class="parrafo1"> <?php echo $certificado->nombre_asegurado ?> </td>
+			</tr>
+			<tr >	
+				<td class="parrafoColor"></td>
+				<td class="parrafo1"><?php echo $certificado->rut_asegurado ?></td>
 			</tr>
 		</table>
-
 		<br>
-		<table border="0">
-			<tr >
-				<td class="parrafoColor" VALIGN=TOP>Materia:</td>
-				<td class="parrafo3" >
-					<p style = "font-family:courier,arial,helvética;"><?php echo $certificado->materia ?></p>
-					<br>
-					<br>
-					<br>
-										
-				</td>
-			</tr>
-		</table>
-
-		<br>
-		<table border="0">
-			<tr>
-				<td class="parrafoColor">Embalaje:</td>
-				<td class="parrafo1"><?php echo $certificado->embalaje ?></td>
-				<td class="parrafoColor"> Nro. Bultos: </td>
-				<td class="parrafo1"><?php echo $certificado->nro_bultos ?></td>
-			</tr>
-			<tr>
-				<td class="parrafoColor">Fecha Salida:</td>
-				<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
-				<td class="parrafoColor">Nombre Línea:</td>
-				<td class="parrafo1"><?php echo $certificado->nombre_linea ?></td>
-			</tr>
-			<tr>
-				<td class="parrafoColor">Origen:</td>
-				<td class="parrafo1"><?php echo $certificado->origen ?></td>
-				<td class="parrafoColor">Destino:</td>
-				<td class="parrafo1"><?php echo $certificado->destino ?></td>
-			</tr>
-			<tr>
-				<td class="parrafoColor"> Vía: </td>
-				<td class="parrafo1"> <?php echo $certificado->via ?> </td>
-				<td class="parrafoColor">B/L</td>
-				<td class="parrafo1"><?php echo $certificado->b_l ?></td>
-			</tr>
-			<tr>
-				<td class="parrafoColor">Transbordo:</td>
-				<td class="parrafo1"> </td>
-				<td class="parrafoColor">Nave:</td>
-				<td class="parrafo1"><?php echo $certificado->nave ?></td>
-			</tr>
-		</table>
-
-		<br>
+					<table border="0">
+				<tr >
+					<td class="parrafoColor" VALIGN=TOP>Materia:</td>
+					<td class="parrafo3" >
+						<p style = "font-family:courier,arial,helvética;"><?php echo $certificado->materia ?></p>
+						<br>				
+					</td>
+				</tr>
+			</table>
+			<br>
+		<?php if($certificado->codigo_transporte == "TM") {?>
+			<table border="0">
+				<tr>
+					<td class="parrafoColor">Embalaje:</td>
+					<td class="parrafo1"><?php echo $certificado->embalaje ?></td>
+					<td class="parrafoColor"> Nro. Bultos: </td>
+					<td class="parrafo1"><?php echo $certificado->nro_bultos ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Fecha Salida:</td>
+					<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
+					<td class="parrafoColor">Nombre Nave:</td>
+					<td class="parrafo1"><?php echo $certificado->nombre_nave ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Origen:</td>
+					<td class="parrafo1"><?php echo $certificado->origen ?></td>
+					<td class="parrafoColor">Destino:</td>
+					<td class="parrafo1"><?php echo $certificado->destino ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor"> Vía: </td>
+					<td class="parrafo1"> <?php echo $certificado->via ?> </td>
+					<td class="parrafoColor">B/L</td>
+					<td class="parrafo1"><?php echo $certificado->b_l ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Cía. Naviera</td>
+					<td class="parrafo1"><?php echo $certificado->nombre_linea ?> </td>
+					<td class="parrafoColor">Nro. de Nave:</td>
+					<td class="parrafo1"><?php echo $certificado->numero_nave ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Transbordo</td>
+					<td class="parrafo1"> </td>
+					<td class="parrafoColor"></td>
+					<td class="parrafo1"></td>
+				</tr>
+			</table>
+			<br>
 		<table border="0">
 			<tr>
 				<td class="titulo1" style="width: 400px;" BGCOLOR="#c0c0c0">Coberturas</td>
@@ -188,12 +196,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</tr>
 			<tr>
 				<td class="parrafo1">CLAUSULA CHILENA PARA HUELGA</td>
-				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?>0.00</td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?> 0.00</td>
 				<td class="parrafoColor"></td>
 			</tr>
 			<tr>
 				<td class="parrafo1">CLAUSULA CHILENA PARA GUERRA</td>
-				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?>0.00</td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?> 0.00</td>
 				<td class="parrafoColor"> </td>
 			</tr>
 			<tr>
@@ -222,7 +230,167 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</td>
 			</tr>
 		</table>
+		<?php }else if($certificado->codigo_transporte == "TA" ){ ?>
 
+			<table border="0">
+				<tr>
+					<td class="parrafoColor">Embalaje:</td>
+					<td class="parrafo1"><?php echo $certificado->embalaje ?></td>
+					<td class="parrafoColor"> Nro. Bultos: </td>
+					<td class="parrafo1"><?php echo $certificado->nro_bultos ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Fecha Salida:</td>
+					<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
+					<td class="parrafoColor">Línea Aérea:</td>
+					<td class="parrafo1"><?php echo $certificado->nombre_linea ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Origen:</td>
+					<td class="parrafo1"><?php echo $certificado->origen ?></td>
+					<td class="parrafoColor">Destino:</td>
+					<td class="parrafo1"><?php echo $certificado->destino ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor"> Vía: </td>
+					<td class="parrafo1"> <?php echo $certificado->via ?> </td>
+					<td class="parrafoColor">Guía Aérea</td>
+					<td class="parrafo1"><?php echo $certificado->b_l ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Transbordo</td>
+					<td class="parrafo1"> </td>
+					<td class="parrafoColor">Nro. de Viaje:</td>
+					<td class="parrafo1"><?php echo $certificado->numero_nave ?></td>
+				</tr>
+			</table>
+			<br>
+		<table border="0">
+			<tr>
+				<td class="titulo1" style="width: 400px;" BGCOLOR="#c0c0c0">Coberturas</td>
+				<td class="titulo1" style="width: 150px;text-align: right;" BGCOLOR="#c0c0c0">Monto Asegurado</td>
+				<td class="titulo1" style="text-align: right;" BGCOLOR="#c0c0c0">Prima</td>
+			</tr>
+			<tr>
+				<td class="parrafo1">PÓLIZA CHILENA PARA MERCANCÍAS</td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->monto_asegurado ?></td>
+				<td class="parrafoColor"></td>
+			</tr>
+			<tr>
+				<td class="parrafo1">CLAUSULA CHILENA PARA HUELGA</td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?> 0.00</td>
+				<td class="parrafoColor"></td>
+			</tr>
+			<tr>
+				<td class="parrafo1">CLAUSULA CHILENA PARA GUERRA</td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?> 0.00</td>
+				<td class="parrafoColor"> </td>
+			</tr>
+			<tr>
+				<td class="parrafoColor">
+					<b>Total</b></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->monto_asegurado ?></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->prima ?></td>
+			</tr>
+		</table>
+
+		<br>
+		<table border="0">
+			<tr>
+				<td class="parrafoColor">
+					<b>Notas</b></td>
+			</tr>
+			<tr style="border-color: white;">
+				<td style="border-color: white;">
+					<p class="parrafo2" style="font-size: 8px">
+1. Queda expresamente convenido que el presente certificado definitivo está sujeto a los términos y condiciones de la Póliza Flotante  Nro. <?php echo $certificado->poliza_nro ?>
+					</p>
+				</td>
+			</tr>
+		</table>
+		<?php }else { ?>
+			<table border="0">
+				<tr>
+					<td class="parrafoColor">Embalaje:</td>
+					<td class="parrafo1"><?php echo $certificado->embalaje ?></td>
+					<td class="parrafoColor"> Nro. Bultos: </td>
+					<td class="parrafo1"><?php echo $certificado->nro_bultos ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Fecha Salida:</td>
+					<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
+					<td class="parrafoColor">Nombre Línea:</td>
+					<td class="parrafo1"><?php echo $certificado->nombre_linea ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Origen:</td>
+					<td class="parrafo1"><?php echo $certificado->origen ?></td>
+					<td class="parrafoColor">Destino:</td>
+					<td class="parrafo1"><?php echo $certificado->destino ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor"> Vía: </td>
+					<td class="parrafo1"> <?php echo $certificado->via ?> </td>
+					<td class="parrafoColor">B/L</td>
+					<td class="parrafo1"><?php echo $certificado->b_l ?></td>
+				</tr>
+				<tr>
+					<td class="parrafoColor">Transbordo:</td>
+					<td class="parrafo1"> </td>
+					<td class="parrafoColor">Nave:</td>
+					<td class="parrafo1"><?php echo $certificado->numero_nave ?></td>
+				</tr>
+			</table>
+			<br>
+		<table border="0">
+			<tr>
+				<td class="titulo1" style="width: 400px;" BGCOLOR="#c0c0c0">Coberturas</td>
+				<td class="titulo1" style="width: 150px;text-align: right;" BGCOLOR="#c0c0c0">Monto Asegurado</td>
+				<td class="titulo1" style="text-align: right;" BGCOLOR="#c0c0c0">Prima</td>
+			</tr>
+			<tr>
+				<td class="parrafo1"><?php echo $certificado->cobertura ?></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->monto_asegurado ?></td>
+				<td class="parrafoColor"></td>
+			</tr>
+			<tr>
+				<td class="parrafo1">CLAUSULA CHILENA PARA HUELGA</td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?> 0.00</td>
+				<td class="parrafoColor"></td>
+			</tr>
+			<tr>
+				<td class="parrafo1">CLAUSULA CHILENA PARA GUERRA</td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?> 0.00</td>
+				<td class="parrafoColor"> </td>
+			</tr>
+			<tr>
+				<td class="parrafoColor">
+					<b>Total</b></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->monto_asegurado ?></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->prima ?></td>
+			</tr>
+		</table>
+
+		<br>
+		<table border="0">
+			<tr>
+				<td class="parrafoColor">
+					<b>Notas</b></td>
+			</tr>
+			<tr style="border-color: white;">
+				<td style="border-color: white;">
+					<p class="parrafo2" style="font-size: 8px">
+1. Queda expresamente convenido que el presente certificado definitivo está sujeto a los términos y condiciones de la Póliza Flotante  Nro. <?php echo $certificado->poliza_nro ?>
+<br>
+2.
+<br>
+3. Rige Cláusula de Clasificación del Instituto de Aseguradores de Londres(CL. 354 del 13.04.92) la que será aplicada respecto a primas  adicionales una vez conocida la edad de la Nave
+					</p>
+				</td>
+			</tr>
+		</table>
+		<?php }?>
+		
 		<table border="0">
 			<tr>
 				<td class="parrafo1">
@@ -235,7 +403,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td colspan="2">&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="2"><img src="<?=base_url() ?>recursos/images/Pie.jpg" width="900"></td>
+				<td colspan="2"><img src="<?=base_url() ?>recursos/images/Pie.jpg" width="1000"></td>
 			</tr>
 		</table>
 	</body>

@@ -367,11 +367,13 @@ class FormularioEmision extends CI_Controller
 			$data['certificado'] = $this->Certificado->obtenerCertificadoChile($idCliente, $idPolizas, $idCertificado);
 			$mpdf->showImageErrors = true;
 			$mpdf = new \Mpdf\Mpdf();
+			$mpdf->SetAutoPageBreak(true,2);
 			$html = $this->load->view('certificado_chile', $data ,true);
 		}else{
 			$data['certificado'] = $this->Certificado->obtenerCertificadoPeru($idCliente, $idPolizas, $idCertificado);
 			$mpdf->showImageErrors = true;
 			$mpdf = new \Mpdf\Mpdf();
+			$mpdf->SetAutoPageBreak(true,2);
 			$html = $this->load->view('certificado_peru', $data ,true);
 		}
 		
