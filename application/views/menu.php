@@ -37,14 +37,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<a href="<?= base_url() ?>index.php/primaMensual">
 								<i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Prima Mensual</a>
 							</li>
-							<li>
+							<!--<li>
 								<a href="<?= base_url() ?>index.php/historialPago">
 								<i class="fa fa-calendar"></i>&nbsp;&nbsp;historial Pagos</a>
 							</li>
 							<li>
 								<a href="<?= base_url() ?>index.php/informeCierre">
 								<i class="fa fa-book"></i>&nbsp;&nbsp;Informe Cierre</a>
-							</li>
+							</li>-->
 							
 				<?php
 			}elseif ($this->session->userdata('perfil') == 2 ) {
@@ -70,10 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<a href="<?= base_url() ?>index.php/primaMensual">
 								<i class="glyphicon glyphicon-usd"></i>&nbsp;&nbsp;Prima Mensual</a>
 							</li>
-							<li>
+							<!--<li>
 								<a href="<?= base_url() ?>index.php/historialPago">
 								<i class="fa fa-calendar"></i>&nbsp;&nbsp;historial Pagos</a>
-							</li>
+							</li>-->
 						
 						<?php
 					}

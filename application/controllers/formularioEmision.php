@@ -23,7 +23,7 @@ class FormularioEmision extends CI_Controller
 		$datos['arrClientes'] = $this->Certificado->obtenerClientes($idUsuario, $idPerfil);
 /*		$datos['arrAfavor'] = $this->obtieneAFavorCliente();*/
 		$datos['arrPaisesEmision'] = $this->Certificado->obtenerPaisesEmision();
-		$datos['arrPaises'] = $this->Certificado->obtenerPaises();
+		/*$datos['arrPaises'] = $this->Certificado->obtenerPaises();*/
 		$datos['arrMoneda'] = $this->Certificado->obtenerMonedas();
 		$datos['arrClausula'] = $this->Certificado->obtenerClausulas();
 		$datos['arrTipoEmbalaje'] = $this->Certificado->obtenerTipoEmbalaje();
@@ -89,6 +89,13 @@ class FormularioEmision extends CI_Controller
 		}
 	}
 	
+	public function obtieneDatosCliente()
+	{
+		$idCliente = $this->input->post('idCliente');
+		$Datoscliente = $this->Certificado->obtenerDatosClientes($idCliente);
+		echo(json_encode($Datoscliente));
+	}
+	
 
 	public function obtieneTipoPoliza()
 	{
@@ -133,9 +140,7 @@ class FormularioEmision extends CI_Controller
 	{
 		$idCliente = $this->input->post('idCliente');
 		$idPoliza = $this->input->post('idPoliza');
-
 		if ($idCliente) {
-
 			$Certificados = $this->Certificado->obtenerCertificadosCliente($idCliente, $idPoliza);
 			if ($Certificados == null) {
 				echo '<option value="0">Seleccione</option>';
@@ -149,26 +154,6 @@ class FormularioEmision extends CI_Controller
 			echo '<option value="0">Seleccione</option>';
 		}
 	}
-/*	
-	public function obtieneAFavorCliente()
-	{
-		$idCliente = $this->input->post('idCliente');
-
-		if ($idCliente) {
-			$AFavors = $this->Cliente->getAFavorClient($idCliente);
-			if ($AFavors == null) {
-				echo '<option value="0">Seleccione</option>';
-			} else {
-				echo '<option value="0">Seleccione</option>';
-				foreach ($AFavors as $AFavor => $key) {
-					echo '<option value="'.$key["id_a_favor"].'">'.$key["nombre_a_favor"].'</option>';
-				}
-			}
-		} else {
-			echo '';
-		}
-	}
-	*/
 	
 	public function obtieneCertificadoPrevio()
 	{
@@ -180,23 +165,6 @@ class FormularioEmision extends CI_Controller
 		echo(json_encode($certificadoPrevio));
 		//print_r($certificadoPrevio);
 	}
-	
-	public function obtieneCiudadesPais()
-	{
-		$idPais = $this->input->post('idPais');
-		if ($idPais) {
-			$this->load->model('certificado');
-			$ciudades = $this->certificado->obtenerCiudadesPais($idPais);
-			echo '<option value="">Seleccione</option>';
-			foreach ($ciudades as $ciudad => $key) {
-				echo '<option value="'.$key["id_region_estado"].'">'.$key["nombre_region_estado"].'</option>';
-			}
-		} else {
-			echo '<option value="">Seleccione</option>';
-		}
-	}
-	
-	
 	
 	public function guardarCertificado()
 	{
@@ -226,17 +194,16 @@ class FormularioEmision extends CI_Controller
 			$id_transporte = $this->input->post('idTransporte');
 			$id_tipo_embarque = $this->input->post('idTipoEmbarque');
 			$desc_mercaderia = $this->input->post('idDescMercaderia');
-			$id_pais_origen = $this->input->post('idPaisOrigen');
-			$id_est_reg_origen = $this->input->post('idCiudadOrigen');
+			$pais_origen = $this->input->post('idPaisOrigen');
+			$ciudad_origen = $this->input->post('idCiudadOrigen');
 			$puerto_origen = $this->input->post('idPuertoOrigen');
-			$id_pais_destino = $this->input->post('idPaisDestino');
-			$id_est_reg_destino = $this->input->post('idCiudadDestino');
+			$pais_destino = $this->input->post('idPaisDestino');
+			$ciudad_destino = $this->input->post('idCiudadDestino');
 			$puerto_destino = $this->input->post('idPuertoDestino');
 
 				$data = [
 					"id_cliente" => $id_cliente,
 					"id_poliza" => $id_poliza,
-/*					"id_a_favor" => $id_a_favor,*/
 					"id_pais_emision" => $id_pais_emision,
 					"direccion_envio" => $direccion_envio,
 					"referencia_interna" => $referencia_interna,
@@ -257,11 +224,11 @@ class FormularioEmision extends CI_Controller
 					"id_transporte" => $id_transporte,
 					"id_tipo_embarque" => $id_tipo_embarque,
 					"desc_mercaderia" => $desc_mercaderia,
-					"id_pais_origen" => $id_pais_origen,
-					"id_est_reg_origen" => $id_est_reg_origen,
+					"pais_origen" => $pais_origen,
+					"ciudad_origen" => $ciudad_origen,
 					"puerto_origen" => $puerto_origen,
-					"id_pais_destino" => $id_pais_destino,
-					"id_est_reg_destino" => $id_est_reg_destino,
+					"pais_destino" => $pais_destino,
+					"ciudad_destino" => $ciudad_destino,
 					"puerto_destino" => $puerto_destino,
 					"id_pais_transbordo" => 0,
 					"transbordo" => FALSE,
@@ -312,11 +279,11 @@ class FormularioEmision extends CI_Controller
 			$id_transporte = $this->input->post('idTransporte');
 			$id_tipo_embarque = $this->input->post('idTipoEmbarque');
 			$desc_mercaderia = $this->input->post('idDescMercaderia');
-			$id_pais_origen = $this->input->post('idPaisOrigen');
-			$id_est_reg_origen = $this->input->post('idCiudadOrigen');
+			$pais_origen = $this->input->post('idPaisOrigen');
+			$ciudad_origen = $this->input->post('idCiudadOrigen');
 			$puerto_origen = $this->input->post('idPuertoOrigen');
-			$id_pais_destino = $this->input->post('idPaisDestino');
-			$id_est_reg_destino = $this->input->post('idCiudadDestino');
+			$pais_destino = $this->input->post('idPaisDestino');
+			$ciudad_destino = $this->input->post('idCiudadDestino');
 			$puerto_destino = $this->input->post('idPuertoDestino');
 
 			$data = [
@@ -343,11 +310,11 @@ class FormularioEmision extends CI_Controller
 				"id_transporte" => $id_transporte,
 				"id_tipo_embarque" => $id_tipo_embarque,
 				"desc_mercaderia" => $desc_mercaderia,
-				"id_pais_origen" => $id_pais_origen,
-				"id_est_reg_origen" => $id_est_reg_origen,
+				"pais_origen" => $pais_origen,
+				"ciudad_origen" => $ciudad_origen,
 				"puerto_origen" => $puerto_origen,
-				"id_pais_destino" => $id_pais_destino,
-				"id_est_reg_destino" => $id_est_reg_destino,
+				"pais_destino" => $pais_destino,
+				"ciudad_destino" => $ciudad_destino,
 				"puerto_destino" => $puerto_destino,
 				"usuario_reg" => $this->session->userdata('usuario')
 			];

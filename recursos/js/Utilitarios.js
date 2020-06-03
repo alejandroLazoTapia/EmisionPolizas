@@ -206,10 +206,27 @@ $("#idCliente").change(function() {
 							$("#idPoliza").prop("disabled", false);
 							$("#idPoliza").html(data);
 						}
-				});  
+				});  	
+				
+				$.ajax({
+
+					url:"formularioEmision/obtieneDatosCliente",
+					type:"POST",
+					data:{'idCliente' : idCliente},
+					dataType:'JSON'
+				}).done(function(data) {
+					$("#idRutDni").val(data[0].rut_dni);
+					$("#idTelefono").val(data[0].telefono);
+					$("#idDireccion").val(data[0].direccion);
+					$("#idCondiciones").val(data[0].condiciones);
+				});  	
 			}else{
 				$("#idPoliza").html(resetPoliza);
 				$("#idPoliza").prop("disabled", true);
+				$("#idRutDni").val('');
+				$("#idTelefono").val('');
+				$("#idDireccion").val('');
+				$("#idCondiciones").val('');
 			}
 		});
 	});
@@ -300,7 +317,7 @@ $("#idPolizaSiniestro").change(function() {
 			
 		});
 	});
-
+/*
  $("#idPaisOrigen").change(function() {
 			 $("#idPaisOrigen option:selected").each(function() {
 				 var idPais = $('#idPaisOrigen').val();
@@ -327,7 +344,7 @@ $("#idPaisDestino").change(function() {
 				 });  	 
 			 });
 		 });
-
+*/
 
 $("#idTipoEmbalaje").change(function() {
 	$("#idTipoEmbalaje option:selected").each(function() {
@@ -356,11 +373,23 @@ $('#myModalUpdate').click(function () {
 	}
 })
 
-
-
 $('#myModalDelete').on('shown.bs.modal', function () {
 	$('#myInput').trigger('focus')
 })
 
+//formato de miles 
+/*$(".miles").on({"focus": function (event) {
+        $(event.target).select();
+        },
+    "keyup": function (event) {
+        $(event.target).val(function (index, value ) {
+            return value.replace(/\D/g, "")
+                        .replace(/([0-9])([0-9]{2})$/, '$1,$2')
+                        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ".");
+        });
+    }
+});
+
+*/
 
 

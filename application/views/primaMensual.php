@@ -27,9 +27,9 @@ echo "</pre>";*/
 						<div class="form-group">
 							<label>Cliente</label>
 							<?php
-							if (count($arrClientes) == 1) {
+							if ($this->session->userdata('perfil') == 2) {
 							?>
-							<select class="form-control" readonly id="idClienteCert" name="idClienteCert" required>
+							<select class="form-control" readonly id="idClientePrima" name="idClientePrima" required>
 								<?php
 								foreach ($arrClientes as $index => $key) {
 									echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -39,8 +39,8 @@ echo "</pre>";*/
 							<?php
 						} else {
 							?>
-							<select class="form-control" id="idClienteCert" name="idClienteCert" required>
-								<option selected value="0">Seleccione</option>
+							<select class="form-control" id="idClientePrima" name="idClientePrima" required>
+								<option selected value="">Seleccione</option>
 								<?php
 								foreach ($arrClientes as $index => $key) {
 									echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -57,7 +57,7 @@ echo "</pre>";*/
 							<?php
 							if ($this->session->userdata('perfil') == 2) {
 							?>
-							<select class="form-control" id="idAnoCert" name="idAnoCert" required>
+							<select class="form-control" id="idAnoPrima" name="idAnoPrima" required>
 								<option selected value="0">Seleccione</option>
 								<?php
 								foreach ($arrAno as $index => $key) {
@@ -68,16 +68,16 @@ echo "</pre>";*/
 							<?php
 						} else {
 							?>
-							<select class="form-control" id="idAnoCert" name="idAnoCert" disabled="true" required>
+							<select class="form-control" id="idAnoPrima" name="idAnoPrima" disabled="true" required>
 								<option selected value="0">Seleccione</option>
 							</select>
 							<?php } ?>
 						</div>
 					</div>
-					<div class="col-lg-3">
+					<div class="col-lg-2">
 						<div class="form-group">
 							<label>Mes</label>
-							<select class="form-control" id="idMesCert" name="idMesCert" disabled="true">
+							<select class="form-control" id="idMesPrima" name="idMesPrima" disabled="true">
 								<option selected value="">Seleccione</option>
 							</select>
 						</div>
@@ -86,9 +86,15 @@ echo "</pre>";*/
 					<div class="col-lg-2">
 						<div class="form-group">
 							<label>&nbsp;</label>
-							<button disabled="true" id="btnObtienePrima" type="submit" class="btn btn btn-primary form-control">Calcular Prima</button>
+							<button disabled="true" id="btnObtienePrima" type="submit" class="btn btn btn-primary form-control">Obtener Prima</button>
 						</div>
 					</div>
+					<div class="col-lg-2" id="idExcelHeader" style="display:none">
+							<div class="form-group" style="text-align: right">
+								<label>&nbsp;</label>
+								<button style="background-color: transparent;margin-top: 23px;border-color: transparent;" type="submit" form="formPrimaExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+							</div>
+					</div>	
 				</div>
 
 
@@ -104,48 +110,49 @@ echo "</pre>";*/
 									<th>Nro Certificado</th>
 									<th>FechaEmision</th>
 									<th>Usuario Emision</th>
-									<th>Monto</th>
+									<th>Prima Cliente</th>
+									<th>Prima Usuario</th>
+									<th>Prima Compañia</th>
+									<th>Utilidad</th>
+									<?php if ($this->session->userdata('perfil') == 1) { ?>
+									<th>Editar</th>
+									<?php } ?>
 								</tr>
 							</thead>
-							<tbody id="idCertificadosEmi">
+							<tbody id="idCalculoPrimas">
 
 								<?php
 								if ($this->session->userdata('perfil') == 2) {
 								?>
 								<tr>
-									<td colspan="7" style="text-align: center">
+									<td colspan="12" style="text-align: center">
 										<div class="alert alert-warning" role="alert"> Seleccione Periodo</div></td>
 								</tr>
 								<?php
 									} else {?>
 										<tr>
-										<td colspan="7" style="text-align: center">
+										<td colspan="12" style="text-align: center">
 										<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>
 										</tr>
 								<?php		
 									}
 								?>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td><b>TOTAL</b></td>
-											<td>$</td>
-										</tr>
 							</tbody>
 						</table>
 					</div>
+					<form role="form" id="formPrimaExcel" action="<?=base_url() ?>index.php/primaMensual/generar_excel/"  method="post" accept-charset='UTF-8' target="_blank" style="display: none">
+				<input id="idClientePrimaExcel" name="idClientePrimaExcel" form="formExcel">
+				<input id="idAnoPrimaExcel" name="idAnoPrimaExcel" form="formPrimaExcel">
+				<input id="idMesPrimaExcel" name="idMesPrimaExcel" form="formPrimaExcel">
+			</form>	
 				</div>
 			</div>
+			<div class="col-lg-12" id="idExcelFooter" style="display:none">
+				<div class="form-group" style="text-align: right">
+					<label>&nbsp;</label>
+					<button style="background-color: transparent;margin-top: 5px;border-color: transparent;" type="submit" form="formPrimaExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+				</div>
+			</div>	
 		</div>
 	</div>
-	<!--GENERA EL EXCEL-->
-	<form role="form" id="formPDF" action="<?=base_url() ?>index.php/formularioEmision/descargarPdf/"  method="post" accept-charset='UTF-8' target="_blank" style="display: none">
-		<input id="idCertificadoPdf" name="idCertificadoPdf" form="formPDF">
-		<input id="idPolizaPdf" name="idPolizaPdf" form="formPDF">
-		<input id="idClientePdf" name="idClientePdf" form="formPDF">
-		<input id="idPaisEmisionPdf" name="idPaisEmisionPdf" form="formPDF">
-	</form>
 </div>

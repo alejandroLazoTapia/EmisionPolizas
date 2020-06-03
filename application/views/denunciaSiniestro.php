@@ -13,7 +13,7 @@ echo "</pre>";*/
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
-			<h1 class="page-header">Denunciar Siniestro</h1>
+			<h1 class="page-header">Registro de Siniestros</h1>
 		</div>
 	</div>
 	<div class="row">
@@ -32,7 +32,7 @@ echo "</pre>";*/
 												<div class="col-lg-12">
 													<div class="form-group">
 														<label>Cliente</label>
-													<?php if (count($arrClientes) == 1) { ?>
+													<?php if ($this->session->userdata('perfil') == 2) { ?>
 														  <select class="form-control" readonly id="idClienteSiniestro" name="idClienteSiniestro" required>
 															<?php
 																foreach ($arrClientes as $index => $key) {
@@ -61,36 +61,52 @@ echo "</pre>";*/
 															<thead>
 																<tr>
 																	<th>Nro Siniestro</th>
+																	<th>Nro Poliza</th>
 																	<th>Nro Certificado</th>
 																	<th>Ingreso</th>
-																	<th>Estado</th>
-																	<th style="text-align: center;display: none">Ver</th>
+																	<th>Monto</th>
+																	<th style="text-align: center">Ver Adjunto</th>
 																</tr>
 															</thead>
 														<tbody id="idTBodySiniestros">
-
-														<tr>
-															<td colspan="4">
-																<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
-														</tr>
-						
+													    <?php if ($this->session->userdata('perfil') == 2) { 
+													    
+																foreach ($arrSiniestros as $index => $key) {
+																	echo"<tr>";
+																	echo '<td>'.$key["id_siniestro"].'</td>';
+																	echo '<td>'.$key["id_certificado"].'</td>';
+																	echo '<td>'.$key["poliza"].'</td>';
+																	echo '<td>'.$key["fecha_ingreso"].'</td>';
+																	echo '<td>'.$key["monto"].'</td>';
+																	echo '<td style="text-align: center"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalSinester"><span class="glyphicon glyphicon-eye-open" ></span></a></td>';
+																	echo"</tr>";
+																}
+																?>
+															
+														<?php } else { ?>
+															<tr>
+																<td colspan="4">
+																	<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
+															</tr>
+															<?php } ?>
 															</tbody>
 														</table>
 													</div><!-- /.table-responsive -->
 												</div>
 
 												
-												<!--//modal de ver siniestro-->
+												<!--//modal de ver imagen siniestro-->
 												<div class="modal fade" id="myModalSinester" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-													<div class="modal-dialog">
+													<div class="modal-body">
 														<div class="modal-content">
 															<div class="modal-header" style="margin-bottom: 20px;">
 																<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-																<h4 class="modal-title" id="myModalLabel">Detalle Siniestro</h4>
-																<div class="col-lg-12">
-																	
-																</div>
+																<h4 class="modal-title" id="myModalLabel">Archivo adjunto</h4>
+																
 															</div>
+															<iframe id="iframePdf" style="display:none" src="" height="580px" width="100%"></iframe>
+															
+															<div style="margin:40px;text-align:center" id="imageContainer"></div>
 														</div>
 													</div>
 												</div>
@@ -112,7 +128,6 @@ echo "</pre>";*/
 													<select class="form-control" id="idPolizaSiniestro" name="idPolizaSiniestro" required>
 													<option value="">Seleccione</option>
 													<?php
-								
 														foreach ($arrPolizas as $arrPoliza => $key) {
 															echo '<option value="'.$key["id_poliza"].'">'.$key["nombre_poliza"].'</option>';
 													}
@@ -139,7 +154,7 @@ echo "</pre>";*/
 												<div class="col-lg-6">
 													<div class="form-group">
 														<label>Monto</label>
-														<input type="number" class="form-control" min="1" placeholder="" id="idMonto" name="idMonto" required>
+														<input class="form-control miles" min="1" placeholder="" id="idMonto" name="idMonto" required>
 													</div>
 												</div>	
 												<div class="col-lg-6">	
@@ -152,7 +167,7 @@ echo "</pre>";*/
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Subir Archivo</label>
-													<input type="file" onchange="encodeImageFileAsURL(this)" name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".xls,.xlsx,.pdf,.PDF,.JPG,.jpg, .PNG, .png" required form="form-create-sinister"/>
+													<input type="file" onchange="encodeImageFileAsURL(this)" name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".pdf,.PDF,.JPG,.jpg,.PNG,.png" required form="form-create-sinister"/>
 												</div>
 											</div>
 											<div class="col-lg-12">
@@ -166,6 +181,7 @@ echo "</pre>";*/
 							</div>
 						</div>
 						<textarea style="display: none" class="form-control valform" rows="13" id="Base64Img" name="Base64Img"></textarea>
+						<textarea style="display: none" class="form-control valform" rows="13" id="idExtencion" name="idExtension"></textarea>
 					</div>
 				</form>
 			</div>

@@ -86,23 +86,72 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					<div class="panel-body">
 						<div class="row">
+						<?php if ($this->session->userdata('perfil') == 2) { ?>
 							<div class="col-lg-12">
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Cliente</label>
-										
-												<?php if (count($arrClientes)==1) { ?>
 													<select readonly class="form-control valform"  id="idCliente" name="idCliente" required>
 													<?php
 													foreach ($arrClientes as $index => $key) {
 														echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
 													}
 													?>
-													</select>
-													<?php
+													</select>	
+									</div>
+								</div>
+								<div class="col-lg-4" >
+									<div class="form-group">
+										<label>RUT/DNI</label>
+										<?php
+										foreach ($arrClientes as $index => $key) {
+											echo '<input readonly class="form-control valform" id="idRutDni" name="idRutDni" value="'.$key["rut_dni"].'">';
+										}
+										?>
+									</div>	
+								</div>
+								<div class="col-lg-4" >
+									<div class="form-group">
+										<label>Teléfono</label>
+										<?php
+										foreach ($arrClientes as $index => $key) {
+											echo '<input readonly class="form-control valform" id="idTelefono" name="idTelefono" value="'.$key["telefono"].'">';
+										}
+										?>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12">	
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label>Dirección</label>
+										<?php
+										foreach ($arrClientes as $index => $key) {
+											echo '<input readonly class="form-control valform" id="idDireccion" name="idDireccion" value="'.$key["telefono"].'">';
+										}
+										?>
+									</div>
+								</div>
+								<div class="col-lg-6" >
+									<div class="form-group">
+										<label>Condiciones</label>
+										<?php
+										foreach ($arrClientes as $index => $key) {
+											echo '<input readonly class="form-control valform" id="idCondiciones" name="idCondiciones" value="'.$key["condiciones"].'">';
+										}
+										?>
+									</div>
+								</div>
+							</div>
+							
+							<?php
 												} else {
 													?>
-													<select class="form-control valform" id="idCliente" name="idCliente" required>
+							<div class="col-lg-12">
+								<div class="col-lg-4">
+									<div class="form-group">
+										<label>Cliente</label>
+										<select class="form-control valform" id="idCliente" name="idCliente" required>
 														<?php
 														echo '<option selected value="">Seleccione</option>';
 														foreach ($arrClientes as $index => $key) {
@@ -110,12 +159,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 														}
 														?>
 													</select>
-													<?php
-												}
-												?>
-											
 									</div>
 								</div>
+								<div class="col-lg-4" >
+									<div class="form-group">
+										<label>RUT/DNI</label>
+										<input readonly class="form-control valform" id="idRutDni" name="idRutDni">
+									</div>	
+								</div>
+								<div class="col-lg-4" >
+									<div class="form-group">
+										<label>Teléfono</label>
+										<input readonly class="form-control valform" id="idTelefono" name="idTelefono">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-12">	
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label>Dirección</label>
+										<input readonly class="form-control valform" id="idDireccion" name="idDireccion"  required>
+									</div>
+								</div>
+								<div class="col-lg-6" >
+									<div class="form-group">
+										<label>Condiciones</label>
+										<input readonly class="form-control valform" id="idCondiciones" name="idCondiciones">
+									</div>
+								</div>
+							</div>
+								<?php
+							}
+							?>
+							
+							
+							<div class="col-lg-12">	
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Póliza</label>
@@ -137,22 +215,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										</select>
 									</div>
 								</div>
-							</div>
-							<div class="col-lg-12">
-									
-								<div class="col-lg-6">
-									<div class="form-group">
-										<label>Dirección</label>
-										<input class="form-control valform" placeholder="ej: las margaritas 2145, santiago, chile." id="idDireccion" name="idDireccion"  required>
-									</div>
-								</div>
-								<div class="col-lg-6">
+								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Referencia Interna</label>
 										<input class="form-control valform" placeholder="" id="idRefInterna"  name="idRefInterna" required>
 									</div>
 								</div>
 							</div>
+								
+							
 						</div>
 					</div>
 				</div>
@@ -187,7 +258,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Monto Asegurado</label>
-										<input min="1" type="number" class="form-control valform" placeholder="" id="idMontoAsegurado" name="idMontoAsegurado" required>
+										<input min="1" class="form-control valform miles" placeholder="" id="idMontoAsegurado" name="idMontoAsegurado" required>
 									</div>
 								</div>
 							</div>
@@ -195,7 +266,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Tasa</label>
-										<input min="0" max="100" type="number" class="form-control valform" step="0.01" placeholder="ej: 0.11." id="idTasa" name="idTasa" required>
+										<input class="form-control valform" step="0.01" placeholder="ej: 0,15% del monto asegurado" id="idTasa" name="idTasa" required>
 									</div>
 								</div>
 								<div class="col-lg-4">
@@ -214,7 +285,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Prima</label>
-										<input type="number" class="form-control valform"  id="idPrima" name="idPrima" required>
+										<input class="form-control valform miles" id="idPrima" name="idPrima" required>
 									</div>
 								</div>
 							</div>
@@ -369,22 +440,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Pais</label>
-										<select class="form-control valform" id="idPaisOrigen" name="idPaisOrigen" required>
+										<input class="form-control valform" placeholder="Ej: China" id="idPaisOrigen" name="idPaisOrigen" required>
+									<!--	<select class="form-control valform" id="idPaisOrigen" name="idPaisOrigen" required>
 											<option value="">Seleccione</option>
 													<?php
 													foreach ($arrPaises as $index => $key) {
 														echo '<option value="'.$key["id_pais"].'">'.$key["nombre_pais"].'</option>';
 													}
 													?>
-										</select>
+										</select>-->
 									</div>
 								</div>
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Ciudad</label>
-										<select class="form-control valform" id="idCiudadOrigen" name="idCiudadOrigen" required>
+										<input class="form-control valform" placeholder="Ej: Shanghái" id="idCiudadOrigen" name="idCiudadOrigen" required>
+									<!--	<select class="form-control valform" id="idCiudadOrigen" name="idCiudadOrigen" required>
 												<option value="">Seleccione</option>
-											</select>
+											</select>-->
 									</div>
 								</div>
 								<div class="col-lg-4">
@@ -408,22 +481,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Pais</label>
-										<select class="form-control valform" id="idPaisDestino" name="idPaisDestino" required>
+										<input class="form-control valform" placeholder="Ej: Chile" id="idPaisDestino" name="idPaisDestino" required>	
+								<!--		<select class="form-control valform" id="idPaisDestino" name="idPaisDestino" required>
 												<option value="">Seleccione</option>
 													<?php
 													foreach ($arrPaises as $index => $key) {
 														echo '<option value="'.$key["id_pais"].'">'.$key["nombre_pais"].'</option>';
 													}
 													?>
-											</select>
+											</select>-->
 									</div>
 								</div>
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Ciudad</label>
-										<select class="form-control valform" id="idCiudadDestino" name="idCiudadDestino" required>
+										<input class="form-control valform" placeholder="Ej: Santiago" id="idCiudadDestino" name="idCiudadDestino" required>
+							<!--<select class="form-control valform" id="idCiudadDestino" name="idCiudadDestino" required>
 												<option value="">Seleccione</option>
-											</select>
+											</select>	-->		
 									</div>
 								</div>
 								<div class="col-lg-4">

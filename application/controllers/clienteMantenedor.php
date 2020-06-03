@@ -192,7 +192,7 @@ class ClienteMantenedor extends CI_Controller
 			$id_cliente = $this->input->post('idClientePol');
 			$desc_poliza = $this->input->post('idDescripcion');
 			$codigo_poliza = $this->input->post('idCodigoPoliza');
-			if ($this->Cliente->existPolicy($codigo_poliza)==FALSE) {
+		/*	if ($this->Cliente->existPolicy($codigo_poliza)==FALSE) {*/
 				$data = [
 					"id_cliente" => $id_cliente,
 					"desc_poliza" => $desc_poliza,
@@ -205,9 +205,9 @@ class ClienteMantenedor extends CI_Controller
 				} else {
 					echo 1; // no inserto
 				}
-			} else {
+		/*	} else {
 				echo 2; //ya existe el cliente
-			}
+			}*/
 		} else {
 			echo 5;  // no entro al ajax
 		}

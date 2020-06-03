@@ -19,7 +19,6 @@ $('#btnObtieneDatos').click(function(){
 			$('#idCliente').val(data[0].id_cliente);	   
 			var idPaisOrigen = data[0].id_pais_origen;
 			 $.ajax({
-
 				url:"formularioEmision/obtieneTipoPoliza/",
 				type:"POST",
 				data:{'idCliente':idCliente}
@@ -27,49 +26,33 @@ $('#btnObtieneDatos').click(function(){
 					$("#idPoliza").html(dataPol);
 					$('#idPoliza').val(data[0].id_poliza);	 
 					$('#idPoliza').prop("disabled", false);	 
-					$.ajax({
-
-						url:"formularioEmision/obtieneCiudadesPais/",
-						type:"POST",
-						data:{'idPais':idPaisOrigen}
-					}).done(function(dataCiuOri) {
-						$("#idCiudadOrigen").html(dataCiuOri);
-						$('#idCiudadOrigen').val(data[0].id_est_reg_origen);
-						var idPaisDestino = data[0].id_pais_destino;
-						$.ajax({
-
-							url:"formularioEmision/obtieneCiudadesPais/",
-							type:"POST",
-							data:{'idPais':idPaisDestino}
-						}).done(function(dataCiuDes) {
-							$("#idCiudadDestino").html(dataCiuDes);
-						    $('#idCiudadDestino').val(data[0].id_est_reg_destino);							
-							/*$.ajax({
-
-								url:"formularioEmision/obtieneAFavorCliente/",
-								type:"POST",
-								data:{'idCliente':idCliente}
-							}).done(function(dataAfa) {
-								$("#idAFavor").html(dataAfa);
-								$('#idAFavor').val(data[0].id_a_favor);
-							});  */
-						});  
-					});  
 				});  
 			
 			$('#idCertActivo').val(data[0].id_certificado);	
 			$('#idCertAct').val(data[0].id_certificado);	
 			$('#idCertEli').val(data[0].id_certificado);													
-
+			
+			$("#idRutDni").val(data[0].rut_dni);
+			$("#idTelefono").val(data[0].telefono);
+			$("#idDireccion").val(data[0].direccion);
+			$("#idCondiciones").val(data[0].condiciones);
+			
 			$('#idPaisEmision').val(data[0].id_pais_emision);										
-			$('#idDireccion').val(data[0].direccion_cliente);
 			$('#idRefInterna').val(data[0].referencia_interna);
 			$('#idMoneda').val(data[0].id_moneda);										
 			$('#idDeducible').val(data[0].deducible);
-			$('#idMontoAsegurado').val(data[0].monto_asegurado);
+			
+			$('#idMontoAsegurado').val(data[0].monto_asegurado.replace(/\D/g, "")
+                        .replace(/([0-9])([0-9]{2})$/, '$1,$2')
+                        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, "."));
+			
 			$('#idTasa').val(data[0].tasa);
-			$('#idClausula').val(data[0].id_clausula);										
-			$('#idPrima').val(data[0].prima);
+			$('#idClausula').val(data[0].id_clausula);
+													
+			$('#idPrima').val(data[0].prima.replace(/\D/g, "")
+                        .replace(/([0-9])([0-9]{2})$/, '$1,$2')
+                        .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, "."));
+			
 			$('#idFechaEmbarque').val(data[0].fecha_embarque);
 			$('#idFechaArribo').val(data[0].fecha_arribo);
 			$('#idGuiaBl').val(data[0].guia_bl);
@@ -99,9 +82,11 @@ $('#btnObtieneDatos').click(function(){
 				$('#idEmbNacional').attr('checked', true);
 			}		
 			$('#idDescMercaderia').val(data[0].desc_mercaderia);
-			$('#idPaisOrigen').val(data[0].id_pais_origen);
+			$('#idPaisOrigen').val(data[0].pais_origen);
+			$('#idCiudadOrigen').val(data[0].ciudad_origen);
 			$('#idPuertoOrigen').val(data[0].puerto_origen);	
-			$('#idPaisDestino').val(data[0].id_pais_destino);			
+			$('#idPaisDestino').val(data[0].pais_destino);				
+			$('#idCiudadDestino').val(data[0].ciudad_destino);			
 			$('#idPuertoDestino').val(data[0].puerto_destino);
 			$('#idClientes').val(0);
 			var idPolBody = '<option value="0" selected="selected">Seleccione</option>';
@@ -136,11 +121,15 @@ $("#form-create-certificate").submit(function (e) {
 	var idCliente = $('#idCliente').val();
 	var idPoliza = $('#idPoliza').val();
 	var idPaisEmision = $("#idPaisEmision").val();
-	
+	var prima = $('#idPrima').val().replace('.', '').replace('.', '').replace(',', '.');
+	var montoAsegurado = $('#idMontoAsegurado').val().replace('.', '').replace('.', '').replace(',', '.');
+
+	$('#idPrima').val(prima);
+	$('#idMontoAsegurado').val(montoAsegurado);         
 	$('#idClientePdf').val(idCliente);
 	$('#idPolizaPdf').val(idPoliza);	
-	$('#idPaisEmisionPdf').val(idPaisEmision);	
-	console.log(data);
+	$('#idPaisEmisionPdf').val(idPaisEmision);
+
 	if ($(document.activeElement).attr('formaction') != "no"){
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),
@@ -155,9 +144,7 @@ $("#form-create-certificate").submit(function (e) {
 				$("#form-create-certificate")[0].reset();
 				$('#btnModalUpd').attr("disabled", true);
 				$('#btnModalEli').attr("disabled", true);
-				
-				
-				
+	
 			} else {
 				alert("No fue posible emitir el certificado");
 			}
@@ -172,6 +159,8 @@ $("#form-create-certificate").submit(function (e) {
 
 $('#btnActualizarCertificado').click(function() {		
 	setTimeout(function() {
+	console.log($('#idMontoAsegurado').val());
+	console.log($('#idPrima').val());
 		$.ajax({
 			type: 'POST',
 			url:"formularioEmision/actualizaCertificado/",

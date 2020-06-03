@@ -14,6 +14,8 @@ function showFormSinister()
 $("#form-create-sinister").submit(function(e) {
 	e.preventDefault();
 	var idCliente = $('#idClienteSiniestro').val();
+	var monto = $('#idMonto').val().replace('.', '').replace(',', '.');  
+	$('#idMonto').val(monto);
 	var frm = $(this).closest('form');
 	var data = frm.serialize();
 	$.ajax({
@@ -50,13 +52,20 @@ $("#form-create-sinister").submit(function(e) {
 });
 
 
+
+
 function encodeImageFileAsURL(element)
 {
+	var filename = $('input[type=file]').val().split('\\').pop();
+	
+	$('#idExtencion').val(filename.split('.').pop()); 
+
 	var file = element.files[0];
 	getBase64(file).then(
 	data => $('#Base64Img').val(data)
 	);
 }
+
 
 function getBase64(file)
 {
@@ -74,19 +83,51 @@ function getBase64(file)
 	});
 }
 
-$('.idVerSiniestro').click(function() {
-	setTimeout(function() {
+
+$(document).on('click','#btnVerSiniestro',function(event) {		
 		var idSiniestro = $(this).parents("tr").find("td")[0].innerHTML;
 		var idCertificado = $(this).parents("tr").find("td")[1].innerHTML;
+		console.log(idSiniestro);
+		console.log(idCertificado);
 		$.ajax({
 			type: 'POST',
 			url:"denunciaSiniestro/obtieneDetalleSiniestro/",
-			data:{idSiniestro, idCertificado},
+			data:{"idSiniestro" : idSiniestro,
+				 "idCertificado" : idCertificado},
+			dataType:'JSON',
 			success:function(respuesta) {
 				if (respuesta) {
-					$('#myModalSinester').show();
+					console.log(respuesta);
+					if(respuesta[0].extension.toUpperCase() == 'JPG' || respuesta[0].extension.toUpperCase() == 'PNG'){
+						console.log("entro");
+						var src = "data:image/jpeg;base64,";
+						src += respuesta[0].adjunto;
+						var newImage = document.createElement('img');
+						newImage.src = src;
+						newImage.style.width="70%";
+						/*newImage.width = "800";*/
+						/*newImage.height = "600";*/
+						
+						/*var a = document.createElement('a');
+						a.href = src;
+						a.download = true;
+						a.target = '_blank';
+						a.click();*/
+				
+						document.querySelector('#imageContainer').innerHTML = newImage.outerHTML;//where to insert your image
+						$('#iframePdf').attr("style",'display:none');
+					}else if(respuesta[0].extension.toUpperCase() == 'PDF'){
+						document.querySelector('#imageContainer').innerHTML = '';
+						data = 'data:application/pdf;base64,{0}'.replace('{0}', respuesta[0].adjunto);
+						document.querySelector('#iframePdf').src = data;
+						$('#iframePdf').attr("style",'');
+					}else{
+						$('#iframePdf').attr("style",'display:none');
+					}
+					
+					
 				} else {
-					$('#myModalSinester').show();
+					$('#myModalSinester').hide();
 				}
 
 			},
@@ -95,7 +136,6 @@ $('.idVerSiniestro').click(function() {
 			}
 		});
 	});
-});
 
 $("#idClienteSiniestro").change(function() {
 	$("#idClienteSiniestro option:selected").each(function() {

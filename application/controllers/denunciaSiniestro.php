@@ -38,11 +38,12 @@ class DenunciaSiniestro extends CI_Controller
 			if ($siniestros != null) {
 				foreach ($siniestros as $siniestro => $key) {
 					print"<tr>";
-					print '<td>'.$key["id_siniestro"].'</td>';
-					print '<td>'.$key["id_certificado"].'</td>';
-					print '<td>'.$key["fecha_ingreso"].'</td>';
-					print '<td>'.$key["estado"].'</td>';
-					print '<td style="text-align: center;display: none"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalVerSiniestro"><span class="glyphicon glyphicon-eye-open" ></span></a></td>';
+					echo '<td>'.$key["id_siniestro"].'</td>';
+					echo '<td>'.$key["id_certificado"].'</td>';
+					echo '<td>'.$key["poliza"].'</td>';
+					echo '<td>'.$key["fecha_ingreso"].'</td>';
+					echo '<td>'.$key["monto"].'</td>';
+					print '<td style="text-align: center"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalSinester"><span class="glyphicon glyphicon-eye-open" ></span></a></td>';
 					print"</tr>";
 				}
 			} else {
@@ -69,6 +70,8 @@ class DenunciaSiniestro extends CI_Controller
 			$monto = $this->input->post('idMonto');
 			$fecha_siniestro = $this->input->post('idFecha');
 			$adjunto = $this->input->post('Base64Img');
+			$extension = $this->input->post('idExtension');
+			
 			
 	/*		echo var_dump($id_cliente);
 			echo var_dump($id_poliza);
@@ -88,6 +91,7 @@ class DenunciaSiniestro extends CI_Controller
 					"monto" => $monto,
 					"fecha_siniestro" => $fecha_siniestro,
 					"adjunto" => $adjunto,
+					"extension" => $extension,
 					"id_estado" => 1,
 					"estado_reg" => 1
 				];
@@ -107,6 +111,13 @@ class DenunciaSiniestro extends CI_Controller
 		} else {
 			echo -5;  // no entro al ajax
 		}
+	}
+	
+	public function obtieneDetalleSiniestro(){
+		$idSiniestro = $this->input->post('idSiniestro');
+		$idCertificado = $this->input->post('idCertificado');
+		$DatosSiniestro = $this->Siniestro->getSinesterDetail($idSiniestro, $idCertificado);
+		echo(json_encode($DatosSiniestro));
 	}
 
 }

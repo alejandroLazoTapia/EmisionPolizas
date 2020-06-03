@@ -27,12 +27,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="form-group">
 								<label>Cliente</label>
 								<?php
-								if (count($arrClientes) == 1) {
+								if ($this->session->userdata('perfil') == 2) {
 								?>
 									<select class="form-control" readonly id="idClienteCert" name="idClienteCert" required>
 									<?php
 								foreach ($arrClientes as $index => $key) {
-									echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+									echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
 								}
 								?>
 								</select>
@@ -40,7 +40,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							} else {
 								?>
 									<select class="form-control" id="idClienteCert" name="idClienteCert" required>
-									<option selected value="0">Seleccione</option>
+									<option selected style="background-color: red" value="0">Todos</option>
+									<option value="">Seleccione</option>
 									<?php
 								foreach ($arrClientes as $index => $key) {
 									echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -74,7 +75,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<?php } ?>
 							</div>
 						</div>
-						<div class="col-lg-3">
+						<div class="col-lg-2">
 							<div class="form-group">
 								<label>Mes</label>
 									<select class="form-control" id="idMesCert" name="idMesCert" disabled="true">
@@ -89,8 +90,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<button disabled="true" id="btnObtieneCertificado" type="submit" class="btn btn btn-primary form-control">Obtener Certificados</button>
 							</div>
 						</div>
+						<div class="col-lg-2">
+							<div class="form-group" style="text-align: right">
+								<label>&nbsp;</label>
+								<button style="background-color: transparent;margin-top: 23px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+							</div>
+						</div>						
 					</div>
-
 
 					<!-- /.panel-heading -->
 					<div class="panel-body" style="margin-top: 30px">
@@ -105,6 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<th>FechaEmision</th>
 										<th>Usuario Emision</th>
 										<th style="text-align: center;">Descargar</th>
+										<th style="text-align: center;">Anular</th>
 									</tr>
 								</thead>
 								<tbody id="idCertificadosEmi">
@@ -118,7 +125,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									} else if (!empty($arrCertificados)) {
 										$i = 1;
 										foreach ($arrCertificados as $index => $key) {
-											echo"<tr>";
+											if($key['estado_reg'] == 0){
+												echo '<tr style="background-color: #FCAAAA;">';
+											}else{
+												echo'<tr>';
+											}
+											
 											echo '<td>'.$i.'</td>';
 											echo '<td>'.$key["nombre_cliente"].'</td>';
 											echo '<td>'.$key["codigo_poliza"].'</td>';
@@ -132,6 +144,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											</a>
 										</td>
 										<?php
+										if($key['estado_reg'] == 0){
+											echo '<td style="text-align: center;"><b>Anulado</b></td>';
+											}else{ ?>
+											<td style="text-align: center;">
+												<a class="idAnulaCertificado" data-toggle="modal" data-target="#myModalAnular">
+													<span class="glyphicon glyphicon glyphicon-remove"></span>
+												</a>
+											</td>
+										<?php } 			
+								
 										echo '<td style="display:none">'.$key["id_cliente"].'</td>';
 										echo '<td style="display:none">'.$key["id_poliza"].'</td>';
 										echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
@@ -142,7 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										?>
 										<tr>
 											<td colspan="7" style="text-align: center">
-												<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>
+												<div class="alert alert-warning" role="alert">Seleccione cliente y periodo</div></td>
 										</tr>
 										<?php
 									}
@@ -150,7 +172,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								</tbody>
 							</table>
 						</div>
+			<form role="form" id="formExcel" action="<?=base_url() ?>index.php/historialCertificado/generar_excel/"  method="post" accept-charset='UTF-8' target="_blank" style="display: none">
+				<input id="idClienteExcel" name="idCertificadoExcel" form="formExcel">
+				<input id="idAnoExcel" name="idAnoExcel" form="formExcel">
+				<input id="idMesExcel" name="idMesExcel" form="formExcel">
+			</form>	
+		</div>
+				
+	<!--Modal delete-->
+				<div class="modal fade" id="myModalAnular" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header" style="margin-bottom: 20px;">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<h4 class="modal-title" id="myModalLabel">Eliminar Certificado</h4>
+							</div>
+
+							<div class="row" style="text-align:center;">
+								<div class="col-lg-12">
+									<div class="form-group">
+										<label>Estas intentando eliminar el certificado</label>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<label>Nº </label> <input id="idCertAnu" name="idCertAnu"  type="text" style="background-color:transparent;border-color: transparent;width: 100px;text-align: center;" disabled="true">
+									</div>
+								</div>
+
+								<div class="col-lg-12">
+									<div class="form-group">
+										<label>¿Deseas Eliminar?</label>
+									</div>
+								</div>
+								<div class="col-lg-12">
+									<div class="form-group">
+										<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+										&nbsp;&nbsp;&nbsp;&nbsp;
+										<button type="button" class="btn btn-danger" id="btnAnularCertificado" name="btnObtieneDatos" data-dismiss="modal">Si</button>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="form-group" style="text-align: right">
+					<label>&nbsp;</label>
+					<button style="background-color: transparent;margin-top: 13px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
 				</div>
 			</div>
 		</div>    
