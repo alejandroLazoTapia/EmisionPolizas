@@ -86,8 +86,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					<div class="panel-body">
 						<div class="row">
-						<?php if ($this->session->userdata('perfil') == 2) { ?>
-							<div class="col-lg-12">
+						<?php if ($this->session->userdata('perfil') == 2) { 
+						        if (is_null($arrClientes)) { ?>
+							        <div class="col-lg-12">
+								        <div class="col-lg-4">
+											<div class="form-group">
+												<label>Cliente</label>
+								        		<select class="form-control" readonly id="idClienteCert" name="idClienteCert" required>
+													<option selected value="">Seleccione</option>
+												</select>
+											</div>
+										</div>		
+										<div class="col-lg-4" >
+											<div class="form-group">
+												<label>RUT/DNI</label>
+												<input readonly class="form-control valform" id="idRutDni" name="idRutDni">
+											</div>	
+										</div>
+											<div class="col-lg-4" >
+												<div class="form-group">
+													<label>Teléfono</label>
+													<input readonly class="form-control valform" id="idTelefono" name="idTelefono">
+												</div>
+											</div>
+										</div>
+										<div class="col-lg-12">	
+											<div class="col-lg-6">
+												<div class="form-group">
+													<label>Dirección</label>
+													<input readonly class="form-control valform" id="idDireccion" name="idDireccion"  required>
+												</div>
+											</div>
+											<div class="col-lg-6" >
+												<div class="form-group">
+													<label>Condiciones</label>
+													<input readonly class="form-control valform" id="idCondiciones" name="idCondiciones">
+												</div>
+											</div>
+										</div>
+						   <?php } else{ if (count($arrClientes) == 1) {  ?>
+						   	<div class="col-lg-12">
 								<div class="col-lg-4">
 									<div class="form-group">
 										<label>Cliente</label>
@@ -143,10 +181,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									</div>
 								</div>
 							</div>
-							
-							<?php
-												} else {
-													?>
+						   	<?php } else{ ?>
+											<div class="col-lg-12">
+												<div class="col-lg-4">
+													<div class="form-group">
+														<label>Cliente</label>
+														<select class="form-control valform" id="idCliente" name="idCliente" required>
+																		<?php
+																		echo '<option selected value="">Seleccione</option>';
+																		foreach ($arrClientes as $index => $key) {
+																			echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+																		}
+																		?>
+																	</select>
+													</div>
+												</div>
+												<div class="col-lg-4" >
+													<div class="form-group">
+														<label>RUT/DNI</label>
+														<input readonly class="form-control valform" id="idRutDni" name="idRutDni">
+													</div>	
+												</div>
+												<div class="col-lg-4" >
+													<div class="form-group">
+														<label>Teléfono</label>
+														<input readonly class="form-control valform" id="idTelefono" name="idTelefono">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-12">	
+												<div class="col-lg-6">
+													<div class="form-group">
+														<label>Dirección</label>
+														<input readonly class="form-control valform" id="idDireccion" name="idDireccion"  required>
+													</div>
+												</div>
+												<div class="col-lg-6" >
+													<div class="form-group">
+														<label>Condiciones</label>
+														<input readonly class="form-control valform" id="idCondiciones" name="idCondiciones">
+													</div>
+												</div>
+						 					</div>
+				<?php } } } else { ?>
 							<div class="col-lg-12">
 								<div class="col-lg-4">
 									<div class="form-group">

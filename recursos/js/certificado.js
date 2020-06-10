@@ -109,7 +109,7 @@ $('#btnObtieneCertificado').click(function() {
 	var idCliente = $('#idClienteCert').val();
 	var idAnoCert = $('#idAnoCert').val();
 	var idMesCert = $('#idMesCert').val();
-
+	console.log("entro");
 		$.ajax({
 			type: 'POST',
 			url:"historialCertificado/obtieneCertificadosCliente",
@@ -119,6 +119,7 @@ $('#btnObtieneCertificado').click(function() {
 				'idMesCert':idMesCert
 			},
 			success:function(data) {
+				console.log(data);
 				$('#idCertificadosEmi').html(data);
 				$('#idClienteExcel').val(idCliente);
 				$('#idAnoExcel').val(idAnoCert);

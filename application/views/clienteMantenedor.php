@@ -39,8 +39,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										</tr>
 									</thead>
 									<tbody>
-
-										<?php
+									  <?php if(is_null($arrClientes)){ ?>
+									  	<tr>
+											<td colspan="4">
+											<div class="alert alert-warning" role="alert"> No tiene clientes registrados</div></td>
+										</tr>
+									 <?php } else{  
+									 
 										$i = 1;
 										foreach ($arrClientes as $index => $key) {
 											echo"<tr>";
@@ -63,8 +68,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										echo '<td style="display:none">'.$key["telefono"].'</td>';
 										echo'</tr>';
 										$i = $i +1;
-									}
-										?>
+									}}?>
+										
+										
 									</tbody>
 								</table>
 							</div>
@@ -287,6 +293,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<option value="Especiales">Especiales</option>
 													<option value="Contenedores">Contenedores</option>
 										
+												</select>
+											</div>
+										</div>
+										
+										<div class="col-lg-12">
+											<div class="form-group">
+												<label>Vía</label>
+												<select class="form-control" id="idVia" name="idVia" required>
+													<option value="">Seleccione</option>
+													<option value="Marítima">Marítima</option>
+													<option value="Aéreo">Aéreo</option>
 												</select>
 											</div>
 										</div>

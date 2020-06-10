@@ -75,7 +75,7 @@ class Certificado extends CI_Model
 	public function obtenerPolizasCliente($idCliente = '')
 	{
 		$sql = "select pol.id as id_poliza,
-		CONCAT(pol.desc_poliza,'-',pol.codigo_poliza) as nombre_poliza
+		CONCAT(pol.desc_poliza,'-',pol.codigo_poliza,'-',pol.via) as nombre_poliza
 		FROM CLIENTE cli
 		INNER JOIN POLIZA pol on pol.id_cliente = cli.id and pol.estado_reg = 1 
 		WHERE   cli.id = '".$idCliente."'
@@ -416,10 +416,11 @@ class Certificado extends CI_Model
 		cer.guia_bl as b_l, 
 		cer.vuelo_nave as numero_nave,
 		CONCAT('TRANSPORTE ',UPPER(tra.nombre_transporte),' PARA CARGA ',cla.desc_clausula) as cobertura,
-		CONCAT(mon.signo,' ',cer.monto_asegurado) as monto_asegurado,
-		CONCAT(mon.signo,' ',cer.prima) as prima,
+		FORMAT(cer.monto_asegurado, 2, 'de_DE') as monto_asegurado,
+		FORMAT(cer.prima, 2, 'de_DE') as prima,
 		DATE_FORMAT(cer.fecha_mod, '%d-%m-%Y') as fecha_emision,
-		mon.signo
+		mon.signo,
+		cer.referencia_interna
 		FROM CERTIFICADO cer INNER JOIN CLIENTE cli on cli.id = cer.id_cliente 
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 
 		INNER JOIN CLAUSULA cla on cla.id = cer.id_clausula 

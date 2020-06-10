@@ -192,11 +192,13 @@ class ClienteMantenedor extends CI_Controller
 			$id_cliente = $this->input->post('idClientePol');
 			$desc_poliza = $this->input->post('idDescripcion');
 			$codigo_poliza = $this->input->post('idCodigoPoliza');
+			$via = $this->input->post('idVia');
 		/*	if ($this->Cliente->existPolicy($codigo_poliza)==FALSE) {*/
 				$data = [
 					"id_cliente" => $id_cliente,
 					"desc_poliza" => $desc_poliza,
 					"codigo_poliza" => $codigo_poliza,
+					"via" => $via,
 					"estado_reg" => 1
 				];
 

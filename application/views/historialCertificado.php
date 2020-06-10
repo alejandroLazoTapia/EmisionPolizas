@@ -28,16 +28,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<label>Cliente</label>
 								<?php
 								if ($this->session->userdata('perfil') == 2) {
-								?>
-									<select class="form-control" readonly id="idClienteCert" name="idClienteCert" required>
-									<?php
-								foreach ($arrClientes as $index => $key) {
-									echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
-								}
-								?>
-								</select>
+									if (is_null($arrClientes)) { ?>
+										<select class="form-control" readonly id="idClienteCert" name="idClienteCert" required>
+											<option selected value="">Seleccione</option>
+										</select>
+								<?php	}else{  if (count($arrClientes) == 1) {  ?>
+											  	<select class="form-control" readonly id="idClienteCert" name="idClienteCert" required>
+													<?php
+												foreach ($arrClientes as $index => $key) {
+													echo '<option selected value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+												}
+												?>
+												</select>
+											<?php  }else{ ?>
+											  	<select class="form-control"  id="idClienteCert" name="idClienteCert" required>
+											  	<option selected value="">Seleccione</option>
+														<?php
+													foreach ($arrClientes as $index => $key) {
+														echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+													}
+													?>
+													</select>
 								<?php
-							} else {
+							} } } else {
 								?>
 									<select class="form-control" id="idClienteCert" name="idClienteCert" required>
 									<option selected style="background-color: red" value="0">Todos</option>
@@ -56,7 +69,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="form-group">
 								<label>Año</label>
 									<?php
-									if ($this->session->userdata('perfil') == 2) {
+									if ($this->session->userdata('perfil') == 2) { 
+										if (is_null($arrClientes)) { ?>
+											<select readonly class="form-control" id="idAnoCert" name="idAnoCert" required>
+											<option selected value="0">Seleccione</option>
+											</select>
+										<?php }else{
 									?>
 									<select class="form-control" id="idAnoCert" name="idAnoCert" required>
 										<option selected value="0">Seleccione</option>
@@ -67,7 +85,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									?>
 									</select>
 									<?php
-								} else {
+								} } else {
 									?>
 									<select class="form-control" id="idAnoCert" name="idAnoCert" disabled="true" required>
 										<option selected value="0">Seleccione</option>
@@ -102,6 +120,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="panel-body" style="margin-top: 30px">
 						<div class="table-responsive">
 							<table class="table table-hover">
+							<?php if ($this->session->userdata('perfil') == 2) { ?>
+								<thead>
+									<tr>
+										<th>Item</th>
+										<th>Cliente</th>
+										<th>Poliza</th>
+										<th>Nro Certificado</th>
+										<th>FechaEmision</th>
+										<th>Usuario Emision</th>
+										<th style="text-align: center;">Descargar</th>
+									</tr>
+								</thead>
+							<?php } else{ ?>
 								<thead>
 									<tr>
 										<th>Item</th>
@@ -114,6 +145,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										<th style="text-align: center;">Anular</th>
 									</tr>
 								</thead>
+							<?php } ?>	
 								<tbody id="idCertificadosEmi">
 
 										<?php if ($this->session->userdata('perfil') == 2) { ?>

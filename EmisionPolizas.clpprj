@@ -4,21 +4,6 @@
 		<PM_URL><![CDATA[http://localhost/]]></PM_URL><PM_HOME_URL><![CDATA[http://localhost/]]></PM_HOME_URL><PM_LIBS><![CDATA[]]></PM_LIBS><PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION><PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR><PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE></settings><removed value=";C:\xampp\htdocs\EmisionPolizas\application\libraries\composer.json;"/><added value=""/><lastopfiles>
 	</lastopfiles>
 	<errors version="5.11">
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\vendor\phpdocumentor\reflection-docblock\src\DocBlock\Tags\Method.php">
-			<error val="9;139;10;139;101;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\primaMensual.php">
-			<error val="35;31;44;31;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\historialCertificado.php">
-			<error val="37;31;46;31;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\formularioEmision.php">
-			<error val="20;93;29;93;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\denunciaSiniestro.php">
-			<error val="44;35;53;35;2002;1;"/>
-		</errfile>
 	</errors>
 	<cakedata>
 	</cakedata>

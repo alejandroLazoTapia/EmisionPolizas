@@ -28,16 +28,29 @@ echo "</pre>";*/
 							<label>Cliente</label>
 							<?php
 							if ($this->session->userdata('perfil') == 2) {
-							?>
-							<select class="form-control" readonly id="idClientePrima" name="idClientePrima" required>
-								<?php
-								foreach ($arrClientes as $index => $key) {
-									echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
-								}
-								?>
-							</select>
+								if (is_null($arrClientes)) { ?>
+									<select readonly class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
+										<option selected value="">Seleccione</option>
+									</select> 
+							<?php } else { if (count($arrClientes) == 1) {  ?>
+											<select class="form-control" readonly id="idClientePrima" name="idClientePrima" required>
+												<?php
+												foreach ($arrClientes as $index => $key) {
+													echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+												}
+												?>
+											</select>
+									<?php	}else{ ?>
+											<select class="form-control" id="idClientePrima" name="idClientePrima" required>
+											<option selected value="">Seleccione</option>
+											<?php
+											foreach ($arrClientes as $index => $key) {
+												echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+											}
+											?>
+										</select>	
 							<?php
-						} else {
+						} } } else {
 							?>
 							<select class="form-control" id="idClientePrima" name="idClientePrima" required>
 								<option selected value="">Seleccione</option>
@@ -55,23 +68,28 @@ echo "</pre>";*/
 						<div class="form-group">
 							<label>Año</label>
 							<?php
-							if ($this->session->userdata('perfil') == 2) {
-							?>
-							<select class="form-control" id="idAnoPrima" name="idAnoPrima" required>
-								<option selected value="0">Seleccione</option>
-								<?php
-								foreach ($arrAno as $index => $key) {
-									echo '<option value="'.$key["ano"].'">'.$key["ano"].'</option>';
-								}
-								?>
-							</select>
-							<?php
-						} else {
-							?>
-							<select class="form-control" id="idAnoPrima" name="idAnoPrima" disabled="true" required>
-								<option selected value="0">Seleccione</option>
-							</select>
-							<?php } ?>
+									if ($this->session->userdata('perfil') == 2) { 
+										if (is_null($arrClientes)) { ?>
+											<select readonly class="form-control" id="idAnoPrima" name="idAnoPrima" required>
+											<option selected value="0">Seleccione</option>
+											</select>
+										<?php }else{
+									?>
+									<select class="form-control" id="idAnoPrima" name="idAnoPrima" required>
+										<option selected value="0">Seleccione</option>
+										<?php
+									foreach ($arrAno as $index => $key) {
+										echo '<option value="'.$key["ano"].'">'.$key["ano"].'</option>';
+									}
+									?>
+									</select>
+									<?php
+								} } else {
+									?>
+									<select class="form-control" id="idAnoPrima" name="idAnoPrima" disabled="true" required>
+										<option selected value="0">Seleccione</option>
+									</select>
+									<?php } ?>
 						</div>
 					</div>
 					<div class="col-lg-2">
@@ -111,10 +129,10 @@ echo "</pre>";*/
 									<th>FechaEmision</th>
 									<th>Usuario Emision</th>
 									<th>Prima Cliente</th>
+									<?php if ($this->session->userdata('perfil') == 1) { ?>
 									<th>Prima Usuario</th>
 									<th>Prima Compañia</th>
 									<th>Utilidad</th>
-									<?php if ($this->session->userdata('perfil') == 1) { ?>
 									<th>Editar</th>
 									<?php } ?>
 								</tr>

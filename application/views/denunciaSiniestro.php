@@ -3,12 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-<!--	<?php
-/*echo "
-<pre>";
-print_r(is_null($arrPolizas));
-echo "</pre>";*/
-	?>-->
+	<?php
+echo "<pre>";
+print_r(is_null($arrClientes));
+echo "</pre>";
+	?>
 
 <div id="page-wrapper">
 	<div class="row">
@@ -32,16 +31,34 @@ echo "</pre>";*/
 												<div class="col-lg-12">
 													<div class="form-group">
 														<label>Cliente</label>
-													<?php if ($this->session->userdata('perfil') == 2) { ?>
-														  <select class="form-control" readonly id="idClienteSiniestro" name="idClienteSiniestro" required>
+													<?php if ($this->session->userdata('perfil') == 2) { 
+															 if (is_null($arrClientes)) {
+													?>
+													<select readonly class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
+														<option selected value="">Seleccione</option>
+														</select>
+															<?php
+														}else if (count($arrClientes) > 1 ) { ?>
+															<select class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
+																<option selected value="">Seleccione</option>
+															<?php
+																foreach ($arrClientes as $index => $key) {
+																	echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+																}
+															?>
+																</select>
+														<?php
+														}else { ?>
+															
+															  <select class="form-control" readonly id="idClienteSiniestro" name="idClienteSiniestro" required>
 															<?php
 																foreach ($arrClientes as $index => $key) {
 																	echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
 																}
 															?>
 															</select>
-															<?php
-														} else {
+															<?php }
+															} else {
 															?>
 													<select class="form-control" form="form-create-sinister" id="idClienteSiniestro" name="idClienteSiniestro" required>
 																<option selected value="">Seleccione</option>
@@ -61,8 +78,8 @@ echo "</pre>";*/
 															<thead>
 																<tr>
 																	<th>Nro Siniestro</th>
-																	<th>Nro Poliza</th>
 																	<th>Nro Certificado</th>
+																	<th>Nro Poliza</th>
 																	<th>Ingreso</th>
 																	<th>Monto</th>
 																	<th style="text-align: center">Ver Adjunto</th>
@@ -70,7 +87,15 @@ echo "</pre>";*/
 															</thead>
 														<tbody id="idTBodySiniestros">
 													    <?php if ($this->session->userdata('perfil') == 2) { 
-													    
+													    		if (is_null($arrSiniestros))
+																	{ ?>
+																		<tr>
+																			<td colspan="4">
+																				<div class="alert alert-warning" role="alert"> No hay siniestros registrados</div></td>
+																		</tr>
+																	<?php 
+																}else{
+																	
 																foreach ($arrSiniestros as $index => $key) {
 																	echo"<tr>";
 																	echo '<td>'.$key["id_siniestro"].'</td>';
@@ -83,7 +108,7 @@ echo "</pre>";*/
 																}
 																?>
 															
-														<?php } else { ?>
+														<?php } }else { ?>
 															<tr>
 																<td colspan="4">
 																	<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
@@ -124,16 +149,21 @@ echo "</pre>";*/
 													</select>
 													<?php
 												} else {
-													?>
+													if (is_null($arrClientes)){ ?>
+														<select readonly class="form-control" id="idPolizaSiniestro" name="idPolizaSiniestro" required>
+														<option value="">Seleccione</option>
+														</select>
+													<?php }
+													else{ ?>
 													<select class="form-control" id="idPolizaSiniestro" name="idPolizaSiniestro" required>
 													<option value="">Seleccione</option>
 													<?php
 														foreach ($arrPolizas as $arrPoliza => $key) {
 															echo '<option value="'.$key["id_poliza"].'">'.$key["nombre_poliza"].'</option>';
 													}
-												}
 														?>
 													</select>
+													<?php } } ?>
 													
 												</div>
 											</div>

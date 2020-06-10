@@ -103,13 +103,41 @@ class HistorialCertificado extends CI_Controller
 	public function obtieneCertificadosClientes()
 	{
 		if ($this->input->is_ajax_request()) {
-
+			$perfil = $this->session->userdata('perfil');
 			$arrCertificados = $this->Certificado->obtenerHistorialCertTotal();
 			
 				
 			if ($arrCertificados != null) {
 				if (count($arrCertificados) > 0) {
 						$i = 1;
+						if($perfil == 2){
+							foreach ($arrCertificados as $index => $key) {
+							if($key['estado_reg'] == 0){
+								echo '<tr style="background-color: #FCAAAA;">';
+							}else{
+								echo '<tr>';
+							}
+							echo '<td>'.$i.'</td>';
+							echo '<td>'.$key["nombre_cliente"].'</td>';
+							echo '<td>'.$key["codigo_poliza"].'</td>';
+							echo '<td>'.$key["id_certificado"].'</td>';
+							echo '<td>'.$key["fecha_emision"].'</td>';
+							echo '<td>'.$key["usuario"].'</td>';
+							echo '<td style="text-align: center;">
+										<a class="idDescargarCertificado">
+													<span class="glyphicon glyphicon-download-alt"></span>
+												</a>
+											</td>';
+							echo '<td style="display:none">anulado</td>';		
+									
+							echo '<td style="display:none">'.$key["id_cliente"].'</td>';
+							echo '<td style="display:none">'.$key["id_poliza"].'</td>';
+							echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
+							echo'</tr>';
+							$i = $i+1;
+							}
+						}else{
+						
 						foreach ($arrCertificados as $index => $key) {
 							if($key['estado_reg'] == 0){
 								echo '<tr style="background-color: #FCAAAA;">';
@@ -143,6 +171,7 @@ class HistorialCertificado extends CI_Controller
 							echo'</tr>';
 							$i = $i+1;
 						}
+					}
 					}else{
 						echo "<tr>";
 						echo '<td colspan="7"><div class="alert alert-warning" role="alert"> No existen certificados emitidos</div></td>';
@@ -166,18 +195,45 @@ class HistorialCertificado extends CI_Controller
 			$idMesCert =  $this->input->post('idMesCert');
 
 			$arrCertificados = $this->Certificado->obtenerHistorialCertClientes($idCliente, $idAnoCert, $idMesCert);
-			
+			$perfil = $this->session->userdata('perfil');
 				
 			if ($arrCertificados != null) {
 				if (count($arrCertificados) > 0) {
 						$i = 1;
-						foreach ($arrCertificados as $index => $key) {
-							if($key["estado_reg"] == 0){
+						if($perfil == 2){
+							foreach ($arrCertificados as $index => $key) {
+							if($key['estado_reg'] == 0){
 								echo '<tr style="background-color: #FCAAAA;">';
 							}else{
 								echo '<tr>';
 							}
-							
+							echo '<td>'.$i.'</td>';
+							echo '<td>'.$key["nombre_cliente"].'</td>';
+							echo '<td>'.$key["codigo_poliza"].'</td>';
+							echo '<td>'.$key["id_certificado"].'</td>';
+							echo '<td>'.$key["fecha_emision"].'</td>';
+							echo '<td>'.$key["usuario"].'</td>';
+							echo '<td style="text-align: center;">
+										<a class="idDescargarCertificado">
+													<span class="glyphicon glyphicon-download-alt"></span>
+												</a>
+											</td>';
+							echo '<td style="display:none">anulado</td>';		
+									
+							echo '<td style="display:none">'.$key["id_cliente"].'</td>';
+							echo '<td style="display:none">'.$key["id_poliza"].'</td>';
+							echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
+							echo'</tr>';
+							$i = $i+1;
+							}
+						}else{
+						
+						foreach ($arrCertificados as $index => $key) {
+							if($key['estado_reg'] == 0){
+								echo '<tr style="background-color: #FCAAAA;">';
+							}else{
+								echo '<tr>';
+							}
 							echo '<td>'.$i.'</td>';
 							echo '<td>'.$key["nombre_cliente"].'</td>';
 							echo '<td>'.$key["codigo_poliza"].'</td>';
@@ -197,13 +253,15 @@ class HistorialCertificado extends CI_Controller
 													<span class="glyphicon glyphicon-remove"></span>
 												</a>
 											</td>';		
-							}								
+							}				
+									
 							echo '<td style="display:none">'.$key["id_cliente"].'</td>';
 							echo '<td style="display:none">'.$key["id_poliza"].'</td>';
 							echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
 							echo'</tr>';
 							$i = $i+1;
 						}
+					}
 					}else{
 						echo "<tr>";
 						echo '<td colspan="7"><div class="alert alert-warning" role="alert"> El cliente no posee certificados emitidos</div></td>';

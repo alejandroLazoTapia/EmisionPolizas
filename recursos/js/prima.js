@@ -13,6 +13,7 @@ $("#idClientePrima").change(function() {
 					type:"POST",
 					data:{'idCliente' : idCliente}
 				}).done(function(data) {
+					console.log(data);
 					if (data == '<option selected value="0">Seleccione</option>') {
 						$("#idAnoPrima").html(data);
 						$("#idMesPrima").html(resetMes);

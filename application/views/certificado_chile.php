@@ -9,7 +9,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Certificado</title>
 		<style type="text/css">
-
+		.ancho {
+				width: 200px; 
+				font-size: 10px; 
+				font-family: Verdana, Arial, Helvetica, sans-serif
+				}
 			table {
 				margin-left: auto;
 				margin-right: auto;
@@ -40,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				margin-left: auto;
 				margin-right: auto;
 				font-family: Arial;
-				font-size: 10px;
+				font-size: 8px;
 				text-align: left;
 				resize: none;
 			}
@@ -88,48 +92,56 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<br>
 		<table border="0">
 			<tr>
-				<td class="parrafoColor"> Riesgo: </td>
-				<td class="parrafo1"><?php echo $certificado->riesgo ?></td>
-				<td class="parrafoColor"> Sucursal: </td>
-				<td class="parrafo1"> SANTIAGO CENTRO </td>
+				<td class="parrafoColor ancho"> Riesgo: </td>
+				<td class="parrafo1 ancho"><?php echo $certificado->riesgo ?></td>
+				<td class="parrafoColor ancho"> Sucursal: </td>
+				<td class="parrafo1 ancho"> SANTIAGO CENTRO </td>
 			</tr>
 			<tr>
-				<td class="parrafoColor">Moneda:</td>
-				<td class="parrafo1"><?php echo $certificado->moneda ?></td>
-				<td class="parrafoColor">Póliza Nro</td>
-				<td class="parrafo1"><?php echo $certificado->poliza_nro ?></td>
+				<td class="parrafoColor ancho">Moneda:</td>
+				<td class="parrafo1 ancho"><?php echo $certificado->moneda ?></td>
+				<td class="parrafoColor ancho">Póliza Nro</td>
+				<td class="parrafo1 ancho"><?php echo $certificado->poliza_nro ?></td>
 			</tr>
 			<tr>
-				<td class="parrafoColor">Aviso Nro:</td>
-				<td class="parrafo1"><?php echo $certificado->correlativo-90 ?></td>
-				<td class="parrafoColor"> Correlativo: </td>
-				<td class="parrafo1"> <?php echo $certificado->correlativo ?></td>
+				<td class="parrafoColor ancho">Aviso Nro:</td>
+				<td class="parrafo1 ancho"><?php echo $certificado->correlativo-90 ?></td>
+				<td class="parrafoColor ancho">Correlativo: </td>
+				<td class="parrafo1 ancho"> <?php echo $certificado->correlativo ?></td>
 			</tr>
 			<tr>
-				<td class="parrafoColor"> Tipo Certificado: </td>
-				<td class="parrafo1"> DEFINITIVO </td>
-				<td class="parrafoColor"> </td>
-				<td class="parrafo1"> </td>
+				<td class="parrafoColor ancho">Tipo Certificado: </td>
+				<td class="parrafo1 ancho">DEFINITIVO </td>
+				<td class="parrafoColor ancho"> Referencia Interna: </td>
+				<td class="parrafo1 ancho"> <?php echo $certificado->referencia_interna ?></td>
 			</tr>
 		</table>
 
 		<br>
 		<table border="0">
 			<tr >
-				<td class="parrafoColor"> Contratante: </td>
-				<td class="parrafo1"> SGG LOGISTICS SPA</td>
+				<td class="parrafoColor ancho">Contratante: </td>
+				<td class="parrafo1 ancho">SGG LOGISTICS SPA</td>
+				<td class="parrafoColor ancho">&nbsp;</td>
+				<td class="parrafo1 ancho">&nbsp;</td>
 			</tr>
 			<tr >	
-				<td class="parrafoColor"></td>
-				<td class="parrafo1">Rut: 77.047.964-9 </td>
+				<td class="parrafoColor ancho"></td>
+				<td class="parrafo1 ancho">Rut: 77.047.964-9 </td>
+				<td class="parrafoColor ancho">&nbsp;</td>
+				<td class="parrafo1 ancho">&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="parrafoColor"> Asegurado: </td>
-				<td class="parrafo1"> <?php echo $certificado->nombre_asegurado ?> </td>
+				<td class="parrafoColor ancho"> Asegurado: </td>
+				<td class="parrafo1 ancho"> <?php echo $certificado->nombre_asegurado ?> </td>
+				<td class="parrafoColor ancho">&nbsp;</td>
+				<td class="parrafo1 ancho">&nbsp;</td>
 			</tr>
 			<tr >	
-				<td class="parrafoColor"></td>
-				<td class="parrafo1"><?php echo $certificado->rut_asegurado ?></td>
+				<td class="parrafoColor ancho"></td>
+				<td class="parrafo1 ancho"><?php echo $certificado->rut_asegurado ?></td>
+				<td class="parrafoColor ancho">&nbsp;</td>
+				<td class="parrafo1 ancho">&nbsp;</td>
 			</tr>
 		</table>
 		<br>
@@ -146,40 +158,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php if($certificado->codigo_transporte == "TM") {?>
 			<table border="0">
 				<tr>
-					<td class="parrafoColor">Embalaje:</td>
-					<td class="parrafo1"><?php echo $certificado->embalaje ?></td>
-					<td class="parrafoColor"> Nro. Bultos: </td>
-					<td class="parrafo1"><?php echo $certificado->nro_bultos ?></td>
+					<td class="parrafoColor ancho">Embalaje:</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->embalaje ?></td>
+					<td class="parrafoColor ancho"> Nro. Bultos: </td>
+					<td class="parrafo1 ancho"><?php echo $certificado->nro_bultos ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Fecha Salida:</td>
-					<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
-					<td class="parrafoColor">Nombre Nave:</td>
-					<td class="parrafo1"><?php echo $certificado->nombre_nave ?></td>
+					<td class="parrafoColor ancho">Fecha Salida:</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->fecha_salida ?></td>
+					<td class="parrafoColor ancho">Nombre Nave:</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->nombre_nave ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Origen:</td>
-					<td class="parrafo1"><?php echo $certificado->origen ?></td>
-					<td class="parrafoColor">Destino:</td>
-					<td class="parrafo1"><?php echo $certificado->destino ?></td>
+					<td class="parrafoColor ancho">Origen:</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->origen ?></td>
+					<td class="parrafoColor ancho">Destino:</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->destino ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor"> Vía: </td>
-					<td class="parrafo1"> <?php echo $certificado->via ?> </td>
-					<td class="parrafoColor">B/L</td>
-					<td class="parrafo1"><?php echo $certificado->b_l ?></td>
+					<td class="parrafoColor ancho"> Vía: </td>
+					<td class="parrafo1 ancho"> <?php echo $certificado->via ?> </td>
+					<td class="parrafoColor ancho">B/L</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->b_l ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Cía. Naviera</td>
-					<td class="parrafo1"><?php echo $certificado->nombre_linea ?> </td>
-					<td class="parrafoColor">Nro. de Nave:</td>
-					<td class="parrafo1"><?php echo $certificado->numero_nave ?></td>
+					<td class="parrafoColor ancho">Cía. Naviera</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->nombre_linea ?> </td>
+					<td class="parrafoColor ancho">Nro. de Nave:</td>
+					<td class="parrafo1 ancho"><?php echo $certificado->numero_nave ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Transbordo</td>
-					<td class="parrafo1"> </td>
-					<td class="parrafoColor"></td>
-					<td class="parrafo1"></td>
+					<td class="parrafoColor ancho">Transbordo</td>
+					<td class="parrafo1 ancho"> </td>
+					<td class="parrafoColor ancho"></td>
+					<td class="parrafo1 ancho"></td>
 				</tr>
 			</table>
 			<br>
@@ -191,7 +203,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</tr>
 			<tr>
 				<td class="parrafo1"><?php echo $certificado->cobertura ?></td>
-				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->monto_asegurado ?></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?>&nbsp;<?php echo $certificado->monto_asegurado ?></td>
 				<td class="parrafoColor"></td>
 			</tr>
 			<tr>
@@ -207,8 +219,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<tr>
 				<td class="parrafoColor">
 					<b>Total</b></td>
-				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->monto_asegurado ?></td>
-				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->prima ?></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?>&nbsp;<?php echo $certificado->monto_asegurado ?></td>
+				<td class="parrafo1" style="text-align: right;"><?php echo $certificado->signo ?>&nbsp;<?php echo $certificado->prima ?></td>
 			</tr>
 		</table>
 
