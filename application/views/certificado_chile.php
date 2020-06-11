@@ -46,7 +46,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				font-family: Arial;
 				font-size: 8px;
 				text-align: left;
-				resize: none;
 			}
 			.parrafo2 {
 				margin-left: auto;
@@ -64,7 +63,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				color: #5DADE2;
 				text-align: left;
 				width: 150px;
+			}.wrap,
+			.wrap2{ 
+			  width:100px;
+			  white-space: pre-wrap;      /* CSS3 */   
+			  white-space: -moz-pre-wrap; /* Firefox */    
+			  white-space: -pre-wrap;     /* Opera <7 */   
+			  white-space: -o-pre-wrap;   /* Opera 7 */    
+			  word-wrap: break-word;      /* IE */
 			}
+
+			.wrap{
+			  width:542px;
+			  font-size: 10px;
+			  height: auto;
+			  font-family:courier,arial,helvética;
+			}
+
+			.wrap2 { 
+			  width:100px;
+			  font-size: 12px;
+			  font-family: Arial;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -92,65 +113,63 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<br>
 		<table border="0">
 			<tr>
-				<td class="parrafoColor ancho"> Riesgo: </td>
-				<td class="parrafo1 ancho"><?php echo $certificado->riesgo ?></td>
-				<td class="parrafoColor ancho"> Sucursal: </td>
-				<td class="parrafo1 ancho"> SANTIAGO CENTRO </td>
+				<td class="parrafoColor ancho" VALIGN=TOP> Riesgo: </td>
+				<td><div class="wrap2" VALIGN=TOP><?php echo $certificado->riesgo ?></div></td>
+				<td class="parrafoColor ancho" VALIGN=TOP> Sucursal: </td>
+				<td class="parrafo1 ancho" VALIGN=TOP> SANTIAGO CENTRO </td>
 			</tr>
 			<tr>
-				<td class="parrafoColor ancho">Moneda:</td>
-				<td class="parrafo1 ancho"><?php echo $certificado->moneda ?></td>
-				<td class="parrafoColor ancho">Póliza Nro</td>
-				<td class="parrafo1 ancho"><?php echo $certificado->poliza_nro ?></td>
+				<td class="parrafoColor ancho" VALIGN=TOP>Moneda:</td>
+				<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->moneda ?></td>
+				<td class="parrafoColor ancho" VALIGN=TOP>Póliza Nro</td>
+				<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->poliza_nro ?></td>
 			</tr>
 			<tr>
-				<td class="parrafoColor ancho">Aviso Nro:</td>
-				<td class="parrafo1 ancho"><?php echo $certificado->correlativo-90 ?></td>
-				<td class="parrafoColor ancho">Correlativo: </td>
-				<td class="parrafo1 ancho"> <?php echo $certificado->correlativo ?></td>
+				<td class="parrafoColor ancho" VALIGN=TOP>Aviso Nro:</td>
+				<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->correlativo-90 ?></td>
+				<td class="parrafoColor ancho" VALIGN=TOP>Correlativo: </td>
+				<td class="parrafo1 ancho" VALIGN=TOP> <?php echo $certificado->correlativo ?></td>
 			</tr>
 			<tr>
-				<td class="parrafoColor ancho">Tipo Certificado: </td>
-				<td class="parrafo1 ancho">DEFINITIVO </td>
-				<td class="parrafoColor ancho"> Referencia Interna: </td>
-				<td class="parrafo1 ancho"> <?php echo $certificado->referencia_interna ?></td>
+				<td class="parrafoColor ancho" VALIGN=TOP>Tipo Certificado: </td>
+				<td class="parrafo1 ancho" VALIGN=TOP>DEFINITIVO </td>
+				<td class="parrafoColor ancho" VALIGN=TOP> Referencia Interna: </td>
+				<td class="parrafo1 ancho" VALIGN=TOP> <?php echo $certificado->referencia_interna ?></td>
 			</tr>
 		</table>
 
 		<br>
 		<table border="0">
 			<tr >
-				<td class="parrafoColor ancho">Contratante: </td>
-				<td class="parrafo1 ancho">SGG LOGISTICS SPA</td>
-				<td class="parrafoColor ancho">&nbsp;</td>
-				<td class="parrafo1 ancho">&nbsp;</td>
+				<td class="parrafoColor ancho" VALIGN=TOP>Contratante: </td>
+				<td class="parrafo1 ancho" VALIGN=TOP>SGG LOGISTICS SPA</td>
+				<td class="parrafoColor ancho" VALIGN=TOP>&nbsp;</td>
+				<td class="parrafo1 ancho" VALIGN=TOP>&nbsp;</td>
 			</tr>
 			<tr >	
-				<td class="parrafoColor ancho"></td>
-				<td class="parrafo1 ancho">Rut: 77.047.964-9 </td>
-				<td class="parrafoColor ancho">&nbsp;</td>
-				<td class="parrafo1 ancho">&nbsp;</td>
+				<td class="parrafoColor ancho" VALIGN=TOP></td>
+				<td class="parrafo1 ancho" VALIGN=TOP>Rut: 77.047.964-9 </td>
+				<td class="parrafoColor ancho" VALIGN=TOP>&nbsp;</td>
+				<td class="parrafo1 ancho" VALIGN=TOP>&nbsp;</td>
 			</tr>
 			<tr>
-				<td class="parrafoColor ancho"> Asegurado: </td>
-				<td class="parrafo1 ancho"> <?php echo $certificado->nombre_asegurado ?> </td>
-				<td class="parrafoColor ancho">&nbsp;</td>
-				<td class="parrafo1 ancho">&nbsp;</td>
+				<td class="parrafoColor ancho" VALIGN=TOP> Asegurado: </td>
+				<td class="parrafo1 ancho" VALIGN=TOP> <?php echo $certificado->nombre_asegurado ?> </td>
+				<td class="parrafoColor ancho" VALIGN=TOP>&nbsp;</td>
+				<td class="parrafo1 ancho" VALIGN=TOP>&nbsp;</td>
 			</tr>
 			<tr >	
-				<td class="parrafoColor ancho"></td>
-				<td class="parrafo1 ancho"><?php echo $certificado->rut_asegurado ?></td>
-				<td class="parrafoColor ancho">&nbsp;</td>
-				<td class="parrafo1 ancho">&nbsp;</td>
+				<td class="parrafoColor ancho" VALIGN=TOP></td>
+				<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->rut_asegurado ?></td>
+				<td class="parrafoColor ancho" VALIGN=TOP>&nbsp;</td>
+				<td class="parrafo1 ancho" VALIGN=TOP>&nbsp;</td>
 			</tr>
 		</table>
 		<br>
-					<table border="0">
+			<table border="0">
 				<tr >
 					<td class="parrafoColor" VALIGN=TOP>Materia:</td>
-					<td class="parrafo3" >
-						<p style = "font-family:courier,arial,helvética;"><?php echo $certificado->materia ?></p>
-						<br>				
+					<td VALIGN=TOP><div class="wrap"><?php echo $certificado->materia ?></div>			
 					</td>
 				</tr>
 			</table>
@@ -158,40 +177,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php if($certificado->codigo_transporte == "TM") {?>
 			<table border="0">
 				<tr>
-					<td class="parrafoColor ancho">Embalaje:</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->embalaje ?></td>
-					<td class="parrafoColor ancho"> Nro. Bultos: </td>
-					<td class="parrafo1 ancho"><?php echo $certificado->nro_bultos ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Embalaje:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->embalaje?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP> Nro. Bultos: </td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->nro_bultos ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor ancho">Fecha Salida:</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->fecha_salida ?></td>
-					<td class="parrafoColor ancho">Nombre Nave:</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->nombre_nave ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Fecha Salida:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->fecha_salida ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Nombre Nave:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->nombre_nave ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor ancho">Origen:</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->origen ?></td>
-					<td class="parrafoColor ancho">Destino:</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->destino ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Origen:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->origen ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Destino:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->destino ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor ancho"> Vía: </td>
-					<td class="parrafo1 ancho"> <?php echo $certificado->via ?> </td>
-					<td class="parrafoColor ancho">B/L</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->b_l ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP> Vía: </td>
+					<td class="parrafo1 ancho" VALIGN=TOP> <?php echo $certificado->via ?> </td>
+					<td class="parrafoColor ancho" VALIGN=TOP>B/L</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->b_l ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor ancho">Cía. Naviera</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->nombre_linea ?> </td>
-					<td class="parrafoColor ancho">Nro. de Nave:</td>
-					<td class="parrafo1 ancho"><?php echo $certificado->numero_nave ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Cía. Naviera</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->nombre_linea ?> </td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Nro. de Nave:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->numero_nave ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor ancho">Transbordo</td>
-					<td class="parrafo1 ancho"> </td>
-					<td class="parrafoColor ancho"></td>
-					<td class="parrafo1 ancho"></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Transbordo</td>
+					<td class="parrafo1 ancho" VALIGN=TOP> </td>
+					<td class="parrafoColor ancho" VALIGN=TOP></td>
+					<td class="parrafo1 ancho" VALIGN=TOP></td>
 				</tr>
 			</table>
 			<br>
@@ -246,34 +265,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			<table border="0">
 				<tr>
-					<td class="parrafoColor">Embalaje:</td>
-					<td class="parrafo1"><?php echo $certificado->embalaje ?></td>
-					<td class="parrafoColor"> Nro. Bultos: </td>
-					<td class="parrafo1"><?php echo $certificado->nro_bultos ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Embalaje:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->embalaje?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP> Nro. Bultos: </td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->nro_bultos ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Fecha Salida:</td>
-					<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
-					<td class="parrafoColor">Línea Aérea:</td>
-					<td class="parrafo1"><?php echo $certificado->nombre_linea ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Fecha Salida:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->fecha_salida ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Línea Aérea:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->nombre_linea ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Origen:</td>
-					<td class="parrafo1"><?php echo $certificado->origen ?></td>
-					<td class="parrafoColor">Destino:</td>
-					<td class="parrafo1"><?php echo $certificado->destino ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Origen:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->origen ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Destino:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->destino ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor"> Vía: </td>
-					<td class="parrafo1"> <?php echo $certificado->via ?> </td>
-					<td class="parrafoColor">Guía Aérea</td>
-					<td class="parrafo1"><?php echo $certificado->b_l ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP> Vía: </td>
+					<td class="parrafo1 ancho" VALIGN=TOP> <?php echo $certificado->via ?> </td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Guía Aérea</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->b_l ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Transbordo</td>
-					<td class="parrafo1"> </td>
-					<td class="parrafoColor">Nro. de Viaje:</td>
-					<td class="parrafo1"><?php echo $certificado->numero_nave ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Transbordo</td>
+					<td class="parrafo1 ancho" VALIGN=TOP> </td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Nro. de Viaje:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->numero_nave ?></td>
 				</tr>
 			</table>
 			<br>
@@ -323,34 +342,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<?php }else { ?>
 			<table border="0">
 				<tr>
-					<td class="parrafoColor">Embalaje:</td>
-					<td class="parrafo1"><?php echo $certificado->embalaje ?></td>
-					<td class="parrafoColor"> Nro. Bultos: </td>
-					<td class="parrafo1"><?php echo $certificado->nro_bultos ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Embalaje:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->embalaje?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP> Nro. Bultos: </td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->nro_bultos ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Fecha Salida:</td>
-					<td class="parrafo1"><?php echo $certificado->fecha_salida ?></td>
-					<td class="parrafoColor">Nombre Línea:</td>
-					<td class="parrafo1"><?php echo $certificado->nombre_linea ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Fecha Salida:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->fecha_salida ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Nombre Línea:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->nombre_linea ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Origen:</td>
-					<td class="parrafo1"><?php echo $certificado->origen ?></td>
-					<td class="parrafoColor">Destino:</td>
-					<td class="parrafo1"><?php echo $certificado->destino ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Origen:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->origen ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Destino:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->destino ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor"> Vía: </td>
-					<td class="parrafo1"> <?php echo $certificado->via ?> </td>
-					<td class="parrafoColor">B/L</td>
-					<td class="parrafo1"><?php echo $certificado->b_l ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP> Vía: </td>
+					<td class="parrafo1 ancho" VALIGN=TOP> <?php echo $certificado->via ?> </td>
+					<td class="parrafoColor ancho" VALIGN=TOP>B/L</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->b_l ?></td>
 				</tr>
 				<tr>
-					<td class="parrafoColor">Transbordo:</td>
-					<td class="parrafo1"> </td>
-					<td class="parrafoColor">Nave:</td>
-					<td class="parrafo1"><?php echo $certificado->numero_nave ?></td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Transbordo:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP> </td>
+					<td class="parrafoColor ancho" VALIGN=TOP>Nave:</td>
+					<td class="parrafo1 ancho" VALIGN=TOP><?php echo $certificado->numero_nave ?></td>
 				</tr>
 			</table>
 			<br>

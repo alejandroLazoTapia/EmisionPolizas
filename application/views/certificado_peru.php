@@ -88,7 +88,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td  class="titulo1" style="border: 0px solid;vertical-align: bottom;text-align: center;">
 					Certificate Of Insurance
 				</td>
-				<td  class="titulo1" style="border:0px solid;text-align: left;width: 310px;">
+				<td  class="titulo1" style="border:0px solid;text-align: right;width: 310px;">
+					<img src="<?=base_url() ?>recursos/images/munich_re.jpg">
 				</td>
 			</tr>
 			<tr>

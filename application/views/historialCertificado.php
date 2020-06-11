@@ -205,7 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</table>
 						</div>
 			<form role="form" id="formExcel" action="<?=base_url() ?>index.php/historialCertificado/generar_excel/"  method="post" accept-charset='UTF-8' target="_blank" style="display: none">
-				<input id="idClienteExcel" name="idCertificadoExcel" form="formExcel">
+				<input id="idClienteExcel" name="idClienteExcel" form="formExcel">
 				<input id="idAnoExcel" name="idAnoExcel" form="formExcel">
 				<input id="idMesExcel" name="idMesExcel" form="formExcel">
 			</form>	

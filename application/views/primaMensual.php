@@ -158,8 +158,8 @@ echo "</pre>";*/
 							</tbody>
 						</table>
 					</div>
-					<form role="form" id="formPrimaExcel" action="<?=base_url() ?>index.php/primaMensual/generar_excel/"  method="post" accept-charset='UTF-8' target="_blank" style="display: none">
-				<input id="idClientePrimaExcel" name="idClientePrimaExcel" form="formExcel">
+					<form role="form" id="formPrimaExcel" action="<?=base_url() ?>index.php/PrimaMensual/generar_excel/"  method="post" accept-charset='UTF-8' target="_blank" style="display: none">
+				<input id="idClientePrimaExcel" name="idClientePrimaExcel" form="formPrimaExcel">
 				<input id="idAnoPrimaExcel" name="idAnoPrimaExcel" form="formPrimaExcel">
 				<input id="idMesPrimaExcel" name="idMesPrimaExcel" form="formPrimaExcel">
 			</form>	

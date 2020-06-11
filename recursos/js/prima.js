@@ -126,6 +126,13 @@ $('#btnObtienePrima').click(function() {
 				$('#idClientePrimaExcel').val(idCliente);
 				$('#idAnoPrimaExcel').val(idAnoPrima);
 				$('#idMesPrimaExcel').val(idMesPrima);
+				console.log($('#idClientePrimaExcel').val());
+				console.log($('#idAnoPrimaExcel').val());
+				console.log($('#idMesPrimaExcel').val());
+				console.log('******************');
+				console.log(idCliente);
+				console.log(idAnoPrima);
+				console.log(idMesPrima);
 			},
 			error:function(jqXHR, textStatus, errorThrow) {
 				alert('Error al traer Certificados! = ' + errorThrow);

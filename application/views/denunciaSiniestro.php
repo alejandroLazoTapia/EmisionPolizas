@@ -43,7 +43,7 @@ echo "</pre>";
 																<option selected value="">Seleccione</option>
 															<?php
 																foreach ($arrClientes as $index => $key) {
-																	echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
+																	echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
 																}
 															?>
 																</select>

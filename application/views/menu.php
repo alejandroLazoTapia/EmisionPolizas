@@ -13,13 +13,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					if ($this->session->userdata('perfil') == 1 ) {
 					?>
 							<li>
+								<a  href="<?= base_url() ?>index.php/cuentaUsuario">
+								<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Gestionar Usuarios</a>
+							</li>
+							<li>
 								<a href="<?= base_url() ?>index.php/clienteMantenedor">
 								<i class="fa fa-users"></i>&nbsp;&nbsp;Gestionar Clientes</a>
 							</li>
-							<li>
-								<a  href="<?= base_url() ?>index.php/cuentaUsuario">
-					<i class="glyphicon glyphicon-user"></i>&nbsp;&nbsp;Gestionar Usuarios</a>
-							</li>
+							
 							<hr style="margin-top: 10px; margin-bottom: 0px"></hr>
 							<li>
 								<a href="<?= base_url() ?>index.php/formularioEmision"</a>
