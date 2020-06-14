@@ -117,7 +117,7 @@ $('#btnObtieneDatos').click(function(){
 $("#form-create-certificate").submit(function (e) {
 	e.preventDefault();
 	var frm = $(this).closest('form');
-	var data = frm.serialize();
+	
 	var idCliente = $('#idCliente').val();
 	var idPoliza = $('#idPoliza').val();
 	var idPaisEmision = $("#idPaisEmision").val();
@@ -129,7 +129,8 @@ $("#form-create-certificate").submit(function (e) {
 	$('#idClientePdf').val(idCliente);
 	$('#idPolizaPdf').val(idPoliza);	
 	$('#idPaisEmisionPdf').val(idPaisEmision);
-
+	
+	var data = frm.serialize();
 	if ($(document.activeElement).attr('formaction') != "no"){
 	$.ajax({
 		url:$(document.activeElement).attr('formaction'),

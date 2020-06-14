@@ -4,7 +4,7 @@ $("#idClientePrima").change(function() {
 		var resetAno = '<option selected value="0">Seleccione</option>';
 		var resetMes = '<option selected value="">Seleccione</option>';
 		var resetTbody = '<tr><td colspan="12" style="text-align: center"><div class="alert alert-warning" role="alert">Seleccione cliente y periodo</div></td></tr>';
-		var resetTbodySP = '<tr><td colspan="12" style="text-align: center"><div class="alert alert-warning" role="alert">Cliente no posee pólizas registradas</div></td></tr>';
+		var resetTbodySP = '<tr><td colspan="12" style="text-align: center"><div class="alert alert-warning" role="alert">Cliente no posee pÃ³lizas registradas</div></td></tr>';
 		console.log(idCliente);
 		if (idCliente != "") {
 			/*if (idCliente > 0) {*/
@@ -21,11 +21,16 @@ $("#idClientePrima").change(function() {
 						$("#idMesPrima").prop("disabled",true);
 						$("#btnObtienePrima").prop("disabled",true);
 						$("#idCalculoPrimas").html(resetTbodySP);
+						$("#idExcelFooter").prop('style','display:none');
+						$("#idExcelHeader").prop('style','display:none');
 						alert("El cliente no posee certificados emitidos");
 					} else {
 						console.log('entro a datos');
 						$("#idAnoPrima").html(data);
 						$("#idMesPrima").html(resetMes);
+						$("#idCalculoPrimas").html(resetTbody);
+						$("#idExcelFooter").prop('style','display:none');
+						$("#idExcelHeader").prop('style','display:none');
 						$("#idAnoPrima").prop("disabled",false);
 						$("#btnObtienePrima").prop("disabled",true);
 					}
@@ -148,9 +153,9 @@ $(document).on('click','.idEditarPrima',function(event) {
 	var i = $(this).parents("tr").find("td")[0].innerHTML;
 	
 	/*var idPrimaCliente = $(this).parents("tr").find("td")[6].innerHTML;*/
-	var idPrimaUsuario = $(this).parents("tr").find("td")[7].innerHTML;
-	var idPrimaCompania = $(this).parents("tr").find("td")[8].innerHTML;
-	var idUtilidad = $(this).parents("tr").find("td")[9].innerHTML;
+	var idPrimaUsuario = $(this).parents("tr").find("td")[8].innerHTML;
+	var idPrimaCompania = $(this).parents("tr").find("td")[9].innerHTML;
+	var idUtilidad = $(this).parents("tr").find("td")[10].innerHTML;
     
 	
 	/*var inputPrimaCliente = '<input id="idPrimaCliente'+i+'" name="idPrimaCliente'+i+'" class="miles" style="text-align: right;" size="7" value="'+idPrimaCliente+'">';*/
@@ -161,10 +166,10 @@ $(document).on('click','.idEditarPrima',function(event) {
 	var inputGuardar = '<a class="idGuardaPrima"><span class="glyphicon glyphicon-floppy-disk"></span></a>';
 	
 	/*$(this).parents("tr").find("td")[6].innerHTML = inputPrimaCliente;*/
-	$(this).parents("tr").find("td")[7].innerHTML = inputPrimaUsuario;
-	$(this).parents("tr").find("td")[8].innerHTML = inputPrimaCompania;
-	$(this).parents("tr").find("td")[9].innerHTML = inputUtilidad;
-	$(this).parents("tr").find("td")[10].innerHTML = inputGuardar;
+	$(this).parents("tr").find("td")[8].innerHTML = inputPrimaUsuario;
+	$(this).parents("tr").find("td")[9].innerHTML = inputPrimaCompania;
+	$(this).parents("tr").find("td")[10].innerHTML = inputUtilidad;
+	$(this).parents("tr").find("td")[11].innerHTML = inputGuardar;
 	
 });
 
@@ -175,19 +180,19 @@ $(document).on('click','.idGuardaPrima',function(event) {
 	var idPrimaUsuario = $('#idPrimaUsuario'+i).val();  
 	var idPrimaCompania = $('#idPrimaCompania'+i).val();  
 	var idUtilidad = $('#idUtilidad'+i).val();  
-	var idCliente = $(this).parents("tr").find("td")[11].innerHTML;
-	var idAnoPrima = $(this).parents("tr").find("td")[12].innerHTML;
-	var idMesPrima = $(this).parents("tr").find("td")[13].innerHTML;
+	var idCliente = $('#idClientePrima').val();
+	var idAnoPrima = $('#idAnoPrima').val();
+	var idMesPrima = $('#idMesPrima').val();
 	var inputEdit = '<a class="idEditarPrima"><span class="glyphicon glyphicon-pencil"></span></a>';
 	
 	var idGPrimaUsuario = $('#idPrimaUsuario'+i).val().replace('.', '').replace('.', '').replace(',', '.');
 	var idGPrimaCompania = $('#idPrimaCompania'+i).val().replace('.', '').replace('.', '').replace(',', '.');
 	var idGUtilidad = $('#idUtilidad'+i).val().replace('.', '').replace('.', '').replace(',', '.'); 
 	
-	$(this).parents("tr").find("td")[7].innerHTML = idPrimaUsuario;
-	$(this).parents("tr").find("td")[8].innerHTML = idPrimaCompania;
-	$(this).parents("tr").find("td")[9].innerHTML = idUtilidad;
-	$(this).parents("tr").find("td")[10].innerHTML = inputEdit;
+	$(this).parents("tr").find("td")[8].innerHTML = idPrimaUsuario;
+	$(this).parents("tr").find("td")[9].innerHTML = idPrimaCompania;
+	$(this).parents("tr").find("td")[10].innerHTML = idUtilidad;
+	$(this).parents("tr").find("td")[11].innerHTML = inputEdit;
 	console.log("********************");
 	console.log(idGPrimaUsuario);
 	console.log(idGPrimaCompania);

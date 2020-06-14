@@ -26,9 +26,11 @@ class PrimaMensual extends CI_Controller
 
 		// obtenemos el array de clientes
 		$datos['arrClientes'] = $this->Prima->obtenerClientes($idUsuario, $perfil);
-
+	
 		if ($perfil == 1) {
 			$datos['arrAno'] = null;
+			$datos['arrPrimas'] = $this->Prima->obtenerDetallePrimaMensual(0, date("Y"), date("n"));
+			$datos['arrTotalesPrimas'] = $this->Prima->obtenerTotalesPrimaMensual(0, date("Y"), date("n"));
 		} else {
 			$datos['arrAno'] = $this->Prima->obtenerAnoUsuario($nombreUsuario);
 		}
@@ -43,7 +45,7 @@ class PrimaMensual extends CI_Controller
 	{
 		if ($this->input->is_ajax_request()) {
 			$idCliente =  $this->input->post('idCliente');
-			if ($idCliente) {
+			/*if ($idCliente) {*/
 				$anos = $this->Prima->obtenerAnoVigente($idCliente);
 				if($anos != null){
 					if (count($anos) > 0) {
@@ -57,9 +59,9 @@ class PrimaMensual extends CI_Controller
 				} else {
 					echo '<option selected value="0">Seleccione</option>';
 				}
-			} else {
+			/*} else {
 				echo '<option selected value="0">Seleccione</option>';
-			}
+			}*/
 		} else {
 			echo -3;
 		}
@@ -71,7 +73,7 @@ class PrimaMensual extends CI_Controller
 			$idCliente =  $this->input->post('idCliente');
 			$idAnoPrima =  $this->input->post('idAnoPrima');
 			
-			if ($idCliente) {
+			/*if ($idCliente) {*/
 				$meses = $this->Prima->obtieneMesVigente($idAnoPrima, $idCliente);
 				if ($meses != null) {
 					if (count($meses) > 0) {
@@ -86,9 +88,9 @@ class PrimaMensual extends CI_Controller
 				} else {
 					echo '<option selected value="">Seleccione</option>';
 				}
-			} else {
+			/*} else {
 				echo '<option selected value="">Seleccione</option>';
-			}
+			}*/
 		} else {
 			echo -3;
 		}
@@ -108,45 +110,34 @@ class PrimaMensual extends CI_Controller
 				$arrTotalesPrimas = $this->Prima->obtenerTotalesPrimaMensual($idCliente, $idAnoPrima, $idMesPrima);
 				if (count($arrPrimas) > 0) {
 						$i = 1;
-						/*$tot_prima_cliente = 0;
-						$tot_prima_usuario = 0;
-						$tot_prima_compania = 0;
-						$tot_utilidad = 0;*/
 						foreach ($arrPrimas as $index => $key) {
 							echo '<tr style="text-align: right;">';
-							echo '<td>'.$i.'</td>';
-							echo '<td>'.$key["nombre_cliente"].'</td>';
-							echo '<td>'.$key["codigo_poliza"].'</td>';
-							echo '<td>'.$key["id_certificado"].'</td>';
-							echo '<td>'.$key["fecha_emision"].'</td>';
-							echo '<td>'.$key["usuario"].'</td>';
-							echo '<td>'.$key["prima_cliente"].'</td>';
-						if($perfil == 1){
-							echo '<td>'.$key["prima_usuario"].'</td>';
-							echo '<td>'.$key["prima_compania"].'</td>';
-							echo '<td>'.$key["utilidad"].'</td>';
+							echo '<td style="text-align: left;">'.$i.'</td>';
+							echo '<td style="text-align: left;">'.$key["nombre_cliente"].'</td>';
+							echo '<td style="text-align: left;">'.$key["codigo_poliza"].'</td>';
+							echo '<td style="text-align: left;">'.$key["id_certificado"].'</td>';
+							echo '<td style="text-align: left;">'.$key["fecha_emision"].'</td>';
+							echo '<td style="text-align: left;">'.$key["usuario"].'</td>';
+							echo '<td style="text-align: right;">'.$key["monto_asegurado"].'</td>';
+							echo '<td style="text-align: right;">'.$key["prima_cliente"].'</td>';
+				if($perfil == 1){
+							echo '<td style="text-align: right;">'.$key["prima_usuario"].'</td>';
+							echo '<td style="text-align: right;">'.$key["prima_compania"].'</td>';
+							echo '<td style="text-align: right;">'.$key["utilidad"].'</td>';
 							echo '<td style="text-align: center;"><a class="idEditarPrima"><span class="glyphicon glyphicon-pencil"></span></a></td>';
-							}
-							echo '<td style="display:none">'.$idCliente.'</td>';
-							echo '<td style="display:none">'.$idAnoPrima.'</td>';	
-							echo '<td style="display:none">'.$idMesPrima.'</td>';		 
-							echo'</tr>';
-							
+							}	 
+							echo'</tr>';		
 							$i = $i+1;
-							/*$tot_prima_cliente = $tot_prima_cliente + $key["prima_cliente"];
-							$tot_prima_usuario = $tot_prima_usuario + $key["prima_usuario"];
-							$tot_prima_compania = $tot_prima_compania + $key["prima_compania"];
-							$tot_utilidad = $tot_utilidad + $key["utilidad"];*/
 						}
 						
 							foreach ($arrTotalesPrimas as $index => $key) {
-								echo '<tr style="text-align: right;"><td></td><td></td><td></td><td></td><td></td>';
-								echo '<td><b>TOTAL</b></td>';	
-								echo '<td id="totPrimaCliente">$ '.$key["prima_cliente"].'</td>';	
+								echo '<tr><td></td><td></td><td></td><td></td><td></td><td></td>';
+								echo '<td style="text-align: left;"><b>TOTAL</b></td>';	
+								echo '<td id="totPrimaCliente" style="text-align: right;">$&nbsp;'.$key["prima_cliente"].'</td>';	
 								if($perfil == 1){
-								echo '<td id="totPrimaUsuario">$ '.$key["prima_usuario"].'</td>';	
-								echo '<td id="totPrimaCompania">$ '.$key["prima_compania"].'</td>';	
-								echo '<td id="totUtilidad">$ '.$key["utilidad"].'</td>';	
+								echo '<td id="totPrimaUsuario" style="text-align: right;">$&nbsp;'.$key["prima_usuario"].'</td>';	
+								echo '<td id="totPrimaCompania" style="text-align: right;">$&nbsp;'.$key["prima_compania"].'</td>';	
+								echo '<td id="totUtilidad" style="text-align: right;">$&nbsp;'.$key["utilidad"].'</td>';	
 								}
 								echo '<td></td><td></td>';
 								echo '</tr>';				
@@ -234,10 +225,11 @@ class PrimaMensual extends CI_Controller
         $sheet->getColumnDimension('E')->setWidth(20);
         $sheet->getColumnDimension('F')->setWidth(20);
         $sheet->getColumnDimension('G')->setWidth(20);
-        if ($perfil == 1){
         $sheet->getColumnDimension('H')->setWidth(20);
+        if ($perfil == 1){
         $sheet->getColumnDimension('I')->setWidth(20);
         $sheet->getColumnDimension('J')->setWidth(20);
+        $sheet->getColumnDimension('K')->setWidth(20);
         }
 
         //Le aplicamos negrita a los títulos de la cabecera.
@@ -248,10 +240,11 @@ class PrimaMensual extends CI_Controller
         $sheet->getStyle('E'.$contador)->getFont()->setBold(true);
         $sheet->getStyle('F'.$contador)->getFont()->setBold(true);
         $sheet->getStyle('G'.$contador)->getFont()->setBold(true);
+         $sheet->getStyle('H'.$contador)->getFont()->setBold(true);
          if ($perfil == 1){
-	        $sheet->getStyle('H'.$contador)->getFont()->setBold(true);
 	        $sheet->getStyle('I'.$contador)->getFont()->setBold(true);
 	        $sheet->getStyle('J'.$contador)->getFont()->setBold(true);
+	        $sheet->getStyle('K'.$contador)->getFont()->setBold(true);
 			}
         
         //Definimos los títulos de la cabecera.
@@ -261,11 +254,12 @@ class PrimaMensual extends CI_Controller
 		$sheet->setCellValue('D'.$contador, 'NRO CERTIFICADO');
 		$sheet->setCellValue('E'.$contador, 'FECHA EMISION');
 		$sheet->setCellValue('F'.$contador, 'USUARIO EMISION');
-		$sheet->setCellValue('G'.$contador, 'PRIMA CLIENTE');
+		$sheet->setCellValue('G'.$contador, 'MONTO ASEGURADO');
+		$sheet->setCellValue('H'.$contador, 'PRIMA CLIENTE');
 		 if ($perfil == 1){
-			$sheet->setCellValue('H'.$contador, 'PRIMA USUARIO');
-			$sheet->setCellValue('I'.$contador, 'PRIMA COMPAÑIA');
-			$sheet->setCellValue('J'.$contador, 'UTILIDAD');	                               
+			$sheet->setCellValue('I'.$contador, 'PRIMA USUARIO');
+			$sheet->setCellValue('J'.$contador, 'PRIMA COMPAÑIA');
+			$sheet->setCellValue('K'.$contador, 'UTILIDAD');	                               
 			}
         //Definimos la data del cuerpo.        
         foreach($arrPrimas as $index => $key ){
@@ -279,11 +273,12 @@ class PrimaMensual extends CI_Controller
 	        $sheet->setCellValue('D'.$contador, $key['id_certificado']);
 	        $sheet->setCellValue('E'.$contador, $key['fecha_emision']);
 	        $sheet->setCellValue('F'.$contador, $key['usuario']);
-	        $sheet->setCellValue('G'.$contador, $key['prima_cliente']);
+	        $sheet->setCellValue('G'.$contador, $key['monto_asegurado']);
+	        $sheet->setCellValue('H'.$contador, $key['prima_cliente']);
 	        if ($perfil == 1){
-		        $sheet->setCellValue('H'.$contador, $key['prima_usuario']);
-		        $sheet->setCellValue('I'.$contador, $key['prima_compania']);
-		        $sheet->setCellValue('J'.$contador, $key['utilidad']);
+		        $sheet->setCellValue('I'.$contador, $key['prima_usuario']);
+		        $sheet->setCellValue('J'.$contador, $key['prima_compania']);
+		        $sheet->setCellValue('K'.$contador, $key['utilidad']);
 			}
         }
         
@@ -292,20 +287,20 @@ class PrimaMensual extends CI_Controller
            //Incrementamos una fila más, para ir a la siguiente.
            $contador= $contador + 2;
             if ($perfil == 1){
-         			$sheet->getStyle('F'.$contador.':J'.$contador)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FAF68F');
-           			$sheet->getStyle('F'.$contador.':J'.$contador)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+         			$sheet->getStyle('G'.$contador.':K'.$contador)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FAF68F');
+           			$sheet->getStyle('G'.$contador.':K'.$contador)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 				}else{
-					$sheet->getStyle('F'.$contador.':G'.$contador)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FAF68F');
-           	$sheet->getStyle('F'.$contador.':G'.$contador)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+					$sheet->getStyle('G'.$contador.':K'.$contador)->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FAF68F');
+           	$sheet->getStyle('G'.$contador.':H'.$contador)->getBorders()->getAllBorders()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
 				}
            	
            	
-           	$sheet->getStyle('F'.$contador)->getFont()->setBold(true);
-	        $sheet->getStyle('G'.$contador)->getFont()->setBold(true);
+           	$sheet->getStyle('G'.$contador)->getFont()->setBold(true);
+	        $sheet->getStyle('H'.$contador)->getFont()->setBold(true);
 	         if ($perfil == 1){
-		        $sheet->getStyle('H'.$contador)->getFont()->setBold(true);
 		        $sheet->getStyle('I'.$contador)->getFont()->setBold(true);
 		        $sheet->getStyle('J'.$contador)->getFont()->setBold(true);
+		        $sheet->getStyle('K'.$contador)->getFont()->setBold(true);
 			}
            //Informacion de las filas de la consulta.   
 	        $sheet->setCellValue('A'.$contador, '');
@@ -313,12 +308,13 @@ class PrimaMensual extends CI_Controller
 	        $sheet->setCellValue('C'.$contador, '');
 	        $sheet->setCellValue('D'.$contador, '');
 	        $sheet->setCellValue('E'.$contador, '');
-	        $sheet->setCellValue('F'.$contador, 'TOTAL');
-	        $sheet->setCellValue('G'.$contador, $key['prima_cliente']);
+	        $sheet->setCellValue('F'.$contador, '');
+	        $sheet->setCellValue('G'.$contador, 'TOTAL');
+	        $sheet->setCellValue('H'.$contador, $key['prima_cliente']);
 	        if ($perfil == 1){
-		        $sheet->setCellValue('H'.$contador, $key['prima_usuario']);
-		        $sheet->setCellValue('I'.$contador, $key['prima_compania']);
-		        $sheet->setCellValue('J'.$contador, $key['utilidad']);
+		        $sheet->setCellValue('I'.$contador, $key['prima_usuario']);
+		        $sheet->setCellValue('J'.$contador, $key['prima_compania']);
+		        $sheet->setCellValue('K'.$contador, $key['utilidad']);
 			}
         }
         

@@ -22,12 +22,16 @@ $("#idClienteCert").change(function() {
 						$("#idMesCert").prop("disabled",true);
 						$("#btnObtieneCertificado").prop("disabled",true);
 						$("#idCertificadosEmi").html(resetTbodySP);
+						$("#idExcelFooterCert").prop('style','display:none');
+						$("#idExcelHeaderCert").prop('style','display:none');
 						alert("El cliente no posee certificados emitidos");
 					} else {
 						$("#idAnoCert").html(data);
 						$("#idMesCert").html(resetMes);
 						$("#idAnoCert").prop("disabled",false);
 						$("#btnObtieneCertificado").prop("disabled",true);
+						$("#idExcelFooterCert").prop('style','display:none');
+						$("#idExcelHeaderCert").prop('style','display:none');
 					}
 				});
 			} else {
@@ -41,8 +45,13 @@ $("#idClienteCert").change(function() {
 						$("#idAnoCert").prop("disabled",true);
 						$("#idMesCert").html(resetMes);
 						$("#idMesCert").prop("disabled",true);
+						$('#idExcelFooterCert').attr('style','background-color: transparent;margin-top: 23px;border-color: transparent;');
+				$('#idExcelHeaderCert').attr('style','background-color: transparent;margin-top: 23px;border-color: transparent;');
 						$("#btnObtieneCertificado").prop("disabled",true);
 					});		
+						$('#idClienteExcel').val(0);
+						$('#idAnoExcel').val(0);
+						$('#idMesExcel').val(0);
 					}	
 		} else {
 			$("#idAnoCert").html(resetAno);
@@ -51,6 +60,8 @@ $("#idClienteCert").change(function() {
 			$("#idMesCert").prop("disabled",true);
 			$("#btnObtieneCertificado").prop("disabled",true);
 			$("#idCertificadosEmi").html(resetTbody);
+			$("#idExcelFooterCert").prop('style','display:none');
+			$("#idExcelHeaderCert").prop('style','display:none');
 		}
 	});
 });
@@ -124,6 +135,8 @@ $('#btnObtieneCertificado').click(function() {
 				$('#idClienteExcel').val(idCliente);
 				$('#idAnoExcel').val(idAnoCert);
 				$('#idMesExcel').val(idMesCert);
+				$('#idExcelFooterCert').attr('style','background-color: transparent;margin-top: 23px;border-color: transparent;');
+				$('#idExcelHeaderCert').attr('style','background-color: transparent;margin-top: 23px;border-color: transparent;');
 			},
 			error:function(jqXHR, textStatus, errorThrow) {
 				alert('Error al traer Certificados! = ' + errorThrow);

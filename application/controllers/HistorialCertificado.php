@@ -359,7 +359,7 @@ class HistorialCertificado extends CI_Controller
 		$sheet->setCellValue('B'.$contador, 'POLIZA');
 		$sheet->setCellValue('C'.$contador, 'NRO CERT');
 		$sheet->setCellValue('D'.$contador, 'FECHA SOLICITUD');
-		$sheet->setCellValue('E'.$contador, 'USUARIO');
+		$sheet->setCellValue('E'.$contador, 'CONTRATANTE');
 		$sheet->setCellValue('F'.$contador, 'CLIENTE');
 		$sheet->setCellValue('G'.$contador, 'TIPO DESPACHO');
 		$sheet->setCellValue('H'.$contador, 'PAIS DE ORIGEN');
@@ -398,7 +398,7 @@ class HistorialCertificado extends CI_Controller
 	        $sheet->setCellValue('B'.$contador, $key['POLIZA']);
 	        $sheet->setCellValue('C'.$contador, $key['NRO_CERT']);
 	        $sheet->setCellValue('D'.$contador, $key['FECHA_SOLICITUD']);
-	        $sheet->setCellValue('E'.$contador, $key['USUARIO_2']);
+	        $sheet->setCellValue('E'.$contador, $key['CONTRATANTE']);
 	        $sheet->setCellValue('F'.$contador, $key['CLIENTE']);
 	        $sheet->setCellValue('G'.$contador, $key['TIPO_DESPACHO']);
 	        $sheet->setCellValue('H'.$contador, $key['PAIS_DE_ORIGEN']);

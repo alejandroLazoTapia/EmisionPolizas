@@ -40,7 +40,9 @@ class Siniestro extends CI_Model
 						   FROM SINIESTRO sin
 					 INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado and est.estado_reg = 1
 					 INNER JOIN POLIZA pol on pol.id = sin.id_poliza and pol.estado_reg = 1
-						  WHERE sin.id_cliente = '".$idCliente."'
+						  WHERE sin.id_cliente = case when '".$idCliente."' = 0 then sin.id_cliente
+						  						 else '".$idCliente."'
+						  						 end
 				            AND sin.estado_reg = 1
 					   ORDER BY sin.id asc";
 

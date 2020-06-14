@@ -57,10 +57,11 @@ echo "</pre>";
 																}
 															?>
 															</select>
-															<?php }
-															} else {
-															?>
+													<?php }
+													} else {
+													?>
 													<select class="form-control" form="form-create-sinister" id="idClienteSiniestro" name="idClienteSiniestro" required>
+																<option value="0" style="background-color: red;">Todos</option>
 																<option selected value="">Seleccione</option>
 																<?php
 															foreach ($arrClientes as $index => $key) {
@@ -79,7 +80,7 @@ echo "</pre>";
 																<tr>
 																	<th>Nro Siniestro</th>
 																	<th>Nro Certificado</th>
-																	<th>Nro Poliza</th>
+																	<th>Nro Póliza</th>
 																	<th>Ingreso</th>
 																	<th>Monto</th>
 																	<th style="text-align: center">Ver Adjunto</th>
@@ -171,38 +172,38 @@ echo "</pre>";
 												<div class="form-group">
 													<label>Certificado</label>
 													<select class="form-control" id="idCertificadoSiniestro" name="idCertificadoSiniestro"  disabled="true" required>
-														<option value="">Seleccione</option>
+														<option value="0">Seleccione</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Detalle Siniestro</label>
-													<textarea class="form-control valform" rows="13" id="idDetalle" name="idDetalle" required></textarea>
+													<textarea disabled="true" class="form-control valform" rows="13" id="idDetalle" name="idDetalle" required></textarea>
 												</div>
 											</div>
 												<div class="col-lg-6">
 													<div class="form-group">
 														<label>Monto</label>
-														<input class="form-control miles" min="1" placeholder="" id="idMonto" name="idMonto" required>
+														<input disabled="true" class="form-control miles" min="1" placeholder="" id="idMonto" name="idMonto" required>
 													</div>
 												</div>	
 												<div class="col-lg-6">	
 													<div class="form-group">
 														<label>Fecha Siniestro</label>
-														<input type="date" class="form-control" placeholder="" id="idFecha" name="idFecha" required>
+														<input disabled="true" type="date" class="form-control" placeholder="" id="idFecha" name="idFecha" required>
 													</div>
 												</div>	
 											
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Subir Archivo</label>
-													<input type="file" onchange="encodeImageFileAsURL(this)" name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".pdf,.PDF,.JPG,.jpg,.PNG,.png" required form="form-create-sinister"/>
+													<input disabled="true" type="file" onchange="encodeImageFileAsURL(this)" name="idArchivo" title="seleccionar archivo" id="idArchivo" accept=".pdf,.PDF,.JPG,.jpg,.PNG,.png" required form="form-create-sinister"/>
 												</div>
 											</div>
 											<div class="col-lg-12">
 													<div class="form-group">
-													<button type="submit" formaction="<?=base_url() ?>index.php/denunciaSiniestro/guardarSiniestro" class="btn btn btn-success" style="margin-top: 10px;">Registrar</button>
+													<button disabled="true" type="submit" formaction="<?=base_url() ?>index.php/denunciaSiniestro/guardarSiniestro" class="btn btn btn-success" id="btnSiniestro" name="btnSiniestro" style="margin-top: 10px;">Registrar</button>
 													</div>
 											</div>
 										</div> <!--//cierre columna 6 "ingreso de datos"-->

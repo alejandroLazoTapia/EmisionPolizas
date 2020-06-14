@@ -32,7 +32,7 @@ class DenunciaSiniestro extends CI_Controller
 	
 	public function obtieneSiniestrosCLiente(){
 		$idCliente = $this->input->post('idClienteSiniestro');
-		if ($idCliente) {
+		/*if ($idCliente) {*/
 			$siniestros = $this->Siniestro->getSinesterClient($idCliente);
 
 			if ($siniestros != null) {
@@ -51,9 +51,9 @@ class DenunciaSiniestro extends CI_Controller
 				print '<td colspan="3"><div class="alert alert-warning" role="alert"> El cliente no posee siniestros ingresados</div></td>';
 				print "</tr>";
 			}
-		}else{
+		/*}else{
 			echo NULL;
-		}
+		}*/
 	}
 		
 

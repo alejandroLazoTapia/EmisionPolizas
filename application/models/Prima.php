@@ -52,10 +52,9 @@ class Prima extends CI_Model
 		$sql = "select  distinct
 					date_format(cer.fecha_reg, '%Y') as ano
 					FROM CERTIFICADO cer
-					INNER JOIN CLIENTE cli on cli.id = cer.id_cliente and cer.estado_reg = 1 
-					INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 
-					INNER JOIN USUARIO usu on usu.id = cli.id_usuario
-				WHERE cer.id_cliente = ".$idCliente."
+				WHERE cer.id_cliente = case when ".$idCliente." = 0 then cer.id_cliente
+									   else ".$idCliente."
+									   end
 		        order by ano desc";
 
 		$result = $this->db->query($sql);
@@ -73,8 +72,9 @@ class Prima extends CI_Model
 		date_format(cer.fecha_reg, '%c') as id_mes,
         CONCAT(UPPER(LEFT(monthname(cer.fecha_reg), 1)), LOWER(SUBSTRING(monthname(cer.fecha_reg), 2))) as desc_mes
 		FROM CERTIFICADO cer
-		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente 
-		WHERE   cer.id_cliente = '".$idCliente."'
+		WHERE   cer.id_cliente = case when ".$idCliente." = 0 then cer.id_cliente
+									   else ".$idCliente."
+									   end
 		AND 	cer.estado_reg = 1 
 		AND 	DATE_FORMAT(cer.fecha_reg, '%Y') = '".$ano."'
 		order by id_mes asc";
@@ -95,10 +95,15 @@ class Prima extends CI_Model
 		cer.id as id_certificado,
 		cer.fecha_reg as fecha_emision,
 		cer.usuario_reg as usuario,
+		FORMAT(cer.monto_asegurado, 2, 'de_DE') as monto_asegurado,
 		FORMAT(cer.prima, 2, 'de_DE') as prima_cliente,
         FORMAT(cer.prima_usuario, 2, 'de_DE') as prima_usuario,
         FORMAT(cer.prima_compania, 2, 'de_DE') as prima_compania,
-        FORMAT(cer.utilidad, 2, 'de_DE') as utilidad
+        FORMAT(cer.utilidad, 2, 'de_DE') as utilidad,
+        cli.id as id_cliente,
+        DATE_FORMAT(cer.fecha_reg, '%Y') as ano,
+        DATE_FORMAT(cer.fecha_reg, '%c') as mes,
+        FORMAT(cer.monto_asegurado, 2, 'de_DE') as monto_asegurado
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 

@@ -111,7 +111,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<div class="col-lg-2">
 							<div class="form-group" style="text-align: right">
 								<label>&nbsp;</label>
-								<button style="background-color: transparent;margin-top: 23px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+								<?php if($this->session->userdata('perfil') == 1){ ?>
+								<button id="idExcelHeaderCert" name="idExcelHeaderCert" style="background-color: transparent;margin-top: 23px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+								<?php } else{ ?>
+									<button id="idExcelHeaderCert" name="idExcelHeaderCert" style="background-color: transparent;margin-top: 23px;border-color: transparent;display: none;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+								<?php } ?>
 							</div>
 						</div>						
 					</div>
@@ -125,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<tr>
 										<th>Item</th>
 										<th>Cliente</th>
-										<th>Poliza</th>
+										<th>Póliza</th>
 										<th>Nro Certificado</th>
 										<th>FechaEmision</th>
 										<th>Usuario Emision</th>
@@ -137,7 +141,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<tr>
 										<th>Item</th>
 										<th>Cliente</th>
-										<th>Poliza</th>
+										<th>Póliza</th>
 										<th>Nro Certificado</th>
 										<th>FechaEmision</th>
 										<th>Usuario Emision</th>
@@ -252,7 +256,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-lg-12">
 				<div class="form-group" style="text-align: right">
 					<label>&nbsp;</label>
-					<button style="background-color: transparent;margin-top: 13px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+					<?php if($this->session->userdata('perfil') == 1) { ?>
+						<button id="idExcelFooterCert" name="idExcelFooterCert" style="background-color: transparent;margin-top: 13px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+					<?php }else{ ?>
+						<button id="idExcelFooterCert" name="idExcelFooterCert" style="background-color: transparent;margin-top: 13px;border-color: transparent;display: none;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
+					<?php } ?>			
 				</div>
 			</div>
 		</div>    

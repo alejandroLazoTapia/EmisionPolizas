@@ -427,7 +427,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 								<div class="col-lg-4">
 									<div class="form-group">
-										<label>Numero Vuelo/Nave</label>
+										<label>Número Vuelo/Nave</label>
 										<input class="form-control valform" placeholder="Ej: L-123" id="idNumVueloNave" name="idNumVueloNave" required>
 									</div>
 								</div>

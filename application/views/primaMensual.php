@@ -29,7 +29,7 @@ echo "</pre>";*/
 							<?php
 							if ($this->session->userdata('perfil') == 2) {
 								if (is_null($arrClientes)) { ?>
-									<select readonly class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
+									<select readonly class="form-control" id="idClientePrima" name="idClientePrima" required>
 										<option selected value="">Seleccione</option>
 									</select> 
 							<?php } else { if (count($arrClientes) == 1) {  ?>
@@ -53,6 +53,7 @@ echo "</pre>";*/
 						} } } else {
 							?>
 							<select class="form-control" id="idClientePrima" name="idClientePrima" required>
+								<option selected value="0" style="background-color: red">Todos</option>
 								<option selected value="">Seleccione</option>
 								<?php
 								foreach ($arrClientes as $index => $key) {
@@ -124,16 +125,17 @@ echo "</pre>";*/
 								<tr>
 									<th>Item</th>
 									<th>Cliente</th>
-									<th>Poliza</th>
+									<th>Póliza</th>
 									<th>Nro Certificado</th>
-									<th>FechaEmision</th>
-									<th>Usuario Emision</th>
-									<th>Prima Cliente</th>
+									<th>Fecha Emision</th>
+									<th>Usuario</th>
+									<th style="text-align: right;">Monto Asegurado</th>
+									<th style="text-align: right;">Prima Cliente</th>
 									<?php if ($this->session->userdata('perfil') == 1) { ?>
-									<th>Prima Usuario</th>
-									<th>Prima Compañia</th>
-									<th>Utilidad</th>
-									<th>Editar</th>
+									<th style="text-align: right;">Prima Usuario</th>
+									<th style="text-align: right;">Prima Compañia</th>
+									<th style="text-align: right;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Utilidad</th>
+									<th style="text-align: right;">Editar</th>
 									<?php } ?>
 								</tr>
 							</thead>
@@ -146,8 +148,8 @@ echo "</pre>";*/
 									<td colspan="12" style="text-align: center">
 										<div class="alert alert-warning" role="alert"> Seleccione Periodo</div></td>
 								</tr>
-								<?php
-									} else {?>
+								<?php }else{		
+										?>											
 										<tr>
 										<td colspan="12" style="text-align: center">
 										<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>

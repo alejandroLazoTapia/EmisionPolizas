@@ -558,7 +558,7 @@ class Certificado extends CI_Model
 		pol.codigo_poliza as POLIZA,
 		cer.id as NRO_CERT,
 		cer.fecha_reg as FECHA_SOLICITUD,
-		'GLOBAL COMEX' AS USUARIO_2,
+		'SGG LOGISTICS SPA' AS CONTRATANTE,
 		cli.nombre as CLIENTE,
 		case when cer.id_tipo_embarque = 1 then 'IMPORT'
 			when cer.id_tipo_embarque = 2 then 'EXPORT'

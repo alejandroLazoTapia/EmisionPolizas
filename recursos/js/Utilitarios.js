@@ -199,27 +199,35 @@ $("#idCliente").change(function() {
 					data:{'idCliente' : idCliente}
 				}).done(function(data) {
 					if (data == '<option value="">Seleccione</option>') {
-						$("#idPoliza").html(data);
+						$("#idCliente").val('');
+						$("#idRutDni").val('');
+						$("#idTelefono").val('');
+						$("#idDireccion").val('');
+						$("#idCondiciones").val('');
+						$("#idPoliza").html(resetPoliza);
 						$("#idPoliza").prop("disabled", true);
+						$("#form-create-certificate")[0].reset();
 						alert("el cliente no posee polizas registradas");
 					}else{
 							$("#idPoliza").prop("disabled", false);
 							$("#idPoliza").html(data);
+							
+							$.ajax({
+
+								url:"formularioEmision/obtieneDatosCliente",
+								type:"POST",
+								data:{'idCliente' : idCliente},
+								dataType:'JSON'
+							}).done(function(data) {
+								$("#idRutDni").val(data[0].rut_dni);
+								$("#idTelefono").val(data[0].telefono);
+								$("#idDireccion").val(data[0].direccion);
+								$("#idCondiciones").val(data[0].condiciones);
+							});  	
 						}
 				});  	
 				
-				$.ajax({
-
-					url:"formularioEmision/obtieneDatosCliente",
-					type:"POST",
-					data:{'idCliente' : idCliente},
-					dataType:'JSON'
-				}).done(function(data) {
-					$("#idRutDni").val(data[0].rut_dni);
-					$("#idTelefono").val(data[0].telefono);
-					$("#idDireccion").val(data[0].direccion);
-					$("#idCondiciones").val(data[0].condiciones);
-				});  	
+				
 			}else{
 				$("#idPoliza").html(resetPoliza);
 				$("#idPoliza").prop("disabled", true);
@@ -285,38 +293,7 @@ $("#idPolizas").change(function() {
 		});
 	});
 	
-$("#idPolizaSiniestro").change(function() {
-		$("#idPolizaSiniestro option:selected").each(function() {
-			var idCliente = $('#idClienteSiniestro').val();
-			var idPoliza = $('#idPolizaSiniestro').val();
-			
-			if (idPoliza != '') {
-				$.ajax({
 
-					url:"formularioEmision/obtieneCertificadoPoliza",
-					type:"POST",
-					data:{
-						'idCliente' : idCliente,
-						'idPoliza' : idPoliza
-					}
-				}).done(function(data) {
-					if (data == '<option value="0">Seleccione</option>') {
-						$("#idCertificadoSiniestro").html(data);
-						$("#idCertificadoSiniestro").prop("disabled",true);
-						alert("La póliza no posee certificados emitidos");
-					} else {
-						$("#idCertificadoSiniestro").prop("disabled",false);
-						$("#idCertificadoSiniestro").html(data);
-					}
-				});
-			} else {
-				$("#idCertificadoSiniestro").val(0);
-				$("#idCertificadoSiniestro").prop("disabled",true);
-			}
-			
-			
-		});
-	});
 /*
  $("#idPaisOrigen").change(function() {
 			 $("#idPaisOrigen option:selected").each(function() {

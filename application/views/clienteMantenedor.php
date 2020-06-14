@@ -216,14 +216,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="col-lg-12">
 					<div class="panel panel-default" >
 								<div class="panel-heading" style="color:#fff;background-color: #428bca;">
-									Polizas
+									Pólizas
 								</div>
 						<div class="col-lg-7" style="margin-top: 15px;">	
 											<div class="table-responsive">
 												<table class="table table-hover">
 													<thead>
 														<tr>
-															<th>Poliza</th>
+															<th>Póliza</th>
 															<th>Descripción</th>
 															<th style="text-align: center;">Eliminar</th>
 														</tr>
@@ -241,13 +241,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="modal-content">
 									<div class="modal-header" style="margin-bottom: 20px;">
 										<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-										<h4 class="modal-title" id="myModalLabel">Eliminar Poliza</h4>
+										<h4 class="modal-title" id="myModalLabel">Eliminar Póliza</h4>
 									</div>
 
 									<div class="row" style="text-align:center;">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label>Estas intentando eliminar la poliza:</label>
+												<label>Estas intentando eliminar la póliza:</label>
 											</div>
 										</div>
 										<div class="col-lg-12">
@@ -279,7 +279,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									<form role="form" method="POST" accept-charset='UTF-8' id="form-create-policy">
 										<div class="col-lg-12">
 											<div class="form-group">
-												<label>Numero Poliza</label>
+												<label>Número Póliza</label>
 												<input id="idCodigoPoliza" name="idCodigoPoliza" class="form-control" placeholder="ej: sergio.valenzuela" required>
 											</div>
 										</div>
