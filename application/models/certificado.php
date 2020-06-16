@@ -516,9 +516,9 @@ class Certificado extends CI_Model
 	}
 
 	
-	public function obtenerHistorialCertClientes($idCliente, $ano, $mes)
+	public function obtenerHistorialCertClientes($idCliente, $ano, $mes, $idUsuario, $perfil)
 	{
-		$sql = "select
+		$sql = "select distinct
 		pol.id as id_poliza,
 		pol.codigo_poliza as codigo_poliza,
 		cer.id as id_certificado,
@@ -541,6 +541,9 @@ class Certificado extends CI_Model
         AND DATE_FORMAT(cer.fecha_reg, '%c') = case when '".$mes."' = 0 then DATE_FORMAT(cer.fecha_reg, '%c')
 											   else '".$mes."'
                                                end
+        and cli.id_usuario = case when ".$perfil." = 1 then cli.id_usuario
+			  else ".$idUsuario."	
+			  end	                                       
         order by cer.id desc";
 
 		$result = $this->db->query($sql);
@@ -551,9 +554,9 @@ class Certificado extends CI_Model
 		}
 	}
 	
-	public function obtenerDetalleCliente($idCliente, $ano, $mes)
+	public function obtenerDetalleCliente($idCliente, $ano, $mes, $idUsuario, $perfil)
 	{
-		$sql = "select
+		$sql = "select distinct
 		cer.usuario_reg as USUARIO,
 		pol.codigo_poliza as POLIZA,
 		cer.id as NRO_CERT,
@@ -605,6 +608,9 @@ class Certificado extends CI_Model
         AND DATE_FORMAT(cer.fecha_reg, '%c') = case when '".$mes."' = 0 then DATE_FORMAT(cer.fecha_reg, '%c')
 											   else '".$mes."'
                                                end
+        and cli.id_usuario = case when ".$perfil." = 1 then cli.id_usuario
+			  else ".$idUsuario."	
+			  end	                                         
         order by cer.id desc";
 
 		$result = $this->db->query($sql);
@@ -615,15 +621,13 @@ class Certificado extends CI_Model
 		}
 	}
 	
-	public function obtenerAnoUsuario($nombreUsuario)
+	public function obtenerAnoUsuario($idUsuario)
 	{
 		$sql = "select  distinct
 			date_format(cer.fecha_reg, '%Y') as ano
 			FROM CERTIFICADO cer
 			INNER JOIN CLIENTE cli on cli.id = cer.id_cliente
-			INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 
-			INNER JOIN USUARIO usu on usu.id = cli.id_usuario
-			WHERE usu.nombre_usuario = '".$nombreUsuario."'
+			WHERE cli.id_usuario = '".$idUsuario."'
 			order by ano desc";
 
 		$result = $this->db->query($sql);
@@ -635,15 +639,18 @@ class Certificado extends CI_Model
 	}
 	
 	
-	public function obtenerAnoCliente($idCliente)
+	public function obtenerAnoCliente($idCliente, $idUsuario, $perfil)
 	{
 		$sql = "select  distinct
 					date_format(fecha_reg, '%Y') as ano
 					FROM CERTIFICADO cer
 					INNER JOIN CLIENTE cli on cli.id = cer.id_cliente 
-					INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 
-					INNER JOIN USUARIO usu on usu.id = cli.id_usuario
-				WHERE cer.id_cliente = ".$idCliente."
+				WHERE cer.id_cliente = case when ".$idCliente." = 0 then  cer.id_cliente
+									else ".$idCliente."
+									end
+					  and cli.id_usuario = case when ".$perfil." = 1 then cli.id_usuario
+					  else ".$idUsuario."	
+					  end	
 		        order by ano desc";
 
 		$result = $this->db->query($sql);
@@ -654,16 +661,20 @@ class Certificado extends CI_Model
 		}
 	}
 	
-	public function obtieneMesVigente($ano, $idCliente)
+	public function obtieneMesVigente($ano, $idCliente, $idUsuario, $perfil)
 	{
-		$sql = "
-   		 select DISTINCT
+		$sql = "select DISTINCT
 		date_format(cer.fecha_reg, '%c') as id_mes,
         CONCAT(UPPER(LEFT(monthname(cer.fecha_reg), 1)), LOWER(SUBSTRING(monthname(cer.fecha_reg), 2))) as desc_mes
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente 
-		WHERE   cer.id_cliente = '".$idCliente."'
-		AND DATE_FORMAT(cer.fecha_reg, '%Y') = '".$ano."'
+		WHERE   cer.id_cliente = case when ".$idCliente." = 0 then  cer.id_cliente
+									else ".$idCliente."
+									end
+			  and cli.id_usuario = case when ".$perfil." = 1 then cli.id_usuario
+			  else ".$idUsuario."	
+			  end	
+				AND DATE_FORMAT(cer.fecha_reg, '%Y') = '".$ano."'
 		order by id_mes asc";
 
 		$result = $this->db->query($sql);

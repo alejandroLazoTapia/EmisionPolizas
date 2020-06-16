@@ -47,14 +47,18 @@ class Prima extends CI_Model
 		}
 	}
 	
-	public function obtenerAnoVigente($idCliente)
+	public function obtenerAnoVigente($idCliente, $idUsuario, $perfil)
 	{
 		$sql = "select  distinct
 					date_format(cer.fecha_reg, '%Y') as ano
 					FROM CERTIFICADO cer
+					INNER JOIN CLIENTE cli on cli.id = cer.id_cliente 
 				WHERE cer.id_cliente = case when ".$idCliente." = 0 then cer.id_cliente
 									   else ".$idCliente."
 									   end
+					  and 	cli.id_usuario = case when ".$perfil." = 1 THEN cli.id_usuario
+										 else '".$idUsuario."'
+										 end				   
 		        order by ano desc";
 
 		$result = $this->db->query($sql);
@@ -66,17 +70,21 @@ class Prima extends CI_Model
 	}
 	
 	
-	public function obtieneMesVigente($ano, $idCliente)
+	public function obtieneMesVigente($ano, $idCliente, $idUsuario, $perfil)
 	{
 		$sql = "select DISTINCT
 		date_format(cer.fecha_reg, '%c') as id_mes,
         CONCAT(UPPER(LEFT(monthname(cer.fecha_reg), 1)), LOWER(SUBSTRING(monthname(cer.fecha_reg), 2))) as desc_mes
 		FROM CERTIFICADO cer
+		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente 
 		WHERE   cer.id_cliente = case when ".$idCliente." = 0 then cer.id_cliente
 									   else ".$idCliente."
 									   end
 		AND 	cer.estado_reg = 1 
 		AND 	DATE_FORMAT(cer.fecha_reg, '%Y') = '".$ano."'
+		and 	cli.id_usuario = case when ".$perfil." = 1 THEN cli.id_usuario
+										 else '".$idUsuario."'
+										 end		
 		order by id_mes asc";
 
 		$result = $this->db->query($sql);
@@ -87,7 +95,7 @@ class Prima extends CI_Model
 		}
 	}	
 	
-	public function obtenerDetallePrimaMensual($idCliente, $ano, $mes)
+	public function obtenerDetallePrimaMensual($idCliente, $ano, $mes, $idUsuario, $perfil)
 	{
 		$sql = "select
         cli.nombre as nombre_cliente,
@@ -107,7 +115,6 @@ class Prima extends CI_Model
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 
-		INNER JOIN USUARIO usu on usu.id = cli.id_usuario
 		WHERE cer.id_cliente = case when '".$idCliente."' = 0 then cer.id_cliente
 								else '".$idCliente."'
                                 end
@@ -118,6 +125,9 @@ class Prima extends CI_Model
 											   else '".$mes."'
                                                end
 		and cer.estado_reg = 1
+		and 	cli.id_usuario = case when ".$perfil." = 1 THEN cli.id_usuario
+										 else '".$idUsuario."'
+										 end			
         order by cer.id desc";
 	
 		$result = $this->db->query($sql);
@@ -129,7 +139,7 @@ class Prima extends CI_Model
 	}
 	
 	
-	public function obtenerTotalesPrimaMensual($idCliente, $ano, $mes)
+	public function obtenerTotalesPrimaMensual($idCliente, $ano, $mes, $idUsuario, $perfil)
 	{
 		$sql = "select 
 		FORMAT(sum(cer.prima), 2, 'de_DE') as prima_cliente,
@@ -138,8 +148,6 @@ class Prima extends CI_Model
         FORMAT(sum(cer.utilidad), 2, 'de_DE') as utilidad
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente
-		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 
-		INNER JOIN USUARIO usu on usu.id = cli.id_usuario
 		WHERE cer.id_cliente = case when '".$idCliente."' = 0 then cer.id_cliente
 								else '".$idCliente."'
                                 end
@@ -150,6 +158,9 @@ class Prima extends CI_Model
 											   else '".$mes."'
                                                end
 		and cer.estado_reg = 1
+		and 	cli.id_usuario = case when ".$perfil." = 1 THEN cli.id_usuario
+										 else '".$idUsuario."'
+										 end			
         order by cer.id desc";
 	
 		$result = $this->db->query($sql);

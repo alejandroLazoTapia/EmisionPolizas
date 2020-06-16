@@ -3,12 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-	<?php
-echo "<pre>";
-print_r(is_null($arrClientes));
-echo "</pre>";
-	?>
-
 <div id="page-wrapper">
 	<div class="row">
 		<div class="col-lg-12">
@@ -27,7 +21,7 @@ echo "</pre>";
 							<div class="panel-body">
 								<div class="row">
 									<div class="col-lg-12">
-									  	<div class="col-lg-6">
+									  	<div class="col-lg-7">
 												<div class="col-lg-12">
 													<div class="form-group">
 														<label>Cliente</label>
@@ -40,6 +34,7 @@ echo "</pre>";
 															<?php
 														}else if (count($arrClientes) > 1 ) { ?>
 															<select class="form-control" id="idClienteSiniestro" name="idClienteSiniestro" required>
+															<option value="0" style="background-color: red">Todos</option>
 																<option selected value="">Seleccione</option>
 															<?php
 																foreach ($arrClientes as $index => $key) {
@@ -91,11 +86,16 @@ echo "</pre>";
 													    		if (is_null($arrSiniestros))
 																	{ ?>
 																		<tr>
-																			<td colspan="4">
+																			<td colspan="6" style="text-align: center">
 																				<div class="alert alert-warning" role="alert"> No hay siniestros registrados</div></td>
 																		</tr>
 																	<?php 
-																}else{
+																}else if(count($arrClientes)>1){ ?>
+																		<tr>
+																			<td colspan="6" style="text-align: center">
+																				<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
+																		</tr>
+																<?php }else{
 																	
 																foreach ($arrSiniestros as $index => $key) {
 																	echo"<tr>";
@@ -111,7 +111,7 @@ echo "</pre>";
 															
 														<?php } }else { ?>
 															<tr>
-																<td colspan="4">
+																<td colspan="6" style="text-align: center">
 																	<div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td>
 															</tr>
 															<?php } ?>
@@ -137,7 +137,7 @@ echo "</pre>";
 													</div>
 												</div>
 											</div>
-										<div class="col-lg-6">
+										<div class="col-lg-5">
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Póliza</label>

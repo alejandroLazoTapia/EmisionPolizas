@@ -29,7 +29,7 @@ class Siniestro extends CI_Model
 		}
 	}
 
-	public function getSinesterClient($idCliente)
+	public function getSinesterClient($idCliente, $idUsuario, $idPerfil)
 	{
 		$sql = "SELECT DISTINCT sin.id as id_siniestro,
 								sin.id_certificado,
@@ -38,13 +38,18 @@ class Siniestro extends CI_Model
 								pol.codigo_poliza as poliza,
 								FORMAT(sin.monto, 2, 'de_DE') AS monto
 						   FROM SINIESTRO sin
-					 INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado and est.estado_reg = 1
-					 INNER JOIN POLIZA pol on pol.id = sin.id_poliza and pol.estado_reg = 1
+					 INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado 
+					 INNER JOIN POLIZA pol on pol.id = sin.id_poliza 
+					 INNER JOIN CLIENTE cli on cli.id = sin.id_cliente
+					 
 						  WHERE sin.id_cliente = case when '".$idCliente."' = 0 then sin.id_cliente
 						  						 else '".$idCliente."'
 						  						 end
 				            AND sin.estado_reg = 1
-					   ORDER BY sin.id asc";
+				            AND cli.id_usuario = case when '".$idPerfil."' = 1 then cli.id_usuario
+				            	else '".$idUsuario."'
+				            	end
+					   ORDER BY sin.id desc";
 
 		$result = $this->db->query($sql);
 
@@ -64,13 +69,13 @@ class Siniestro extends CI_Model
 								pol.codigo_poliza as poliza,
 								FORMAT(sin.monto, 2, 'de_DE') AS monto
 						   FROM SINIESTRO sin
-					 INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado and est.estado_reg = 1
+					 INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado
 					 INNER JOIN CLIENTE cli on cli.id = sin.id_cliente and cli.estado_reg = 1
 					 INNER JOIN USUARIO usu on usu.id = cli.id_usuario and usu.estado_reg = 1
-					 INNER JOIN POLIZA pol on pol.id = sin.id_poliza and pol.estado_reg = 1
+					 INNER JOIN POLIZA pol on pol.id = sin.id_poliza 
 					 	WHERE usu.id = '".$idUsuario."'
 				            AND sin.estado_reg = 1
-					   ORDER BY sin.id asc";
+					   ORDER BY sin.id desc";
 
 		$result = $this->db->query($sql);
 
@@ -111,12 +116,11 @@ class Siniestro extends CI_Model
                                 sin.adjunto,
                                 sin.extension
                            FROM SINIESTRO sin
-                     INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado and est.estado_reg = 1
-                     INNER JOIN CERTIFICADO cer on cer.id = sin.id_certificado and cer.estado_reg = 1
+                     INNER JOIN ESTADO_SINIESTRO est on est.id = sin.id_Estado
+                     INNER JOIN CERTIFICADO cer on cer.id = sin.id_certificado
                         WHERE sin.id = '".$idSiniestro."'
                             and cer.id = '".$idCertificado."'
-                            AND sin.estado_reg = 1
-                       ORDER BY sin.id asc";
+                            AND sin.estado_reg = 1";
 
 		$result = $this->db->query($sql);
 

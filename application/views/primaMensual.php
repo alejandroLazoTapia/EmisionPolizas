@@ -33,7 +33,7 @@ echo "</pre>";*/
 										<option selected value="">Seleccione</option>
 									</select> 
 							<?php } else { if (count($arrClientes) == 1) {  ?>
-											<select class="form-control" readonly id="idClientePrima" name="idClientePrima" required>
+											<select readonly class="form-control" id="idClientePrima" name="idClientePrima" required>
 												<?php
 												foreach ($arrClientes as $index => $key) {
 													echo '<option selected  value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -42,6 +42,7 @@ echo "</pre>";*/
 											</select>
 									<?php	}else{ ?>
 											<select class="form-control" id="idClientePrima" name="idClientePrima" required>
+											<option selected value="0" style="background-color: red">Todos</option>
 											<option selected value="">Seleccione</option>
 											<?php
 											foreach ($arrClientes as $index => $key) {
@@ -53,7 +54,7 @@ echo "</pre>";*/
 						} } } else {
 							?>
 							<select class="form-control" id="idClientePrima" name="idClientePrima" required>
-								<option selected value="0" style="background-color: red">Todos</option>
+								<option value="0" style="background-color: red">Todos</option>
 								<option selected value="">Seleccione</option>
 								<?php
 								foreach ($arrClientes as $index => $key) {
@@ -146,7 +147,7 @@ echo "</pre>";*/
 								?>
 								<tr>
 									<td colspan="12" style="text-align: center">
-										<div class="alert alert-warning" role="alert"> Seleccione Periodo</div></td>
+										<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>
 								</tr>
 								<?php }else{		
 										?>											

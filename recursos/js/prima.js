@@ -7,7 +7,6 @@ $("#idClientePrima").change(function() {
 		var resetTbodySP = '<tr><td colspan="12" style="text-align: center"><div class="alert alert-warning" role="alert">Cliente no posee pólizas registradas</div></td></tr>';
 		console.log(idCliente);
 		if (idCliente != "") {
-			/*if (idCliente > 0) {*/
 				$.ajax({
 					url:"PrimaMensual/obtieneAnoPrima",
 					type:"POST",
@@ -35,20 +34,6 @@ $("#idClientePrima").change(function() {
 						$("#btnObtienePrima").prop("disabled",true);
 					}
 				});
-			/*} else {
-					console.log("entro");
-					$.ajax({
-						url:"historialCertificado/obtieneCertificadosClientes",
-						type:"POST"
-					}).done(function(data) {
-						$("#idCertificadosEmi").html(data);
-						$("#idAnoCert").html(resetAno);
-						$("#idAnoCert").prop("disabled",true);
-						$("#idMesCert").html(resetMes);
-						$("#idMesCert").prop("disabled",true);
-						$("#btnObtieneCertificado").prop("disabled",true);
-					});		
-					}*/	
 		} else {
 			$("#idAnoPrima").html(resetAno);
 			$("#idAnoPrima").prop("disabled",true);
@@ -69,7 +54,9 @@ $("#idAnoPrima").change(function() {
 		var idAnoPrima = $('#idAnoPrima').val();
 		var resetAno = '<option selected value="0">Seleccione</option>';
 		var resetMes = '<option selected value="">Seleccione</option>';
-		
+		console.log(idCliente);
+		console.log(idAnoPrima);
+			
 		if (idAnoPrima > 0) {
 
 			$.ajax({

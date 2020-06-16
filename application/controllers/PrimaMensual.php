@@ -29,8 +29,8 @@ class PrimaMensual extends CI_Controller
 	
 		if ($perfil == 1) {
 			$datos['arrAno'] = null;
-			$datos['arrPrimas'] = $this->Prima->obtenerDetallePrimaMensual(0, date("Y"), date("n"));
-			$datos['arrTotalesPrimas'] = $this->Prima->obtenerTotalesPrimaMensual(0, date("Y"), date("n"));
+			$datos['arrPrimas'] = $this->Prima->obtenerDetallePrimaMensual(0, date("Y"), date("n"), $idUsuario, $perfil);
+			$datos['arrTotalesPrimas'] = $this->Prima->obtenerTotalesPrimaMensual(0, date("Y"), date("n"), $idUsuario, $perfil);
 		} else {
 			$datos['arrAno'] = $this->Prima->obtenerAnoUsuario($nombreUsuario);
 		}
@@ -40,14 +40,16 @@ class PrimaMensual extends CI_Controller
 		$this->load->view('primaMensual',$datos);
 		$this->load->view('footer');
 	}
+
 	
 	public function obtieneAnoPrima()
 	{
 		if ($this->input->is_ajax_request()) {
 			$idCliente =  $this->input->post('idCliente');
-			/*if ($idCliente) {*/
-				$anos = $this->Prima->obtenerAnoVigente($idCliente);
-				if($anos != null){
+			$idUsuario = $this->session->userdata('id');
+			$perfil = $this->session->userdata('perfil');
+			$anos = $this->Prima->obtenerAnoVigente($idCliente, $idUsuario, $perfil);
+			if($anos != null){
 					if (count($anos) > 0) {
 						echo '<option selected value="0">Seleccione</option>';
 						foreach ($anos as $ano => $key) {
@@ -59,22 +61,20 @@ class PrimaMensual extends CI_Controller
 				} else {
 					echo '<option selected value="0">Seleccione</option>';
 				}
-			/*} else {
-				echo '<option selected value="0">Seleccione</option>';
-			}*/
 		} else {
 			echo -3;
 		}
 	}
+	
 	
 	public function obtieneMesPrima()
 	{
 		if ($this->input->is_ajax_request()) {
 			$idCliente =  $this->input->post('idCliente');
 			$idAnoPrima =  $this->input->post('idAnoPrima');
-			
-			/*if ($idCliente) {*/
-				$meses = $this->Prima->obtieneMesVigente($idAnoPrima, $idCliente);
+			$idUsuario = $this->session->userdata('id');
+			$perfil = $this->session->userdata('perfil');
+				$meses = $this->Prima->obtieneMesVigente($idAnoPrima, $idCliente, $idUsuario, $perfil);
 				if ($meses != null) {
 					if (count($meses) > 0) {
 						echo '<option style="background-color:red;" value="0">Todos</option>';
@@ -88,9 +88,6 @@ class PrimaMensual extends CI_Controller
 				} else {
 					echo '<option selected value="">Seleccione</option>';
 				}
-			/*} else {
-				echo '<option selected value="">Seleccione</option>';
-			}*/
 		} else {
 			echo -3;
 		}
@@ -103,11 +100,12 @@ class PrimaMensual extends CI_Controller
 			$idAnoPrima =  $this->input->post('idAnoPrima');
 			$idMesPrima =  $this->input->post('idMesPrima');
 			$perfil = $this->session->userdata('perfil');
-			$arrPrimas = $this->Prima->obtenerDetallePrimaMensual($idCliente, $idAnoPrima, $idMesPrima);
+			$idUsuario = $this->session->userdata('id');
+			$arrPrimas = $this->Prima->obtenerDetallePrimaMensual($idCliente, $idAnoPrima, $idMesPrima, $idUsuario, $perfil);
 			
 				
 			if ($arrPrimas != null) {
-				$arrTotalesPrimas = $this->Prima->obtenerTotalesPrimaMensual($idCliente, $idAnoPrima, $idMesPrima);
+				$arrTotalesPrimas = $this->Prima->obtenerTotalesPrimaMensual($idCliente, $idAnoPrima, $idMesPrima, $idUsuario, $perfil);
 				if (count($arrPrimas) > 0) {
 						$i = 1;
 						foreach ($arrPrimas as $index => $key) {
@@ -164,8 +162,10 @@ class PrimaMensual extends CI_Controller
 			$idCliente =  $this->input->post('idCliente');
 			$idAnoPrima =  $this->input->post('idAnoPrima');
 			$idMesPrima =  $this->input->post('idMesPrima');
+			$perfil = $this->session->userdata('perfil');
+			$idUsuario = $this->session->userdata('id');
 
-			$arrTotalesPrimas = $this->Prima->obtenerTotalesPrimaMensual($idCliente, $idAnoPrima, $idMesPrima);
+			$arrTotalesPrimas = $this->Prima->obtenerTotalesPrimaMensual($idCliente, $idAnoPrima, $idMesPrima, $idUsuario, $perfil);
 			echo(json_encode($arrTotalesPrimas));
 		} else {
 			echo -3;
@@ -204,9 +204,10 @@ class PrimaMensual extends CI_Controller
    	$idAnoPrima = $this->input->post('idAnoPrimaExcel');
    	$idMesPrima = $this->input->post('idMesPrimaExcel');
    	$perfil = $this->session->userdata('perfil');
+	$idUsuario = $this->session->userdata('id');
    	
-   	$arrPrimas = $this->Prima->obtenerDetallePrimaMensual($idCliente, $idAnoPrima, $idMesPrima);
-	$arrTotalesPrimas = $this->Prima->obtenerTotalesPrimaMensual($idCliente, $idAnoPrima, $idMesPrima);
+   	$arrPrimas = $this->Prima->obtenerDetallePrimaMensual($idCliente, $idAnoPrima, $idMesPrima, $idUsuario, $perfil);
+	$arrTotalesPrimas = $this->Prima->obtenerTotalesPrimaMensual($idCliente, $idAnoPrima, $idMesPrima, $idUsuario, $perfil);
 	
     
     if(count($arrPrimas) > 0){

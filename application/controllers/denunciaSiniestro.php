@@ -32,8 +32,10 @@ class DenunciaSiniestro extends CI_Controller
 	
 	public function obtieneSiniestrosCLiente(){
 		$idCliente = $this->input->post('idClienteSiniestro');
-		/*if ($idCliente) {*/
-			$siniestros = $this->Siniestro->getSinesterClient($idCliente);
+		$idUsuario = $this->session->userdata('id');
+		$idPerfil = $this->session->userdata('perfil');
+			$siniestros = $this->Siniestro->getSinesterClient($idCliente, $idUsuario, $idPerfil);
+			
 
 			if ($siniestros != null) {
 				foreach ($siniestros as $siniestro => $key) {
@@ -48,12 +50,9 @@ class DenunciaSiniestro extends CI_Controller
 				}
 			} else {
 				print "<tr>";
-				print '<td colspan="3"><div class="alert alert-warning" role="alert"> El cliente no posee siniestros ingresados</div></td>';
+				print '<td colspan="6" style="text-align: center"><div class="alert alert-warning" role="alert"> El cliente no posee siniestros ingresados</div></td>';
 				print "</tr>";
 			}
-		/*}else{
-			echo NULL;
-		}*/
 	}
 		
 

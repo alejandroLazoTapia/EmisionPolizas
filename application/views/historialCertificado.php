@@ -42,6 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												</select>
 											<?php  }else{ ?>
 											  	<select class="form-control"  id="idClienteCert" name="idClienteCert" required>
+											  	<option value="0" style="background-color: red;">Todos</option>
 											  	<option selected value="">Seleccione</option>
 														<?php
 													foreach ($arrClientes as $index => $key) {
@@ -53,8 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							} } } else {
 								?>
 									<select class="form-control" id="idClienteCert" name="idClienteCert" required>
-									<option selected style="background-color: red" value="0">Todos</option>
-									<option value="">Seleccione</option>
+									<option style="background-color: red" value="0">Todos</option>
+									<option selected value="">Seleccione</option>
 									<?php
 								foreach ($arrClientes as $index => $key) {
 									echo '<option value="'.$key["id_cliente"].'">'.$key["nombre_cliente"].'</option>';
@@ -102,20 +103,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 						</div>
 
-						<div class="col-lg-2">
+						<div class="col-lg-2" >
 							<div class="form-group">
 								<label>&nbsp;</label>
-								<button disabled="true" id="btnObtieneCertificado" type="submit" class="btn btn btn-primary form-control">Obtener Certificados</button>
+								<button disabled="true"  id="btnObtieneCertificado" type="submit" class="btn btn btn-primary form-control">Obtener Certificados</button>
 							</div>
 						</div>
 						<div class="col-lg-2">
 							<div class="form-group" style="text-align: right">
-								<label>&nbsp;</label>
-								<?php if($this->session->userdata('perfil') == 1){ ?>
-								<button id="idExcelHeaderCert" name="idExcelHeaderCert" style="background-color: transparent;margin-top: 23px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
-								<?php } else{ ?>
 									<button id="idExcelHeaderCert" name="idExcelHeaderCert" style="background-color: transparent;margin-top: 23px;border-color: transparent;display: none;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
-								<?php } ?>
 							</div>
 						</div>						
 					</div>
@@ -158,48 +154,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 												<div class="alert alert-warning" role="alert"> Seleccione cliente y periodo</div></td>
 										</tr>
 										<?php
-									} else if (!empty($arrCertificados)) {
-										$i = 1;
-										foreach ($arrCertificados as $index => $key) {
-											if($key['estado_reg'] == 0){
-												echo '<tr style="background-color: #FCAAAA;">';
-											}else{
-												echo'<tr>';
-											}
-											
-											echo '<td>'.$i.'</td>';
-											echo '<td>'.$key["nombre_cliente"].'</td>';
-											echo '<td>'.$key["codigo_poliza"].'</td>';
-											echo '<td>'.$key["id_certificado"].'</td>';
-											echo '<td>'.$key["fecha_emision"].'</td>';
-											echo '<td>'.$key["usuario"].'</td>';
-										?>
-										<td style="text-align: center;">
-											<a class="idDescargarCertificado">
-												<span class="glyphicon glyphicon-download-alt"></span>
-											</a>
-										</td>
-										<?php
-										if($key['estado_reg'] == 0){
-											echo '<td style="text-align: center;"><b>Anulado</b></td>';
-											}else{ ?>
-											<td style="text-align: center;">
-												<a class="idAnulaCertificado" data-toggle="modal" data-target="#myModalAnular">
-													<span class="glyphicon glyphicon glyphicon-remove"></span>
-												</a>
-											</td>
-										<?php } 			
-								
-										echo '<td style="display:none">'.$key["id_cliente"].'</td>';
-										echo '<td style="display:none">'.$key["id_poliza"].'</td>';
-										echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
-										echo'</tr>';
-										$i = $i +1;
-									}
 									}else{
 										?>
 										<tr>
-											<td colspan="7" style="text-align: center">
+											<td colspan="8" style="text-align: center">
 												<div class="alert alert-warning" role="alert">Seleccione cliente y periodo</div></td>
 										</tr>
 										<?php
@@ -256,11 +214,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="col-lg-12">
 				<div class="form-group" style="text-align: right">
 					<label>&nbsp;</label>
-					<?php if($this->session->userdata('perfil') == 1) { ?>
-						<button id="idExcelFooterCert" name="idExcelFooterCert" style="background-color: transparent;margin-top: 13px;border-color: transparent;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
-					<?php }else{ ?>
-						<button id="idExcelFooterCert" name="idExcelFooterCert" style="background-color: transparent;margin-top: 13px;border-color: transparent;display: none;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>
-					<?php } ?>			
+						<button id="idExcelFooterCert" name="idExcelFooterCert" style="background-color: transparent;margin-top: 13px;border-color: transparent;display: none;" type="submit" form="formExcel" ><img src="<?=base_url() ?>recursos/images/logo_excel.jpg" width="30" height="30"></button>		
 				</div>
 			</div>
 		</div>    

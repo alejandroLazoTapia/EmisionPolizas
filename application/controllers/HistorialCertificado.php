@@ -27,13 +27,9 @@ class HistorialCertificado extends CI_Controller
 		// obtenemos el array de clientes
 		$datos['arrClientes'] = $this->Certificado->obtenerClientes($idUsuario, $perfil);
 		
-		if ($perfil == 1){
-			$datos['arrCertificados'] = $this->Certificado->obtenerHistorialCertTotal();
-			$datos['arrAno'] = null;
-		}
-		else{
-			$datos['arrCertificados'] = NULL;
-			$datos['arrAno'] = $this->Certificado->obtenerAnoUsuario($nombreUsuario);
+
+		if ($perfil == 2){
+			$datos['arrAno'] = $this->Certificado->obtenerAnoUsuario($idUsuario);
 		}
 		
 		$this->load->view('header');
@@ -47,9 +43,10 @@ class HistorialCertificado extends CI_Controller
 	{
 		if ($this->input->is_ajax_request()) {
 			$idCliente =  $this->input->post('idCliente');
-
-			if ($idCliente) {
-				$anos = $this->Certificado->obtenerAnoCliente($idCliente);
+			$idUsuario = $this->session->userdata('id');
+			$perfil = $this->session->userdata('perfil');
+			
+				$anos = $this->Certificado->obtenerAnoCliente($idCliente, $idUsuario, $perfil);
 				if($anos != null){
 					if (count($anos) > 0) {
 						echo '<option selected value="0">Seleccione</option>';
@@ -62,9 +59,7 @@ class HistorialCertificado extends CI_Controller
 				} else {
 					echo '<option selected value="0">Seleccione</option>';
 				}
-			} else {
-				echo '<option selected value="0">Seleccione</option>';
-			}
+			
 		} else {
 			echo -3;
 		}
@@ -76,9 +71,9 @@ class HistorialCertificado extends CI_Controller
 		if ($this->input->is_ajax_request()) {
 			$idCliente =  $this->input->post('idCliente');
 			$idAnoCert =  $this->input->post('idAnoCert');
-			
-			if ($idCliente) {
-				$meses = $this->Certificado->obtieneMesVigente($idAnoCert, $idCliente);
+			$idUsuario = $this->session->userdata('id');
+			$perfil = $this->session->userdata('perfil');
+				$meses = $this->Certificado->obtieneMesVigente($idAnoCert, $idCliente, $idUsuario, $perfil);
 				if ($meses != null) {
 					if (count($meses) > 0) {
 						echo '<option style="background-color:red;" value="0">Todos</option>';
@@ -92,20 +87,16 @@ class HistorialCertificado extends CI_Controller
 				} else {
 					echo '<option selected value="">Seleccione</option>';
 				}
-			} else {
-				echo '<option selected value="">Seleccione</option>';
-			}
 		} else {
 			echo -3;
 		}
 	} 
 	
-	public function obtieneCertificadosClientes()
+/*	public function obtieneCertificadosClientes()
 	{
 		if ($this->input->is_ajax_request()) {
 			$perfil = $this->session->userdata('perfil');
 			$arrCertificados = $this->Certificado->obtenerHistorialCertTotal();
-			
 				
 			if ($arrCertificados != null) {
 				if (count($arrCertificados) > 0) {
@@ -185,7 +176,7 @@ class HistorialCertificado extends CI_Controller
 		} else {
 			echo -3;
 		}
-	} 
+	} */
 	
 	public function obtieneCertificadosCliente()
 	{
@@ -193,9 +184,11 @@ class HistorialCertificado extends CI_Controller
 			$idCliente =  $this->input->post('idCliente');
 			$idAnoCert =  $this->input->post('idAnoCert');
 			$idMesCert =  $this->input->post('idMesCert');
-
-			$arrCertificados = $this->Certificado->obtenerHistorialCertClientes($idCliente, $idAnoCert, $idMesCert);
+			
+			$idUsuario = $this->session->userdata('id');
 			$perfil = $this->session->userdata('perfil');
+
+			$arrCertificados = $this->Certificado->obtenerHistorialCertClientes($idCliente, $idAnoCert, $idMesCert, $idUsuario, $perfil);
 				
 			if ($arrCertificados != null) {
 				if (count($arrCertificados) > 0) {
@@ -283,8 +276,10 @@ class HistorialCertificado extends CI_Controller
    	$idCliente = $this->input->post('idClienteExcel');
    	$idAnoCert = $this->input->post('idAnoExcel');
    	$idMesCert = $this->input->post('idMesExcel');
-   	
-	$certificados = $this->Certificado->obtenerDetalleCliente($idCliente, $idAnoCert, $idMesCert);
+   	$idUsuario = $this->session->userdata('id');
+	$perfil = $this->session->userdata('perfil');
+	
+	$certificados = $this->Certificado->obtenerDetalleCliente($idCliente, $idAnoCert, $idMesCert, $idUsuario, $perfil);
     
     if(count($certificados) > 0){
     //Contador de filas

@@ -9,7 +9,7 @@ $("#idClienteCert").change(function() {
 		var resetTbodySP = '<tr><td colspan="7" style="text-align: center"><div class="alert alert-warning" role="alert">Cliente no posee pólizas registradas</div></td></tr>';
 		console.log(idCliente);
 		if (idCliente != "") {
-			if (idCliente > 0) {
+                console.log(idCliente);
 				$.ajax({
 					url:"historialCertificado/obtieneAnoCliente",
 					type:"POST",
@@ -34,25 +34,6 @@ $("#idClienteCert").change(function() {
 						$("#idExcelHeaderCert").prop('style','display:none');
 					}
 				});
-			} else {
-					console.log("entro");
-					$.ajax({
-						url:"historialCertificado/obtieneCertificadosClientes",
-						type:"POST"
-					}).done(function(data) {
-						$("#idCertificadosEmi").html(data);
-						$("#idAnoCert").html(resetAno);
-						$("#idAnoCert").prop("disabled",true);
-						$("#idMesCert").html(resetMes);
-						$("#idMesCert").prop("disabled",true);
-						$('#idExcelFooterCert').attr('style','background-color: transparent;margin-top: 23px;border-color: transparent;');
-				$('#idExcelHeaderCert').attr('style','background-color: transparent;margin-top: 23px;border-color: transparent;');
-						$("#btnObtieneCertificado").prop("disabled",true);
-					});		
-						$('#idClienteExcel').val(0);
-						$('#idAnoExcel').val(0);
-						$('#idMesExcel').val(0);
-					}	
 		} else {
 			$("#idAnoCert").html(resetAno);
 			$("#idAnoCert").prop("disabled",true);
@@ -74,8 +55,9 @@ $("#idAnoCert").change(function() {
 		var resetAno = '<option selected value="0">Seleccione</option>';
 		var resetMes = '<option selected value="">Seleccione</option>';
 		
-		if (idAnoCert > 0) {
-
+		if (idAnoCert != "") {
+			console.log(idCliente);
+			console.log(idAnoCert);
 			$.ajax({
 				url:"historialCertificado/obtieneMesCliente",
 				type:"POST",
@@ -180,7 +162,7 @@ $('#btnAnularCertificado').click(function() {
 			success:function(respuesta) {
 				if (respuesta == 0) {
 					alert("El certificado fue anulado exitosamente");
-					if(idCliente > 0){
+
 						$.ajax({
 							type: 'POST',
 							url:"historialCertificado/obtieneCertificadosCliente",
@@ -196,14 +178,6 @@ $('#btnAnularCertificado').click(function() {
 								alert('Error al traer Certificados! = ' + errorThrow);
 							}
 						});
-					}else{
-						$.ajax({
-						url:"historialCertificado/obtieneCertificadosClientes",
-						type:"POST"
-					}).done(function(data) {
-						$("#idCertificadosEmi").html(data);
-					});			
-					}
 
 				} else {
 					alert("No fue posible anular el certificado");

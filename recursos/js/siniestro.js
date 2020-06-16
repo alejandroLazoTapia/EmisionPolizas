@@ -93,6 +93,7 @@ function getBase64(file)
 
 
 $(document).on('click','#btnVerSiniestro',function(event) {		
+		document.querySelector('#imageContainer').innerHTML = '';
 		var idSiniestro = $(this).parents("tr").find("td")[0].innerHTML;
 		var idCertificado = $(this).parents("tr").find("td")[1].innerHTML;
 		console.log(idSiniestro);
@@ -121,7 +122,7 @@ $(document).on('click','#btnVerSiniestro',function(event) {
 						a.download = true;
 						a.target = '_blank';
 						a.click();*/
-				
+					    
 						document.querySelector('#imageContainer').innerHTML = newImage.outerHTML;//where to insert your image
 						$('#iframePdf').attr("style",'display:none');
 					}else if(respuesta[0].extension.toUpperCase() == 'PDF'){
@@ -148,10 +149,10 @@ $(document).on('click','#btnVerSiniestro',function(event) {
 $("#idClienteSiniestro").change(function() {
 	$("#idClienteSiniestro option:selected").each(function() {
 		var idCliente = $('#idClienteSiniestro').val();
-		var resetTbody = '<tr><td colspan="4"><div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td></tr>';
+		var resetTbody = '<tr><td colspan="7" style="text-align:center"><div class="alert alert-warning" role="alert"> Seleccione Cliente</div></td></tr>';
 		var resetPoliza = '<option value="">Seleccione</option>';
 		var resetCert = '<option value="">Seleccione</option>';
-		var resetTbodySP = '<tr><td colspan="4"><div class="alert alert-warning" role="alert"> Cliente no posee pólizas registradas</div></td></tr>'
+		var resetTbodySP = '<tr><td colspan="7" style="text-align:center">><div class="alert alert-warning" role="alert"> Cliente no posee pólizas registradas</div></td></tr>'
 		if (idCliente != "") {
 			
 			console.log(idCliente);
