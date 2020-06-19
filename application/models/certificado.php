@@ -446,26 +446,24 @@ class Certificado extends CI_Model
 	{
 		$sql = "select pol.codigo_poliza as policy_no,
 		cer.id as certificate_no,
-		CONCAT(mon.nombre_moneda ,' (',mon.signo,')') as moneda,
-		'7036M' AS aviso_nro,
-		'DEFINITIVO' AS tipo_certificado,
-		CONCAT(cli.nombre,' Rut: ', cli.rut_dni) as asegurado,
+		cli.nombre as asegurado,
+		cli.rut_dni as ruc,
+		cli.direccion as domicilio,
+		'PERU' as pais,
+		'CONTADO' as condiciones_pago,
 		cer.desc_mercaderia as matter_insured,
-		tipemb.desc_embalaje as embalaje,
 		cer.fecha_arribo as fecha_salida,
-		cer.pais_origen as origen,
-		tra.nombre_transporte as via,
-		'0' as nro_bultos,
-		cer.nombre_linea as nombre_linea,
-		CONCAT(cer.pais_destino ,',', cer.ciudad_destino) as destino,
+		CONCAT(cer.pais_origen ,'-', cer.ciudad_origen,'-', cer.puerto_origen) as fromm,
+		CONCAT(cer.pais_destino ,'-', cer.ciudad_destino,'-', cer.puerto_destino) as too,
 		cer.guia_bl as b_l,
-		cer.nombre_nave as nave,
-		tra.nombre_transporte as convetance,
-		CONCAT('TRANSPORTE ',tra.nombre_transporte,' PARA CARGA ',cla.desc_clausula) as cobertura,
-		CONCAT(mon.signo,cer.monto_asegurado) as monto_asegurado,
-		CONCAT(mon.signo,cer.prima) as prima,
+		tra.nombre_transporte as conveyance,
+		FORMAT(cer.monto_asegurado, 2, 'de_DE') as amount_insure,
+		FORMAT(cer.prima, 2, 'de_DE') as premium,
 		DATE_FORMAT(cer.fecha_mod, '%d-%m-%Y') as fecha_emision,
-		mon.signo
+		DATE_FORMAT(cer.fecha_embarque, '%d-%m-%Y') as fecha_envio,
+		mon.desc_moneda as moneda,
+		cli.nombre as nombre_cliente,
+		cla.desc_clausula as clausula
 		FROM CERTIFICADO cer
 		INNER JOIN CLIENTE cli on cli.id = cer.id_cliente 
 		INNER JOIN POLIZA pol on pol.id = cer.id_poliza and pol.id_cliente = cli.id 
@@ -475,6 +473,7 @@ class Certificado extends CI_Model
 		INNER JOIN MONEDA mon on mon.id = cer.id_moneda 
 		INNER JOIN PAIS paisem on paisem.id = cer.id_pais_emision 
 		INNER JOIN TIPO_EMBALAJE tipemb on tipemb.id = cer.id_tipo_embalaje 
+		INNER JOIN USUARIO usu on usu.id = cli.id_usuario and usu.estado_reg = 1
 		WHERE   cer.id_cliente = ".$idCliente."
 		AND cer.id_poliza = ".$idPolizas."
 		AND cer.id = ".$idCertificado."

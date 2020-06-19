@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				border: 1px solid black;
 				border-collapse: collapse;
 			}
+
 			textarea {
 				resize: none;
 				border: none;
@@ -69,6 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				text-align: left;
 				resize: none;
 			}
+			 #g-table tr > td{
+                    padding-top: 5px;
+                }
+			
 		</style>
 	</head>
 	<body>
@@ -82,14 +87,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<table style="border:0px solid">
 			<tr>
 				<td  class="titulo1" style="border:0px solid;text-align: left;width: 310px;">
-					<img src="<?=base_url() ?>recursos/images/LogoSGG.jpg">
+					<img src="<?=base_url() ?>recursos/images/munich_re.jpg">
 				</td>
 		
 				<td  class="titulo1" style="border: 0px solid;vertical-align: bottom;text-align: center;">
 					Certificate Of Insurance
 				</td>
 				<td  class="titulo1" style="border:0px solid;text-align: right;width: 310px;">
-					<img src="<?=base_url() ?>recursos/images/munich_re.jpg">
+					
 				</td>
 			</tr>
 			<tr>
@@ -105,9 +110,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td class="parrafo1" rowspan="3" style="border: 0px solid;text-align: center;height: 100px;">
 					ASSURED
 					<br></br>
-					SGG LOGISTICS
+					SEEMANN GROUP
 					<br></br>
-					MAIPU,SANTIAGO, CHILE
+					PROVIDENCIA, SANTIAGO, CHILE.
 					<br></br>
 					CLAIMS CONTACTS
 				</td>
@@ -118,18 +123,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<tr>
 				<td class="parrafo1" colspan="2">&nbsp;&nbsp;CERTIFICATE No:
 					<b><?php echo $certificado->certificate_no ?></b></td>
-				<td class="parrafo1" colspan="2" rowspan="2" VALIGN=TOP>&nbsp;&nbsp;CONVETANCE: <br>
+				<td class="parrafo1" colspan="2" rowspan="2" VALIGN=TOP>&nbsp;&nbsp;CONVEYANCE: <br>
 					&nbsp;
-					<b><?php echo $certificado->convetance ?></b></td>
+					<b><?php echo $certificado->conveyance ?></b></td>
 			</tr>
 			<tr>
 				<td class="parrafo1" colspan="2">&nbsp;&nbsp;DEPARTING ON OR ABOUT:</td>
 			</tr>
 			<tr>
-				<td class="parrafo1">&nbsp;&nbsp;FROM:</td>
-				<td class="parrafo1">&nbsp;&nbsp;TO: </td>
-				<td class="parrafo1">&nbsp;&nbsp;AMOUNT INSURE: 1</td>
-				<td class="parrafo1">&nbsp;&nbsp;PREMIUM: </td>
+				<td class="parrafo1">&nbsp;&nbsp;FROM: <?php echo $certificado->fromm ?></td>
+				<td class="parrafo1">&nbsp;&nbsp;TO: <?php echo $certificado->too ?></td>
+				<td class="parrafo1">&nbsp;&nbsp;AMOUNT INSURE: <?php echo $certificado->amount_insure ?></td>
+				<td class="parrafo1">&nbsp;&nbsp;PREMIUM: <?php echo $certificado->premium ?></td>
 			</tr>
 			<tr>
 				<td class="parrafo1" colspan="4">
@@ -251,16 +256,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</td>
 			</tr>
 			<tr>
-				<td class="parrafo4" colspan="2">SETTLING AGENT:</td>
-				<td class="parrafo4" colspan="2">CLAUSE:</td>
+				<td class="parrafo4" colspan="2">SETTLING AGENT: <?php echo $certificado->nombre_cliente ?></td>
+				<td class="parrafo4" colspan="2">CLAUSE: <?php echo $certificado->clausula?></td>
 			</tr>
 			<tr>
 				<td class="parrafo4" colspan="1" style="text-align: left;border-bottom: 0px"><br>Issue Date:
 					<b><?php echo $certificado->fecha_emision ?></b> <br><br>shipping date:
-					<b><?php echo $certificado->fecha_emision ?></b> <br></td>
+					<b><?php echo $certificado->fecha_envio ?></b> <br></td>
 				<td class="parrafo4" colspan="2" style="text-align: left;border-bottom: 0px"><br>Countersignature:<br><br>Guia/BL:
 					<b><?php echo $certificado->b_l ?></b><br></td>
-				<td class="parrafo4" colspan="1" style="text-align: center;border-bottom: 0px"><br>Sergio Orellana, Gerente General<br><br>FIRMA<br></td>
+				<td class="parrafo4" colspan="1" style="text-align: center;border-bottom: 0px;">
+						<img width="70%" src="<?=base_url() ?>recursos/images/FirmaPeru.jpg">
+					<br>Firma
+				</td>
 			</tr>
 			<tr>
 				<td class="parrafo4" colspan="1" style="text-align: center;border-top: 0px"><br><br></td>
@@ -268,15 +276,223 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<td class="parrafo4" colspan="1" style="text-align: center;border-top: 0px"><br><br></td>
 			</tr>
 		</table>
-
-
-		<table style="border:0px solid">
-			<tr>
-				<td class="parrafo3" style="border:0px solid"></td>
-				<td class="parrafo3" style="border:0px solid;text-align:center;"><br>Valide su certificado en nuestro sitio web sgglogistics.cl/validacion<br>Codigo: abcdef123465</td>
-
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+	 <div style="border-color: black;border-width: 2px;border-style: solid;padding: 10px">
+		<table style="border: hidden">
+			<tr style="border: hidden">
+				<td style="border: hidden" >
+				</td>
+				<td style="border: hidden">	
+				</td>
+				<td style="border: hidden">	
+				</td>
+				<td style="text-align: right;border: hidden">
+					<img width="150%" src="<?=base_url() ?>recursos/images/bandera_peruana.jpg">		
+				</td>
 			</tr>
 		</table>
+
+		<table style="font-family: Arial;margin-top: 40px;border: hidden">
+			<tr style="background-color: #edebf1;border: hidden">	
+				<td style="text-align: center;font-size:18px;">
+					<p>NOTA DE COBRO SEEMANN GROUP</p>
+				</td>		
+			</tr>
+		</table>
+		
+		<table style="font-family: Arial;border: hidden;margin-top: 30px;">
+			<tr style="border: hidden">
+				<td style="border: hidden"></td>
+				<td style="border: hidden"></td>
+				<td style="text-align: center;font-size:60px;border: hidden">
+					<b>N°</b>
+				</td>
+				<td style="text-align: center;font-size:60px;border: hidden">
+					<b><?php echo $certificado->certificate_no ?></b>
+				</td>
+			</tr>
+			<tr style="border: hidden;border: hidden">
+				<td style="border: hidden"></td>
+				<td style="border: hidden"></td>
+				<td style="text-align: center;font-size:50px;border: hidden">
+					<b>Fecha</b>
+				</td>
+				<td style="text-align: center;font-size:50px;border: hidden">
+					<b><?php echo $certificado->fecha_emision ?></b>
+				</td>
+			</tr>
+		</table>
+		
+		<table style="font-family: Arial;margin-top: 30px;border: hidden">
+			<tr style="border: hidden">
+				<td style="text-align: left;font-size:15px;border: hidden">
+					<p>DATOS DEL ASEGURADO</p>
+				</td>
+			</tr>
+		</table>
+		
+			<table style="font-family: Arial;border: hidden">
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						ASEGURADO
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						<?php echo $certificado->asegurado ?>
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						RUC
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						<?php echo $certificado->ruc ?>
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						DOMICILIO
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						<?php echo $certificado->domicilio ?>
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						CIUDAD
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						&nbsp;
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						PAIS
+					</td>
+					<td style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						<?php echo $certificado->pais ?>
+					</td>
+					<td style="border: hidden">
+					</td>
+				</tr>
+			</table>
+		
+		<table style="font-family: Arial;margin-top: 40px;border: hidden">
+			<tr>
+				<td style="text-align: left;font-size:15px;border: hidden">
+					<p>DATOS DEL CERTIFICADO</p>
+				</td>
+			</tr>
+		</table>
+		
+		
+		<table style="font-family: Arial;border: hidden">
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						CONDICIONES DE PAGO
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;border: hidden" VALIGN=TOP VALIGN=TOP>
+						<b><?php echo $certificado->condiciones_pago ?></b>
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						POR LA CANCELACIÓN DE LO SIGUIENTE:
+					</td>
+					<td style="border: hidden">					
+					</td>
+					<td style="border: hidden">
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						POLIZA DE TRANSPORTE
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						<?php echo $certificado->policy_no ?>
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+				<tr>
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						NUMERO CERTIFICADO
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						<?php echo $certificado->certificate_no ?>
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+				<tr style="border: hidden">
+					<td style="text-align: left;font-size:35px;padding-left: 40px;padding-bottom: 20px;padding-top: 20px;border: hidden" VALIGN=TOP>
+						FECHA EMISIÓN
+					</td>
+					<td colspan="2" style="text-align: left;font-size:35px;padding-left: 60px;padding-bottom: 20px;padding-top: 20px;" VALIGN=TOP>
+						<?php echo $certificado->fecha_emision ?>
+					</td>
+					<!--<td style="border: hidden">
+					</td>-->
+				</tr>
+			</table>
+		
+		
+		<table style="font-family: Arial;margin-top: 40px;border: hidden">
+			<tr>
+				<td style="text-align: left;font-size:15px;border: hidden">
+					<p>MONTO USD</p>
+				</td>
+			</tr>
+		</table>
+		
+		<table style="font-family: Arial;border: hidden;margin-top: 50px;margin-bottom: 110px;">
+				<tr>
+					<td style="border-top:hidden;border-bottom:hidden;border-left:hidden;">
+						
+					</td>
+					<td style="text-align: left;padding-left: 80px;font-size:55px;padding-bottom: 30px;padding-top: 30px;border-bottom:hidden;border-right:hidden;">
+						<b>MONTO ASEGURADO :</b>
+					</td >
+					<td style="text-align: right;padding-left: 80px;padding-right: 80px;font-size:55px;padding-bottom: 30px;padding-top: 30px;border-bottom:hidden;">
+						<b><?php echo $certificado->amount_insure ?></b>
+					</td>
+					<td style="border-top:hidden;border-bottom:hidden;border-right:hidden;">
+					</td>
+				</tr>
+				<tr>
+					<td style="border-left:hidden;border-bottom:hidden;">
+						
+					</td>
+					<td style="text-align: left;padding-left: 80px;font-size:55px;padding-bottom: 30px;padding-top: 30px;border-right:hidden;">
+						<b>PRIMA TOTAL :</b>
+					</td >
+					<td style="text-align: right;padding-left: 80px;padding-right: 80px;font-size:55px;padding-bottom: 30px;padding-top: 20px;">
+						<b><?php echo $certificado->premium ?></b>
+					</td>
+					<td style="border-right:hidden;border-bottom:hidden;">
+					</td>
+				</tr>
+			</table>
+		</div>	
 	</body>
 </html>
 

@@ -2,18 +2,10 @@
 <project name="C:\xampp\htdocs\EmisionPolizas\EmisionPolizas.clpprj">
 	<settings>
 		<PM_URL><![CDATA[http://localhost/]]></PM_URL><PM_HOME_URL><![CDATA[http://localhost/]]></PM_HOME_URL><PM_LIBS><![CDATA[]]></PM_LIBS><PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION><PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR><PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE></settings><removed value=";C:\xampp\htdocs\EmisionPolizas\application\libraries\composer.json;"/><added value=""/><lastopfiles>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\PrimaMensual.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Prima.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\HistorialCertificado.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\historialCertificado.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_peru.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\config.php"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\primaMensual.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\certificado.js"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\prima.js"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Siniestro.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\siniestro.js"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\DenunciaSiniestro.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\denunciaSiniestro.php"/>
 	</lastopfiles>
 	<errors version="5.11">
 		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\primaMensual.php">
@@ -2792,15 +2784,15 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\denunciaSiniestro.php" crc="1592268120"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\cuentaUsuario.php" crc="1590445981"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\clienteMantenedor.php" crc="1592110817"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_peru.php" crc="1591842172"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php" crc="1591841640"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_peru.php" crc="1592518854"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php" crc="1592496002"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\third_party\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Usuario.php" crc="1590445742"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Siniestro.php" crc="1592272289"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Prima.php" crc="1592271276"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Cliente.php" crc="1590444447"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php" crc="1592270325"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php" crc="1592518009"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\logs\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\libraries\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\language\english\index.html" crc="1588206237"/>
@@ -2833,7 +2825,7 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\doctypes.php" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\database.php" crc="1589911949"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\constants.php" crc="1588897239"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\config.php" crc="1591830727"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\config.php" crc="1592495861"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\autoload.php" crc="1588887468"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\cache\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\index.html" crc="1588206237"/>
