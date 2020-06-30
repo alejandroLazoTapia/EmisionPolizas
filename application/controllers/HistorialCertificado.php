@@ -92,91 +92,7 @@ class HistorialCertificado extends CI_Controller
 		}
 	} 
 	
-/*	public function obtieneCertificadosClientes()
-	{
-		if ($this->input->is_ajax_request()) {
-			$perfil = $this->session->userdata('perfil');
-			$arrCertificados = $this->Certificado->obtenerHistorialCertTotal();
-				
-			if ($arrCertificados != null) {
-				if (count($arrCertificados) > 0) {
-						$i = 1;
-						if($perfil == 2){
-							foreach ($arrCertificados as $index => $key) {
-							if($key['estado_reg'] == 0){
-								echo '<tr style="background-color: #FCAAAA;">';
-							}else{
-								echo '<tr>';
-							}
-							echo '<td>'.$i.'</td>';
-							echo '<td>'.$key["nombre_cliente"].'</td>';
-							echo '<td>'.$key["codigo_poliza"].'</td>';
-							echo '<td>'.$key["id_certificado"].'</td>';
-							echo '<td>'.$key["fecha_emision"].'</td>';
-							echo '<td>'.$key["usuario"].'</td>';
-							echo '<td style="text-align: center;">
-										<a class="idDescargarCertificado">
-													<span class="glyphicon glyphicon-download-alt"></span>
-												</a>
-											</td>';
-							echo '<td style="display:none">anulado</td>';		
-									
-							echo '<td style="display:none">'.$key["id_cliente"].'</td>';
-							echo '<td style="display:none">'.$key["id_poliza"].'</td>';
-							echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
-							echo'</tr>';
-							$i = $i+1;
-							}
-						}else{
-						
-						foreach ($arrCertificados as $index => $key) {
-							if($key['estado_reg'] == 0){
-								echo '<tr style="background-color: #FCAAAA;">';
-							}else{
-								echo '<tr>';
-							}
-							echo '<td>'.$i.'</td>';
-							echo '<td>'.$key["nombre_cliente"].'</td>';
-							echo '<td>'.$key["codigo_poliza"].'</td>';
-							echo '<td>'.$key["id_certificado"].'</td>';
-							echo '<td>'.$key["fecha_emision"].'</td>';
-							echo '<td>'.$key["usuario"].'</td>';
-							echo '<td style="text-align: center;">
-										<a class="idDescargarCertificado">
-													<span class="glyphicon glyphicon-download-alt"></span>
-												</a>
-											</td>';
-							if($key['estado_reg'] == 0){
-								echo'<td style="text-align: center;"><b>Anulado</b></td>';
-								}else{
-								echo '<td style="text-align: center;">
-										<a class="idAnulaCertificado" data-toggle="modal" data-target="#myModalAnular">
-													<span class="glyphicon glyphicon-remove"></span>
-												</a>
-											</td>';		
-							}				
-									
-							echo '<td style="display:none">'.$key["id_cliente"].'</td>';
-							echo '<td style="display:none">'.$key["id_poliza"].'</td>';
-							echo '<td style="display:none">'.$key["id_pais_emision"].'</td>';
-							echo'</tr>';
-							$i = $i+1;
-						}
-					}
-					}else{
-						echo "<tr>";
-						echo '<td colspan="7"><div class="alert alert-warning" role="alert"> No existen certificados emitidos</div></td>';
-						echo "</tr>";
-					}		
-			} else {
-				echo "<tr>";
-				echo '<td colspan="7"><div class="alert alert-warning" role="alert"> No existen certificados emitidos</div></td>';
-				echo "</tr>";
-			}
-		} else {
-			echo -3;
-		}
-	} */
+
 	
 	public function obtieneCertificadosCliente()
 	{
@@ -208,7 +124,7 @@ class HistorialCertificado extends CI_Controller
 							echo '<td>'.$key["usuario"].'</td>';
 							echo '<td style="text-align: center;">
 										<a class="idDescargarCertificado">
-													<span class="glyphicon glyphicon-download-alt"></span>
+													<span class="glyphicon glyphicon-download-alt" style="color: #6675df !important;"></span>
 												</a>
 											</td>';
 							echo '<td style="display:none">anulado</td>';		
@@ -235,7 +151,7 @@ class HistorialCertificado extends CI_Controller
 							echo '<td>'.$key["usuario"].'</td>';
 							echo '<td style="text-align: center;">
 										<a class="idDescargarCertificado">
-													<span class="glyphicon glyphicon-download-alt"></span>
+													<span class="glyphicon glyphicon-download-alt" style="color: #6675df !important;"></span>
 												</a>
 											</td>';
 							if($key['estado_reg'] == 0){
@@ -243,7 +159,7 @@ class HistorialCertificado extends CI_Controller
 								}else{
 								echo '<td style="text-align: center;">
 										<a class="idAnulaCertificado" data-toggle="modal" data-target="#myModalAnular">
-													<span class="glyphicon glyphicon-remove"></span>
+													<span class="glyphicon glyphicon-remove" style="color: red !important;"></span>
 												</a>
 											</td>';		
 							}				

@@ -149,8 +149,8 @@ $(document).on('click','.idEditarPrima',function(event) {
 	var inputPrimaUsuario = '<input id="idPrimaUsuario'+i+'" name="idPrimaUsuario'+i+'" class="miles" style="text-align: right;" size="7" value="'+idPrimaUsuario+'">';
 	var inputPrimaCompania = '<input id="idPrimaCompania'+i+'" name="idPrimaCompania'+i+'" class="miles" style="text-align: right;" size="7" value="'+idPrimaCompania+'">';
 	var inputUtilidad = '<input id="idUtilidad'+i+'" name="idUtilidad'+i+'" class="miles" style="text-align: right;" size="3" value="'+idUtilidad+'">';
-	var inputEdit = '<a><span class="glyphicon glyphicon-pencil"></span></a>';
-	var inputGuardar = '<a class="idGuardaPrima"><span class="glyphicon glyphicon-floppy-disk"></span></a>';
+	var inputEdit = '<a><span class="glyphicon glyphicon-pencil" style="color:#6675df"></span></a>';
+	var inputGuardar = '<a class="idGuardaPrima"><span class="glyphicon glyphicon-floppy-disk" style="color:red"></span></a>';
 	
 	/*$(this).parents("tr").find("td")[6].innerHTML = inputPrimaCliente;*/
 	$(this).parents("tr").find("td")[8].innerHTML = inputPrimaUsuario;
@@ -170,7 +170,7 @@ $(document).on('click','.idGuardaPrima',function(event) {
 	var idCliente = $('#idClientePrima').val();
 	var idAnoPrima = $('#idAnoPrima').val();
 	var idMesPrima = $('#idMesPrima').val();
-	var inputEdit = '<a class="idEditarPrima"><span class="glyphicon glyphicon-pencil"></span></a>';
+	var inputEdit = '<a class="idEditarPrima"><span class="glyphicon glyphicon-pencil" style="color:#6675df"></span></a>';
 	
 	var idGPrimaUsuario = $('#idPrimaUsuario'+i).val().replace('.', '').replace('.', '').replace(',', '.');
 	var idGPrimaCompania = $('#idPrimaCompania'+i).val().replace('.', '').replace('.', '').replace(',', '.');

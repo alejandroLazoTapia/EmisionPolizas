@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1978px" height="367px" viewBox="0 0 1978 367" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ondas</title>
+    <defs>
+        <linearGradient x1="50%" y1="-34.2006277%" x2="50%" y2="126.668088%" id="linearGradient-1">
+            <stop stop-color="#32C5FF" offset="0%"></stop>
+            <stop stop-color="#0033A0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="74.1697612%" id="linearGradient-2">
+            <stop stop-color="#00D7E5" offset="0%"></stop>
+            <stop stop-color="#00AEC7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ondas" fill-rule="nonzero">
+            <path d="M2.27373675e-13,152.190888 C359.539557,8.8317854 616.478761,-9.14484809 770.81761,98.2609872 C914.063546,197.947161 1138.87924,176.290886 1341.38365,98.2609872 C1548.24885,18.5507682 1662.64663,61.3822154 1854.59119,6.7371877 C1982.55424,-29.6928308 2010.3192,90.3950611 1937.8861,367.000863 L2.27373675e-13,367.000863 L2.27373675e-13,152.190888 Z" id="Path-3" fill="url(#linearGradient-1)"></path>
+            <path d="M2.27373675e-13,265.439934 C105.446265,85.221256 258.466443,-0.838858541 459.060535,7.25959002 C759.951672,19.4072629 728.376787,279.430674 1027.42138,222.779532 C1326.46598,166.12839 1344.88938,-56.2235118 1647.7467,30.6790709 C1849.65158,88.614126 1961.26781,210.005216 1937.8861,367.000863 L2.27373675e-13,367.000863 L2.27373675e-13,265.439934 Z" id="Path-5" fill="url(#linearGradient-2)" opacity="0.442313058"></path>
+        </g>
+    </g>
+</svg>

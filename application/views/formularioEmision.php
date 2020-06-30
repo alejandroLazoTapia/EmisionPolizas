@@ -68,7 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default" data-dismiss="modal">Volver</button>
-								<button type="button" class="btn btn-primary" id="btnObtieneDatos" name="btnObtieneDatos" data-dismiss="modal" disabled="true">Obtener Datos</button>
+								<button type="button" class="btn btn-success" id="btnObtieneDatos" name="btnObtieneDatos" data-dismiss="modal" disabled="true">Obtener Datos</button>
 								</div>
 						</div>
 					</div>
@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		<!-- /.row -->
 		
 		<div class="row" style="margin-top: 20px;">
-			<form role="form"  method="post" accept-charset='UTF-8' id="form-create-certificate">
+			<form role="form" method="post" accept-charset='UTF-8' id="form-create-certificate">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<div class="panel-heading" style="color:#fff;background-color: #428bca;">
@@ -600,7 +600,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 					<div class="col-lg-4">
 						<div class="form-group">
-							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;" type="submit" formaction="no" id="btnModalUpd" name="btnModalUpd" class="btn btn btn-primary"  disabled="true">Actualizar</button>
+							<button style="font-size: 15px;text-align: center;width: 150px;height: 40px;background-color: #6675df" type="submit" formaction="no" id="btnModalUpd" name="btnModalUpd" class="btn btn btn-primary"  disabled="true">Actualizar</button>
 						</div>
 					</div>
 					<div class="col-lg-4">

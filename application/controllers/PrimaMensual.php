@@ -122,7 +122,7 @@ class PrimaMensual extends CI_Controller
 							echo '<td style="text-align: right;">'.$key["prima_usuario"].'</td>';
 							echo '<td style="text-align: right;">'.$key["prima_compania"].'</td>';
 							echo '<td style="text-align: right;">'.$key["utilidad"].'</td>';
-							echo '<td style="text-align: center;"><a class="idEditarPrima"><span class="glyphicon glyphicon-pencil"></span></a></td>';
+							echo '<td style="text-align: center;"><a class="idEditarPrima"><span class="glyphicon glyphicon-pencil" style="color:#6675df !important;"></span></a></td>';
 							}	 
 							echo'</tr>';		
 							$i = $i+1;

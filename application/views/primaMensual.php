@@ -106,7 +106,7 @@ echo "</pre>";*/
 					<div class="col-lg-2">
 						<div class="form-group">
 							<label>&nbsp;</label>
-							<button disabled="true" id="btnObtienePrima" type="submit" class="btn btn btn-primary form-control">Obtener Prima</button>
+							<button disabled="true" id="btnObtienePrima" type="submit" class="btn btn btn-success form-control">Obtener Prima</button>
 						</div>
 					</div>
 					<div class="col-lg-2" id="idExcelHeader" style="display:none">

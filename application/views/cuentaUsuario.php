@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-lg-12">
 						<div class="panel panel-default">
-							<div class="panel-heading" style="color:#fff;background-color: #428bca;">
+							<div class="panel-heading">
 								Usuarios
 							</div>
 							<!-- /.panel-heading -->
@@ -49,10 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													echo '<td>'.$key["nombre_usuario"].'</td>';
 													echo '<td>'.$key["tipo_perfil"].'</td>';
 													?>
-													<td style="text-align: center;"><a class="idFilaActualizar"><span class="glyphicon glyphicon-pencil"></span></a></td>
+													<td style="text-align: center;"><a class="idFilaActualizar"><span class="glyphicon glyphicon-pencil" style="color: #6675df !important;"></span></a></td>
 										<td style="text-align: center;">
 											<a class="idFilaDel" data-toggle="modal" data-target="#myModalDelUser">
-												<span class="glyphicon glyphicon-remove" ></span></a></td>
+												<span class="glyphicon glyphicon-remove" style="color: red"></span></a></td>
 											<?php 
 											echo '<td style="display:none">'.$key["id_usuario"].'</td>';
 											echo '<td style="display:none">'.$key["nombre"].'</td>';

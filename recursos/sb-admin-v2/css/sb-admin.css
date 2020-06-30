@@ -2,9 +2,16 @@
 
 /* ------------------------------- */
 
+@font-face {
+    font-family: Montserrat-Bold;
+    src: url(../../../recursos/Login_v18/fonts/montserrat/Montserrat-Bold.ttf);
+}
+
 body {
     padding-top: 100px;
     background-color: #f8f8f8;
+    font-family: Montserrat-Bold !important;
+    background-color: #E9ECFC !important;
 }
 
 @media(min-width:768px) {
@@ -23,19 +30,59 @@ body {
 
 #page-wrapper {
     padding: 0 15px;
-    min-height: 568px;
-    background-color: #fff;
+    min-height: 600px;
+    border-left: 1px solid #e7e7e7 !important;
+    background-image: url(../../../recursos/images/ondas.svg);
+    background-size: cover;
+	
 }
 
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
+        background-color: #fff;
         margin: 0 0 0 250px;
         padding: 0 30px;
-        min-height: 1300px;
-        border-left: 1px solid #e7e7e7;
+        min-height: 710px;
+        /*border-left: 1px solid #F5F6FB !important;*/
     }
 }
+
+a{
+	/*color: #6675df !important;*/
+	color: #000000 !important;
+}
+
+/*Lo nuevo*/
+
+.btn-warning{
+	background-color: #e9c10a !important;
+    border-color: #e9c10a !important;
+}
+
+.btn-warning:hover{
+	background-color: #7e6905 !important;
+    border-color: #7e6905 !important;
+}
+
+.btn-success:hover{
+    color: #fff !important;
+    background-color: #1e5722 !important;
+    border-color: #1e5722 !important;
+}
+
+.panel-heading{
+	color:#fff !important;;
+	background-color: #6675df !important;
+	border-color: #6675df !important;
+}
+
+.nav>li>a {
+    padding: 15px 15px 15px 15px !important;
+}
+
+
+
 
 /* Navigation */
 
@@ -327,3 +374,85 @@ table.dataTable thead .sorting:after {
 .show-grid {
     margin: 15px 0;
 }
+
+/*Imagen en movimiento*/
+  .container-portada{
+	width: 83.5%%;
+	height: 710px;
+	background-image: url(../../../recursos/images/carga11.jpg);
+	background-size: 120%;
+	animation: movimiento 10s linear infinite alternate;
+}
+@keyframes movimiento{
+	from{
+	background-position: bottom left;	
+	}
+	to{
+	background-position: top right:	
+	}
+
+}
+
+
+
+
+
+.container-portada{
+	width: 100%;
+	height: 400px;
+	background-color: #fff !important;
+	background-image: url(../../../recursos/images/carga11.jpg) !important;
+	background-size: 170%;
+	animation: movimiento 10s linear alternate infinite;
+}
+@keyframes movimiento{
+	from{
+	background-position: bottom left;	
+	}
+	to{
+	background-position: top right:	
+	}
+
+
+
+a{
+ margin-bottom: 0px !important;
+ margin-top: 0px !important;	
+}
+
+}
+
+
+@media(max-width:480px) {
+.container-portada{
+	width: 100%;
+	height: 400px !important;
+	min-height: 600px !important;
+	background-color: #fff !important;
+	background-image: url(../../../recursos/images/carga11.jpg) !important;
+	background-size: 300% !important;
+	animation: movimiento 8s linear alternate infinite;
+	text-align: center;
+}
+@keyframes movimiento{
+	from{
+	background-position: bottom left;	
+	}
+	to{
+	background-position: top right:	
+	}
+
+}
+
+a{
+ margin-bottom: 0px !important;
+ margin-top: 0px !important;	
+}
+
+}
+
+
+
+	
+
+/*fin imagen en movimiento*/

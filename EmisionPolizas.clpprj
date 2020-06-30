@@ -2,49 +2,13 @@
 <project name="C:\xampp\htdocs\EmisionPolizas\EmisionPolizas.clpprj">
 	<settings>
 		<PM_URL><![CDATA[http://localhost/]]></PM_URL><PM_HOME_URL><![CDATA[http://localhost/]]></PM_HOME_URL><PM_LIBS><![CDATA[]]></PM_LIBS><PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION><PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR><PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE></settings><removed value=";C:\xampp\htdocs\EmisionPolizas\application\libraries\composer.json;"/><added value=""/><lastopfiles>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_peru.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\config.php"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\database.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\index.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\profiler.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\formularioEmision.php"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\datosBD.js"/>
 	</lastopfiles>
-	<errors version="5.11">
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\primaMensual.php">
-			<error val="16;31;25;31;2002;1;"/>
-			<error val="18;35;27;35;2002;1;"/>
-			<error val="18;74;27;74;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\informeCierre.php">
-			<error val="35;31;44;31;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\historialPago.php">
-			<error val="35;31;44;31;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\historialCertificado.php">
-			<error val="38;31;47;31;2002;1;"/>
-			<error val="42;35;51;35;2002;1;"/>
-			<error val="18;74;27;74;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\formularioEmision.php">
-			<error val="46;94;55;94;2002;1;"/>
-			<error val="20;131;29;131;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\denunciaSiniestro.php">
-			<error val="20;30;29;30;2002;1;"/>
-			<error val="45;47;54;47;2002;1;"/>
-			<error val="21;153;30;153;2002;1;"/>
-		</errfile>
-		<errfile name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php">
-			<error val="26;116;37;116;2002;1;"/>
-		</errfile>
-	</errors>
-	<cakedata>
-	</cakedata>
-	<dplmenupath>
-	</dplmenupath><laravael>
-	</laravael><smartyassings>
-	</smartyassings><twigtemplate>
-	</twigtemplate><yiidata>
-	</yiidata>
 	<todoblock>
 		<todofile name="C:\xampp\htdocs\EmisionPolizas\application\controllers\clienteMantenedor.php">
 			<todo name="todo is_ajax_request() de la libreria input permite verificar" pos="8;31"/>
@@ -2625,7 +2589,7 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\plugins\social-buttons\social-buttons.css" crc="1397498152"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\plugins\morris\morris-0.4.3.min.css" crc="1397498152"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\plugins\dataTables\dataTables.bootstrap.css" crc="1397498152"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\sb-admin.css" crc="1399142332"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\sb-admin.css" crc="1593185524"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\bootstrap.min.css" crc="1397498152"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\css\bootstrap.css" crc="1397498152"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\sb-admin-v2\typography.html" crc="1397498152"/>
@@ -2712,7 +2676,7 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\Utilitarios.js" crc="1592114501"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\usuario.js" crc="1590446118"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\siniestro.js" crc="1592273279"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\prima.js" crc="1592270676"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\prima.js" crc="1593130461"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\map-custom.js" crc="1513298482"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\main.js" crc="1513359716"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\recursos\js\jquery-3.4.1.min.js" crc="1584121513"/>
@@ -2769,22 +2733,22 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\cli\error_404.php" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\errors\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\welcome_message.php" crc="1588206237"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\primaMensual.php" crc="1592270605"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\menu.php" crc="1591842416"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\primaMensual.php" crc="1593128925"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\menu.php" crc="1593185864"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\login_anterior.php" crc="1589768897"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\login.php" crc="1590176297"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\informeCierre.php" crc="1590172473"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\index.html" crc="1588206237"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\home.php" crc="1588272571"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\home.php" crc="1593184486"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\historialPago.php" crc="1590172413"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\historialCertificado.php" crc="1592269253"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\header.php" crc="1590168402"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\formularioEmision.php" crc="1592110383"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\historialCertificado.php" crc="1593186512"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\header.php" crc="1593185785"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\formularioEmision.php" crc="1593326205"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\footer.php" crc="1591123643"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\denunciaSiniestro.php" crc="1592268120"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\cuentaUsuario.php" crc="1590445981"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\clienteMantenedor.php" crc="1592110817"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_peru.php" crc="1592518854"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\denunciaSiniestro.php" crc="1593134289"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\cuentaUsuario.php" crc="1593182488"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\clienteMantenedor.php" crc="1593134295"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_peru.php" crc="1592576851"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\views\certificado_chile.php" crc="1592496002"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\third_party\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Usuario.php" crc="1590445742"/>
@@ -2792,7 +2756,7 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Prima.php" crc="1592271276"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Cliente.php" crc="1590444447"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php" crc="1592518009"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\models\Certificado.php" crc="1592574529"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\logs\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\libraries\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\language\english\index.html" crc="1588206237"/>
@@ -2801,15 +2765,15 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\helpers\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\core\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\Welcome.php" crc="1589592075"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\PrimaMensual.php" crc="1592271451"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\PrimaMensual.php" crc="1593130183"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\Login.php" crc="1590441840"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\Inicio.php" crc="1589858799"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\InformeCierre.php" crc="1589954916"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\HistorialPago.php" crc="1590459708"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\HistorialCertificado.php" crc="1592270306"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\HistorialCertificado.php" crc="1593130092"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\FormularioEmision.php" crc="1592107949"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\DenunciaSiniestro.php" crc="1592273140"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\DenunciaSiniestro.php" crc="1593129342"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\CuentaUsuario.php" crc="1590446166"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\controllers\ClienteMantenedor.php" crc="1591806462"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\user_agents.php" crc="1588206237"/>
@@ -2823,14 +2787,14 @@
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\hooks.php" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\foreign_chars.php" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\doctypes.php" crc="1588206237"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\database.php" crc="1589911949"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\database.php" crc="1592594170"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\constants.php" crc="1588897239"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\config.php" crc="1592495861"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\config.php" crc="1592594167"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\config\autoload.php" crc="1588887468"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\cache\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\index.html" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\application\.htaccess" crc="1588206237"/>
 		<file name="C:\xampp\htdocs\EmisionPolizas\license.txt" crc="1588206237"/>
-		<file name="C:\xampp\htdocs\EmisionPolizas\index.php" crc="1588206237"/>
+		<file name="C:\xampp\htdocs\EmisionPolizas\index.php" crc="1592594174"/>
 	</filescache>
 </project>

@@ -17,14 +17,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 </head>
 
-<body style="padding-top: 0px;"> 
+<body style="padding-top: 0px;color: black;"> 
 	<?php
 	$perfil = $this->session->userdata('perfil');
 	$nombre = $this->session->userdata('nombre');
 	?>
 	
-<div id="wrapper">
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0;position: static;">
+<div id="wrapper" style="background-color: #f8f8f8;">
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0;position: static;font-family: 'Raleway', sans-serif;">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
 				<span class="sr-only">Toggle navigation</span>
@@ -32,27 +32,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand">SGG Logistics</a>
+			<a class="navbar-brand" style="font-size: 25px">
+			<!--<img src="<?=base_url() ?>recursos/images/logo.png" width="25%">-->
+			<i>SGG Logistics</i>
+			</a>
 		</div>
 
 
 		<ul class="nav navbar-top-links navbar-right">
 			<!-- /.dropdown -->
-			<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="float: right; padding:10px 6px; ">
-					<i class="fa fa-user fa-fw"></i>
+			<li class="dropdown" >
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="float: right; padding:10px 6px; ">
+					<i class="fa fa-user fa-fw" style="color: #6675df !important;"></i>
 					<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user" style="margin-top:45px">
 					<li>
 						<a href="#">
-							<i class="fa fa-user fa-fw"></i> <?php echo($nombre) ?>
+							<i class="fa fa-user fa-fw" style="color: #6675df !important;"></i> <?php echo($nombre) ?>
 						</a>
 					</li>
 					<li class="divider"></li>
 					<li>
 						<a href="<?=base_url()?>index.php/inicio">
-							<i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
+							<i class="fa fa-sign-out fa-fw" style="color: #6675df !important;"></i><label style="color: red !important;">Cerrar Sesión</label> </a>
 					</li>
 				</ul>
 			</li>

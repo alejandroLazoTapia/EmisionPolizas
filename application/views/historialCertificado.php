@@ -103,10 +103,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</div>
 						</div>
 
-						<div class="col-lg-2" >
+						<div class="col-lg-2">
 							<div class="form-group">
 								<label>&nbsp;</label>
-								<button disabled="true"  id="btnObtieneCertificado" type="submit" class="btn btn btn-primary form-control">Obtener Certificados</button>
+								<button disabled="true"  id="btnObtieneCertificado" type="submit" class="btn btn btn-success form-control" style="width: auto !important;">Obtener Certificados</button>
 							</div>
 						</div>
 						<div class="col-lg-2">

@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 																	echo '<td>'.$key["poliza"].'</td>';
 																	echo '<td>'.$key["fecha_ingreso"].'</td>';
 																	echo '<td>'.$key["monto"].'</td>';
-																	echo '<td style="text-align: center"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalSinester"><span class="glyphicon glyphicon-eye-open" ></span></a></td>';
+																	echo '<td style="text-align: center"><a id="btnVerSiniestro" data-toggle="modal" data-target="#myModalSinester"><span class="glyphicon glyphicon-eye-open" style="color: red !important;"></span></a></td>';
 																	echo"</tr>";
 																}
 																?>

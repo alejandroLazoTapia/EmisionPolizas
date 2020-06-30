@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-<div id="page-wrapper">
+<div id="page-wrapper" >
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">Registrar Cliente</h1>
@@ -54,10 +54,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										?>
 										<td style="text-align: center;">
 											<a class="idFilaActualizarCliente">
-												<span class="glyphicon glyphicon-pencil"></span></a></td>
+												<span class="glyphicon glyphicon-pencil" style="color: #6675df !important;"></span></a></td>
 										<td style="text-align: center;">
 											<a class="idFilaDelCliente" data-toggle="modal" data-target="#myModalDelUser">
-												<span class="glyphicon glyphicon-remove" ></span></a></td>
+												<span class="glyphicon glyphicon-remove" style="color: red !important;"></span></a></td>
 										<?php
 										echo '<td style="display:none">'.$key["id_cliente"].'</td>';
 										echo '<td style="display:none">'.$key["direccion_cliente"].'</td>';
